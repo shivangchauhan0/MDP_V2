@@ -1,0 +1,27 @@
+body {
+  background-color: #004ba8 !important;
+}
+.head-one {
+  margin-top: 3vh !important;
+  text-align: center;
+  font-size: 2.7rem;
+  color: #004ba8;
+}
+.form {
+  background: #fff;
+  margin: 0 auto !important;
+  margin-top: 3vh !important;
+  width: 35vw;
+  padding: 4vh 3vw 4vh 3vw;
+  width: 38vw;
+}
+.form-btn-one {
+  background-color: #004ba8 !important;
+  color: #fff !important;
+  margin-top: 1vh !important;
+  height: 7vh;
+  width: 100% !important;
+}
+.footer-copyright {
+  color: white;
+}

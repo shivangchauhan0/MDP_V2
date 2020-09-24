@@ -16,6 +16,8 @@
     <!-- Font -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400&display=swap" rel="stylesheet">
     <title>Teacher's diary</title>
+    <!-- login Css -->
+    <link rel="stylesheet" href="CSS/login.css">
 </head>
 <body>
 <?php include("server.php") ?>
