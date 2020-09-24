@@ -1,5 +1,6 @@
-<?php include('server.php') ?>
 <?php include('header.php') ?>
+<!-- login Css -->
+<link rel="stylesheet" href="CSS/login.css">
 <div class="overlay">
 </div>
   <div class="header">
@@ -56,7 +57,7 @@
   	</div>
 </div>
   	<div class="field">
-  	  <button type="submit" class="ui button" id="reg-btn" name="reg_user">Register</button>
+  	  <button type="submit" class="ui button bg-red" id="reg-btn" name="reg_user">Register</button>
 	  </div>
   	<p>
   		Already a member? <a href="login.php">Sign in</a> or <a href="home.php">Home</a>

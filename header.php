@@ -1,3 +1,6 @@
+<?php 
+  include("server.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,8 +19,8 @@
     <!-- Font -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400&display=swap" rel="stylesheet">
     <title>Teacher's diary</title>
-    <!-- login Css -->
-    <link rel="stylesheet" href="CSS/login.css">
+    <!-- style css -->
+    <link rel="stylesheet" href="CSS/style.css">
 </head>
 <body>
-<?php include("server.php") ?>
+

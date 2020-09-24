@@ -1,4 +1,6 @@
 <?php include('header.php') ?>
+<!-- login Css -->
+<link rel="stylesheet" href="CSS/login.css">
   <div class="header">
   	<h2 style="color:#fff" class="head-one"><i class='sign in alternate icon'></i> Log In</h2>
   </div>
@@ -14,7 +16,7 @@
   		<input type="password" name="password" required>
   	</div>
   	<div class="field">
-  		<button id="btn" class="ui button" type="submit" name="login_user">Log in</button>
+  		<button id="btn" class="ui button bg-red" type="submit" name="login_user">Log in</button>
   	</div>
   	<p>
   		Not yet a member? <a href="register.php">Sign up</a> or <a href="home.php">Home</a>
