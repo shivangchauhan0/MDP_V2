@@ -16,79 +16,7 @@
  </nav>
     <div class="container-fluid my-3">
       <div class="head-bar">
-        <div><h2>Recently added records</h2></div>
-        <div><button class="ui button bg-red small" onclick="showFilter()" id="fiter-toggle">Filter <i class="fa fa-filter ml-1" aria-hidden="true"></i> </button></div>
-      </div>
-      <div class="filter-grid my-2">
-        <div>
-          <form method="get" action="index.php" class="ui form my-3 mx-2">
-            <div class="fields">
-              <div class="thirteen wide field ">
-              <input type="text" name="filter_date" class="search-bar" placeholder="Date" onfocus="(this.type='date')" onblur="(this.type='text')" required>
-              </div>
-              <button type="submit" class="circular ui inline icon button search-btn">
-                <i class="search icon"></i>
-              </button>
-            </div>
-          </form>
-        </div>
-        <div>
-        <form method="get" action="index.php" class="ui form my-3 mx-2">
-          <div class="fields">
-          <div class="thirteen wide field input">
-                      <select class="ui fluid dropdown search-day" name="filter_day" required>
-                          <option value="">Day</option>
-                          <option value="Monday">Monday</option>
-                          <option value="Tuesday">Tuesday</option>
-                          <option value="Wednesday">Wednesday</option>
-                          <option value="Thrusday">Thrusday</option>
-                          <option value="Friday">Friday</option>
-                          <option value="Saturday">Saturday</option>
-                      </select>
-                  </div>
-              <button type="submit" class="circular ui inline icon button search-btn">
-                <i class="search icon"></i>
-              </button>
-            </div>
-          </form>
-        </div>
-        <div>
-          <form method="get" action="index.php" class="ui form my-3 mx-2">
-            <div class="fields between">
-              <div class="seven wide field ">
-              <input type="text" name="from_date" class="search-bar" placeholder="From" onfocus="(this.type='date')" onblur="(this.type='text')" required>
-              </div>
-              <i class="arrows alternate horizontal icon" id="between-arrow"></i>
-              <div class="seven wide field ">
-              <input type="text" name="till_date" class="search-bar" placeholder="Till" onfocus="(this.type='date')" onblur="(this.type='text')" required>
-              </div>
-              <button type="submit" class="circular ui inline icon button search-btn">
-                <i class="search icon"></i>
-              </button>
-            </div>
-          </form>
-        </div>
-        <div>
-        <form method="get" action="index.php" class="ui form my-3 mx-2">
-          <div class="fields">
-            <div class="thirteen wide field input">
-              <select class="ui fluid dropdown search-day" name="filter_lecture" required>
-                <option value="">lecture</option>
-                <option value="First">First</option>
-                <option value="Second">Second</option>
-                <option value="Third">Third</option>
-                <option value="Fourth">Fourth</option>
-                <option value="Fifth">Fifth</option>
-                <option value="Sixth">Sixth</option>
-                <option value="Seventh">Seventh</option>
-                </select>
-              </div>
-              <button type="submit" class="circular ui inline icon button search-btn">
-                <i class="search icon"></i>
-              </button>
-            </div>
-          </form>
-        </div>
+        <h2>Recently added records</h2>
       </div>
       <table class="ui celled table">
         <thead>
@@ -177,6 +105,77 @@
           ?>
         </tbody>
       </table>
+      <div class="filter-grid my-2">
+        <div>
+          <form method="get" action="index.php" class="ui form my-3 mx-2">
+            <div class="fields">
+              <div class="thirteen wide field ">
+              <input type="text" name="filter_date" class="search-bar" placeholder="Date" onfocus="(this.type='date')" onblur="(this.type='text')" required>
+              </div>
+              <button type="submit" class="circular ui inline icon button search-btn">
+                <i class="search icon"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+        <div>
+        <form method="get" action="index.php" class="ui form my-3 mx-2">
+          <div class="fields">
+          <div class="thirteen wide field input">
+                      <select class="ui fluid dropdown search-day" name="filter_day" required>
+                          <option value="">Day</option>
+                          <option value="Monday">Monday</option>
+                          <option value="Tuesday">Tuesday</option>
+                          <option value="Wednesday">Wednesday</option>
+                          <option value="Thrusday">Thrusday</option>
+                          <option value="Friday">Friday</option>
+                          <option value="Saturday">Saturday</option>
+                      </select>
+                  </div>
+              <button type="submit" class="circular ui inline icon button search-btn">
+                <i class="search icon"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+        <div>
+          <form method="get" action="index.php" class="ui form my-3 mx-2">
+            <div class="fields between">
+              <div class="seven wide field ">
+              <input type="text" name="from_date" class="search-bar" placeholder="From" onfocus="(this.type='date')" onblur="(this.type='text')" required>
+              </div>
+              <i class="arrows alternate horizontal icon" id="between-arrow"></i>
+              <div class="seven wide field ">
+              <input type="text" name="till_date" class="search-bar" placeholder="Till" onfocus="(this.type='date')" onblur="(this.type='text')" required>
+              </div>
+              <button type="submit" class="circular ui inline icon button search-btn">
+                <i class="search icon"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+        <div>
+        <form method="get" action="index.php" class="ui form my-3 mx-2">
+          <div class="fields">
+            <div class="thirteen wide field input">
+              <select class="ui fluid dropdown search-day" name="filter_lecture" required>
+                <option value="">lecture</option>
+                <option value="First">First</option>
+                <option value="Second">Second</option>
+                <option value="Third">Third</option>
+                <option value="Fourth">Fourth</option>
+                <option value="Fifth">Fifth</option>
+                <option value="Sixth">Sixth</option>
+                <option value="Seventh">Seventh</option>
+                </select>
+              </div>
+              <button type="submit" class="circular ui inline icon button search-btn">
+                <i class="search icon"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
         <form method="get" action="index.php" class="ui form row-form">
           <div class="inline fields">
             <label> Number of rows</label>

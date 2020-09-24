@@ -25,4 +25,3 @@ function checkDelete() {
 function checkUndo() {
   return confirm("Are you sure you want to undo?");
 }
-function showFilter() {}
