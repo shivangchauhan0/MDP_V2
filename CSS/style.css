@@ -115,6 +115,17 @@ form.delete {
   padding: 2px !important;
   font-size: 12px;
 }
+.six_vw {
+  width: 6vw !important;
+}
+.ten_vw {
+  width: 10vw !important;
+}
+.display-none {
+  display: initial !important;
+}
+.input-highlight {
+}
 @media only screen and (max-width: 600px) {
   .filter-grid {
     grid-template-columns: 1fr;
@@ -156,5 +167,18 @@ form.delete {
   /* INSERT RECORD */
   #date-today {
     display: none;
+  }
+  .six_vw {
+    width: unset !important;
+  }
+  .ten_vw {
+    width: 60vw !important;
+  }
+  .display-none {
+    display: none !important;
+  }
+  .input-highlight {
+    background: #000 !important;
+    color: #fff !important;
   }
 }

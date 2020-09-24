@@ -27,13 +27,14 @@
                 </div>
             </div>
         </form>
-      <div class="rec-forms mt-5">
+      <div class="rec-forms mt-1">
        <h2 style="color:#A4243B">Enter records</h2>
         <?php 
           $current_user = $_SESSION['username'];
           date_default_timezone_set('Asia/Kolkata');
           $today = date('Y-m-d');
-          $dayOfWeek = date("l", strtotime($today));
+          $search_date = $_GET['date'] != "" ? $_GET['date'] : $today;
+          $dayOfWeek = date("l", strtotime($search_date));
           if ($dayOfWeek == "Monday") {
             $sql_two = "SELECT c1,s1,c2,s2,c3,s3,c4,s4,c5,s5,c6,s6,c7,s7 FROM `timetable` WHERE `username`= '$current_user'";
           } else if ($dayOfWeek == "Tuesday") {
@@ -56,28 +57,28 @@
         <form class="ui form rec-form">
           <div class="fields">
             <div class="field">
-              <label class="mb-3">LECTURE</label>
-              <input style="width:6vw;" name="lecture" readonly type="text" value="First">
+              <label class="mb-3 display-none">LECTURE</label>
+              <input class="six_vw input-highlight" name="lecture" readonly type="text" value="First">
             </div>
             <div class="field">
-              <label class="mb-3">CLASS</label>
-              <input style="width:6vw;" readonly name="class" type="text" value="<?php echo $table["c1"] ?>">
+              <label class="mb-3 display-none">CLASS</label>
+              <input class="six_vw" readonly name="class" type="text" value="<?php echo $table["c1"] ?>">
             </div>
             <div class="field">
-              <label class="mb-3">SUBJECT</label>
+              <label class="mb-3 display-none">SUBJECT</label>
               <input  readonly type="text" name="subject" value="<?php echo $table["s1"] ?>" placeholder="SUBJECT">
             </div>
             <div class="field">
-              <label class="mb-3">CLASS TYPE</label>
+              <label class="mb-3 display-none">CLASS TYPE</label>
               <!-- background:red -->
-              <div style="width:6vw;">
+              <div class="six_vw">
                 <input class="my-2 mx-1" id="radio-input" name="classtype" value="Theory" type="radio"><label>T</label>
                 <input class="my-2 mx-1" id="radio-input" name="classtype" value="Practicals" type="radio"><label>P</label></td>
               </div>
             </div>
             <div class="field">
-              <label class="mb-3">METHODOLOGY</label>
-              <select style="width:10vw;" class="drop-down" class="ui fluid dropdown" name="methodology">
+              <label class="mb-3 display-none">METHODOLOGY</label>
+              <select class="drop-down ten_vw" class="ui fluid dropdown" name="methodology">
                           <option value="">Methodology</option>
                           <option value="Explanation">Explanation</option>
                           <option value="Discussion">Discussion</option>
@@ -87,8 +88,8 @@
                 </select>
             </div>
             <div class="field">
-              <label class="mb-3">TEACHING AID</label>
-              <select style="width:10vw;" class="drop-down" class="ui fluid dropdown" name="teachingaid">
+              <label class="mb-3 display-none">TEACHING AID</label>
+              <select class="drop-down ten_vw" class="ui fluid dropdown" name="teachingaid">
                     <option value="">Teaching Aid</option>
                     <option value="Actual objects">Actual objects</option>
                     <option value="Models">Models</option>
@@ -105,27 +106,27 @@
                 </select>
             </div>
             <div class="field">
-              <label class="mb-3">CONENT</label>
+              <label class="mb-3 display-none">CONENT</label>
               <input type="text" name="content" placeholder="Content">
             </div>
             <div class="field">
-              <label class="mb-3">CA</label>
+              <label class="mb-3 display-none">CA</label>
               <input type="text" name="classactivity" placeholder="Class activity">
             </div>
             <div class="field">
-              <label class="mb-3">ATTENDANCE</label>
+              <label class="mb-3 display-none">ATTENDANCE</label>
               <input type="number" name="attendance" placeholder="Attendance">
             </div>
             <div class="field">
-              <label class="mb-3">OA</label>
+              <label class="mb-3 display-none">OA</label>
               <input type="text" name="otheractivity" placeholder="Other activity">
             </div>
             <div class="field">
-              <label class="mb-3">REMARK</label>
+              <label class="mb-3 display-none">REMARK</label>
               <input type="text" name="remark" placeholder="Remark">
             </div>
             <div class="field">
-              <label class="mb-3" style="visibility:hidden">Last name</label>
+              <label class="mb-3 display-none" style="visibility:hidden">Last name</label>
               <button id="btn" class="ui button tiny bg-red" type="submit">Add</button>
             </div>
           </div>
@@ -133,22 +134,22 @@
         <form class="ui form rec-form my-3">
           <div class="fields">
             <div class="field">
-              <input style="width:6vw;" name="lecture" readonly type="text" value="First">
+              <input class="six_vw input-highlight" name="lecture" readonly type="text" value="Second">
             </div>
             <div class="field">
-              <input style="width:6vw;" readonly name="class" type="text" value="<?php echo $table["c1"] ?>">
+              <input class="six_vw" readonly name="class" type="text" value="<?php echo $table["c2"] ?>">
             </div>
             <div class="field">
-              <input  readonly type="text" name="subject" value="<?php echo $table["s1"] ?>" placeholder="SUBJECT">
+              <input  readonly type="text" name="subject" value="<?php echo $table["s2"] ?>" placeholder="SUBJECT">
             </div>
             <div class="field">
-              <div style="width:6vw;">
+              <div class="six_vw">
                 <input class="my-2 mx-1" id="radio-input" name="classtype" value="Theory" type="radio"><label>T</label>
                 <input class="my-2 mx-1" id="radio-input" name="classtype" value="Practicals" type="radio"><label>P</label></td>
               </div>
             </div>
             <div class="field">
-              <select style="width:10vw;" class="drop-down" class="ui fluid dropdown" name="methodology">
+              <select class="drop-down ten_vw" class="ui fluid dropdown" name="methodology">
                           <option value="">Methodology</option>
                           <option value="Explanation">Explanation</option>
                           <option value="Discussion">Discussion</option>
@@ -158,7 +159,327 @@
                 </select>
             </div>
             <div class="field">
-              <select style="width:10vw;" class="drop-down" class="ui fluid dropdown" name="teachingaid">
+              <select class="drop-down ten_vw" class="ui fluid dropdown" name="teachingaid">
+                    <option value="">Teaching Aid</option>
+                    <option value="Actual objects">Actual objects</option>
+                    <option value="Models">Models</option>
+                    <option value="Pictures">Pictures</option>
+                    <option value="Charts">Charts</option>
+                    <option value="Maps">Maps</option>
+                    <option value="Flash Cards">Flash Cards</option>
+                    <option value="Flannel Board">Flannel Board</option>
+                    <option value="Bulletin Board">Bulletin Board</option>
+                    <option value="Chalk Board">Chalk Board</option>
+                    <option value="Overhead Projector">Overhead Projector</option>
+                    <option value="Slides">Slides</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="field">
+              <input type="text" name="content" placeholder="Content">
+            </div>
+            <div class="field">
+              <input type="text" name="classactivity" placeholder="Class activity">
+            </div>
+            <div class="field">
+              <input type="number" name="attendance" placeholder="Attendance">
+            </div>
+            <div class="field">
+              <input type="text" name="otheractivity" placeholder="Other activity">
+            </div>
+            <div class="field">
+              <input type="text" name="remark" placeholder="Remark">
+            </div>
+            <div class="field">
+              <button id="btn" class="ui button tiny bg-red" type="submit">Add</button>
+            </div>
+          </div>
+        </form>
+        <form class="ui form rec-form my-3">
+          <div class="fields">
+            <div class="field">
+              <input class="six_vw input-highlight" name="lecture" readonly type="text" value="Third">
+            </div>
+            <div class="field">
+              <input class="six_vw" readonly name="class" type="text" value="<?php echo $table["c3"] ?>">
+            </div>
+            <div class="field">
+              <input  readonly type="text" name="subject" value="<?php echo $table["s3"] ?>">
+            </div>
+            <div class="field">
+              <div class="six_vw">
+                <input class="my-2 mx-1" id="radio-input" name="classtype" value="Theory" type="radio"><label>T</label>
+                <input class="my-2 mx-1" id="radio-input" name="classtype" value="Practicals" type="radio"><label>P</label></td>
+              </div>
+            </div>
+            <div class="field">
+              <select class="drop-down ten_vw" class="ui fluid dropdown" name="methodology">
+                          <option value="">Methodology</option>
+                          <option value="Explanation">Explanation</option>
+                          <option value="Discussion">Discussion</option>
+                          <option value="Mind Mapping">Mind Mapping</option>
+                          <option value="Demonstration">Demonstration</option>
+                          <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="field">
+              <select class="drop-down ten_vw" class="ui fluid dropdown" name="teachingaid">
+                    <option value="">Teaching Aid</option>
+                    <option value="Actual objects">Actual objects</option>
+                    <option value="Models">Models</option>
+                    <option value="Pictures">Pictures</option>
+                    <option value="Charts">Charts</option>
+                    <option value="Maps">Maps</option>
+                    <option value="Flash Cards">Flash Cards</option>
+                    <option value="Flannel Board">Flannel Board</option>
+                    <option value="Bulletin Board">Bulletin Board</option>
+                    <option value="Chalk Board">Chalk Board</option>
+                    <option value="Overhead Projector">Overhead Projector</option>
+                    <option value="Slides">Slides</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="field">
+              <input type="text" name="content" placeholder="Content">
+            </div>
+            <div class="field">
+              <input type="text" name="classactivity" placeholder="Class activity">
+            </div>
+            <div class="field">
+              <input type="number" name="attendance" placeholder="Attendance">
+            </div>
+            <div class="field">
+              <input type="text" name="otheractivity" placeholder="Other activity">
+            </div>
+            <div class="field">
+              <input type="text" name="remark" placeholder="Remark">
+            </div>
+            <div class="field">
+              <button id="btn" class="ui button tiny bg-red" type="submit">Add</button>
+            </div>
+          </div>
+        </form>
+        <form class="ui form rec-form my-3">
+          <div class="fields">
+            <div class="field">
+              <input class="six_vw input-highlight" name="lecture" readonly type="text" value="Fourth">
+            </div>
+            <div class="field">
+              <input class="six_vw" readonly name="class" type="text" value="<?php echo $table["c4"] ?>">
+            </div>
+            <div class="field">
+              <input  readonly type="text" name="subject" value="<?php echo $table["s4"] ?>">
+            </div>
+            <div class="field">
+              <div class="six_vw">
+                <input class="my-2 mx-1" id="radio-input" name="classtype" value="Theory" type="radio"><label>T</label>
+                <input class="my-2 mx-1" id="radio-input" name="classtype" value="Practicals" type="radio"><label>P</label></td>
+              </div>
+            </div>
+            <div class="field">
+              <select class="drop-down ten_vw" class="ui fluid dropdown" name="methodology">
+                          <option value="">Methodology</option>
+                          <option value="Explanation">Explanation</option>
+                          <option value="Discussion">Discussion</option>
+                          <option value="Mind Mapping">Mind Mapping</option>
+                          <option value="Demonstration">Demonstration</option>
+                          <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="field">
+              <select class="drop-down ten_vw" class="ui fluid dropdown" name="teachingaid">
+                    <option value="">Teaching Aid</option>
+                    <option value="Actual objects">Actual objects</option>
+                    <option value="Models">Models</option>
+                    <option value="Pictures">Pictures</option>
+                    <option value="Charts">Charts</option>
+                    <option value="Maps">Maps</option>
+                    <option value="Flash Cards">Flash Cards</option>
+                    <option value="Flannel Board">Flannel Board</option>
+                    <option value="Bulletin Board">Bulletin Board</option>
+                    <option value="Chalk Board">Chalk Board</option>
+                    <option value="Overhead Projector">Overhead Projector</option>
+                    <option value="Slides">Slides</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="field">
+              <input type="text" name="content" placeholder="Content">
+            </div>
+            <div class="field">
+              <input type="text" name="classactivity" placeholder="Class activity">
+            </div>
+            <div class="field">
+              <input type="number" name="attendance" placeholder="Attendance">
+            </div>
+            <div class="field">
+              <input type="text" name="otheractivity" placeholder="Other activity">
+            </div>
+            <div class="field">
+              <input type="text" name="remark" placeholder="Remark">
+            </div>
+            <div class="field">
+              <button id="btn" class="ui button tiny bg-red" type="submit">Add</button>
+            </div>
+          </div>
+        </form>
+        <form class="ui form rec-form my-3">
+          <div class="fields">
+            <div class="field">
+              <input class="six_vw input-highlight" name="lecture" readonly type="text" value="Fifth">
+            </div>
+            <div class="field">
+              <input class="six_vw" readonly name="class" type="text" value="<?php echo $table["c5"] ?>">
+            </div>
+            <div class="field">
+              <input  readonly type="text" name="subject" value="<?php echo $table["s5"] ?>">
+            </div>
+            <div class="field">
+              <div class="six_vw">
+                <input class="my-2 mx-1" id="radio-input" name="classtype" value="Theory" type="radio"><label>T</label>
+                <input class="my-2 mx-1" id="radio-input" name="classtype" value="Practicals" type="radio"><label>P</label></td>
+              </div>
+            </div>
+            <div class="field">
+              <select class="drop-down ten_vw" class="ui fluid dropdown" name="methodology">
+                          <option value="">Methodology</option>
+                          <option value="Explanation">Explanation</option>
+                          <option value="Discussion">Discussion</option>
+                          <option value="Mind Mapping">Mind Mapping</option>
+                          <option value="Demonstration">Demonstration</option>
+                          <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="field">
+              <select class="drop-down ten_vw" class="ui fluid dropdown" name="teachingaid">
+                    <option value="">Teaching Aid</option>
+                    <option value="Actual objects">Actual objects</option>
+                    <option value="Models">Models</option>
+                    <option value="Pictures">Pictures</option>
+                    <option value="Charts">Charts</option>
+                    <option value="Maps">Maps</option>
+                    <option value="Flash Cards">Flash Cards</option>
+                    <option value="Flannel Board">Flannel Board</option>
+                    <option value="Bulletin Board">Bulletin Board</option>
+                    <option value="Chalk Board">Chalk Board</option>
+                    <option value="Overhead Projector">Overhead Projector</option>
+                    <option value="Slides">Slides</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="field">
+              <input type="text" name="content" placeholder="Content">
+            </div>
+            <div class="field">
+              <input type="text" name="classactivity" placeholder="Class activity">
+            </div>
+            <div class="field">
+              <input type="number" name="attendance" placeholder="Attendance">
+            </div>
+            <div class="field">
+              <input type="text" name="otheractivity" placeholder="Other activity">
+            </div>
+            <div class="field">
+              <input type="text" name="remark" placeholder="Remark">
+            </div>
+            <div class="field">
+              <button id="btn" class="ui button tiny bg-red" type="submit">Add</button>
+            </div>
+          </div>
+        </form>
+        <form class="ui form rec-form my-3">
+          <div class="fields">
+            <div class="field">
+              <input class="six_vw input-highlight" name="lecture" readonly type="text" value="Sixth">
+            </div>
+            <div class="field">
+              <input class="six_vw" readonly name="class" type="text" value="<?php echo $table["c6"] ?>">
+            </div>
+            <div class="field">
+              <input  readonly type="text" name="subject" value="<?php echo $table["s6"] ?>" placeholder="SUBJECT">
+            </div>
+            <div class="field">
+              <div class="six_vw">
+                <input class="my-2 mx-1" id="radio-input" name="classtype" value="Theory" type="radio"><label>T</label>
+                <input class="my-2 mx-1" id="radio-input" name="classtype" value="Practicals" type="radio"><label>P</label></td>
+              </div>
+            </div>
+            <div class="field">
+              <select class="drop-down ten_vw" class="ui fluid dropdown" name="methodology">
+                          <option value="">Methodology</option>
+                          <option value="Explanation">Explanation</option>
+                          <option value="Discussion">Discussion</option>
+                          <option value="Mind Mapping">Mind Mapping</option>
+                          <option value="Demonstration">Demonstration</option>
+                          <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="field">
+              <select class="drop-down ten_vw" class="ui fluid dropdown" name="teachingaid">
+                    <option value="">Teaching Aid</option>
+                    <option value="Actual objects">Actual objects</option>
+                    <option value="Models">Models</option>
+                    <option value="Pictures">Pictures</option>
+                    <option value="Charts">Charts</option>
+                    <option value="Maps">Maps</option>
+                    <option value="Flash Cards">Flash Cards</option>
+                    <option value="Flannel Board">Flannel Board</option>
+                    <option value="Bulletin Board">Bulletin Board</option>
+                    <option value="Chalk Board">Chalk Board</option>
+                    <option value="Overhead Projector">Overhead Projector</option>
+                    <option value="Slides">Slides</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="field">
+              <input type="text" name="content" placeholder="Content">
+            </div>
+            <div class="field">
+              <input type="text" name="classactivity" placeholder="Class activity">
+            </div>
+            <div class="field">
+              <input type="number" name="attendance" placeholder="Attendance">
+            </div>
+            <div class="field">
+              <input type="text" name="otheractivity" placeholder="Other activity">
+            </div>
+            <div class="field">
+              <input type="text" name="remark" placeholder="Remark">
+            </div>
+            <div class="field">
+              <button id="btn" class="ui button tiny bg-red" type="submit">Add</button>
+            </div>
+          </div>
+        </form>
+        <form class="ui form rec-form my-3">
+          <div class="fields">
+            <div class="field">
+              <input class="six_vw input-highlight" name="lecture" readonly type="text" value="Seventh">
+            </div>
+            <div class="field">
+              <input class="six_vw" readonly name="class" type="text" value="<?php echo $table["c7"] ?>">
+            </div>
+            <div class="field">
+              <input  readonly type="text" name="subject" value="<?php echo $table["s7"] ?>">
+            </div>
+            <div class="field">
+              <div class="six_vw">
+                <input class="my-2 mx-1" id="radio-input" name="classtype" value="Theory" type="radio"><label>T</label>
+                <input class="my-2 mx-1" id="radio-input" name="classtype" value="Practicals" type="radio"><label>P</label></td>
+              </div>
+            </div>
+            <div class="field">
+              <select class="drop-down ten_vw" class="ui fluid dropdown" name="methodology">
+                          <option value="">Methodology</option>
+                          <option value="Explanation">Explanation</option>
+                          <option value="Discussion">Discussion</option>
+                          <option value="Mind Mapping">Mind Mapping</option>
+                          <option value="Demonstration">Demonstration</option>
+                          <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="field">
+              <select class="drop-down ten_vw" class="ui fluid dropdown" name="teachingaid">
                     <option value="">Teaching Aid</option>
                     <option value="Actual objects">Actual objects</option>
                     <option value="Models">Models</option>
