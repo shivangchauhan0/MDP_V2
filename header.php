@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="CSS/simple-sidebar.css">
     <!-- FontAwesome -->
     <link rel="stylesheet" href="vendor/fontawesome/css/all.css">
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400&display=swap" rel="stylesheet">
     <title>Teacher's diary</title>
 </head>
 <body>
