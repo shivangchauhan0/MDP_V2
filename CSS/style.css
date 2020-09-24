@@ -107,6 +107,10 @@ form.delete {
 #tt-warning {
   display: none;
 }
+/* INSERT RECORD */
+#date-today {
+  font-size: 1.3rem;
+}
 @media only screen and (max-width: 600px) {
   .filter-grid {
     grid-template-columns: 1fr;
@@ -144,5 +148,9 @@ form.delete {
   }
   #tt-warning {
     display: block;
+  }
+  /* INSERT RECORD */
+  #date-today {
+    display: none;
   }
 }

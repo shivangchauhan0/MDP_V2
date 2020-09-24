@@ -6,7 +6,7 @@
           <a href="index.php" class="list-group-item list-group-item-action bg-light"
             >Dashboard <i class="fa fa-desktop fa-fw" aria-hidden="true"></i></a
           >
-          <a href="#" class="list-group-item list-group-item-action bg-light"
+          <a href="insert-record.php" class="list-group-item list-group-item-action bg-light"
             >Insert Record <i class='edit icon'></i></a
           >
           <a href="show-records.php" class="list-group-item list-group-item-action bg-light"
