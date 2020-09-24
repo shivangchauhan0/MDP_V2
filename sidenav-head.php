@@ -12,7 +12,7 @@
           <a href="show-records.php" class="list-group-item list-group-item-action bg-light"
             >Show Records <i class='search icon'></i></a
           >
-          <a href="#" class="list-group-item list-group-item-action bg-light"
+          <a href="timetable.php" class="list-group-item list-group-item-action bg-light"
             >Timetable <i class='table icon'></i></a
           >
           <a href="index.php?logout='1'" id="logout-btn" class="list-group-item list-group-item-action bg-light border-bottom"
