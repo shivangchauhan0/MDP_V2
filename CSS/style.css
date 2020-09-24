@@ -111,6 +111,10 @@ form.delete {
 #date-today {
   font-size: 1.3rem;
 }
+.rec-form > .fields > .field {
+  padding: 2px !important;
+  font-size: 12px;
+}
 @media only screen and (max-width: 600px) {
   .filter-grid {
     grid-template-columns: 1fr;
