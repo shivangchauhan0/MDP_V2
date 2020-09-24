@@ -69,6 +69,44 @@ form.delete {
 #show-records-table > tbody > tr > td {
   font-size: 12px;
 }
+
+/* TIMETABLE */
+.tt-container {
+  margin: 0 auto;
+  width: 95vw;
+  /* height: 85vh; */
+}
+.tt-schema {
+  background: #a4243b;
+  width: inherit;
+  height: 12vh;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+}
+.tt-row {
+  background: #fff;
+  width: inherit;
+  height: 12vh;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+}
+.tt-schema__item {
+  color: #fff;
+}
+.red-bg {
+  background: #a4243b;
+  color: #fff;
+}
+.tt-input {
+  font-size: 11.5px !important;
+  border: 0px !important;
+}
+.tt-row__item:hover .tt-input {
+  border: 1px solid #999 !important;
+}
+#tt-warning {
+  display: none;
+}
 @media only screen and (max-width: 600px) {
   .filter-grid {
     grid-template-columns: 1fr;
@@ -97,5 +135,14 @@ form.delete {
   .ui.form:not(.unstackable) .two.fields:not(.unstackable) > .field,
   .ui.form:not(.unstackable) .two.fields:not(.unstackable) > .fields {
     width: 80% !important;
+  }
+  .tt-container {
+    visibility: hidden;
+  }
+  #tt-btn {
+    visibility: hidden;
+  }
+  #tt-warning {
+    display: block;
   }
 }
