@@ -20,3 +20,52 @@ form.delete {
   color: #a4243b !important;
   font-size: 1rem !important;
 }
+
+/* Row form */
+.row-form > .inline {
+  width: fit-content;
+  margin: 0 auto !important;
+  padding: 0 !important;
+}
+/* head-bar */
+.head-bar {
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+}
+.head-bar > div > h2 {
+  color: #a4243b;
+  font-family: "Montserrat", sans-serif !important;
+}
+.head-bar > div > button {
+  float: right;
+}
+/* filter Grid */
+.filter-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr 1fr;
+}
+.search-bar {
+  border-radius: 45px !important;
+}
+.search-btn {
+  background: #a4243b !important;
+  box-shadow: none !important;
+  color: #fff !important;
+  height: fit-content;
+}
+::placeholder {
+  /* Firefox, Chrome, Opera */
+  color: #000 !important;
+}
+.search-day {
+  font-size: 1em;
+  line-height: 1.21428571em;
+  padding: 0.67857143em 1em !important;
+  border-radius: 45px !important;
+  border: 1px solid rgba(34, 36, 38, 0.15) !important;
+}
+#between-arrow {
+  margin-top: 1.2vh;
+  color: #a4243b;
+  font-size: 1.5rem;
+}
