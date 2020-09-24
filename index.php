@@ -48,15 +48,6 @@
                 $date = $row["date"];
                 $timestamp = strtotime($date);
                 $formatted_date = date("d-m-Y", $timestamp);
-                $hod_comments = explode("%", $row["hod_com"]);
-                $dean_comments = explode("%", $row["dean_com"]);
-                $princi_comments = explode("%", $row["princi_com"]);
-                $complete_hod = $hod_comments[0];
-                $hod_com = $hod_comments[1];
-                $complete_dean = $dean_comments[0];
-                $dean_com = $dean_comments[1];
-                $complete_princi = $princi_comments[0];
-                $princi_com = $princi_comments[1];
                 ?>
             <tr>
                 <td><?php echo  $row["lecture"] ?></td>
@@ -64,9 +55,9 @@
                 <td><?php echo  $row["subject"] ?></td>
                 <td><?php echo  $formatted_date ?></td>
                 <td><?php echo  $row["day"] ?></td>
-                <td><?php echo  $complete_hod ?></td>
-                <td><?php echo  $complete_dean ?></td>
-                <td><?php echo  $complete_princi ?></td>
+                <td><?php echo  ($row["hod"] == 1 ? "Complete" : ($row["hod"] == 2 ? "Incomplete" : "")) ?></td>
+                <td><?php echo  ($row["dean"] == 1 ? "Complete" : ($row["dean"] == 2 ? "Incomplete" : "")) ?></td>
+                <td><?php echo  ($row["principal"] == 1 ? "Complete" : ($row["principal"] == 2 ? "Incomplete" : "")) ?></td>
                 <td><?php echo ($row["hod"] == 1 ?  $hod_true : ($row["hod"] == 2 ? $incomp : $hod_false))." ".($row["dean"] == 1 ? $dean_true : ($row["dean"] == 2 ? $incomp : $dean_false))." ".($row["principal"] == 1 ? $principal_true : ($row["principal"] == 2 ? $incomp : $principal_false))?></td>
                 <td>
                   <?php if($row["principal"]== 1) { ?>
@@ -88,10 +79,25 @@
             </tr>
           <?php 
               }
+            $username = $_SESSION['username'];
+            $user=$_GET['username'];
+            $sql = "SELECT * FROM `notes` WHERE (`username`='$username' OR `username`='$user') ";
+            $result = $db->query($sql);
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                 if ($row["hod_com"] != "") {
+                  echo "<tr><td colspan='10'> HOD : ".$row["hod_com"]."</td></tr>";
+                 }
+                 if ($row["dean_com"] != "") {
+                  echo "<tr><td colspan='10'> Dean : ".$row["dean_com"]."</td></tr>";
+                 }
+                 if ($row["principal_com"] != "") {
+                  echo "<tr><td colspan='10'> Principal : ".$row["principal_com"]."</td></tr>";
+                 }
               ?>
-              <tr><td colspan="10"></td></tr>
           <?php
-            }
+                }
+              }
           ?>
         </tbody>
       </table>

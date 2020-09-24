@@ -10,6 +10,9 @@
             >Insert Record <i class='edit icon'></i></a
           >
           <a href="#" class="list-group-item list-group-item-action bg-light"
+            >Show Record <i class='search icon'></i></a
+          >
+          <a href="#" class="list-group-item list-group-item-action bg-light"
             >Timetable <i class='table icon'></i></a
           >
           <a href="index.php?logout='1'" id="logout-btn" class="list-group-item list-group-item-action bg-light border-bottom"

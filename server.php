@@ -111,5 +111,12 @@ if (isset($_POST['login_user'])) {
         }
     }
   }
-
+// NOTES DELETE
+if(isset($_POST['delete'])) 
+  {    
+    $srno = mysqli_real_escape_string($db, $_POST['delete']);
+    $srno=number_format($srno);
+    $query = "DELETE FROM `notes` WHERE srno = $srno";
+    mysqli_query($db, $query);
+  }
 ?>

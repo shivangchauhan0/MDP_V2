@@ -2,6 +2,21 @@
 body {
   background: white;
 }
-/* NAV */
-#username {
+/* NOTES TABLE */
+#edit {
+  background: #fff !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  color: #a4243b !important;
+  font-size: 1rem !important;
+}
+form.delete {
+  display: inline;
+}
+#delete {
+  background: #fff !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  color: #a4243b !important;
+  font-size: 1rem !important;
 }
