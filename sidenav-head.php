@@ -4,22 +4,16 @@
         <div class="sidebar-heading my-1"><i class="fa fa-address-book fa-fw" aria-hidden="true"></i> Teacher's Diary</div>
         <div class="list-group list-group-flush">
           <a href="#" class="list-group-item list-group-item-action bg-light"
-            >Dashboard <i class="fa fa-search fa-fw" aria-hidden="true"></i></a
+            >Dashboard <i class="fa fa-desktop fa-fw" aria-hidden="true"></i></a
           >
           <a href="#" class="list-group-item list-group-item-action bg-light"
-            >Shortcuts</a
+            >Record <i class="fa fa-bookmark fa-fw" aria-hidden="true"></i></a
           >
           <a href="#" class="list-group-item list-group-item-action bg-light"
-            >Overview</a
+            >Timetable <i class="fa fa-table fa-fw" aria-hidden="true"></i></a
           >
-          <a href="#" class="list-group-item list-group-item-action bg-light"
-            >Events</a
-          >
-          <a href="#" class="list-group-item list-group-item-action bg-light"
-            >Profile</a
-          >
-          <a href="#" class="list-group-item list-group-item-action bg-light"
-            >Status</a
+          <a href="#" class="list-group-item list-group-item-action bg-light border-bottom"
+            >Logout <i class="fa fa-toggle-on fa-fw" aria-hidden="true"></i></a
           >
         </div>
       </div>

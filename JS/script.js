@@ -3,3 +3,18 @@ $("#menu-toggle").click(function (e) {
   e.preventDefault();
   $("#wrapper").toggleClass("toggled");
 });
+// Ajax
+$(document).ready(function () {
+  $("#sup-depart").on("change", function () {
+    var supDepart = $(this).val();
+    $.ajax({
+      method: "POST",
+      url: "register.php",
+      data: { sup_depart: supDepart },
+      dataType: "html",
+      success: function (data) {
+        $("#department").html(data);
+      },
+    });
+  });
+});

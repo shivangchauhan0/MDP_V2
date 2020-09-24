@@ -18,3 +18,4 @@
     <title>Teacher's diary</title>
 </head>
 <body>
+<?php include("server.php") ?>

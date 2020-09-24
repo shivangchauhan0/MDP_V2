@@ -47,6 +47,7 @@
 .bg-red {
   background: #a4243b !important;
   color: white !important;
+  /* font-size: 1.3rem !important; */
 }
 .nav-head {
   color: #a4243b;
