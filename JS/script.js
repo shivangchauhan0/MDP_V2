@@ -1,3 +1,6 @@
+window.onload = function triggerFunction() {
+  $("#menu-toggle").trigger("click");
+};
 // Sidebar script
 $("#menu-toggle").click(function (e) {
   e.preventDefault();
@@ -18,7 +21,6 @@ $(document).ready(function () {
     });
   });
 });
-
 function checkDelete() {
   return confirm("Are you sure you want to Delete?");
 }

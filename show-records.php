@@ -7,7 +7,7 @@
           class="navbar navbar-expand-lg navbar-light bg-light border-bottom"
         >
         <button class="ui button bg-red small" id="menu-toggle"><i class="fa fa-bars mr-1" aria-hidden="true"></i> Menu</button>
-        <h2 class="ml-2 my-0 nav-head">DASHBOARD</h2>
+        <h2 class="ml-2 my-0 nav-head">RECORDS</h2>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <p id="username" class="mt-0 mr-3"><i class='user icon'></i><strong><?php echo $_SESSION['name'] ?></strong></p>
@@ -18,19 +18,23 @@
       <div class="head-bar">
         <h2>List of records</h2>
       </div>
-      <table class="ui celled table">
+      <table class="ui celled table"id="show-records-table">
         <thead>
           <tr id="table-head">
+            <th>DATE</th>
+            <th>DAY</th>
             <th>LECTURE</th>
             <th>CLASS</th>
             <th>SUBJECT</th>
-            <th>DATE</th>
-            <th>DAY</th>
-            <th><i class='circle yellow icon'></i>HOD</th>
-            <th><i class="circle blue icon"></i> DEAN</th>
-            <th><i class="circle green icon"></i>PRINCIPAL</th>
-            <th>STATUS</th>	  
-            <th>E || D</th>
+            <th>CLASS TYPE</th>
+            <th>METHODOLOGY</th>
+            <th>TEACHING AID</th>
+            <th>CONTENT</th>	  
+            <th>CLASS ACTIVITY</th>	  
+            <th>ATTENDANCE</th>	  
+            <th>OTHER ACTIVITY</th>	  
+            <th>REMARK</th>	  
+            <th>E || D</th>	  
           </tr>
         </thead>
         <tbody>
@@ -73,15 +77,20 @@
                 $formatted_date = date("d-m-Y", $timestamp);
                 ?>
             <tr>
+                <td><?php echo  $formatted_date ?></td>
+                <td><?php echo  $row["day"]?></td>
                 <td><?php echo  $row["lecture"] ?></td>
                 <td><?php echo  $row["class"] ?></td>
                 <td><?php echo  $row["subject"] ?></td>
-                <td><?php echo  $formatted_date ?></td>
-                <td><?php echo  $row["day"] ?></td>
-                <td><?php echo  ($row["hod"] == 1 ? "Complete" : ($row["hod"] == 2 ? "Incomplete" : "")) ?></td>
-                <td><?php echo  ($row["dean"] == 1 ? "Complete" : ($row["dean"] == 2 ? "Incomplete" : "")) ?></td>
-                <td><?php echo  ($row["principal"] == 1 ? "Complete" : ($row["principal"] == 2 ? "Incomplete" : "")) ?></td>
-                <td><?php echo ($row["hod"] == 1 ?  $hod_true : ($row["hod"] == 2 ? $incomp : $hod_false))." ".($row["dean"] == 1 ? $dean_true : ($row["dean"] == 2 ? $incomp : $dean_false))." ".($row["principal"] == 1 ? $principal_true : ($row["principal"] == 2 ? $incomp : $principal_false))?></td>
+                <td><?php echo  $row["theory/prac"] ?></td>
+                <td><?php echo  $row["methodology"] ?></td>
+                <td><?php echo  $row["teaching_aid"] ?></td>
+                <td><?php echo  $row["content"] ?></td>
+                <td><?php echo  $row["class_activity"] ?></td>
+                <td><?php echo  $row["attendance"] ?></td>
+                <td><?php echo  $row["other_activity"] ?></td>
+                <td><?php echo  $row["remark"] ?></td>
+                <!-- <td><?php //echo ($row["hod"] == 1 ?  $hod_true : ($row["hod"] == 2 ? $incomp : $hod_false))." ".($row["dean"] == 1 ? $dean_true : ($row["dean"] == 2 ? $incomp : $dean_false))." ".($row["principal"] == 1 ? $principal_true : ($row["principal"] == 2 ? $incomp : $principal_false))?></td> -->
                 <td>
                   <?php if($row["principal"]== 1) { ?>
                     <a class="ui icon button disabled" id="edit" href="edit.php?id=<?php echo $row["srno"] ?>"><i class="edit icon"></i></a>
@@ -123,15 +132,15 @@
               }
               else {
                 echo "<div class='alert alert-danger my-2' role='alert'>
-                      No records found!
-                      </div>";
+                No records found!
+              </div>";
               }
           ?>
         </tbody>
       </table>
       <div class="filter-grid my-2">
         <div>
-          <form method="get" action="index.php" class="ui form my-3 mx-2">
+          <form method="get" action="show-records.php" class="ui form my-3 mx-2">
             <div class="fields">
               <div class="thirteen wide field ">
               <input type="text" name="filter_date" class="search-bar my-1" placeholder="Date" onfocus="(this.type='date')" onblur="(this.type='text')" required>
@@ -143,7 +152,7 @@
           </form>
         </div>
         <div>
-        <form method="get" action="index.php" class="ui form my-3 mx-2">
+        <form method="get" action="show-records.php" class="ui form my-3 mx-2">
           <div class="fields">
           <div class="thirteen wide field input">
                       <select class="ui fluid dropdown search-day my-1" name="filter_day" required>
@@ -163,7 +172,7 @@
           </form>
         </div>
         <div>
-          <form method="get" action="index.php" class="ui form my-3 mx-2">
+          <form method="get" action="show-records.php" class="ui form my-3 mx-2">
             <div class="fields between">
               <div class="seven wide field ">
               <input type="text" name="from_date" class="search-bar my-1" placeholder="From" onfocus="(this.type='date')" onblur="(this.type='text')" required>
@@ -179,7 +188,7 @@
           </form>
         </div>
         <div>
-        <form method="get" action="index.php" class="ui form my-3 mx-2">
+        <form method="get" action="show-records.php" class="ui form my-3 mx-2">
           <div class="fields">
             <div class="thirteen wide field input">
               <select class="ui fluid dropdown search-day my-1" name="filter_lecture" required>
@@ -200,7 +209,7 @@
           </form>
         </div>
       </div>
-        <form method="get" action="index.php" class="ui form row-form">
+        <form method="get" action="show-records.php" class="ui form row-form">
           <div class="inline fields">
             <label> Records per page</label>
             <div class="seven wide field">

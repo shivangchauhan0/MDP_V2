@@ -3,14 +3,14 @@
       <div class="bg-light border-right" id="sidebar-wrapper">
         <div class="sidebar-heading my-1"><i class="fa fa-address-book fa-fw" aria-hidden="true"></i> Teacher's Diary</div>
         <div class="list-group list-group-flush">
-          <a href="#" class="list-group-item list-group-item-action bg-light"
+          <a href="index.php" class="list-group-item list-group-item-action bg-light"
             >Dashboard <i class="fa fa-desktop fa-fw" aria-hidden="true"></i></a
           >
           <a href="#" class="list-group-item list-group-item-action bg-light"
             >Insert Record <i class='edit icon'></i></a
           >
-          <a href="#" class="list-group-item list-group-item-action bg-light"
-            >Show Record <i class='search icon'></i></a
+          <a href="show-records.php" class="list-group-item list-group-item-action bg-light"
+            >Show Records <i class='search icon'></i></a
           >
           <a href="#" class="list-group-item list-group-item-action bg-light"
             >Timetable <i class='table icon'></i></a

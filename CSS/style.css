@@ -62,6 +62,13 @@ form.delete {
   color: #a4243b;
   font-size: 1.5rem;
 }
+/* SHOW RECORDS */
+#show-records-table > thead > tr > th {
+  font-size: 12px;
+}
+#show-records-table > tbody > tr > td {
+  font-size: 12px;
+}
 @media only screen and (max-width: 600px) {
   .filter-grid {
     grid-template-columns: 1fr;
