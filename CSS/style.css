@@ -43,6 +43,9 @@ form.delete {
 .filter-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 2fr 1fr;
+  height: 0;
+  visibility: hidden !important;
+  transition: 0.5s ease-in-out;
 }
 .search-bar {
   border-radius: 45px !important;
@@ -63,9 +66,14 @@ form.delete {
   padding: 0.67857143em 1em !important;
   border-radius: 45px !important;
   border: 1px solid rgba(34, 36, 38, 0.15) !important;
+  visibility: hidden !important;
 }
 #between-arrow {
   margin-top: 1.2vh;
   color: #a4243b;
   font-size: 1.5rem;
+}
+.filter-grid-show {
+  height: unset;
+  visibility: visible !important;
 }

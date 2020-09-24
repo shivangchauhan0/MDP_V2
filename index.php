@@ -17,7 +17,7 @@
     <div class="container-fluid my-3">
       <div class="head-bar">
         <div><h2>Recently added records</h2></div>
-        <div><button class="ui button bg-red small" id="fiter-toggle">Filter <i class="fa fa-filter ml-1" aria-hidden="true"></i> </button></div>
+        <div><button class="ui button bg-red small" onclick="showFilter()" id="fiter-toggle">Filter <i class="fa fa-filter ml-1" aria-hidden="true"></i> </button></div>
       </div>
       <div class="filter-grid my-2">
         <div>
