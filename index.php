@@ -16,7 +16,7 @@
  </nav>
     <div class="container-fluid my-3">
       <div class="head-bar">
-        <h2>Recently added records</h2>
+        <h2>List of records</h2>
       </div>
       <table class="ui celled table">
         <thead>
@@ -36,7 +36,7 @@
         <tbody>
           <?php 
             $username = $_SESSION['username'];
-            $user=$_GET['username'];
+            // $user=$_GET['username'];
             $hod_true = $_SESSION['designation'] == 'Hod'? $hod_true="" : $hod_true="<i class=\"circle yellow icon\"></i>";
             $hod_false = $_SESSION['designation'] == 'Hod'? $hod_false="" : $hod_false="<i class=\"circle outline yellow icon\"></i>";
             $incomp = "<i class=\"circle red icon\"></i>";
@@ -44,8 +44,27 @@
             $dean_false="<i class=\"circle outline blue icon\"></i>";
             $principal_true="<i class=\"circle green icon\"></i>";	
             $principal_false="<i class=\"circle outline green icon\"></i>";	
-            $limit = $_GET['limit'] != "" ? $_GET['limit'] : 5;
-            $sql = "SELECT * FROM `notes` WHERE (`username`='$username' OR `username`='$user') ORDER BY srno DESC LIMIT $limit ";
+            // ----------------FILtER VARIABLES-----------------
+              $limit = $_GET['limit'] != "" ? $_GET['limit'] : 5;
+              $filter_date = $_GET['filter_date'] != "" ? $_GET['filter_date'] : "empty"; 
+              $filter_day = $_GET['filter_day'] != "" ? $_GET['filter_day'] : ""; 
+              $from_date = $_GET['from_date'] != "" ? $_GET['from_date'] : ""; 
+              $till_date = $_GET['till_date'] != "" ? $_GET['till_date'] : ""; 
+              $filter_lecture = $_GET['filter_lecture'] != "" ? $_GET['filter_lecture'] : ""; 
+            // ------------------------------------------------
+            // ----------------FILTER QUERIES-----------------
+            if ($filter_date != "empty") {
+              $sql = "SELECT * FROM `notes` WHERE (`username`='$username' OR `username`='$user') AND `date`='$filter_date'  ORDER BY srno DESC LIMIT $limit ";
+            } else if ($filter_day != "") {
+              $sql = "SELECT * FROM `notes` WHERE (`username`='$username' OR `username`='$user') AND `day`='$filter_day'  ORDER BY srno DESC LIMIT $limit ";
+            } else if ($from_day != "") {
+              $sql = "SELECT * FROM `notes` WHERE (`username`='$username' OR `username`='$user') AND `date` BETWEEN `from_date` AND `till_date`;  ORDER BY srno DESC LIMIT $limit ";
+            } else if ($filter_lecture != "") {
+              $sql = "SELECT * FROM `notes` WHERE (`username`='$username' OR `username`='$user') AND `lecture`='$filter_lecture'  ORDER BY srno DESC LIMIT $limit ";
+            } else {
+              $sql = "SELECT * FROM `notes` WHERE (`username`='$username' OR `username`='$user') ORDER BY srno DESC LIMIT $limit ";
+            }
+            // -----------------------------------------------
             $result = $db->query($sql);
             if ($result->num_rows > 0) {
               while($row = $result->fetch_assoc()) {
@@ -102,6 +121,11 @@
           <?php
                 }
               }
+              else {
+                echo "<div class='alert alert-danger my-2' role='alert'>
+                No records found!
+              </div>";
+              }
           ?>
         </tbody>
       </table>
@@ -110,9 +134,9 @@
           <form method="get" action="index.php" class="ui form my-3 mx-2">
             <div class="fields">
               <div class="thirteen wide field ">
-              <input type="text" name="filter_date" class="search-bar" placeholder="Date" onfocus="(this.type='date')" onblur="(this.type='text')" required>
+              <input type="text" name="filter_date" class="search-bar my-1" placeholder="Date" onfocus="(this.type='date')" onblur="(this.type='text')" required>
               </div>
-              <button type="submit" class="circular ui inline icon button search-btn">
+              <button type="submit" class="circular ui inline icon button search-btn my-1" name="limit" value="<?php echo $limit ?>">
                 <i class="search icon"></i>
               </button>
             </div>
@@ -122,7 +146,7 @@
         <form method="get" action="index.php" class="ui form my-3 mx-2">
           <div class="fields">
           <div class="thirteen wide field input">
-                      <select class="ui fluid dropdown search-day" name="filter_day" required>
+                      <select class="ui fluid dropdown search-day my-1" name="filter_day" required>
                           <option value="">Day</option>
                           <option value="Monday">Monday</option>
                           <option value="Tuesday">Tuesday</option>
@@ -132,7 +156,7 @@
                           <option value="Saturday">Saturday</option>
                       </select>
                   </div>
-              <button type="submit" class="circular ui inline icon button search-btn">
+              <button type="submit" class="circular ui inline icon button search-btn my-1" name="limit" value="<?php echo $limit ?>">
                 <i class="search icon"></i>
               </button>
             </div>
@@ -142,13 +166,13 @@
           <form method="get" action="index.php" class="ui form my-3 mx-2">
             <div class="fields between">
               <div class="seven wide field ">
-              <input type="text" name="from_date" class="search-bar" placeholder="From" onfocus="(this.type='date')" onblur="(this.type='text')" required>
+              <input type="text" name="from_date" class="search-bar my-1" placeholder="From" onfocus="(this.type='date')" onblur="(this.type='text')" required>
               </div>
               <i class="arrows alternate horizontal icon" id="between-arrow"></i>
               <div class="seven wide field ">
-              <input type="text" name="till_date" class="search-bar" placeholder="Till" onfocus="(this.type='date')" onblur="(this.type='text')" required>
+              <input type="text" name="till_date" class="search-bar my-1" placeholder="Till" onfocus="(this.type='date')" onblur="(this.type='text')" required>
               </div>
-              <button type="submit" class="circular ui inline icon button search-btn">
+              <button type="submit" class="circular ui inline icon button search-btn my-1" name="limit" value="<?php echo $limit ?>">
                 <i class="search icon"></i>
               </button>
             </div>
@@ -158,7 +182,7 @@
         <form method="get" action="index.php" class="ui form my-3 mx-2">
           <div class="fields">
             <div class="thirteen wide field input">
-              <select class="ui fluid dropdown search-day" name="filter_lecture" required>
+              <select class="ui fluid dropdown search-day my-1" name="filter_lecture" required>
                 <option value="">lecture</option>
                 <option value="First">First</option>
                 <option value="Second">Second</option>
@@ -169,7 +193,7 @@
                 <option value="Seventh">Seventh</option>
                 </select>
               </div>
-              <button type="submit" class="circular ui inline icon button search-btn">
+              <button type="submit" class="circular ui inline icon button search-btn my-1" name="limit" value="<?php echo $limit ?>">
                 <i class="search icon"></i>
               </button>
             </div>
@@ -178,9 +202,9 @@
       </div>
         <form method="get" action="index.php" class="ui form row-form">
           <div class="inline fields">
-            <label> Number of rows</label>
+            <label> Records per page</label>
             <div class="seven wide field">
-              <input type="number" name="limit" placeholder="0">
+              <input type="number" name="limit" value="<?php echo $limit ?>">
             </div>
               <button id="btn" class="ui button bg-red my-2" type="submit">Submit</button>
           </div>
