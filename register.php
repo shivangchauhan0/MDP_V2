@@ -14,14 +14,14 @@
   	  <input type="text" name="name" required>
   	</div>
 	  <div class="inline fields">
-  	<div class="field">
-  	  <label class="labels">EmpID*</label>
-  	  <input type="text" name="tid" required>
-  	</div>
-  	<div class="field">
-  	  <label class="labels">Username</label>
-  	  <input type="text" name="username" >
-  	</div>
+		<div class="field my-1">
+		<label class="labels">EmpID*</label>
+		<input type="text" name="tid" required>
+		</div>
+		<div class="field my-1">
+		<label class="labels">Username</label>
+		<input type="text" name="username" >
+		</div>
 	  </div>
 	
 	<div class="field">
