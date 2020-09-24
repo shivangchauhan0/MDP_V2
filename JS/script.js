@@ -18,3 +18,10 @@ $(document).ready(function () {
     });
   });
 });
+
+function checkDelete() {
+  return confirm("Are you sure you want to Delete?");
+}
+function checkUndo() {
+  return confirm("Are you sure you want to undo?");
+}
