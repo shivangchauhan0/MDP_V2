@@ -87,14 +87,14 @@
                 <td>
                   <?php if($row["principal"]== 1) { ?>
                     <a class="ui icon button disabled" id="edit" href="edit.php?id=<?php echo $row["srno"] ?>"><i class="edit icon"></i></a>
-                    <form method="post" action="index.php" class="ui form delete">
+                    <form method="post" action="show-records.php" class="ui form delete">
                       <button onclick="return checkDelete()" type="submit" name="delete" value='<?php echo $row["srno"] ?>' id="delete" class="ui mini icon button disabled delete">
                         <i class="trash icon"></i>
                       </button>
                     </form>
                     <?php }else { ?>
                     <a class="ui icon" id="edit" href="edit.php?id=<?php echo $row["srno"] ?>"><i class="edit icon"></i></a>
-                    <form method="post" action="index.php" class="ui form delete">
+                    <form method="post" action="show-records.php" class="ui form delete">
                       <button onclick="return checkDelete()" type="submit" name="delete" value='<?php echo $row["srno"] ?>' id="delete" class="ui mini icon button delete">
                         <i class="trash icon"></i>
                       </button>

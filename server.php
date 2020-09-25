@@ -121,6 +121,7 @@ if(isset($_POST['delete']))
     $srno=number_format($srno);
     $query = "DELETE FROM `notes` WHERE srno = $srno";
     mysqli_query($db, $query);
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
   }
 // TIMETABLE UPDATE
 if(isset($_POST['tt_update'])) 
@@ -240,7 +241,7 @@ if (isset($_POST['add_record'])) {
 
   $query = "INSERT INTO `notes`( `username`, `lecture`, `class`, `subject`,`date`,`day` , `theory/prac`, `methodology`, `teaching_aid`, `content`, `class_activity`, `attendance`, `other_activity`, `remark`) VALUES ('$current_user','$lecture','$class','$subject','$date_t','$dayOfWeek','$classtype','$methodology','$teaching_aid','$content','$class_activity','$attendance','$other_activity','$remark')";
   mysqli_query($db, $query);
-  header('location: insert-record.php');
+  header('Location: ' . $_SERVER['HTTP_REFERER']);
      
 }
 ?>
