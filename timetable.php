@@ -17,6 +17,7 @@
   </form>
     <div class="container-fluid my-3 px-0">
     <div id="tt-warning" class='alert alert-warning mx-3 my-2' role='alert'>Timetable can't be accessed in mobile version</div>
+    
     <?php 
             $username = $_SESSION['username'];
             $sql = "SELECT * FROM `timetable` WHERE `username`='$username'";
