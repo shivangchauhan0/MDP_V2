@@ -40,14 +40,7 @@
         <tbody>
           <?php 
             $username = $_SESSION['username'];
-            // $user=$_GET['username'];
-            $hod_true = $_SESSION['designation'] == 'Hod'? $hod_true="" : $hod_true="<i class=\"circle yellow icon\"></i>";
-            $hod_false = $_SESSION['designation'] == 'Hod'? $hod_false="" : $hod_false="<i class=\"circle outline yellow icon\"></i>";
-            $incomp = "<i class=\"circle red icon\"></i>";
-            $dean_true="<i class=\"circle blue icon\"></i>";
-            $dean_false="<i class=\"circle outline blue icon\"></i>";
-            $principal_true="<i class=\"circle green icon\"></i>";	
-            $principal_false="<i class=\"circle outline green icon\"></i>";	
+            // $user=$_GET['username'];	
             // ----------------FILtER VARIABLES-----------------
               $limit = $_GET['limit'] != "" ? $_GET['limit'] : 5;
               $filter_date = $_GET['filter_date'] != "" ? $_GET['filter_date'] : "empty"; 
@@ -109,26 +102,8 @@
                   <?php } ?>
                 </td>
             </tr>
-          <?php 
-              }
-            $username = $_SESSION['username'];
-            $user=$_GET['username'];
-            $sql = "SELECT * FROM `notes` WHERE (`username`='$username' OR `username`='$user') ";
-            $result = $db->query($sql);
-            if ($result->num_rows > 0) {
-                $row = $result->fetch_assoc();
-                 if ($row["hod_com"] != "") {
-                  echo "<tr><td colspan='10'> <span style='color:#FBBD08'>HOD &#8594; ".$row["hod_com"]."</span></td></tr>";
-                 }
-                 if ($row["dean_com"] != "") {
-                  echo "<tr><td colspan='10'><span style='color:#2185D0'>DEAN &#8594; ".$row["dean_com"]."</span></td></tr>";
-                 }
-                 if ($row["principal_com"] != "") {
-                  echo "<tr><td colspan='10'><span style='color:#21BA45'>PRINCIPAL &#8594; ".$row["principal_com"]."</span></td></tr>";
-                 }
-              ?>
           <?php
-                }
+        }
               }
               else {
                 echo "<div class='alert alert-danger my-2' role='alert'>

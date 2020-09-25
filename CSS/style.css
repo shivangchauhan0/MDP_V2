@@ -124,6 +124,18 @@ form.delete {
 .display-none {
   display: initial !important;
 }
+.less-height {
+  height: 4vh !important;
+}
+.hide {
+  visibility: hidden !important;
+  height: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+.display-none-two {
+  display: none !important;
+}
 .input-highlight {
 }
 @media only screen and (max-width: 600px) {

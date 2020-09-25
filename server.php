@@ -220,4 +220,27 @@ if(isset($_POST['tt_update']))
     mysqli_query($db, $query);
     header('location: timetable.php');
   }
+  //   NEW SUBMIT RECORD ROUTE
+if (isset($_POST['add_record'])) { 
+  date_default_timezone_set('Asia/Kolkata');
+  $date_t = mysqli_real_escape_string($db, $_POST['add_record']);
+  $current_user = $_SESSION['username'];
+  $dayOfWeek = date("l", strtotime($date_t));
+  $lecture = mysqli_real_escape_string($db, $_POST['lecture']);
+  $class = mysqli_real_escape_string($db, $_POST['class']);
+  $subject = mysqli_real_escape_string($db, $_POST['subject']);
+  $classtype = mysqli_real_escape_string($db, $_POST['classtype']);
+  $methodology= mysqli_real_escape_string($db, $_POST['methodology']);
+  $teaching_aid = mysqli_real_escape_string($db, $_POST['teachingaid']);
+  $content = mysqli_real_escape_string($db, $_POST['content']);
+  $class_activity = mysqli_real_escape_string($db, $_POST['classactivity']);
+  $attendance = mysqli_real_escape_string($db, $_POST['attendance']);
+  $other_activity = mysqli_real_escape_string($db, $_POST['otheractivity']);
+  $remark = mysqli_real_escape_string($db, $_POST['remark']);
+
+  $query = "INSERT INTO `notes`( `username`, `lecture`, `class`, `subject`,`date`,`day` , `theory/prac`, `methodology`, `teaching_aid`, `content`, `class_activity`, `attendance`, `other_activity`, `remark`) VALUES ('$current_user','$lecture','$class','$subject','$date_t','$dayOfWeek','$classtype','$methodology','$teaching_aid','$content','$class_activity','$attendance','$other_activity','$remark')";
+  mysqli_query($db, $query);
+  header('location: insert-record.php');
+     
+}
 ?>
