@@ -36,7 +36,6 @@
         <tbody>
           <?php 
             $username = $_SESSION['username'];
-            // $user=$_GET['username'];
             $hod_true = $_SESSION['designation'] == 'Hod'? $hod_true="" : $hod_true="<i class=\"circle yellow icon\"></i>";
             $hod_false = $_SESSION['designation'] == 'Hod'? $hod_false="" : $hod_false="<i class=\"circle outline yellow icon\"></i>";
             $incomp = "<i class=\"circle red icon\"></i>";

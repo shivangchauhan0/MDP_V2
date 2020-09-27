@@ -122,17 +122,17 @@
 					$timestamp = strtotime($search_date);
 					$formatted_date = date("d-m-Y", $timestamp);
           if ($dayOfWeek == "Monday") {
-            $sql_two = "SELECT c1,s1,c2,s2,c3,s3,c4,s4,c5,s5,c6,s6,c7,s7 FROM `timetable` WHERE `username`= '$current_user'";
+            $sql_two = "SELECT c1,s1,c2,s2,c3,s3,c4,s4,c5,s5,c6,s6,c7,s7 FROM `timetable_new` WHERE `username`= '$current_user'";
           } else if ($dayOfWeek == "Tuesday") {
-            $sql_two = "SELECT c8 AS c1,s8 AS s1,c9 AS c2,s9 AS s2,c10 AS c3,s10 AS s3,c11 AS c4,s11 AS s4,c12 AS c5,s12 AS s5,c13 AS c6,s13 AS s6,c14 AS c7,s14 AS s7 FROM `timetable` WHERE `username`= '$current_user'";
+            $sql_two = "SELECT c8 AS c1,s8 AS s1,c9 AS c2,s9 AS s2,c10 AS c3,s10 AS s3,c11 AS c4,s11 AS s4,c12 AS c5,s12 AS s5,c13 AS c6,s13 AS s6,c14 AS c7,s14 AS s7 FROM `timetable_new` WHERE `username`= '$current_user'";
           } else if ($dayOfWeek == "Wednesday") {
-            $sql_two = "SELECT c15 AS c1,s15 AS s1,c16 AS c2,s16 AS s2,c17 AS c3,s17 AS s3,c18 AS c4,s18 AS s4,c19 AS c5,s19 AS s5,c20 AS c6,s20 AS s6,c21 AS c7,s21 AS s7 FROM `timetable` WHERE `username`= '$current_user'";
+            $sql_two = "SELECT c15 AS c1,s15 AS s1,c16 AS c2,s16 AS s2,c17 AS c3,s17 AS s3,c18 AS c4,s18 AS s4,c19 AS c5,s19 AS s5,c20 AS c6,s20 AS s6,c21 AS c7,s21 AS s7 FROM `timetable_new` WHERE `username`= '$current_user'";
           } else if ($dayOfWeek == "Thursday") {
-            $sql_two = "SELECT c22 AS c1,s22 AS s1,c23 AS c2,s23 AS s2,c24 AS c3,s24 AS s3,c25 AS c4,s25 AS s4,c26 AS c5,s26 AS s5,c27 AS c6,s27 AS s6,c28 AS c7,s28 AS s7 FROM `timetable` WHERE `username`= '$current_user'";
+            $sql_two = "SELECT c22 AS c1,s22 AS s1,c23 AS c2,s23 AS s2,c24 AS c3,s24 AS s3,c25 AS c4,s25 AS s4,c26 AS c5,s26 AS s5,c27 AS c6,s27 AS s6,c28 AS c7,s28 AS s7 FROM `timetable_new` WHERE `username`= '$current_user'";
           } else if ($dayOfWeek == "Friday") {
-            $sql_two = "SELECT c29 AS c1,s29 AS s1,c30 AS c2,s30 AS s2,c31 AS c3,s31 AS s3,c32 AS c4,s32 AS s4,c33 AS c5,s33 AS s5,c34 AS c6,s34 AS s6,c35 AS c7,s35 AS s7 FROM `timetable` WHERE `username`= '$current_user'";
+            $sql_two = "SELECT c29 AS c1,s29 AS s1,c30 AS c2,s30 AS s2,c31 AS c3,s31 AS s3,c32 AS c4,s32 AS s4,c33 AS c5,s33 AS s5,c34 AS c6,s34 AS s6,c35 AS c7,s35 AS s7 FROM `timetable_new` WHERE `username`= '$current_user'";
           } else if ($dayOfWeek == "Saturday") {
-            $sql_two = "SELECT c36 AS c1,s36 AS s1,c37 AS c2,s37 AS s2,c38 AS c3,s38 AS s3,c39 AS c4,s39 AS s4,c40 AS c5,s40 AS s5,c41 AS c6,s41 AS s6,c42 AS c7,s42 AS s7 FROM `timetable` WHERE `username`= '$current_user'";
+            $sql_two = "SELECT c36 AS c1,s36 AS s1,c37 AS c2,s37 AS s2,c38 AS c3,s38 AS s3,c39 AS c4,s39 AS s4,c40 AS c5,s40 AS s5,c41 AS c6,s41 AS s6,c42 AS c7,s42 AS s7 FROM `timetable_new` WHERE `username`= '$current_user'";
           }
           
           $result_two = $db-> query($sql_two);

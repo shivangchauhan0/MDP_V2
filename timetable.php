@@ -20,7 +20,7 @@
     
     <?php 
             $username = $_SESSION['username'];
-            $sql = "SELECT * FROM `timetable` WHERE `username`='$username'";
+            $sql = "SELECT * FROM `timetable_new` WHERE `username`='$username'";
             $result = $db->query($sql);
             if ($result->num_rows > 0) {
                 $row = $result->fetch_assoc();
