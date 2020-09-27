@@ -40,25 +40,25 @@
         <div class="ui segment">
         <form class="ui form rec-form">
           <div class="fields mb-0 less-height">
-            <div class="field">
+            <div class="field field-rec">
               <label class="mb-3 display-none">LECTURE</label>
               <input class="hide six_vw input-highlight" name="lecture" readonly type="text" value="First">
             </div>
-            <div class="field">
+            <div class="field field-rec">
               <label class="mb-3 display-none">CLASS</label>
               <input class="hide six_vw" readonly name="class" type="text" value="<?php echo $table["c1"] ?>">
             </div>
-            <div class="field">
+            <div class="field field-rec">
               <label class="mb-3 display-none">SUBJECT</label>
               <input  class="hide" readonly type="text" name="subject" value="<?php echo $table["s1"] ?>">
             </div>
-            <div class="field">
+            <div class="field field-rec">
               <label class="mb-3 display-none">CLASS TYPE</label>
               <div class="hide six_vw">
                 <input  class="hide" readonly type="text" name="subject" value="<?php echo $table["s1"] ?>">
               </div>
             </div>
-            <div class="field">
+            <div class="field field-rec">
               <label class="mb-3 display-none">METHODOLOGY</label>
               <select class="hide drop-down ten_vw" class="ui fluid dropdown" name="methodology">
                           <option value="">Methodology</option>
@@ -69,7 +69,7 @@
                           <option value="Other">Other</option>
                 </select>
             </div>
-            <div class="field">
+            <div class="field field-rec">
               <label class="mb-3 display-none">TEACHING AID</label>
               <select class="hide drop-down ten_vw" class="ui fluid dropdown" name="teachingaid">
                     <option value="">Teaching Aid</option>
@@ -87,27 +87,27 @@
                     <option value="Other">Other</option>
                 </select>
             </div>
-            <div class="field">
+            <div class="field field-rec">
               <label class="mb-3 display-none">CONENT</label>
               <input class="hide" type="text" name="content" placeholder="Content">
             </div>
-            <div class="field">
+            <div class="field field-rec">
               <label class="mb-3 display-none">CA</label>
               <input class="hide" type="text" name="classactivity" placeholder="Class activity">
             </div>
-            <div class="field">
+            <div class="field field-rec">
               <label class="mb-3 display-none">ATTENDANCE</label>
               <input class="hide" type="number" name="attendance" placeholder="Attendance">
             </div>
-            <div class="field">
+            <div class="field field-rec">
               <label class="mb-3 display-none">OA</label>
               <input class="hide" type="text" name="otheractivity" placeholder="Other activity">
             </div>
-            <div class="field">
+            <div class="field field-rec">
               <label class="mb-3 display-none">REMARK</label>
               <input class="hide" type="text" name="remark" placeholder="Remark">
             </div>
-            <div class="field">
+            <div class="field field-rec">
               <label class="mb-3 display-none">SUBMIT</label>
               <button id="btn" name="add_record" class="ui hide button tiny bg-red" type="submit">Add</button>
             </div>
@@ -148,22 +148,22 @@
             ?>
             <form method="post" action="insert-record.php" class="ui form rec-form">
               <div class="fields">
-                <div class="field">
+                <div class="field field-rec">
                   <input class="six_vw input-highlight" name="lecture" readonly type="text" value="<?php echo $lectures[$i] ?>">
                 </div>
-                <div class="field">
+                <div class="field field-rec">
                   <input class="six_vw" readonly name="class" type="text" value="<?php echo $classes[$i] ?>">
                 </div>
-                <div class="field">
+                <div class="field field-rec">
                   <input  readonly type="text" name="subject" value="<?php echo $subjects[$i] ?>">
                 </div>
-                <div class="field">
+                <div class="field field-rec">
                   <div class="six_vw">
                     <input class="my-2 mx-1" id="radio-input" name="classtype" value="Theory" type="radio"><label>T</label>
                     <input class="my-2 mx-1" id="radio-input" name="classtype" value="Practicals" type="radio"><label>P</label></td>
                   </div>
                 </div>
-                <div class="field">
+                <div class="field field-rec">
                   <select class="drop-down ten_vw" class="ui fluid dropdown" name="methodology">
                               <option value="">Methodology</option>
                               <option value="Explanation">Explanation</option>
@@ -173,7 +173,7 @@
                               <option value="Other">Other</option>
                     </select>
                 </div>
-                <div class="field">
+                <div class="field field-rec">
                   <select class="drop-down ten_vw" class="ui fluid dropdown" name="teachingaid">
                         <option value="">Teaching Aid</option>
                         <option value="Actual objects">Actual objects</option>
@@ -190,22 +190,22 @@
                         <option value="Other">Other</option>
                     </select>
                 </div>
-                <div class="field">
+                <div class="field field-rec">
                   <input type="text" name="content" placeholder="Content">
                 </div>
-                <div class="field">
+                <div class="field field-rec">
                   <input type="text" name="classactivity" placeholder="Class activity">
                 </div>
-                <div class="field">
+                <div class="field field-rec">
                   <input type="number" name="attendance" placeholder="Attendance">
                 </div>
-                <div class="field">
+                <div class="field field-rec">
                   <input type="text" name="otheractivity" placeholder="Other activity">
                 </div>
-                <div class="field">
+                <div class="field field-rec">
                   <input type="text" name="remark" placeholder="Remark">
                 </div>
-                <div class="field">
+                <div class="field field-rec">
                   <button id="btn" name="add_record" class="ui button tiny bg-red" value="<?php echo $search_date ?>" type="submit">Add</button>
                 </div>
               </div>
@@ -265,14 +265,14 @@
                 <td><?php echo  $row["remark"] ?></td>
                 <td>
                   <?php if($row["principal"]== 1) { ?>
-                    <a class="ui icon button disabled" id="edit" href="edit.php?id=<?php echo $row["srno"] ?>"><i class="edit icon"></i></a>
+                    <a class="ui icon button disabled" id="edit" href="edit-record.php?id=<?php echo $row["srno"] ?>"><i class="edit icon"></i></a>
                     <form method="post" action="insert-record.php" class="ui form delete">
                       <button onclick="return checkDelete()" type="submit" name="delete" value='<?php echo $row["srno"] ?>' id="delete" class="ui mini icon button disabled delete">
                         <i class="trash icon"></i>
                       </button>
                     </form>
                     <?php }else { ?>
-                    <a class="ui icon" id="edit" href="edit.php?id=<?php echo $row["srno"] ?>"><i class="edit icon"></i></a>
+                    <a class="ui icon" id="edit" href="edit-record.php?id=<?php echo $row["srno"] ?>"><i class="edit icon"></i></a>
                     <form method="post" action="insert-record.php" class="ui form delete">
                       <button onclick="return checkDelete()" type="submit" name="delete" value='<?php echo $row["srno"] ?>' id="delete" class="ui mini icon button delete">
                         <i class="trash icon"></i>
