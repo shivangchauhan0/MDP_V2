@@ -135,6 +135,20 @@ form.delete {
 }
 .input-highlight {
 }
+/* EDIT RECORD */
+.outline-red {
+  background: #a4243b !important;
+  border: 1px solid #fff !important;
+  color: #fff !important;
+}
+.outline-red:hover {
+  color: #a4243b !important;
+  background: #fff !important;
+}
+.seg-width {
+  width: fit-content;
+  margin: 0 auto !important;
+}
 @media only screen and (max-width: 600px) {
   .filter-grid {
     grid-template-columns: 1fr;

@@ -15,25 +15,31 @@
         </div>
  </nav>
 <div class="container-fluid my-3">
-    <div class="ui inverted segment">
-        <form method="post" action="insert-record.php" class="ui form inverted">
+    <div class="ui bg-red segment seg-width">
+        <?php 
+             $id = $_GET['id'];
+             $sql = "SELECT * FROM `notes` WHERE srno = '$id'" ;
+             $result = $db-> query($sql);
+            $row = $result->fetch_assoc();
+        ?>
+        <form method="post" action="edit-record.php" class="ui form inverted">
             <div class="fields">
                 <div class="field">
                     <label class="labels">LECTURE</label>
-                    <input class=" input-highlight" name="lecture" readonly type="text" value="<?php echo $lectures[$i] ?>">
+                    <input class=" input-highlight" name="lecture" readonly type="text" value="<?php echo $row['lecture']; ?>">
                 </div>
                 <div class="field">
                     <label class="labels">CLASS</label>
-                    <input class="" readonly name="class" type="text" value="<?php echo $classes[$i] ?>">
+                    <input class="" readonly name="class" type="text" value="<?php echo $row['class'] ?>">
                 </div>
                 <div class="field">
                     <label class="labels">SUBJECT</label>
-                    <input  readonly type="text" name="subject" value="<?php echo $subjects[$i] ?>">
+                    <input  readonly type="text" name="subject" value="<?php echo $row['subject'] ?>">
                 </div>
                 <div class="field">
                     <label class="labels">METHODOLODGY</label>
                     <select class="drop-down" class="ui fluid dropdown" name="methodology">
-                            <option value="">Methodology</option>
+                            <option value="<?php echo $row['methodology'] ?>"><?php echo $row['methodology'] ?></option>
                             <option value="Explanation">Explanation</option>
                             <option value="Discussion">Discussion</option>
                             <option value="Mind Mapping">Mind Mapping</option>
@@ -44,7 +50,7 @@
                 <div class="field">
                     <label class="labels">TEACHING AID</label>
                     <select class="drop-down" class="ui fluid dropdown" name="teachingaid">
-                        <option value="">Teaching Aid</option>
+                        <option value="<?php echo $row['teaching_aid'] ?>"><?php echo $row['teaching_aid'] ?></option>
                         <option value="Actual objects">Actual objects</option>
                         <option value="Models">Models</option>
                         <option value="Pictures">Pictures</option>
@@ -62,36 +68,36 @@
                 <div class="field">
                     <label class="">CLASS TYPE</label>
                     <div class="">
-                        <input class="my-2 mx-1" id="radio-input" name="classtype" value="Theory" type="radio"><label>Theory</label>
-                        <input class="my-2 mx-1" id="radio-input" name="classtype" value="Practicals" type="radio"><label>Practicals</label></td>
+                        <input class="my-2 mx-1" id="radio-input" name="classtype" value="Theory" type="radio"><label>T</label>
+                        <input class="my-2 mx-1" id="radio-input" name="classtype" value="Practicals" type="radio"><label>P</label></td>
                     </div>
                 </div>
             </div>
             <div class="fields">
                 <div class="field">
                     <label class="labels">CONTENT</label>
-                    <input type="text" name="content" placeholder="Content">
+                    <input type="text" name="content" value="<?php echo $row['content'] ?>" placeholder="Content">
                 </div>
                 <div class="field">
-                    <label class="labels">CA</label>
-                    <input type="text" name="classactivity" placeholder="Class activity">
+                    <label class="labels">CLASS ACTIVITY</label>
+                    <input type="text" name="classactivity" value="<?php echo $row['class_activity'] ?>" placeholder="Class activity">
                 </div>
                 <div class="field">
                     <label class="labels">ATTENDANCE</label>
-                    <input type="number" name="attendance" placeholder="Attendance">
+                    <input type="number" name="attendance" value="<?php echo $row['attendance'] ?>" placeholder="Attendance">
                 </div>
                 <div class="field">
-                    <label class="labels">OA</label>
-                    <input type="text" name="otheractivity" placeholder="Other activity">
+                    <label class="labels">OTHER ACTIVITY</label>
+                    <input type="text" name="otheractivity" value="<?php echo $row['other_activity'] ?>" placeholder="Other activity">
                 </div>
                 <div class="field">
                     <label class="labels">REMARK</label>
-                    <input type="text" name="remark" placeholder="Remark">
+                    <input type="text" name="remark" value="<?php echo $row['remark'] ?>" placeholder="Remark">
                 </div>
             </div>
             <div class="fields">
                 <div class="field">
-                    <button id="btn" name="add_record" class="ui button bg-red" value="<?php echo $search_date ?>" type="submit">Submit</button>
+                    <button id="btn" name="edit_record" value="<?php echo $row["srno"];?>" class="ui button outline-red" value="<?php echo $search_date ?>" type="submit">Submit</button>
                 </div>
             </div>
         </form>
