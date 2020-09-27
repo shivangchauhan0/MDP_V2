@@ -16,7 +16,7 @@
  </nav>
     <div class="container-fluid my-3">
       <div class="head-bar">
-        <h2>List of records</h2>
+        <h2>LIST OF RECORDS</h2>
       </div>
       <table class="ui celled table"id="show-records-table">
         <thead>
@@ -86,14 +86,14 @@
                 <!-- <td><?php //echo ($row["hod"] == 1 ?  $hod_true : ($row["hod"] == 2 ? $incomp : $hod_false))." ".($row["dean"] == 1 ? $dean_true : ($row["dean"] == 2 ? $incomp : $dean_false))." ".($row["principal"] == 1 ? $principal_true : ($row["principal"] == 2 ? $incomp : $principal_false))?></td> -->
                 <td>
                   <?php if($row["principal"]== 1) { ?>
-                    <a class="ui icon button disabled" id="edit" href="edit.php?id=<?php echo $row["srno"] ?>"><i class="edit icon"></i></a>
+                    <a class="ui icon button disabled" id="edit" href="edit-record.php?id=<?php echo $row["srno"] ?>"><i class="edit icon"></i></a>
                     <form method="post" action="show-records.php" class="ui form delete">
                       <button onclick="return checkDelete()" type="submit" name="delete" value='<?php echo $row["srno"] ?>' id="delete" class="ui mini icon button disabled delete">
                         <i class="trash icon"></i>
                       </button>
                     </form>
                     <?php }else { ?>
-                    <a class="ui icon" id="edit" href="edit.php?id=<?php echo $row["srno"] ?>"><i class="edit icon"></i></a>
+                    <a class="ui icon" id="edit" href="edit-record.php?id=<?php echo $row["srno"] ?>"><i class="edit icon"></i></a>
                     <form method="post" action="show-records.php" class="ui form delete">
                       <button onclick="return checkDelete()" type="submit" name="delete" value='<?php echo $row["srno"] ?>' id="delete" class="ui mini icon button delete">
                         <i class="trash icon"></i>

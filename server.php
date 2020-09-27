@@ -43,7 +43,7 @@ if (isset($_POST['reg_user'])) {
       if ($user) { // if user exists
         if ($user['username'] === $username) {
           $flaguser="";
-          if (empty($flaguser)) { array_push($errors, "User already exsits"); }
+          if (empty($flaguser)) { array_push($errors, "Username already taken"); }
 
         }
       }

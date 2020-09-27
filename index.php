@@ -16,7 +16,7 @@
  </nav>
     <div class="container-fluid my-3">
       <div class="head-bar">
-        <h2>List of records</h2>
+        <h2>LIST OF RECORDS</h2>
       </div>
       <table class="ui celled table">
         <thead>

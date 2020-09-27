@@ -15,14 +15,14 @@
         </div>
  </nav>
 <div class="container-fluid my-3">
-    <div class="ui bg-red segment seg-width">
+    <div class="ui segment seg-width">
         <?php 
              $id = $_GET['id'];
              $sql = "SELECT * FROM `notes` WHERE srno = '$id'" ;
              $result = $db-> query($sql);
             $row = $result->fetch_assoc();
         ?>
-        <form method="post" action="edit-record.php" class="ui form inverted">
+        <form method="post" action="edit-record.php" class="ui form">
             <div class="fields">
                 <div class="field">
                     <label class="labels">LECTURE</label>
@@ -97,7 +97,7 @@
             </div>
             <div class="fields">
                 <div class="field">
-                    <button id="btn" name="edit_record" value="<?php echo $row["srno"];?>" class="ui button outline-red" value="<?php echo $search_date ?>" type="submit">Submit</button>
+                    <button id="btn" name="edit_record" value="<?php echo $row["srno"];?>" class="ui button outline-red" value="<?php echo $search_date ?>" type="submit">Update</button>
                 </div>
             </div>
         </form>

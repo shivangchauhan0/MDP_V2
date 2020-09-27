@@ -36,7 +36,8 @@
 					$timestamp = strtotime($search_date);
 					$formatted_date = date("d-m-Y", $timestamp);
         ?>
-       <h2 style="color:#A4243B">Enter records of <?php echo $formatted_date?> (<?php echo $dayOfWeek ?>)</h2>
+  
+       <h2 style="color:#A4243B;font-family: 'Montserrat', sans-serif;">ENTER RECORDS OF <?php echo $formatted_date?> [<?php echo $dayOfWeek ?>]</h2>
         <div class="ui segment">
         <form class="ui form rec-form">
           <div class="fields mb-0 less-height">
@@ -214,7 +215,7 @@
               }
           } ?>
       </div>
-      <h2 style="color:#A4243B">Already Added records of <?php echo $formatted_date?> (<?php echo $dayOfWeek ?>)</h2>
+      <h2 style="color:#A4243B;font-family: 'Montserrat', sans-serif;">ALREADY ADDED RECORS OF <?php echo $formatted_date?> (<?php echo $dayOfWeek ?>)</h2>
       <table class="ui celled table"id="show-records-table">
         <thead>
           <tr id="table-head">
