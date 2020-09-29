@@ -22,6 +22,61 @@
     </div>
  </nav>
 <div class="container">
+<div class="filter-grid-users my-2">
+        <div>
+          <form method="get" action="users.php" class="ui form my-3 mx-2">
+            <div class="fields">
+              <div class="thirteen wide field ">
+              <input type="text" name="filter_ID" class="search-bar my-1" placeholder="Search by ID" required>
+              </div>
+              <button type="submit" class="circular ui inline icon button search-btn my-1" name="limit" value="<?php echo $limit ?>">
+                <i class="search icon"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+        <div>
+            <form method="get" action="users.php" class="ui form my-3 mx-2">
+                <div class="fields">
+                    <div class="thirteen wide field">
+                        <input type="text" name="filter_username" class="search-bar my-1" placeholder="Search by username" required>
+                    </div>
+                    <button type="submit" class="circular ui inline icon button search-btn my-1" name="limit" value="<?php echo $limit ?>">
+                    <i class="search icon"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div>
+            <form method="get" action="users.php" class="ui form my-3 mx-2">
+                <div class="fields">
+                    <div class="thirteen wide field">
+                        <input type="text" name="filter_name" class="search-bar my-1" placeholder="Search by name" required>
+                    </div>
+                    <button type="submit" class="circular ui inline icon button search-btn my-1" name="limit" value="<?php echo $limit ?>">
+                    <i class="search icon"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div>
+        <form method="get" action="users.php" class="ui form my-3 mx-2">
+          <div class="fields">
+            <div class="thirteen wide field input">
+              <select class="ui fluid dropdown search-day my-1" name="filter_designation" required>
+                          <option value="">Search by Designation</option>
+                          <option value="Dean">Dean</option>
+                          <option value="Hod">HOD</option>
+                          <option value="Assistant Professor">Assistant Professor</option>
+                </select>
+              </div>
+              <button type="submit" class="circular ui inline icon button search-btn my-1" name="limit" value="<?php echo $limit ?>">
+                <i class="search icon"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
 <table class="ui celled table my-3">
   <thead>
 	  <tr id="table-head">

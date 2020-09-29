@@ -159,6 +159,11 @@ form.delete {
   margin: 0 auto !important;
   width: 50vw !important;
 }
+/* filter Grid-users */
+.filter-grid-users {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
 @media only screen and (max-width: 600px) {
   .filter-grid {
     grid-template-columns: 1fr;

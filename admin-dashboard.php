@@ -39,7 +39,7 @@
                 <option value="Vice-Principal">Vice Principal</option>
                 <option value="Dean">Dean</option>
                 <option value="Hod">HOD</option>
-                <option value="Professor">Professor</option>
+                <option value="Assistant Professor">Assistant Professor</option>
             </select>
       </div>
       <div class="field">
