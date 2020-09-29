@@ -164,6 +164,15 @@ form.delete {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
+/* CORRECTION PAGE */
+.head-bar-sec {
+  display: grid;
+  grid-template-columns: 10fr 1fr;
+}
+.head-bar-sec > h2 {
+  color: #a4243b;
+  font-family: "Montserrat", sans-serif !important;
+}
 @media only screen and (max-width: 600px) {
   .filter-grid {
     grid-template-columns: 1fr;
@@ -237,5 +246,9 @@ form.delete {
   #id-input,
   #deg-input {
     width: 100% !important;
+  }
+  .head-bar-sec > h2 {
+    margin-top: 1.5vh;
+    font-size: 20px;
   }
 }

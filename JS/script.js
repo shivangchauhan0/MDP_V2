@@ -1,6 +1,5 @@
 window.onload = function triggerFunction() {
   var width = window.innerWidth;
-  console.log(width);
   if (width > 600) {
     $("#menu-toggle").trigger("click");
   }

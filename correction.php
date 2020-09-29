@@ -15,9 +15,9 @@
         </div>
  </nav>
     <div class="container-fluid my-3">
-        <div class="head-bar">
+        <div class="head-bar-sec">
             <h2>LIST OF RECORDS</h2>
-            
+            <a href="correction.php?unchecked='true'"><button type="submit" class="ui button bg-red mx-1 my-2" id="insert-id">Unchecked</button></a> 
         </div>
         <table class="ui celled table">
         <thead>
