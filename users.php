@@ -67,7 +67,7 @@
                           <option value="">Search by Designation</option>
                           <option value="Dean">Dean</option>
                           <option value="Hod">HOD</option>
-                          <option value="Assistant Professor">Assistant Professor</option>
+                          <option value="Professor">Assistant Professor</option>
                 </select>
               </div>
               <button type="submit" class="circular ui inline icon button search-btn my-1" name="limit" value="<?php echo $limit ?>">
@@ -105,7 +105,7 @@
                    <td><?php echo strtoupper($row["name"])  ?></td>
                    <td><?php echo $row["sup_depart"]  ?></td>
                    <td><?php echo $row["department"]  ?></td>
-                   <td><?php echo $row["designation"]  ?></td>
+                   <td><?php echo $row["designation"] == "Professor"?"Assistant Professor" : $row["designation"]  ?></td>
                 <td id='del'>
                 <center>
                 <form method='post' action='users.php' class='ui form delete'>
