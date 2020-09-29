@@ -104,7 +104,7 @@ if (isset($_POST['login_user'])) {
           }elseif($designation =='Principal'){
             header('location: principaldash.php');
           }elseif($username =='admin'){
-            header('location: admin.php');
+            header('location: admin-dashboard.php');
           }else{
             header('location: index.php');
           }
@@ -259,4 +259,38 @@ if (isset($_POST['edit_record'])){
   mysqli_query($db, $query);
   header('Location: ' . $_SERVER['HTTP_REFERER']);
 }
+
+// ADMIN
+    if (isset($_POST['insert_tid'])) {
+      $tid = mysqli_real_escape_string($db, $_POST['tid']);
+      $designation = mysqli_real_escape_string($db, $_POST['designation']);
+    
+      $user_check_query = "SELECT * FROM `verifyid` WHERE `tid`='$tid' LIMIT 1";
+      $result = mysqli_query($db, $user_check_query);
+      $user = mysqli_fetch_assoc($result);
+      
+      if ($user) { // if user exists
+        if ($user['tid'] === $tid) {
+          array_push($errors, "ID already exists");
+        }
+      }
+    
+      if (count($errors) == 0) {
+          $query = "INSERT INTO `verifyid` ( `tid`, `designation`) 
+                    VALUES('$tid', '$designation')";
+          mysqli_query($db, $query);
+      }
+      header('Location: ' . $_SERVER['HTTP_REFERER']);
+      
+    }
+    if(isset($_POST['delete_two'])) 
+    {    
+      $id = mysqli_real_escape_string($db, $_POST['delete_two']);
+      $id=number_format($id);
+      $query = "DELETE FROM `verifyid` WHERE `id` = $id";
+      mysqli_query($db, $query);
+      header('Location: ' . $_SERVER['HTTP_REFERER']);
+  
+    }  
+   
 ?>
