@@ -29,7 +29,7 @@
               <div class="thirteen wide field ">
               <input type="text" name="filter_ID" class="search-bar my-1" placeholder="Search by ID" required>
               </div>
-              <button type="submit" class="circular ui inline icon button search-btn my-1" name="limit" value="<?php echo $limit ?>">
+              <button type="submit" class="circular ui inline icon button search-btn my-1">
                 <i class="search icon"></i>
               </button>
             </div>
@@ -41,7 +41,7 @@
                     <div class="thirteen wide field">
                         <input type="text" name="filter_username" class="search-bar my-1" placeholder="Search by username" required>
                     </div>
-                    <button type="submit" class="circular ui inline icon button search-btn my-1" name="limit" value="<?php echo $limit ?>">
+                    <button type="submit" class="circular ui inline icon button search-btn my-1">
                     <i class="search icon"></i>
                     </button>
                 </div>
@@ -53,7 +53,7 @@
                     <div class="thirteen wide field">
                         <input type="text" name="filter_name" class="search-bar my-1" placeholder="Search by name" required>
                     </div>
-                    <button type="submit" class="circular ui inline icon button search-btn my-1" name="limit" value="<?php echo $limit ?>">
+                    <button type="submit" class="circular ui inline icon button search-btn my-1">
                     <i class="search icon"></i>
                     </button>
                 </div>
@@ -70,7 +70,7 @@
                           <option value="Professor">Assistant Professor</option>
                 </select>
               </div>
-              <button type="submit" class="circular ui inline icon button search-btn my-1" name="limit" value="<?php echo $limit ?>">
+              <button type="submit" class="circular ui inline icon button search-btn my-1">
                 <i class="search icon"></i>
               </button>
             </div>
@@ -95,7 +95,7 @@
 		$result = $db-> query($sql);
 		if($result-> num_rows > 0){	
 			while ($row = $result-> fetch_assoc()) {
-                if ($row["username"]=='admin' || $row["username"]=='demo') {
+                if ($row["username"]=='admin') {
                     continue;
                 }
                ?> 
