@@ -165,13 +165,13 @@ form.delete {
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 /* CORRECTION PAGE */
-.head-bar-sec {
-  display: grid;
-  grid-template-columns: 10fr 1fr 1fr;
+.float-right {
+  float: right !important;
 }
 .head-bar-sec > h2 {
   color: #a4243b;
   font-family: "Montserrat", sans-serif !important;
+  display: inline !important;
 }
 @media only screen and (max-width: 600px) {
   .filter-grid {

@@ -15,9 +15,16 @@
         </div>
  </nav>
     <div class="container-fluid my-3">
-      <div class="head-bar">
-        <h2>LIST OF RECORDS</h2>
-      </div>
+      <div class="head-bar-sec">
+              <h2>LIST OF RECORDS</h2>
+              <?php if ($_GET['unchecked'] == 'true') { ?>
+                  <a class="float-right" href="correction-detailed.php?id=<?php echo $_GET['id'] ?>"><button type="submit" class="ui button bg-red mx-1 my-2 " id="insert-id">All Records</button></a>
+            <?php  } else { ?>
+                  <a class="float-right" href="correction-detailed.php?id=<?php echo $_GET['id'] ?>&unchecked=true"><button type="submit" class="ui button bg-red mx-1 my-2" id="insert-id">Unchecked</button></a>
+            <?php  }
+              ?>
+              <a class="float-right" href="correction-detailed.php?id=<?php echo $_GET['id'] ?>"><button type="submit" class="ui button bg-red mx-1 my-2" id="insert-id">Detailed</button></a> 
+        </div>
       <table class="ui celled table"id="show-records-table">
         <thead>
           <tr id="table-head">
@@ -47,26 +54,34 @@
             $dean_false="<i class=\"circle outline blue icon\"></i>";
             $principal_true="<i class=\"circle green icon\"></i>";	
             $principal_false="<i class=\"circle outline green icon\"></i>";	
-            // ----------------FILtER VARIABLES-----------------
-              $limit = $_GET['limit'] != "" ? $_GET['limit'] : 5;
-              $filter_date = $_GET['filter_date'] != "" ? $_GET['filter_date'] : "empty"; 
-              $filter_day = $_GET['filter_day'] != "" ? $_GET['filter_day'] : ""; 
-              $from_date = $_GET['from_date'] != "" ? $_GET['from_date'] : ""; 
-              $till_date = $_GET['till_date'] != "" ? $_GET['till_date'] : ""; 
-              $filter_lecture = $_GET['filter_lecture'] != "" ? $_GET['filter_lecture'] : ""; 
+            // ----------------FILTER VARIABLES-----------------
+            $unchecked = $_GET['unchecked'] != "" ? $_GET['unchecked'] : "false";
+            $limit = $_GET['limit'] != "" ? $_GET['limit'] : 5;
+            $filter_date = $_GET['filter_date'] != "" ? $_GET['filter_date'] : "empty"; 
+            $filter_day = $_GET['filter_day'] != "" ? $_GET['filter_day'] : ""; 
+            $from_date = $_GET['from_date'] != "" ? $_GET['from_date'] : ""; 
+            $till_date = $_GET['till_date'] != "" ? $_GET['till_date'] : ""; 
+            $filter_lecture = $_GET['filter_lecture'] != "" ? $_GET['filter_lecture'] : ""; 
             // ------------------------------------------------
             // ----------------FILTER QUERIES-----------------
             if ($filter_date != "empty") {
-              $sql = "SELECT * FROM `notes` WHERE (`username`='$username' OR `username`='$user') AND `date`='$filter_date'  ORDER BY srno DESC LIMIT $limit ";
+              $start_sql = "SELECT * FROM `notes` WHERE `username`='$username' AND `date`='$filter_date'";
             } else if ($filter_day != "") {
-              $sql = "SELECT * FROM `notes` WHERE (`username`='$username' OR `username`='$user') AND `day`='$filter_day'  ORDER BY srno DESC LIMIT $limit ";
-            } else if ($from_day != "") {
-              $sql = "SELECT * FROM `notes` WHERE (`username`='$username' OR `username`='$user') AND `date` BETWEEN `from_date` AND `till_date`;  ORDER BY srno DESC LIMIT $limit ";
+              $start_sql = "SELECT * FROM `notes` WHERE `username`='$username' AND `day`='$filter_day'";
+            } else if ($from_date != "") {
+              $start_sql = "SELECT * FROM `notes` WHERE `username`='$username' AND `date` BETWEEN `from_date` AND `till_date`;";
             } else if ($filter_lecture != "") {
-              $sql = "SELECT * FROM `notes` WHERE (`username`='$username' OR `username`='$user') AND `lecture`='$filter_lecture'  ORDER BY srno DESC LIMIT $limit ";
+              $start_sql = "SELECT * FROM `notes` WHERE `username`='$username' AND `lecture`='$filter_lecture'";
             } else {
-              $sql = "SELECT * FROM `notes` WHERE (`username`='$username' OR `username`='$user') ORDER BY srno DESC LIMIT $limit ";
+              $start_sql = "SELECT * FROM `notes` WHERE `username`='$username'";
             }
+            if ($unchecked == "true") {
+                $mid_sql = " AND `hod` = '0' AND `principal`='0' ";
+            } else {
+                $mid_sql="";
+            }
+            $end_sql = "ORDER BY srno DESC LIMIT $limit";
+            $sql = $start_sql.$mid_sql.$end_sql;
             // -----------------------------------------------
             $result = $db->query($sql);
             if ($result->num_rows > 0) {
