@@ -1,3 +1,4 @@
+<?php include("server.php") ?>
 <?php include("header.php") ?>
 <?php 
   if (!isset($_SESSION['username'])) {
@@ -14,22 +15,23 @@
         <h2 class="ml-2 my-0 nav-head"><i class="fa fa-desktop fa-fw" aria-hidden="true"></i> DASHBOARD</h2>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-            <button type="submit" class="ui button tiny bg-red mx-3" id="insert-id">Users</button>
-            <p id="username" class="mt-0 mr-3 mt-2"><i class='user icon'></i><strong><?php echo $_SESSION['name'] ?></strong></p>
+            <p id="username" class="mt-0 mr-3 mt-3"><i class='user icon'></i><strong><?php echo $_SESSION['name'] ?></strong></p>
+            <a href="users.php"><button type="submit" class="ui button bg-red mx-1 my-2" id="insert-id">Users</button></a> 
+           <a href="index.php?logout='1'"><button type="submit" class="ui button bg-red mx-1 my-2" id="insert-id">Logout</button></a> 
           </ul>
         </div>
  </nav>
- <div class="head-bar">
-    <h2 class="my-3 mx-4">ADD NEW ID</h2>
-</div>
- <form method="post" action="admin-dashboard.php" class="ui form mx-4">
+        <div class="head-bar">
+            <h2 style="text-align:center" class="my-3 mx-4">ADD NEW ID</h2>
+        </div>
+ <form method="post" action="admin-dashboard.php" class="ui form admin-form">
     <?php include('errors.php'); ?>
     <div class="fields">
-      <div class="six wide field">
+      <div class="seven wide field">
         <label>ID</label>
         <input placeholder="ID" name="tid" type="text" required>
       </div>
-      <div class="six wide field">
+      <div class="seven wide field">
         <label>Designation</label>
         <select class="ui fluid dropdown" name="designation" required>
                 <option value="">Designation</option>
@@ -47,8 +49,8 @@
     </div>
 </div>
 </form>
-<div class="container-four mx-4">
-  <table style="" class="ui celled table">
+<div class="container-four">
+  <table class="ui celled table admin-table">
         <thead>
           <tr id="table-head">
             <th>ID</th>
@@ -66,7 +68,7 @@
                 <td><?php echo $row["designation"] ?></td>
                 <td>
                 <form method='post' action='admin-dashboard.php' class='ui form delete'>
-							 <button onclick='return checkDelete()' type='submit' name='delete_two' value='<?php $row['id'] ?>' id='delete' class='ui mini icon button delete'>
+							 <button onclick='return checkDelete()' type='submit' name='delete_tid' value='<?php echo $row['id'] ?>' id='delete' class='ui mini icon button delete'>
 								<i class='trash icon'></i>
 							 </button>
                          </form>   

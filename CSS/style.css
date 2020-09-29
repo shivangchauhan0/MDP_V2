@@ -149,6 +149,16 @@ form.delete {
   width: fit-content;
   margin: 0 auto !important;
 }
+/* ADMIN DASHBOARD */
+.admin-form {
+  margin: 0 auto !important;
+  margin-top: 5vh !important;
+  width: 50vw !important;
+}
+.admin-table {
+  margin: 0 auto !important;
+  width: 50vw !important;
+}
 @media only screen and (max-width: 600px) {
   .filter-grid {
     grid-template-columns: 1fr;
