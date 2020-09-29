@@ -98,7 +98,7 @@ if (isset($_POST['login_user'])) {
           $_SESSION['name'] = strtoupper($name);
 
           if($designation =='Hod'){
-            header('location: dashboard.php');
+            header('location: index.php');
           }elseif($designation =='Dean'){
             header('location: dashboarddean.php');
           }elseif($designation =='Principal'){

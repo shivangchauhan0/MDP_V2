@@ -1,5 +1,9 @@
 window.onload = function triggerFunction() {
-  $("#menu-toggle").trigger("click");
+  var width = window.innerWidth;
+  console.log(width);
+  if (width > 600) {
+    $("#menu-toggle").trigger("click");
+  }
 };
 // Sidebar script
 $("#menu-toggle").click(function (e) {

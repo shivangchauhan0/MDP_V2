@@ -129,7 +129,7 @@
                    <td><?php echo strtoupper($row["name"])  ?></td>
                    <td><?php echo $row["sup_depart"]  ?></td>
                    <td><?php echo $row["department"]  ?></td>
-                   <td><?php echo $row["designation"] == "Professor"?"ASSSISTANT PROFESSOR" : strtoupper($row["designation"])  ?></td>
+                   <td><?php echo $row["designation"] == "Professor"?"ASSISTANT PROFESSOR" : strtoupper($row["designation"])  ?></td>
                 <td id='del'>
                 <center>
                 <form method='post' action='users.php' class='ui form delete'>

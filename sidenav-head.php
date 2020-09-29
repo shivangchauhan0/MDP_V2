@@ -3,6 +3,11 @@
       <div class="bg-light border-right" id="sidebar-wrapper">
         <div class="sidebar-heading my-1"><i class="fa fa-address-book fa-fw" aria-hidden="true"></i> Teacher's Diary</div>
         <div class="list-group list-group-flush">
+          <?php if ($_SESSION['designation'] == "Hod") { ?>
+            <a href="asst-professors.php" class="list-group-item list-group-item-action bg-light"
+              >Records Correction <i class="fa fa-pen fa-fw" aria-hidden="true"></i></a
+            >
+          <?php }?>
           <a href="index.php" class="list-group-item list-group-item-action bg-light"
             >Dashboard <i class="fa fa-desktop fa-fw" aria-hidden="true"></i></a
           >

@@ -45,8 +45,8 @@
            <div class="tt-row__item py-1 border px-2">
             <div class="ui form">
               <div class="tweleve wide field">
-                  <input class="py-1 mt-1 tt-input" form="tt-form" name="c1" value="<?php echo $row["c1"] ?>" type="text">
-                  <input class="py-1 mt-1 tt-input" form="tt-form" name="s1" value="<?php echo $row["s1"] ?>" type="text">
+                  <input class="py-1 mt-1 tt-input" form="tt-form" name="c1" value="<?php echo $row["c1"] ?>" type="text" placeholder="eg : class">
+                  <input class="py-1 mt-1 tt-input" form="tt-form" name="s1" value="<?php echo $row["s1"] ?>" type="text" placeholder="eg : subject">
               </div>
             </div>
            </div>
