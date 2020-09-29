@@ -18,6 +18,7 @@
         <div class="head-bar-sec">
             <h2>LIST OF RECORDS</h2>
             <a href="correction.php?unchecked='true'"><button type="submit" class="ui button bg-red mx-1 my-2" id="insert-id">Unchecked</button></a> 
+            <a href="correction-detailed.php?id=<?php echo $_GET['id'] ?>"><button type="submit" class="ui button bg-red mx-1 my-2" id="insert-id">Detailed</button></a> 
         </div>
         <table class="ui celled table">
         <thead>

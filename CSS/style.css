@@ -167,7 +167,7 @@ form.delete {
 /* CORRECTION PAGE */
 .head-bar-sec {
   display: grid;
-  grid-template-columns: 10fr 1fr;
+  grid-template-columns: 10fr 1fr 1fr;
 }
 .head-bar-sec > h2 {
   color: #a4243b;
