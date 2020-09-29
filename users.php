@@ -17,6 +17,9 @@
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
         <p id="username" class="mt-0 mr-3 mt-3"><i class='user icon'></i><strong><?php echo $_SESSION['name'] ?></strong></p>
         <a href="admin-dashboard.php"><button type="submit" class="ui button bg-red mx-1 my-2" id="insert-id">Add ID</button></a> 
+        <?php if ($_GET['filter_ID'] != "" || $_GET['filter_username'] != "" || $_GET['filter_name'] != "" || $_GET['filter_designation'] != "") {?>
+            <a href="users.php"><button type="submit" class="ui button bg-red mx-1 my-2" id="insert-id">Users</button></a> 
+        <?php } ?>
         <a href="index.php?logout='1'"><button type="submit" class="ui button bg-red mx-1 my-2" id="insert-id">Logout</button></a> 
         </ul>
     </div>
@@ -65,6 +68,8 @@
             <div class="thirteen wide field input">
               <select class="ui fluid dropdown search-day my-1" name="filter_designation" required>
                           <option value="">Search by Designation</option>
+                          <option value="Principal">Principal</option>
+                          <option value="Vice-Principal">Vice Principal</option>
                           <option value="Dean">Dean</option>
                           <option value="Hod">HOD</option>
                           <option value="Professor">Assistant Professor</option>
@@ -91,7 +96,26 @@
   </thead>
   <tbody>
       <?php
-		$sql = "SELECT * FROM `users` WHERE 1";
+        // ----------------FILTER VARIABLES-----------------
+        $filter_ID = $_GET['filter_ID'] != "" ? $_GET['filter_ID'] : "empty"; 
+        $filter_username = $_GET['filter_username'] != "" ? $_GET['filter_username'] : ""; 
+        $filter_name = $_GET['filter_name'] != "" ? $_GET['filter_name'] : ""; 
+        $filter_designation = $_GET['filter_designation'] != "" ? $_GET['filter_designation'] : ""; 
+        // ------------------------------------------------
+        // ----------------FILTER QUERIES-----------------
+        if ($filter_ID != "empty") {
+            $sql = "SELECT * FROM `users` WHERE `tid`='$filter_ID'";
+        } else if ($filter_username != "") {
+            $sql = "SELECT * FROM `users` WHERE `username` LIKE '$filter_username%'";
+        } else if ($filter_name != "") {
+            $sql = "SELECT * FROM `users` WHERE `name` LIKE '$filter_name%'";
+        } else if ($filter_designation != "") {
+            $sql = "SELECT * FROM `users` WHERE `designation` LIKE '$filter_designation'";
+        } else {
+            $sql = "SELECT * FROM `users` WHERE 1";
+        }
+        // -----------------------------------------------
+		// $sql = "SELECT * FROM `users` WHERE 1";
 		$result = $db-> query($sql);
 		if($result-> num_rows > 0){	
 			while ($row = $result-> fetch_assoc()) {

@@ -168,6 +168,9 @@ form.delete {
   .filter-grid {
     grid-template-columns: 1fr;
   }
+  .filter-grid-users {
+    grid-template-columns: 1fr;
+  }
   .ui.form:not(.unstackable) .fields:not(.unstackable) > .eight.wide.field,
   .ui.form:not(.unstackable) .fields:not(.unstackable) > .eleven.wide.field,
   .ui.form:not(.unstackable) .fields:not(.unstackable) > .fifteen.wide.field,
@@ -218,5 +221,21 @@ form.delete {
   .input-highlight {
     background: #000 !important;
     color: #fff !important;
+  }
+  /* ADMIN DASHBOARD */
+  .admin-form {
+    margin: 0 auto !important;
+    margin-top: 5vh !important;
+    margin-bottom: 5vh !important;
+    width: 90vw !important;
+  }
+  .admin-table {
+    margin: 0 auto !important;
+    margin-bottom: 5vh !important;
+    width: 90vw !important;
+  }
+  #id-input,
+  #deg-input {
+    width: 100% !important;
   }
 }

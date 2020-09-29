@@ -24,14 +24,14 @@
         <div class="head-bar">
             <h2 style="text-align:center" class="my-3 mx-4">ADD NEW ID</h2>
         </div>
- <form method="post" action="admin-dashboard.php" class="ui form admin-form">
+ <form method="post" action="admin-dashboard.php" class="ui form admin-form ">
     <?php include('errors.php'); ?>
     <div class="fields">
-      <div class="seven wide field">
+      <div id="id-input" class="seven wide field">
         <label>ID</label>
         <input placeholder="ID" name="tid" type="text" required>
       </div>
-      <div class="seven wide field">
+      <div id="deg-input" class="seven wide field">
         <label>Designation</label>
         <select class="ui fluid dropdown" name="designation" required>
                 <option value="">Designation</option>

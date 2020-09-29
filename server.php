@@ -299,8 +299,7 @@ if(isset($_POST['delete_user']))
   $id=number_format($id);
   $query = "DELETE FROM `users` WHERE `id` = $id";
   mysqli_query($db, $query);
-  header("Refresh:0");
-  // header("location: users.php");
+  header('Location: ' . $_SERVER['HTTP_REFERER']);
 }  
    
 ?>
