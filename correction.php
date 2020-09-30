@@ -30,7 +30,8 @@
             <?php  } ?>
             <a class="float-right" href="correction-detailed.php?id=<?php echo $_GET['id'] ?>"><button type="submit" class="ui button bg-red mx-1 my-2" id="insert-id">Detailed</button></a> 
         </div>
-        <div class="ui segment check-form-seg my-5">
+        <?php if ($_GET['unchecked'] == 'true') { ?>
+        <div class="ui segment check-form-seg">
           <form method="post" action="index.php" class="ui form check-form">
             <div class="fields">
               <div class="field">
@@ -66,6 +67,7 @@
             </div>
           </form>
         </div>
+        <?php  } ?>
         <table class="ui celled table">
         <thead>
           <tr id="table-head">

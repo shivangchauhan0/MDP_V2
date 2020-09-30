@@ -173,6 +173,10 @@ form.delete {
   font-family: "Montserrat", sans-serif !important;
   display: inline !important;
 }
+.check-form-seg {
+  margin-top: 5vh !important;
+  margin-bottom: 3vh !important;
+}
 .check-form {
   padding: 2vh 2vw 0.5vh 3vw;
   width: 80vw !important;
