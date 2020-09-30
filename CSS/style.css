@@ -178,10 +178,18 @@ form.delete {
   margin-bottom: 3vh !important;
 }
 .check-form {
-  padding: 2vh 2vw 0.5vh 3vw;
+  padding: 1vh 2vw 0vh 3vw;
   width: 80vw !important;
-  /* background: green; */
   margin: 0 auto !important;
+}
+#undo {
+  background: #fff !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  color: #a4243b;
+  margin-left: 0.3vw;
+  margin-top: 0.7vh;
+  font-size: 1.4rem;
 }
 @media only screen and (max-width: 600px) {
   .filter-grid {

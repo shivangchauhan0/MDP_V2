@@ -31,6 +31,44 @@
               ?>
               <a class="float-right" href="correction.php?id=<?php echo $_GET['id'] ?>"><button type="submit" class="ui button bg-red mx-1 my-2" id="insert-id">Brief</button></a> 
         </div>
+        <?php if ($_GET['unchecked'] == 'true') { ?>
+        <div class="ui segment check-form-seg">
+          <form method="post" action="index.php" class="ui form check-form">
+            <div class="fields">
+              <div class="field">
+              <label>Status</label>
+                <div class="ui">
+                  <input type="radio" class="radio-btn" name="done_princi" value="<?php echo $today." ".$day." ".$lecture." ".$cl." ".T." ".$username ?>" tabindex="0" class="hidden" required>
+                  <label class="radio-label">Complete</label>
+                </div>
+              </div>
+              <div class="field">
+              <label style="visibility:hidden">Comment</label>
+                <div class="ui">
+                  <input type="radio" class="radio-btn" name="done_princi" value="<?php echo $today." ".$day." ".$lecture." ".$cl." ".F." ".$username ?>" tabindex="0" class="hidden">
+                  <label class="radio-label">Incomplete</label>
+                </div>
+              </div>
+              <div class="eleven wide field">
+                <label>Comment (Optional)</label>
+                <input id="comment" name="sec_princi_com" type="text" placeholder="">
+                <input type="text" name="filter_date" class="d-none" value="<?php echo $_GET['filter_date']?>">
+                <input type="text" name="filter_day" class="d-none" value="<?php echo $_GET['filter_day']?>">
+                <input type="text" name="filter_day" class="d-none" value="<?php echo $_GET['from_date']?>">
+                <input type="text" name="till_date" class="d-none" value="<?php echo $_GET['till_date']?>">
+                <input type="text" name="lecture" class="d-none" value="<?php echo $_GET['lecture']?>">
+
+              </div>
+              <div class="field">
+                <label style="visibility:hidden">Comment</label>
+                <button type="submit" name="toggle_principal"  id="done" class="ui button bg-red">
+                 Check
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <?php  } ?>
       <table class="ui celled table"id="show-records-table">
         <thead>
           <tr id="table-head">
@@ -46,8 +84,10 @@
             <th>CLASS ACTIVITY</th>	  
             <th>ATTENDANCE</th>	  
             <th>OTHER ACTIVITY</th>	  
-            <th>REMARK</th>	  
-            <th>STATUS</th>	  
+            <th>STATUS</th>
+            <?php if ($_GET['unchecked'] != 'true') { ?>
+            <th>UNCHECK</th>	  
+            <?php  } ?>  
           </tr>
         </thead>
         <tbody>
@@ -109,8 +149,16 @@
                 <td><?php echo  $row["class_activity"] ?></td>
                 <td><?php echo  $row["attendance"] ?></td>
                 <td><?php echo  $row["other_activity"] ?></td>
-                <td><?php echo  $row["remark"] ?></td>
                 <td><?php echo ($row["hod"] == 1 ?  $hod_true : ($row["hod"] == 2 ? $incomp : $hod_false))." ".($row["dean"] == 1 ? $dean_true : ($row["dean"] == 2 ? $incomp : $dean_false))." ".($row["principal"] == 1 ? $principal_true : ($row["principal"] == 2 ? $incomp : $principal_false))?></td>
+              <?php if ($_GET['unchecked'] != 'true') { ?>
+                <td class="no-pad" >
+                  <form method="post" action="index.php" class="ui form delete">
+                    <button onclick="return checkUndo()" type="submit" name="uncheck" value="<?php echo $row['srno']?>" id="undo" class="ui mini icon button">
+                    <i class="redo alternate icon"></i>
+                    </button>
+                  </form>
+                </td> 
+              <?php  } ?>
             </tr>
           <?php
         }

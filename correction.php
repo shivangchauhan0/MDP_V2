@@ -80,6 +80,9 @@
             <th><i class="circle blue icon"></i> DEAN</th>
             <th><i class="circle green icon"></i>PRINCIPAL</th>
             <th>STATUS</th>	  
+            <?php if ($_GET['unchecked'] != 'true') { ?>
+            <th>UNCHECK</th>	  
+            <?php  } ?>
           </tr>
         </thead>
         <tbody>
@@ -140,6 +143,15 @@
                 <td><?php echo  ($row["dean"] == 1 ? "Complete" : ($row["dean"] == 2 ? "Incomplete" : "")) ?></td>
                 <td><?php echo  ($row["principal"] == 1 ? "Complete" : ($row["principal"] == 2 ? "Incomplete" : "")) ?></td>
                 <td><?php echo ($row["hod"] == 1 ?  $hod_true : ($row["hod"] == 2 ? $incomp : $hod_false))." ".($row["dean"] == 1 ? $dean_true : ($row["dean"] == 2 ? $incomp : $dean_false))." ".($row["principal"] == 1 ? $principal_true : ($row["principal"] == 2 ? $incomp : $principal_false))?></td>
+              <?php if ($_GET['unchecked'] != 'true') { ?>
+                <td class="no-pad" >
+                  <form method="post" action="index.php" class="ui form delete">
+                    <button onclick="return checkUndo()" type="submit" name="uncheck" value="<?php echo $row['srno']?>" id="undo" class="ui mini icon button">
+                    <i class="redo alternate icon"></i>
+                    </button>
+                  </form>
+                </td> 
+              <?php  } ?>
             </tr>
           <?php 
               }
