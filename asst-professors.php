@@ -37,9 +37,9 @@
                          { ?>
                         <tr>
                             <td style="width:11vw"><span class="mx-1"><?php echo $row["tid"] ?></span></td>
-                            <td><a href="correction.php?id=<?php echo $row['username']?>" style="color:#000" class="mx-1"><?php echo $row["name"] ?></a></td>
+                            <td><a href="correction.php?id=<?php echo $row['username']?>&unchecked=true" style="color:#000" class="mx-1"><?php echo $row["name"] ?></a></td>
                             <td style="width:11vw">
-                                <a href="correction.php?id=<?php echo $row['username']?>"><button type="submit" class="ui button tiny bg-red mx-1" id="insert-id">Correct <i class="fa fa-pen fa-fw ml-1" aria-hidden="true"></i></button></a> 
+                                <a href="correction.php?id=<?php echo $row['username']?>&unchecked=true"><button type="submit" class="ui button tiny bg-red mx-1" id="insert-id">Correct <i class="fa fa-pen fa-fw ml-1" aria-hidden="true"></i></button></a> 
                             </td>
                         </tr>
                 <?php	}
