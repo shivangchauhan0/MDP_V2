@@ -28,7 +28,7 @@
             <?php  } else { ?>
                 <a class="float-right" href="correction.php?id=<?php echo $_GET['id'] ?>&filter_date=<?php echo $_GET['filter_date'] ?>&filter_day=<?php echo $_GET['filter_day'] ?>&from_date=<?php echo $_GET['from_date'] ?>&till_date=<?php echo $_GET['till_date'] ?>&filter_lecture=<?php echo $_GET['filter_lecture'] ?>&limit=<?php echo $_GET['limit'] ?>&unchecked=true"><button type="submit" class="ui button bg-red mx-1 my-2" id="insert-id">Unchecked</button></a>
             <?php  } ?>
-            <a class="float-right" href="correction-detailed.php?id=<?php echo $_GET['id'] ?>"><button type="submit" class="ui button bg-red mx-1 my-2" id="insert-id">Detailed</button></a> 
+            <a class="float-right" href="correction-detailed.php?id=<?php echo $_GET['id'] ?>&unchecked=true"><button type="submit" class="ui button bg-red mx-1 my-2" id="insert-id">Detailed</button></a> 
         </div>
         <?php if ($_GET['unchecked'] == 'true') { ?>
         <div class="ui segment check-form-seg">
@@ -117,6 +117,16 @@
               $start_sql = "SELECT * FROM `notes` WHERE `username`='$username'";
             }
             if ($unchecked == "true") {
+                if ($_SESSION['designation'] == 'Hod') {
+                  $mid_sql = " AND `hod` = '0' AND `principal`='0' ";
+                } else if ($_SESSION['designation'] == 'Dean') {
+                  $mid_sql = " AND `dean` = '0' AND `principal`='0' ";
+                } else if ($_SESSION['designation'] == 'Principal' || $_SESSION['designation'] == 'Vice-Principal') {
+                  $mid_sql = " AND `principal`='0' ";
+                } else {
+                  $mid_sql="";
+                }
+                
                 $mid_sql = " AND `hod` = '0' AND `principal`='0' ";
             } else {
                 $mid_sql="";
