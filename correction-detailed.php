@@ -62,7 +62,7 @@
             $principal_false="<i class=\"circle outline green icon\"></i>";	
             // ----------------FILTER VARIABLES-----------------
             $unchecked = $_GET['unchecked'] != "" ? $_GET['unchecked'] : "false";
-            $limit = $_GET['limit'] != "" ? $_GET['limit'] : 5;
+            $limit = $_GET['limit'] != "" ? $_GET['limit'] : 25;
             $filter_date = $_GET['filter_date'] != "" ? $_GET['filter_date'] : "empty"; 
             $filter_day = $_GET['filter_day'] != "" ? $_GET['filter_day'] : ""; 
             $from_date = $_GET['from_date'] != "" ? $_GET['from_date'] : ""; 
