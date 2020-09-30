@@ -16,8 +16,14 @@
  </nav>
     <div class="container-fluid my-3">
       <div class="head-bar-sec">
-              <h2>LIST OF RECORDS</h2>
-              <?php if ($_GET['unchecked'] == 'true') { ?>
+          <?php 
+              $user = $_GET['id'];
+              $sql = "SELECT * FROM `users` WHERE `username` = '$user'";
+              $result = $db->query($sql);
+              $row = $result->fetch_assoc();
+            ?>
+            <h2>LIST OF RECORDS &#8594 <?php echo strtoupper($row['name'])?></h2>
+            <?php if ($_GET['unchecked'] == 'true') { ?>
                 <a class="float-right" href="correction-detailed.php?id=<?php echo $_GET['id'] ?>&filter_date=<?php echo $_GET['filter_date'] ?>&filter_day=<?php echo $_GET['filter_day'] ?>&from_date=<?php echo $_GET['from_date'] ?>&till_date=<?php echo $_GET['till_date'] ?>&filter_lecture=<?php echo $_GET['filter_lecture'] ?>&limit=<?php echo $_GET['limit'] ?>"><button type="submit" class="ui button bg-red mx-1 my-2 " id="insert-id">All Records</button></a>
             <?php  } else { ?>
                 <a class="float-right" href="correction-detailed.php?id=<?php echo $_GET['id'] ?>&filter_date=<?php echo $_GET['filter_date'] ?>&filter_day=<?php echo $_GET['filter_day'] ?>&from_date=<?php echo $_GET['from_date'] ?>&till_date=<?php echo $_GET['till_date'] ?>&filter_lecture=<?php echo $_GET['filter_lecture'] ?>&limit=<?php echo $_GET['limit'] ?>&unchecked=true"><button type="submit" class="ui button bg-red mx-1 my-2" id="insert-id">Unchecked</button></a>
@@ -122,7 +128,8 @@
           <form method="get" action="correction-detailed.php" class="ui form my-3 mx-2">
             <div class="fields">
               <div class="thirteen wide field ">
-              <input type="text" name="filter_date" class="search-bar my-1" placeholder="Date" onfocus="(this.type='date')" onblur="(this.type='text')" required>
+                <input type="text" name="filter_date" class="search-bar my-1" placeholder="Date" onfocus="(this.type='date')" onblur="(this.type='text')" required>
+                <input type="text" name="id" class="d-none" value="<?php echo $_GET['id']?>">
               </div>
               <button type="submit" class="circular ui inline icon button search-btn my-1" name="limit" value="<?php echo $limit ?>">
                 <i class="search icon"></i>
@@ -143,6 +150,7 @@
                           <option value="Friday">Friday</option>
                           <option value="Saturday">Saturday</option>
                       </select>
+                  <input type="text" name="id" class="d-none" value="<?php echo $_GET['id']?>">
                   </div>
               <button type="submit" class="circular ui inline icon button search-btn my-1" name="limit" value="<?php echo $limit ?>">
                 <i class="search icon"></i>
@@ -154,11 +162,12 @@
           <form method="get" action="correction-detailed.php" class="ui form my-3 mx-2">
             <div class="fields between">
               <div class="seven wide field ">
-              <input type="text" name="from_date" class="search-bar my-1" placeholder="From" onfocus="(this.type='date')" onblur="(this.type='text')" required>
+                <input type="text" name="from_date" class="search-bar my-1" placeholder="From" onfocus="(this.type='date')" onblur="(this.type='text')" required>
+                <input type="text" name="id" class="d-none" value="<?php echo $_GET['id']?>">
               </div>
               <i class="arrows alternate horizontal icon" id="between-arrow"></i>
               <div class="seven wide field ">
-              <input type="text" name="till_date" class="search-bar my-1" placeholder="Till" onfocus="(this.type='date')" onblur="(this.type='text')" required>
+                <input type="text" name="till_date" class="search-bar my-1" placeholder="Till" onfocus="(this.type='date')" onblur="(this.type='text')" required>
               </div>
               <button type="submit" class="circular ui inline icon button search-btn my-1" name="limit" value="<?php echo $limit ?>">
                 <i class="search icon"></i>
