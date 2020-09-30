@@ -18,9 +18,9 @@
       <div class="head-bar-sec">
               <h2>LIST OF RECORDS</h2>
               <?php if ($_GET['unchecked'] == 'true') { ?>
-                  <a class="float-right" href="correction-detailed.php?id=<?php echo $_GET['id'] ?>"><button type="submit" class="ui button bg-red mx-1 my-2 " id="insert-id">All Records</button></a>
+                <a class="float-right" href="correction-detailed.php?id=<?php echo $_GET['id'] ?>&filter_date=<?php echo $_GET['filter_date'] ?>&filter_day=<?php echo $_GET['filter_day'] ?>&from_date=<?php echo $_GET['from_date'] ?>&till_date=<?php echo $_GET['till_date'] ?>&filter_lecture=<?php echo $_GET['filter_lecture'] ?>&limit=<?php echo $_GET['limit'] ?>"><button type="submit" class="ui button bg-red mx-1 my-2 " id="insert-id">All Records</button></a>
             <?php  } else { ?>
-                  <a class="float-right" href="correction-detailed.php?id=<?php echo $_GET['id'] ?>&unchecked=true"><button type="submit" class="ui button bg-red mx-1 my-2" id="insert-id">Unchecked</button></a>
+                <a class="float-right" href="correction-detailed.php?id=<?php echo $_GET['id'] ?>&filter_date=<?php echo $_GET['filter_date'] ?>&filter_day=<?php echo $_GET['filter_day'] ?>&from_date=<?php echo $_GET['from_date'] ?>&till_date=<?php echo $_GET['till_date'] ?>&filter_lecture=<?php echo $_GET['filter_lecture'] ?>&limit=<?php echo $_GET['limit'] ?>&unchecked=true"><button type="submit" class="ui button bg-red mx-1 my-2" id="insert-id">Unchecked</button></a>
             <?php  }
               ?>
               <a class="float-right" href="correction.php?id=<?php echo $_GET['id'] ?>"><button type="submit" class="ui button bg-red mx-1 my-2" id="insert-id">Brief</button></a> 
@@ -69,7 +69,7 @@
             } else if ($filter_day != "") {
               $start_sql = "SELECT * FROM `notes` WHERE `username`='$username' AND `day`='$filter_day'";
             } else if ($from_date != "") {
-              $start_sql = "SELECT * FROM `notes` WHERE `username`='$username' AND `date` BETWEEN `from_date` AND `till_date`;";
+              $start_sql = "SELECT * FROM `notes` WHERE `username`='$username' AND `date` BETWEEN '$from_date' AND '$till_date'";
             } else if ($filter_lecture != "") {
               $start_sql = "SELECT * FROM `notes` WHERE `username`='$username' AND `lecture`='$filter_lecture'";
             } else {
@@ -110,7 +110,7 @@
         }
               }
               else {
-                echo "<div class='alert alert-danger my-2' role='alert'>
+                echo "<div class='alert alert-danger my-4' role='alert'>
                 No records found!
               </div>";
               }
@@ -119,7 +119,7 @@
       </table>
       <div class="filter-grid my-2">
         <div>
-          <form method="get" action="show-records.php" class="ui form my-3 mx-2">
+          <form method="get" action="correction-detailed.php" class="ui form my-3 mx-2">
             <div class="fields">
               <div class="thirteen wide field ">
               <input type="text" name="filter_date" class="search-bar my-1" placeholder="Date" onfocus="(this.type='date')" onblur="(this.type='text')" required>
@@ -131,7 +131,7 @@
           </form>
         </div>
         <div>
-        <form method="get" action="show-records.php" class="ui form my-3 mx-2">
+        <form method="get" action="correction-detailed.php" class="ui form my-3 mx-2">
           <div class="fields">
           <div class="thirteen wide field input">
                       <select class="ui fluid dropdown search-day my-1" name="filter_day" required>
@@ -151,7 +151,7 @@
           </form>
         </div>
         <div>
-          <form method="get" action="show-records.php" class="ui form my-3 mx-2">
+          <form method="get" action="correction-detailed.php" class="ui form my-3 mx-2">
             <div class="fields between">
               <div class="seven wide field ">
               <input type="text" name="from_date" class="search-bar my-1" placeholder="From" onfocus="(this.type='date')" onblur="(this.type='text')" required>
@@ -167,19 +167,20 @@
           </form>
         </div>
         <div>
-        <form method="get" action="show-records.php" class="ui form my-3 mx-2">
+        <form method="get" action="correction-detailed.php" class="ui form my-3 mx-2">
           <div class="fields">
-            <div class="thirteen wide field input">
-              <select class="ui fluid dropdown search-day my-1" name="filter_lecture" required>
-                <option value="">lecture</option>
-                <option value="First">First</option>
-                <option value="Second">Second</option>
-                <option value="Third">Third</option>
-                <option value="Fourth">Fourth</option>
-                <option value="Fifth">Fifth</option>
-                <option value="Sixth">Sixth</option>
-                <option value="Seventh">Seventh</option>
+              <div class="thirteen wide field input">
+                <select class="ui fluid dropdown search-day my-1" name="filter_lecture" required>
+                    <option value="">lecture</option>
+                    <option value="First">First</option>
+                    <option value="Second">Second</option>
+                    <option value="Third">Third</option>
+                    <option value="Fourth">Fourth</option>
+                    <option value="Fifth">Fifth</option>
+                    <option value="Sixth">Sixth</option>
+                    <option value="Seventh">Seventh</option>
                 </select>
+                <input type="text" name="id" class="d-none" value="<?php echo $_GET['id']?>">
               </div>
               <button type="submit" class="circular ui inline icon button search-btn my-1" name="limit" value="<?php echo $limit ?>">
                 <i class="search icon"></i>
@@ -188,11 +189,12 @@
           </form>
         </div>
       </div>
-        <form method="get" action="show-records.php" class="ui form row-form">
+        <form method="get" action="correction-detailed.php" class="ui form row-form">
           <div class="inline fields">
             <label> Records per page</label>
             <div class="seven wide field">
               <input type="number" name="limit" value="<?php echo $limit ?>">
+              <input type="text" name="id" class="d-none" value="<?php echo $_GET['id']?>">
             </div>
               <button id="btn" class="ui button bg-red my-2" type="submit">Submit</button>
           </div>
