@@ -22,14 +22,43 @@
           $result = $db->query($sql);
           $row = $result->fetch_assoc();
         ?>
-            <h2>LIST OF RECORDS &#8594 <?php echo strtoupper($row['name'])?></h2>
+            <h2>LIST OF ALL <?php echo $_GET['unchecked'] == "true"?"UNCHECKED":"" ?> RECORDS &#8594 <?php echo strtoupper($row['name'])?></h2>
             <?php if ($_GET['unchecked'] == 'true') { ?>
                 <a class="float-right" href="correction.php?id=<?php echo $_GET['id'] ?>&filter_date=<?php echo $_GET['filter_date'] ?>&filter_day=<?php echo $_GET['filter_day'] ?>&from_date=<?php echo $_GET['from_date'] ?>&till_date=<?php echo $_GET['till_date'] ?>&filter_lecture=<?php echo $_GET['filter_lecture'] ?>&limit=<?php echo $_GET['limit'] ?>"><button type="submit" class="ui button bg-red mx-1 my-2 " id="insert-id">All Records</button></a>
-          <?php  } else { ?>
+            <?php  } else { ?>
                 <a class="float-right" href="correction.php?id=<?php echo $_GET['id'] ?>&filter_date=<?php echo $_GET['filter_date'] ?>&filter_day=<?php echo $_GET['filter_day'] ?>&from_date=<?php echo $_GET['from_date'] ?>&till_date=<?php echo $_GET['till_date'] ?>&filter_lecture=<?php echo $_GET['filter_lecture'] ?>&limit=<?php echo $_GET['limit'] ?>&unchecked=true"><button type="submit" class="ui button bg-red mx-1 my-2" id="insert-id">Unchecked</button></a>
-          <?php  }
-            ?>
+            <?php  } ?>
             <a class="float-right" href="correction-detailed.php?id=<?php echo $_GET['id'] ?>"><button type="submit" class="ui button bg-red mx-1 my-2" id="insert-id">Detailed</button></a> 
+        </div>
+        <div class="ui segment my-4">
+          <form method="post" action="index.php" class="ui form done">
+            <div class="fields">
+              <div class="field">
+              <label>Status</label>
+                <div class="ui">
+                  <input type="radio" class="radio-btn" name="done_princi" value="<?php echo $today." ".$day." ".$lecture." ".$cl." ".T." ".$username ?>" tabindex="0" class="hidden" required>
+                  <label class="radio-label">Complete</label>
+                </div>
+              </div>
+              <div class="field">
+              <label style="visibility:hidden">Comment</label>
+                <div class="ui">
+                  <input type="radio" class="radio-btn" name="done_princi" value="<?php echo $today." ".$day." ".$lecture." ".$cl." ".F." ".$username ?>" tabindex="0" class="hidden">
+                  <label class="radio-label">Incomplete</label>
+                </div>
+              </div>
+              <div class="twelve wide field">
+                <label>Comment (Optional)</label>
+                <input id="comment" name="sec_princi_com" type="text" placeholder="">
+              </div>
+              <div class="field">
+                <label style="visibility:hidden">Comment</label>
+                <button type="submit" name="toggle_principal"  id="done" class="ui button bg-red">
+                 Check
+                </button>
+              </div>
+            </div>
+          </form>
         </div>
         <table class="ui celled table">
         <thead>
@@ -126,9 +155,16 @@
                 }
               }
               else {
-                echo "<div class='alert alert-danger my-4' role='alert'>
-                      No records found!
-                      </div>";
+                if ($_GET['unchecked'] == 'true') {
+                  echo "<div class='alert alert-danger my-4' role='alert'>
+                        No Unchekced records found!
+                        </div>";
+                } else {
+                  echo "<div class='alert alert-danger my-4' role='alert'>
+                        No records found!
+                        </div>";
+                }
+                
               }
           ?>
         </tbody>
