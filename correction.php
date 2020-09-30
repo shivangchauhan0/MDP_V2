@@ -30,8 +30,8 @@
             <?php  } ?>
             <a class="float-right" href="correction-detailed.php?id=<?php echo $_GET['id'] ?>"><button type="submit" class="ui button bg-red mx-1 my-2" id="insert-id">Detailed</button></a> 
         </div>
-        <div class="ui segment my-4">
-          <form method="post" action="index.php" class="ui form done">
+        <div class="ui segment check-form-seg my-5">
+          <form method="post" action="index.php" class="ui form check-form">
             <div class="fields">
               <div class="field">
               <label>Status</label>
@@ -47,9 +47,15 @@
                   <label class="radio-label">Incomplete</label>
                 </div>
               </div>
-              <div class="twelve wide field">
+              <div class="eleven wide field">
                 <label>Comment (Optional)</label>
                 <input id="comment" name="sec_princi_com" type="text" placeholder="">
+                <input type="text" name="filter_date" class="d-none" value="<?php echo $_GET['filter_date']?>">
+                <input type="text" name="filter_day" class="d-none" value="<?php echo $_GET['filter_day']?>">
+                <input type="text" name="filter_day" class="d-none" value="<?php echo $_GET['from_date']?>">
+                <input type="text" name="till_date" class="d-none" value="<?php echo $_GET['till_date']?>">
+                <input type="text" name="lecture" class="d-none" value="<?php echo $_GET['lecture']?>">
+
               </div>
               <div class="field">
                 <label style="visibility:hidden">Comment</label>

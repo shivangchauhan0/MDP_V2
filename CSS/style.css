@@ -173,6 +173,12 @@ form.delete {
   font-family: "Montserrat", sans-serif !important;
   display: inline !important;
 }
+.check-form {
+  padding: 2vh 2vw 0.5vh 3vw;
+  width: 80vw !important;
+  /* background: green; */
+  margin: 0 auto !important;
+}
 @media only screen and (max-width: 600px) {
   .filter-grid {
     grid-template-columns: 1fr;
@@ -252,5 +258,13 @@ form.delete {
     margin-bottom: 1vh;
     font-size: 20px;
     display: block !important;
+  }
+  .check-form {
+    margin: 0 auto !important;
+    width: 90vw !important;
+  }
+  .check-form-seg {
+    margin-top: 10vh !important;
+    margin-bottom: 3vh !important;
   }
 }
