@@ -23,7 +23,7 @@
                   <a class="float-right" href="correction-detailed.php?id=<?php echo $_GET['id'] ?>&unchecked=true"><button type="submit" class="ui button bg-red mx-1 my-2" id="insert-id">Unchecked</button></a>
             <?php  }
               ?>
-              <a class="float-right" href="correction-detailed.php?id=<?php echo $_GET['id'] ?>"><button type="submit" class="ui button bg-red mx-1 my-2" id="insert-id">Detailed</button></a> 
+              <a class="float-right" href="correction.php?id=<?php echo $_GET['id'] ?>"><button type="submit" class="ui button bg-red mx-1 my-2" id="insert-id">Brief</button></a> 
         </div>
       <table class="ui celled table"id="show-records-table">
         <thead>
