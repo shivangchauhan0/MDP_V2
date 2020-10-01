@@ -29,8 +29,8 @@
             <tbody>
             <?php
                 // $sup_dep = $_SESSION['sup_depart'];
-                $sup_dep = $_GET['sup_depart'] == ""? $_SESSION['sup_depart'] : $_GET['sup_depart'];
-                $sql = "SELECT * FROM `department` WHERE `sup_depart`='$sup_dep'";
+                // $sup_dep = $_GET['sup_depart'] == ""? $_SESSION['sup_depart'] : $_GET['sup_depart'];
+                $sql = "SELECT * FROM `sup_depart` WHERE  1" ;
                 $result = $db-> query($sql);
                 $srno = 0;
                 if($result-> num_rows > 0){	
@@ -38,9 +38,9 @@
                     { $srno++; ?>
                         <tr>
                             <td style="width:11vw"><span class="mx-1"><?php echo $srno ?></span></td>
-                            <td><a href="asst-professors.php?department=<?php echo $row['department']?>&unchecked=true" style="color:#000" class="mx-1"><?php echo $row["department"] ?></a></td>
+                            <td><a href="asst-professors.php?sup_depart=<?php echo $row['sup_depart']?>&unchecked=true" style="color:#000" class="mx-1"><?php echo $row["sup_depart"] ?></a></td>
                             <td style="width:11vw">
-                                <a href="asst-professors.php?department=<?php echo $row['department']?>&unchecked=true"><button type="submit" class="ui button tiny bg-red mx-1" id="insert-id">Correct <i class="fa fa-pen fa-fw ml-1" aria-hidden="true"></i></button></a> 
+                                <a href="asst-professors.php?sup_depart=<?php echo $row['sup_depart']?>&unchecked=true"><button type="submit" class="ui button tiny bg-red mx-1" id="insert-id">Correct <i class="fa fa-pen fa-fw ml-1" aria-hidden="true"></i></button></a> 
                             </td>
                         </tr>
                 <?php	
