@@ -11,7 +11,12 @@
             <a href="sub-departments.php" class="list-group-item list-group-item-action bg-light"
               >Records Correction <i class="fa fa-pen fa-fw" aria-hidden="true"></i></a
             >
-          <?php  }?>
+          <?php } elseif ($_SESSION['designation'] == "Principal") { ?>
+            <a href="departments.php" class="list-group-item list-group-item-action bg-light"
+              >Departments <i class="fa fa-book fa-fw" aria-hidden="true"></i></a
+            >
+          <?php } ?>
+          <?php if ($_SESSION['designation'] != "Principal") { ?>
           <a href="index.php" class="list-group-item list-group-item-action bg-light"
             >Dashboard <i class="fa fa-desktop fa-fw" aria-hidden="true"></i></a
           >
@@ -24,6 +29,7 @@
           <a href="timetable.php" class="list-group-item list-group-item-action bg-light"
             >Timetable <i class='table icon'></i></a
           >
+          <?php }?>
           <a href="index.php?logout='1'" id="logout-btn" class="list-group-item list-group-item-action bg-light border-bottom"
             >Logout <i class='sign in alternate icon'></i></a
           >

@@ -39,7 +39,7 @@
                             continue;
                         }
                         else { ?>
-                        <tr>
+                        <tr class="<?php echo $row['designation'] == "Hod" ? "active" : "" ?>">
                             <td style="width:11vw"><span class="mx-1"><?php echo $row["tid"] ?></span></td>
                             <td><a href="correction.php?id=<?php echo $row['username']?>&unchecked=true" style="color:#000" class="mx-1"><?php echo $row["name"] ?></a></td>
                             <td><a href="correction.php?id=<?php echo $row['username']?>&unchecked=true" style="color:#000" class="mx-1"><?php echo $row["designation"] == "Professor"?"ASSISTANT PROFESSOR" : strtoupper($row["designation"]) ?></a></td>
