@@ -25,7 +25,7 @@
             >Timetable <i class='table icon'></i></a
           >
           <a href="index.php?logout='1'" id="logout-btn" class="list-group-item list-group-item-action bg-light border-bottom"
-            >Logout <i class='sign in alternate icon'></i></i></a
+            >Logout <i class='sign in alternate icon'></i></a
           >
         </div>
       </div>
