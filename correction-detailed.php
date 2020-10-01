@@ -32,25 +32,25 @@
               <a class="float-right" href="correction.php?id=<?php echo $_GET['id'] ?>&unchecked=true"><button type="submit" class="ui button bg-red mx-1 my-2" id="insert-id">Brief</button></a> 
         </div>
         <?php if ($_GET['unchecked'] == 'true') { ?>
-        <div class="ui segment check-form-seg">
+        <div class="check-form-seg">
           <form method="post" action="index.php" class="ui form check-form">
             <div class="fields">
               <div class="field">
-              <label>Status</label>
+              <label class="correction-form-label">Status</label>
                 <div class="ui">
                   <input type="radio" class="radio-btn" name="done_princi" value="<?php echo $today." ".$day." ".$lecture." ".$cl." ".T." ".$username ?>" tabindex="0" class="hidden" required>
-                  <label class="radio-label">Complete</label>
+                  <label class="correction-form-label" class="radio-label">Complete</label>
                 </div>
               </div>
               <div class="field">
               <label style="visibility:hidden">Comment</label>
                 <div class="ui">
                   <input type="radio" class="radio-btn" name="done_princi" value="<?php echo $today." ".$day." ".$lecture." ".$cl." ".F." ".$username ?>" tabindex="0" class="hidden">
-                  <label class="radio-label">Incomplete</label>
+                  <label class="correction-form-label" class="radio-label">Incomplete</label>
                 </div>
               </div>
               <div class="eleven wide field">
-                <label>Comment (Optional)</label>
+                <label class="correction-form-label">Comment</label>
                 <input id="comment" name="sec_princi_com" type="text" placeholder="">
                 <input type="text" name="filter_date" class="d-none" value="<?php echo $_GET['filter_date']?>">
                 <input type="text" name="filter_day" class="d-none" value="<?php echo $_GET['filter_day']?>">
