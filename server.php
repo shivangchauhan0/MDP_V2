@@ -100,7 +100,7 @@ if (isset($_POST['login_user'])) {
           if($designation =='Hod'){
             header('location: asst-professors.php');
           }elseif($designation =='Dean'){
-            header('location: dashboarddean.php');
+            header('location: sub-departments.php');
           }elseif($designation =='Principal'){
             header('location: principaldash.php');
           }elseif($username =='admin'){

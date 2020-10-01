@@ -23,28 +23,38 @@
                 <tr id="table-head">
                 <th>ID</th>
                 <th>Name</th>
+                <th>Designation</th>
                 <th>Correct</th>
                 </tr>
             </thead>
             <tbody>
             <?php
-                $dep = $_SESSION['department'];
+                // $dep = $_SESSION['department'];
+                $dep = $_GET['department'] == ""? $_SESSION['department'] : $_GET['department'];
                 $sql = "SELECT * FROM `users` WHERE `department`='$dep'";
                 $result = $db-> query($sql);
                 if($result-> num_rows > 0){	
                     while ($row = $result-> fetch_assoc())
-                     if ($row['designation'] != "Hod") {
-                         { ?>
+                    {
+                        if ($row['designation'] == "Hod" AND $_SESSION['designation'] == "Hod") {
+                            continue;
+                        }
+                        else { ?>
                         <tr>
                             <td style="width:11vw"><span class="mx-1"><?php echo $row["tid"] ?></span></td>
                             <td><a href="correction.php?id=<?php echo $row['username']?>&unchecked=true" style="color:#000" class="mx-1"><?php echo $row["name"] ?></a></td>
+                            <td><a href="correction.php?id=<?php echo $row['username']?>&unchecked=true" style="color:#000" class="mx-1"><?php echo $row["designation"] ?></a></td>
                             <td style="width:11vw">
                                 <a href="correction.php?id=<?php echo $row['username']?>&unchecked=true"><button type="submit" class="ui button tiny bg-red mx-1" id="insert-id">Correct <i class="fa fa-pen fa-fw ml-1" aria-hidden="true"></i></button></a> 
                             </td>
                         </tr>
                 <?php	}
                      }
-                }
+                } else {
+                    echo "<div class='alert alert-danger my-2' role='alert'>
+                          No records found!
+                          </div>";
+                  }
             ?>
             </tbody>
         </table>
