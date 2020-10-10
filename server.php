@@ -221,7 +221,7 @@ if(isset($_POST['tt_update']))
     mysqli_query($db, $query);
     header('location: timetable.php');
   }
-  //   NEW SUBMIT RECORD ROUTE
+//   NEW SUBMIT RECORD ROUTE
 if (isset($_POST['add_record'])) { 
   date_default_timezone_set('Asia/Kolkata');
   $date_t = mysqli_real_escape_string($db, $_POST['add_record']);
@@ -238,8 +238,17 @@ if (isset($_POST['add_record'])) {
   $attendance = mysqli_real_escape_string($db, $_POST['attendance']);
   $other_activity = mysqli_real_escape_string($db, $_POST['otheractivity']);
   $remark = mysqli_real_escape_string($db, $_POST['remark']);
-
-  $query = "INSERT INTO `notes`( `username`, `lecture`, `class`, `subject`,`date`,`day` , `theory/prac`, `methodology`, `teaching_aid`, `content`, `class_activity`, `attendance`, `other_activity`, `remark`) VALUES ('$current_user','$lecture','$class','$subject','$date_t','$dayOfWeek','$classtype','$methodology','$teaching_aid','$content','$class_activity','$attendance','$other_activity','$remark')";
+  $hod = 0;
+  $dean = 0;
+  $principal = 0;
+  
+  if ($_SESSION['designation'] == 'Hod') {
+     $hod = 1;
+  } else if ($_SESSION['designation'] == 'Dean' || $_SESSION['designation'] == 'Vice-Principal' ) {
+    $hod = 1;
+    $dean = 1;
+ } 
+  $query = "INSERT INTO `notes`( `username`, `lecture`, `class`, `subject`,`date`,`day` , `theory/prac`, `methodology`, `teaching_aid`, `content`, `class_activity`, `attendance`, `other_activity`, `remark`, `hod`, `dean`, `principal`) VALUES ('$current_user','$lecture','$class','$subject','$date_t','$dayOfWeek','$classtype','$methodology','$teaching_aid','$content','$class_activity','$attendance','$other_activity','$remark','$hod','$dean','$principal')";
   mysqli_query($db, $query);
   header('Location: ' . $_SERVER['HTTP_REFERER']);
      
