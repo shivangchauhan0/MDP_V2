@@ -311,34 +311,39 @@ if(isset($_POST['delete_user']))
   header('Location: ' . $_SERVER['HTTP_REFERER']);
 }  
 // CHECK NOTES
-if(isset($_POST['done_princi'])){
-  $value= mysqli_real_escape_string($db, $_POST['done_princi']);
-  $sec_com = mysqli_real_escape_string($db, $_POST['sec_princi_com']);
-  $comment_True = "Complete%";
-  $comment_False = "Incomplete%";
-  $comment_T = $comment_True.$sec_com;
-  $comment_F = $comment_False.$sec_com;
-  $values = explode(" ", $value);
-  $date = $values[0];
-  $day = $values[1];
-  $lecture=$values[2];
-  $cl = $values[3];
-  $bool = $values[4];
-  $user_name = $values[5];
-  $comment = ($bool=="T") ? $comment_T : $comment_F ;
-  $num = ($bool=="T") ? 1 : 2 ;
-  if($cl=="false"){
-    $query = "UPDATE `notes` SET `principal`= '$num' , `principal_com`= '$comment' WHERE (`principal`='0') AND `username`='$user_name'";
-    mysqli_query($db, $query);
-  }else{
-    $query = "UPDATE `notes` SET `principal`= '$num' , `principal_com`= '$comment' WHERE (`date`='$date' OR `day`='$day' OR `lecture`='$lecture') AND `username`='$user_name'";
-    mysqli_query($db, $query);
+if(isset($_POST['check'])){
+  $done= mysqli_real_escape_string($db, $_POST['done']);
+  $comment = mysqli_real_escape_string($db, $_POST['comment']);
+  if ($_SESSION['designation'] == 'Hod') {
+    $start_sql = "UPDATE `notes` SET `hod`= '$done' WHERE `username`='$username' AND `hod` = 0";
+  } else if ($_SESSION['designation'] == 'Dean') {
+    $start_sql = "UPDATE `notes` SET `Dean`= '$done' WHERE `username`='$username' AND `Dean` = 0";
+  } else if ($_SESSION['designation'] == 'Principal' || $_SESSION['designation'] == 'Vice-Principal') {
+    $start_sql = "UPDATE `notes` SET `Principal`= '$done' WHERE `username`='$username' `Principal` = 0";
   }
-      if ($cl=="true") {
-      header('location: classlist.php?username='.$user_name);
-    } else {
-      header('Location: ' . $_SERVER['HTTP_REFERER']);
-    }
+  // ----------------FILTER VARIABLES-----------------
+  $limit = $_POST['limit'];
+  $filter_date = $_POST['filter_date']; 
+  $filter_day = $_POST['filter_day']; 
+  $from_date = $_POST['from_date']; 
+  $till_date = $_POST['till_date'];
+  $filter_lecture = $_POST['filter_lecture']; 
+  // ------------------------------------------------
+  if ($filter_date != "") {
+    $mid_sql = " AND `date`='$filter_date'";
+  } else if ($filter_day != "") {
+    $mid_sql = " AND `day`='$filter_day'";
+  } else if ($from_date != "") {
+    $mid_sql = " AND `date` BETWEEN '$from_date' AND '$till_date'";
+  } else if ($filter_lecture != "") {
+    $mid_sql = " AND `lecture`='$filter_lecture'";
+  } else {
+    $mid_sql = "";
+  }
+  $end_sql = " ORDER BY srno DESC LIMIT $limit";
+  $sql = $start_sql.$mid_sql.$end_sql;
+  mysqli_query($db, $sql);
+  header('Location: ' . $_SERVER['HTTP_REFERER']);
 }
 // UNCHECK NOTES
 if(isset($_POST['uncheck'])) 

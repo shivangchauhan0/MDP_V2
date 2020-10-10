@@ -37,26 +37,26 @@
               <div class="field">
               <label class="correction-form-label">Status</label>
                 <div class="ui">
-                  <input type="radio" class="radio-btn" name="done_princi" value="<?php echo $today." ".$day." ".$lecture." ".$cl." ".T." ".$username ?>" tabindex="0" class="hidden" required>
+                  <input type="radio" class="radio-btn" name="done" value="1" tabindex="0" class="hidden" required>
                   <label class="correction-form-label" class="radio-label">Complete</label>
                 </div>
               </div>
               <div class="field">
               <label style="visibility:hidden">Comment</label>
                 <div class="ui">
-                  <input type="radio" class="radio-btn" name="done_princi" value="<?php echo $today." ".$day." ".$lecture." ".$cl." ".F." ".$username ?>" tabindex="0" class="hidden">
+                  <input type="radio" class="radio-btn" name="done" value="2" tabindex="0" class="hidden">
                   <label class="correction-form-label" class="radio-label">Incomplete</label>
                 </div>
               </div>
               <div class="eleven wide field">
-                <label class="correction-form-label">Comment</label>
-                <input id="comment" name="sec_princi_com" type="text" placeholder="">
+              <label class="correction-form-label">Comment</label>
+                <input id="comment" name="comment" type="text" placeholder="">
+                <input type="text" name="username" class="d-none" value="<?php echo $_GET['id']?>">
                 <input type="text" name="filter_date" class="d-none" value="<?php echo $_GET['filter_date']?>">
                 <input type="text" name="filter_day" class="d-none" value="<?php echo $_GET['filter_day']?>">
                 <input type="text" name="filter_day" class="d-none" value="<?php echo $_GET['from_date']?>">
                 <input type="text" name="till_date" class="d-none" value="<?php echo $_GET['till_date']?>">
                 <input type="text" name="lecture" class="d-none" value="<?php echo $_GET['lecture']?>">
-
               </div>
               <div class="field">
                 <label style="visibility:hidden">Comment</label>
@@ -98,14 +98,14 @@
             // ----------------FILTER VARIABLES-----------------
                 $unchecked = $_GET['unchecked'] != "" ? $_GET['unchecked'] : "false";
                 $limit = $_GET['limit'] != "" ? $_GET['limit'] : 25;
-                $filter_date = $_GET['filter_date'] != "" ? $_GET['filter_date'] : "empty"; 
+                $filter_date = $_GET['filter_date'] != "" ? $_GET['filter_date'] : ""; 
                 $filter_day = $_GET['filter_day'] != "" ? $_GET['filter_day'] : ""; 
                 $from_date = $_GET['from_date'] != "" ? $_GET['from_date'] : ""; 
                 $till_date = $_GET['till_date'] != "" ? $_GET['till_date'] : ""; 
                 $filter_lecture = $_GET['filter_lecture'] != "" ? $_GET['filter_lecture'] : ""; 
             // ------------------------------------------------
             // ----------------FILTER QUERIES-----------------
-            if ($filter_date != "empty") {
+            if ($filter_date != "") {
               $start_sql = "SELECT * FROM `notes` WHERE `username`='$username' AND `date`='$filter_date'";
             } else if ($filter_day != "") {
               $start_sql = "SELECT * FROM `notes` WHERE `username`='$username' AND `day`='$filter_day'";
