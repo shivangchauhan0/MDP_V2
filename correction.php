@@ -60,7 +60,7 @@
               </div>
               <div class="field">
                 <label style="visibility:hidden">Comment</label>
-                <button type="submit" name="toggle_principal"  id="done" class="ui button bg-red">
+                <button type="submit" name="check"  id="done" class="ui button bg-red">
                  Check
                 </button>
               </div>

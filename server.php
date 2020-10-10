@@ -310,7 +310,36 @@ if(isset($_POST['delete_user']))
   mysqli_query($db, $query);
   header('Location: ' . $_SERVER['HTTP_REFERER']);
 }  
-
+// CHECK NOTES
+if(isset($_POST['done_princi'])){
+  $value= mysqli_real_escape_string($db, $_POST['done_princi']);
+  $sec_com = mysqli_real_escape_string($db, $_POST['sec_princi_com']);
+  $comment_True = "Complete%";
+  $comment_False = "Incomplete%";
+  $comment_T = $comment_True.$sec_com;
+  $comment_F = $comment_False.$sec_com;
+  $values = explode(" ", $value);
+  $date = $values[0];
+  $day = $values[1];
+  $lecture=$values[2];
+  $cl = $values[3];
+  $bool = $values[4];
+  $user_name = $values[5];
+  $comment = ($bool=="T") ? $comment_T : $comment_F ;
+  $num = ($bool=="T") ? 1 : 2 ;
+  if($cl=="false"){
+    $query = "UPDATE `notes` SET `principal`= '$num' , `principal_com`= '$comment' WHERE (`principal`='0') AND `username`='$user_name'";
+    mysqli_query($db, $query);
+  }else{
+    $query = "UPDATE `notes` SET `principal`= '$num' , `principal_com`= '$comment' WHERE (`date`='$date' OR `day`='$day' OR `lecture`='$lecture') AND `username`='$user_name'";
+    mysqli_query($db, $query);
+  }
+      if ($cl=="true") {
+      header('location: classlist.php?username='.$user_name);
+    } else {
+      header('Location: ' . $_SERVER['HTTP_REFERER']);
+    }
+}
 // UNCHECK NOTES
 if(isset($_POST['uncheck'])) 
   {
