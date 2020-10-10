@@ -321,7 +321,7 @@ if(isset($_POST['check'])){
   $filter_day =  mysqli_real_escape_string($db, $_POST['filter_day']); 
   $from_date =  mysqli_real_escape_string($db, $_POST['from_date']); 
   $till_date =  mysqli_real_escape_string($db, $_POST['till_date']);
-  $filter_lecture =  mysqli_real_escape_string($db, $_POST['filter_lecture']); 
+  $filter_lecture =  mysqli_real_escape_string($db, $_POST['lecture']); 
   // ------------------------------------------------
   if ($_SESSION['designation'] == 'Hod') {
     $start_sql = "UPDATE `notes` SET `hod`= '$done' WHERE `username`='$username' AND `hod` = '0'";
@@ -345,7 +345,7 @@ if(isset($_POST['check'])){
   $sql = $start_sql.$mid_sql.$end_sql;
   mysqli_query($db, $sql);
   header('Location: ' . $_SERVER['HTTP_REFERER']);
-  // header('Location: index.php?'.$filter_day.$mid_sql);
+  // header('Location: index.php?'.$sql);
 }
 // CHECK NOTES
 // if(isset($_POST['check'])){

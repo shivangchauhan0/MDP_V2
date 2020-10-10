@@ -28,7 +28,8 @@
             <?php  } else { ?>
                 <a class="float-right" href="correction.php?id=<?php echo $_GET['id'] ?>&filter_date=<?php echo $_GET['filter_date'] ?>&filter_day=<?php echo $_GET['filter_day'] ?>&from_date=<?php echo $_GET['from_date'] ?>&till_date=<?php echo $_GET['till_date'] ?>&filter_lecture=<?php echo $_GET['filter_lecture'] ?>&limit=<?php echo $_GET['limit'] ?>&unchecked=true"><button type="submit" class="ui button bg-red mx-1 my-2" id="insert-id">Unchecked</button></a>
             <?php  } ?>
-            <a class="float-right" href="correction-detailed.php?id=<?php echo $_GET['id'] ?>&unchecked=true"><button type="submit" class="ui button bg-red mx-1 my-2" id="insert-id">Detailed</button></a> 
+            <a class="float-right" href="correction-detailed.php?id=<?php echo $_GET['id'] ?>&unchecked=<?php echo $_GET['unchecked'] ?>"><button type="submit" class="ui button bg-red mx-1 my-2" id="insert-id">Detailed</button></a> 
+            <a class="float-right" href="correction.php?id=<?php echo $_GET['id'] ?>&limit=<?php echo $_GET['limit'] ?>&unchecked=<?php echo $_GET['unchecked'] ?>"><button type="submit" class="ui button bg-red mx-1 my-2 " id="insert-id">Unset Filters</button></a>
         </div>
         <?php if ($_GET['unchecked'] == 'true') { ?>
         <div style="" class="check-form-seg">
@@ -55,7 +56,7 @@
                 <input type="text" name="limit" class="d-none" value="<?php echo $_GET['limit'] != "" ? $_GET['limit'] : 25?>">
                 <input type="text" name="filter_date" class="d-none" value="<?php echo $_GET['filter_date'] != "" ? $_GET['filter_date'] : "empty"?>">
                 <input type="text" name="filter_day" class="d-none" value="<?php echo $_GET['filter_day'] != "" ? $_GET['filter_day'] : "empty"?>">
-                <input type="text" name="from_day" class="d-none" value="<?php echo $_GET['from_date'] != "" ? $_GET['from_date'] : "empty"?>">
+                <input type="text" name="from_date" class="d-none" value="<?php echo $_GET['from_date'] != "" ? $_GET['from_date'] : "empty"?>">
                 <input type="text" name="till_date" class="d-none" value="<?php echo $_GET['till_date'] != "" ? $_GET['till_date'] : "empty"?>">
                 <input type="text" name="lecture" class="d-none" value="<?php echo $_GET['filter_lecture'] != "" ? $_GET['filter_lecture'] : "empty"?>">
               </div>

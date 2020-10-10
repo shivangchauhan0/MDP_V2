@@ -54,12 +54,11 @@
                 <input id="comment" name="comment" type="text" placeholder="">
                 <input type="text" name="username" class="d-none" value="<?php echo $_GET['id']?>">
                 <input type="text" name="limit" class="d-none" value="<?php echo $_GET['limit'] != "" ? $_GET['limit'] : 25?>">
-                <input type="text" name="filter_date" class="d-none" value="<?php echo $_GET['filter_date']?>">
-                <input type="text" name="filter_day" class="d-none" value="<?php echo $_GET['filter_day']?>">
-                <input type="text" name="filter_day" class="d-none" value="<?php echo $_GET['from_date']?>">
-                <input type="text" name="till_date" class="d-none" value="<?php echo $_GET['till_date']?>">
-                <input type="text" name="lecture" class="d-none" value="<?php echo $_GET['lecture']?>">
-
+                <input type="text" name="filter_date" class="d-none" value="<?php echo $_GET['filter_date'] != "" ? $_GET['filter_date'] : "empty"?>">
+                <input type="text" name="filter_day" class="d-none" value="<?php echo $_GET['filter_day'] != "" ? $_GET['filter_day'] : "empty"?>">
+                <input type="text" name="from_date" class="d-none" value="<?php echo $_GET['from_date'] != "" ? $_GET['from_date'] : "empty"?>">
+                <input type="text" name="till_date" class="d-none" value="<?php echo $_GET['till_date'] != "" ? $_GET['till_date'] : "empty"?>">
+                <input type="text" name="lecture" class="d-none" value="<?php echo $_GET['filter_lecture'] != "" ? $_GET['filter_lecture'] : "empty"?>">
               </div>
               <div class="field">
                 <label style="visibility:hidden">Comment</label>
