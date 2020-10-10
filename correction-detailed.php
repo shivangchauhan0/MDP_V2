@@ -53,6 +53,7 @@
                 <label class="correction-form-label">Comment</label>
                 <input id="comment" name="comment" type="text" placeholder="">
                 <input type="text" name="username" class="d-none" value="<?php echo $_GET['id']?>">
+                <input type="text" name="limit" class="d-none" value="<?php echo $_GET['limit'] != "" ? $_GET['limit'] : 25?>">
                 <input type="text" name="filter_date" class="d-none" value="<?php echo $_GET['filter_date']?>">
                 <input type="text" name="filter_day" class="d-none" value="<?php echo $_GET['filter_day']?>">
                 <input type="text" name="filter_day" class="d-none" value="<?php echo $_GET['from_date']?>">

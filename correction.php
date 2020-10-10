@@ -52,8 +52,10 @@
               <label class="correction-form-label">Comment</label>
                 <input id="comment" name="comment" type="text" placeholder="">
                 <input type="text" name="username" class="d-none" value="<?php echo $_GET['id']?>">
+                <input type="text" name="limit" class="d-none" value="<?php echo $_GET['limit'] != "" ? $_GET['limit'] : 25?>">
                 <input type="text" name="filter_date" class="d-none" value="<?php echo $_GET['filter_date']?>">
-                <input type="text" name="filter_day" class="d-none" value="<?php echo $_GET['filter_day']?>">
+                <!-- <input type="text" name="filter_day" class="d-none" value="<?php// echo $_GET['filter_day']?>"> -->
+                <input type="text" name="filter_day" class="d-none" value="Monday">
                 <input type="text" name="filter_day" class="d-none" value="<?php echo $_GET['from_date']?>">
                 <input type="text" name="till_date" class="d-none" value="<?php echo $_GET['till_date']?>">
                 <input type="text" name="lecture" class="d-none" value="<?php echo $_GET['lecture']?>">
@@ -123,11 +125,7 @@
                   $mid_sql = " AND `dean` = '0' AND `principal`='0' ";
                 } else if ($_SESSION['designation'] == 'Principal' || $_SESSION['designation'] == 'Vice-Principal') {
                   $mid_sql = " AND `principal`='0' ";
-                } else {
-                  $mid_sql="";
                 }
-                
-                $mid_sql = " AND `hod` = '0' AND `principal`='0' ";
             } else {
                 $mid_sql="";
             }
@@ -207,6 +205,7 @@
               <div class="thirteen wide field ">
               <input type="text" name="filter_date" class="search-bar my-1" placeholder="Date" onfocus="(this.type='date')" onblur="(this.type='text')" required>
               <input type="text" name="id" class="d-none" value="<?php echo $_GET['id']?>">
+              <input type="text" name="unchecked" class="d-none" value="<?php echo $_GET['unchecked'] != "" ? $_GET['unchecked'] : "false"?>">
               </div>
               <button type="submit" class="circular ui inline icon button search-btn my-1" name="limit" value="<?php echo $limit ?>">
                 <i class="search icon"></i>
@@ -228,6 +227,7 @@
                           <option value="Saturday">Saturday</option>
                       </select>
                   <input type="text" name="id" class="d-none" value="<?php echo $_GET['id']?>">
+                  <input type="text" name="unchecked" class="d-none" value="<?php echo $_GET['unchecked'] != "" ? $_GET['unchecked'] : "false"?>">
                   </div>
               <button type="submit" class="circular ui inline icon button search-btn my-1" name="limit" value="<?php echo $limit ?>">
                 <i class="search icon"></i>
@@ -241,6 +241,7 @@
               <div class="seven wide field ">
               <input type="text" name="from_date" class="search-bar my-1" placeholder="From" onfocus="(this.type='date')" onblur="(this.type='text')" required>
               <input type="text" name="id" class="d-none" value="<?php echo $_GET['id']?>">
+              <input type="text" name="unchecked" class="d-none" value="<?php echo $_GET['unchecked'] != "" ? $_GET['unchecked'] : "false"?>">
               </div>
               <i class="arrows alternate horizontal icon" id="between-arrow"></i>
               <div class="seven wide field ">
@@ -267,6 +268,7 @@
                     <option value="Seventh">Seventh</option>
                 </select>
                 <input type="text" name="id" class="d-none" value="<?php echo $_GET['id']?>">
+                <input type="text" name="unchecked" class="d-none" value="<?php echo $_GET['unchecked'] != "" ? $_GET['unchecked'] : "false"?>">
               </div>
               <button type="submit" class="circular ui inline icon button search-btn my-1" name="limit" value="<?php echo $limit ?>">
                 <i class="search icon"></i>
