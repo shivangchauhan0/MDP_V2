@@ -312,9 +312,17 @@ if(isset($_POST['delete_user']))
 }  
 // CHECK NOTES
 if(isset($_POST['check'])){
-  $done= mysqli_real_escape_string($db, $_POST['done']);
+  $done = mysqli_real_escape_string($db, $_POST['done']);
   $comment = mysqli_real_escape_string($db, $_POST['comment']);
   $username = mysqli_real_escape_string($db, $_POST['username']);
+  // ----------------FILTER VARIABLES-----------------
+  $limit = $_POST['limit'];
+  $filter_date = mysqli_real_escape_string($db, $_POST['filter_date']); 
+  $filter_day =  mysqli_real_escape_string($db, $_POST['filter_day']); 
+  $from_date =  mysqli_real_escape_string($db, $_POST['from_date']); 
+  $till_date =  mysqli_real_escape_string($db, $_POST['till_date']);
+  $filter_lecture =  mysqli_real_escape_string($db, $_POST['filter_lecture']); 
+  // ------------------------------------------------
   if ($_SESSION['designation'] == 'Hod') {
     $start_sql = "UPDATE `notes` SET `hod`= '$done' WHERE `username`='$username' AND `hod` = '0'";
   } else if ($_SESSION['designation'] == 'Dean') {
@@ -322,21 +330,13 @@ if(isset($_POST['check'])){
   } else if ($_SESSION['designation'] == 'Principal' || $_SESSION['designation'] == 'Vice-Principal') {
     $start_sql = "UPDATE `notes` SET `principal`= '$done' WHERE `username`='$username' AND `principal` = '0'";
   }
-  // ----------------FILTER VARIABLES-----------------
-  $limit = $_POST['limit'];
-  $filter_date = $_POST['filter_date']; 
-  $filter_day = $_POST['filter_day']; 
-  $from_date = $_POST['from_date']; 
-  $till_date = $_POST['till_date'];
-  $filter_lecture = $_POST['filter_lecture']; 
-  // ------------------------------------------------
-  if ($filter_date != "") {
+  if ($filter_date != "empty") {
     $mid_sql = " AND `date`='$filter_date'";
-  } else if ($filter_day != "") {
+  } else if ($filter_day != "empty") {
     $mid_sql = " AND `day`='$filter_day'";
-  } else if ($from_date != "") {
+  } else if ($from_date != "empty") {
     $mid_sql = " AND `date` BETWEEN '$from_date' AND '$till_date'";
-  } else if ($filter_lecture != "") {
+  } else if ($filter_lecture != "empty") {
     $mid_sql = " AND `lecture`='$filter_lecture'";
   } else {
     $mid_sql = "";
@@ -344,8 +344,8 @@ if(isset($_POST['check'])){
   $end_sql = " ORDER BY srno DESC LIMIT $limit";
   $sql = $start_sql.$mid_sql.$end_sql;
   mysqli_query($db, $sql);
-  // header('Location: ' . $_SERVER['HTTP_REFERER']);
-  header('Location: index.php?'.$filter_day.$mid_sql);
+  header('Location: ' . $_SERVER['HTTP_REFERER']);
+  // header('Location: index.php?'.$filter_day.$mid_sql);
 }
 // CHECK NOTES
 // if(isset($_POST['check'])){

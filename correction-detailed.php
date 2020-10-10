@@ -124,10 +124,16 @@
               $start_sql = "SELECT * FROM `notes` WHERE `username`='$username'";
             }
             if ($unchecked == "true") {
+              if ($_SESSION['designation'] == 'Hod') {
                 $mid_sql = " AND `hod` = '0' AND `principal`='0' ";
-            } else {
-                $mid_sql="";
-            }
+              } else if ($_SESSION['designation'] == 'Dean') {
+                $mid_sql = " AND `dean` = '0' AND `principal`='0' ";
+              } else if ($_SESSION['designation'] == 'Principal' || $_SESSION['designation'] == 'Vice-Principal') {
+                $mid_sql = " AND `principal`='0' ";
+              }
+          } else {
+              $mid_sql="";
+          }
             $end_sql = "ORDER BY srno DESC LIMIT $limit";
             $sql = $start_sql.$mid_sql.$end_sql;
             // -----------------------------------------------
