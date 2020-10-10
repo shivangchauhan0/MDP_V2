@@ -13,7 +13,22 @@
             >
           <?php } elseif ($_SESSION['designation'] == "Principal") { ?>
             <a href="departments.php" class="list-group-item list-group-item-action bg-light"
-              >Departments <i class="fa fa-book fa-fw" aria-hidden="true"></i></a
+              >All Departments <i class="fa fa-users fa-fw" aria-hidden="true"></i></a
+            >
+            <a href="sub-departments.php?sup_depart=Arts and Social Sciences" class="list-group-item list-group-item-action bg-light"
+              >Arts and SSc. <i class="fa fa-briefcase fa-fw" aria-hidden="true"></i></a
+            >
+            <a href="sub-departments.php?sup_depart=Physical Science" class="list-group-item list-group-item-action bg-light"
+              >Physical Science <i class="fa fa-laptop fa-fw" aria-hidden="true"></i></a
+            >
+            <a href="sub-departments.php?sup_depart=Life Science" class="list-group-item list-group-item-action bg-light"
+              >Life Science <i class="fa fa-flask fa-fw" aria-hidden="true"></i></a
+            >
+            <a href="sub-departments.php?sup_depart=Commerce and Management" class="list-group-item list-group-item-action bg-light"
+              >Commerce <i class="fa fa-credit-card fa-fw" aria-hidden="true"></i></a
+            >
+            <a href="sub-departments.php?sup_depart=Education" class="list-group-item list-group-item-action bg-light"
+              >Education <i class="fa fa-bookmark fa-fw" aria-hidden="true"></i></a
             >
           <?php } ?>
           <?php if ($_SESSION['designation'] != "Principal") { ?>

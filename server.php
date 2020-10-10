@@ -310,5 +310,20 @@ if(isset($_POST['delete_user']))
   mysqli_query($db, $query);
   header('Location: ' . $_SERVER['HTTP_REFERER']);
 }  
-   
+
+// UNCHECK NOTES
+if(isset($_POST['uncheck'])) 
+  {
+    $srno = mysqli_real_escape_string($db, $_POST['uncheck']);
+    if ($_SESSION['designation'] == 'Hod') {
+      $query = "UPDATE `notes` SET `hod`= 0 WHERE `srno`='$srno'";
+    } else if ($_SESSION['designation'] == 'Dean') {
+      $query = "UPDATE `notes` SET `Dean`= 0 WHERE `srno`='$srno'";
+    } else if ($_SESSION['designation'] == 'Principal' || $_SESSION['designation'] == 'Vice-Principal') {
+      $query = "UPDATE `notes` SET `Principal`= 0 WHERE `srno`='$srno'";
+    } 
+      mysqli_query($db, $query);
+      header('Location: ' . $_SERVER['HTTP_REFERER']);
+  }
 ?>
+
