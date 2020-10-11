@@ -192,7 +192,6 @@
                         No records found!
                         </div>";
                 }
-                
               }
           ?>
         </tbody>
