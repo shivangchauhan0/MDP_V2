@@ -325,10 +325,13 @@ if(isset($_POST['check'])){
   // ------------------------------------------------
   if ($_SESSION['designation'] == 'Hod') {
     $start_sql = "UPDATE `notes` SET `hod`= '$done' WHERE `username`='$username' AND `hod` = '0'";
+    $comment_sql = "UPDATE `notes` SET `hod_com`= '$comment' WHERE `username`='$username' AND `hod` = '0' ORDER BY srno DESC LIMIT 1";
   } else if ($_SESSION['designation'] == 'Dean') {
     $start_sql = "UPDATE `notes` SET `dean`= '$done' WHERE `username`='$username' AND `dean` = '0'";
+    $comment_sql = "UPDATE `notes` SET `dean_com`= '$comment' WHERE `username`='$username' AND `dean` = '0' ORDER BY srno DESC LIMIT 1";
   } else if ($_SESSION['designation'] == 'Principal' || $_SESSION['designation'] == 'Vice-Principal') {
     $start_sql = "UPDATE `notes` SET `principal`= '$done' WHERE `username`='$username' AND `principal` = '0'";
+    $comment_sql = "UPDATE `notes` SET `principal_com`= '$comment' WHERE `username`='$username' AND `principal` = '0' ORDER BY srno DESC LIMIT 1";
   }
   if ($filter_date != "empty") {
     $mid_sql = " AND `date`='$filter_date'";
@@ -343,6 +346,7 @@ if(isset($_POST['check'])){
   }
   $end_sql = " ORDER BY srno DESC LIMIT $limit";
   $sql = $start_sql.$mid_sql.$end_sql;
+  mysqli_query($db, $comment_sql);
   mysqli_query($db, $sql);
   header('Location: ' . $_SERVER['HTTP_REFERER']);
 }
