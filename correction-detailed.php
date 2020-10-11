@@ -171,12 +171,34 @@
               <?php  } ?>
             </tr>
           <?php
-        }
+        } if ($_GET['unchecked'] != 'true') { 
+           $username = $_GET['id'];
+           $comm_sql = "SELECT * FROM `notes` WHERE `hod_com` != '' OR `dean_com` != '' OR `principal_com` != '' AND `username` = '$username' ";
+           $comm_res = $db->query($comm_sql);
+           if ($comm_res->num_rows > 0) {
+            $comm = $comm_res->fetch_assoc();
+                  if ($comm["hod_com"] != "") {
+                  echo "<tr><td colspan='14'> <span style='color:#FBBD08'>HOD &#8594; ".$comm["hod_com"]."</span></td></tr>";
+                  }
+                  if ($comm["dean_com"] != "") {
+                  echo "<tr><td colspan='14'><span style='color:#2185D0'>DEAN &#8594; ".$comm["dean_com"]."</span></td></tr>";
+                  }
+                  if ($comm["principal_com"] != "") {
+                  echo "<tr><td colspan='14'><span style='color:#21BA45'>PRINCIPAL &#8594; ".$comm["principal_com"]."</span></td></tr>";
+                  }
+                }
               }
+            }
               else {
-                echo "<div class='alert alert-danger my-4' role='alert'>
-                No records found!
-              </div>";
+                if ($_GET['unchecked'] == 'true') {
+                  echo "<div class='alert alert-danger my-4' role='alert'>
+                        No Unchekced records found!
+                        </div>";
+                } else {
+                  echo "<div class='alert alert-danger my-4' role='alert'>
+                        No records found!
+                        </div>";
+                }
               }
           ?>
         </tbody>

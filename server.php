@@ -361,9 +361,6 @@ if(isset($_POST['check'])){
         mysqli_query($db, $comment_sql);
       }
     }
-    // if ($comment != '')
-    // {
-    // }
   mysqli_query($db, $sql);
   header('Location: ' . $_SERVER['HTTP_REFERER']);
 }
