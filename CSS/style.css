@@ -279,6 +279,7 @@ form.delete {
   .check-form {
     margin: 0 auto !important;
     width: 90vw !important;
+    padding: 3vh 2vw;
   }
   .check-form-seg {
     margin-top: 10vh !important;

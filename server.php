@@ -345,18 +345,7 @@ if(isset($_POST['check'])){
   $sql = $start_sql.$mid_sql.$end_sql;
   mysqli_query($db, $sql);
   header('Location: ' . $_SERVER['HTTP_REFERER']);
-  // header('Location: index.php?'.$sql);
 }
-// CHECK NOTES
-// if(isset($_POST['check'])){
-//   $done = mysqli_real_escape_string($db, $_POST['done']);
-//   $comment = mysqli_real_escape_string($db, $_POST['comment']);
-//   $username = mysqli_real_escape_string($db, $_POST['username']);
-//   $sql = "UPDATE `notes` SET `principal`= 1 WHERE `username`='$username' AND `principal` = '0'";
-//   mysqli_query($db, $sql);
-//   header('Location: ' . $_SERVER['HTTP_REFERER']);
-//   // header('Location: index.php?'.$username.$done);
-// }
 
 // UNCHECK NOTES
 if(isset($_POST['uncheck'])) 

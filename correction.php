@@ -24,12 +24,12 @@
         ?>
             <h2>LIST OF ALL <?php echo $_GET['unchecked'] == "true"?"UNCHECKED":"" ?> RECORDS &#8594 <?php echo strtoupper($row['name'])?></h2>
             <?php if ($_GET['unchecked'] == 'true') { ?>
-                <a class="float-right" href="correction.php?id=<?php echo $_GET['id'] ?>&filter_date=<?php echo $_GET['filter_date'] ?>&filter_day=<?php echo $_GET['filter_day'] ?>&from_date=<?php echo $_GET['from_date'] ?>&till_date=<?php echo $_GET['till_date'] ?>&filter_lecture=<?php echo $_GET['filter_lecture'] ?>&limit=<?php echo $_GET['limit'] ?>"><button type="submit" class="ui button bg-red mx-1 my-2 " id="insert-id">All Records</button></a>
+                <a class="float-right" href="correction.php?id=<?php echo $_GET['id'] ?>&filter_date=<?php echo $_GET['filter_date'] ?>&filter_day=<?php echo $_GET['filter_day'] ?>&from_date=<?php echo $_GET['from_date'] ?>&till_date=<?php echo $_GET['till_date'] ?>&filter_lecture=<?php echo $_GET['filter_lecture'] ?>&limit=<?php echo $_GET['limit'] ?>"><button type="submit" class="ui button bg-red mx-1 my-2 tiny " id="insert-id">All Records</button></a>
             <?php  } else { ?>
-                <a class="float-right" href="correction.php?id=<?php echo $_GET['id'] ?>&filter_date=<?php echo $_GET['filter_date'] ?>&filter_day=<?php echo $_GET['filter_day'] ?>&from_date=<?php echo $_GET['from_date'] ?>&till_date=<?php echo $_GET['till_date'] ?>&filter_lecture=<?php echo $_GET['filter_lecture'] ?>&limit=<?php echo $_GET['limit'] ?>&unchecked=true"><button type="submit" class="ui button bg-red mx-1 my-2" id="insert-id">Unchecked</button></a>
+                <a class="float-right" href="correction.php?id=<?php echo $_GET['id'] ?>&filter_date=<?php echo $_GET['filter_date'] ?>&filter_day=<?php echo $_GET['filter_day'] ?>&from_date=<?php echo $_GET['from_date'] ?>&till_date=<?php echo $_GET['till_date'] ?>&filter_lecture=<?php echo $_GET['filter_lecture'] ?>&limit=<?php echo $_GET['limit'] ?>&unchecked=true"><button type="submit" class="ui button bg-red mx-1 my-2 tiny" id="insert-id">Unchecked</button></a>
             <?php  } ?>
-            <a class="float-right" href="correction-detailed.php?id=<?php echo $_GET['id'] ?>&unchecked=<?php echo $_GET['unchecked'] ?>"><button type="submit" class="ui button bg-red mx-1 my-2" id="insert-id">Detailed</button></a> 
-            <a class="float-right" href="correction.php?id=<?php echo $_GET['id'] ?>&limit=<?php echo $_GET['limit'] ?>&unchecked=<?php echo $_GET['unchecked'] ?>"><button type="submit" class="ui button bg-red mx-1 my-2 " id="insert-id">Unset Filters</button></a>
+            <a class="float-right" href="correction-detailed.php?id=<?php echo $_GET['id'] ?>&unchecked=<?php echo $_GET['unchecked'] ?>"><button type="submit" class="ui button bg-red mx-1 my-2 tiny" id="insert-id">Detailed</button></a> 
+            <a class="float-right" href="correction.php?id=<?php echo $_GET['id'] ?>&limit=<?php echo $_GET['limit'] ?>&unchecked=<?php echo $_GET['unchecked'] ?>"><button type="submit" class="ui button bg-red mx-1 my-2 tiny " id="insert-id">Unset Filters</button></a>
         </div>
         <?php if ($_GET['unchecked'] == 'true') { ?>
         <div style="" class="check-form-seg">
