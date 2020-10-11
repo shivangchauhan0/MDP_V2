@@ -24,41 +24,42 @@
             ?>
             <h2>LIST OF ALL <?php echo $_GET['unchecked'] == "true"?"UNCHECKED":"" ?> RECORDS &#8594 <?php echo strtoupper($row['name'])?></h2>
             <?php if ($_GET['unchecked'] == 'true') { ?>
-                <a class="float-right" href="correction-detailed.php?id=<?php echo $_GET['id'] ?>&filter_date=<?php echo $_GET['filter_date'] ?>&filter_day=<?php echo $_GET['filter_day'] ?>&from_date=<?php echo $_GET['from_date'] ?>&till_date=<?php echo $_GET['till_date'] ?>&filter_lecture=<?php echo $_GET['filter_lecture'] ?>&limit=<?php echo $_GET['limit'] ?>"><button type="submit" class="ui button bg-red mx-1 my-2 " id="insert-id">All Records</button></a>
+                <a class="float-right" href="correction-detailed.php?id=<?php echo $_GET['id'] ?>&filter_date=<?php echo $_GET['filter_date'] ?>&filter_day=<?php echo $_GET['filter_day'] ?>&from_date=<?php echo $_GET['from_date'] ?>&till_date=<?php echo $_GET['till_date'] ?>&filter_lecture=<?php echo $_GET['filter_lecture'] ?>&limit=<?php echo $_GET['limit'] ?>"><button type="submit" class="ui button bg-red mx-1 my-2 tiny " id="insert-id">All Records</button></a>
             <?php  } else { ?>
-                <a class="float-right" href="correction-detailed.php?id=<?php echo $_GET['id'] ?>&filter_date=<?php echo $_GET['filter_date'] ?>&filter_day=<?php echo $_GET['filter_day'] ?>&from_date=<?php echo $_GET['from_date'] ?>&till_date=<?php echo $_GET['till_date'] ?>&filter_lecture=<?php echo $_GET['filter_lecture'] ?>&limit=<?php echo $_GET['limit'] ?>&unchecked=true"><button type="submit" class="ui button bg-red mx-1 my-2" id="insert-id">Unchecked</button></a>
+                <a class="float-right" href="correction-detailed.php?id=<?php echo $_GET['id'] ?>&filter_date=<?php echo $_GET['filter_date'] ?>&filter_day=<?php echo $_GET['filter_day'] ?>&from_date=<?php echo $_GET['from_date'] ?>&till_date=<?php echo $_GET['till_date'] ?>&filter_lecture=<?php echo $_GET['filter_lecture'] ?>&limit=<?php echo $_GET['limit'] ?>&unchecked=true"><button type="submit" class="ui button bg-red mx-1 my-2 tiny" id="insert-id">Unchecked</button></a>
             <?php  }
               ?>
-              <a class="float-right" href="correction.php?id=<?php echo $_GET['id'] ?>&unchecked=true"><button type="submit" class="ui button bg-red mx-1 my-2" id="insert-id">Brief</button></a> 
+              <a class="float-right" href="correction.php?id=<?php echo $_GET['id'] ?>&unchecked=true"><button type="submit" class="ui button bg-red mx-1 my-2 tiny" id="insert-id">Brief</button></a>
+            <a class="float-right" href="correction.php?id=<?php echo $_GET['id'] ?>&limit=<?php echo $_GET['limit'] ?>&unchecked=<?php echo $_GET['unchecked'] ?>"><button type="submit" class="ui button bg-red mx-1 my-2 tiny " id="insert-id">Unset Filters</button></a>
         </div>
         <?php if ($_GET['unchecked'] == 'true') { ?>
         <div class="check-form-seg">
-          <form method="post" action="index.php" class="ui form check-form">
+        <form method="post" action="index.php" class="ui form check-form">
             <div class="fields">
               <div class="field">
               <label class="correction-form-label">Status</label>
                 <div class="ui">
-                  <input type="radio" class="radio-btn" name="done" value="true" tabindex="0" class="hidden" required>
+                  <input type="radio" class="radio-btn" name="done" value="1" tabindex="0" class="hidden" required>
                   <label class="correction-form-label" class="radio-label">Complete</label>
                 </div>
               </div>
               <div class="field">
               <label style="visibility:hidden">Comment</label>
                 <div class="ui">
-                  <input type="radio" class="radio-btn" name="done" value="false" tabindex="0" class="hidden">
+                  <input type="radio" class="radio-btn" name="done" value="2" tabindex="0" class="hidden">
                   <label class="correction-form-label" class="radio-label">Incomplete</label>
                 </div>
               </div>
               <div class="eleven wide field">
-                  <label class="correction-form-label">Comment</label>
-                  <input id="comment" name="comment" type="text" placeholder="">
-                  <input type="text" name="username" class="d-none" value="<?php echo $_GET['id']?>">
-                  <input type="text" name="limit" class="d-none" value="<?php echo $_GET['limit'] != "" ? $_GET['limit'] : 25?>">
-                  <input type="text" name="filter_date" class="d-none" value="<?php echo $_GET['filter_date'] != "" ? $_GET['filter_date'] : "empty"?>">
-                  <input type="text" name="filter_day" class="d-none" value="<?php echo $_GET['filter_day'] != "" ? $_GET['filter_day'] : "empty"?>">
-                  <input type="text" name="from_date" class="d-none" value="<?php echo $_GET['from_date'] != "" ? $_GET['from_date'] : "empty"?>">
-                  <input type="text" name="till_date" class="d-none" value="<?php echo $_GET['till_date'] != "" ? $_GET['till_date'] : "empty"?>">
-                  <input type="text" name="lecture" class="d-none" value="<?php echo $_GET['filter_lecture'] != "" ? $_GET['filter_lecture'] : "empty"?>">
+              <label class="correction-form-label">Comment</label>
+                <input id="comment" name="comment" type="text" placeholder="">
+                <input type="text" name="username" class="d-none" value="<?php echo $_GET['id']?>">
+                <input type="text" name="limit" class="d-none" value="<?php echo $_GET['limit'] != "" ? $_GET['limit'] : 25?>">
+                <input type="text" name="filter_date" class="d-none" value="<?php echo $_GET['filter_date'] != "" ? $_GET['filter_date'] : "empty"?>">
+                <input type="text" name="filter_day" class="d-none" value="<?php echo $_GET['filter_day'] != "" ? $_GET['filter_day'] : "empty"?>">
+                <input type="text" name="from_date" class="d-none" value="<?php echo $_GET['from_date'] != "" ? $_GET['from_date'] : "empty"?>">
+                <input type="text" name="till_date" class="d-none" value="<?php echo $_GET['till_date'] != "" ? $_GET['till_date'] : "empty"?>">
+                <input type="text" name="lecture" class="d-none" value="<?php echo $_GET['filter_lecture'] != "" ? $_GET['filter_lecture'] : "empty"?>">
               </div>
               <div class="field">
                 <label style="visibility:hidden">Comment</label>
@@ -70,28 +71,7 @@
           </form>
         </div>
         <?php  } ?>
-      <table class="ui celled table"id="show-records-table">
-        <thead>
-          <tr id="table-head">
-            <th>DATE</th>
-            <th>DAY</th>
-            <th>LECTURE</th>
-            <th>CLASS</th>
-            <th>SUBJECT</th>
-            <th>CLASS TYPE</th>
-            <th>METHODOLOGY</th>
-            <th>TEACHING AID</th>
-            <th>CONTENT</th>	  
-            <th>CLASS ACTIVITY</th>	  
-            <th>ATTENDANCE</th>	  
-            <th>OTHER ACTIVITY</th>	  
-            <th>STATUS</th>
-            <?php if ($_GET['unchecked'] != 'true') { ?>
-            <th>UNCHECK</th>	  
-            <?php  } ?>  
-          </tr>
-        </thead>
-        <tbody>
+     
           <?php 
             $username = $_GET['id'];
             $hod_true ="<i class=\"circle yellow icon\"></i>";
@@ -137,7 +117,30 @@
             $sql = $start_sql.$mid_sql.$end_sql;
             // -----------------------------------------------
             $result = $db->query($sql);
-            if ($result->num_rows > 0) {
+            if ($result->num_rows > 0) { ?>
+             <table class="ui celled table"id="show-records-table">
+              <thead>
+                <tr id="table-head">
+                  <th>DATE</th>
+                  <th>DAY</th>
+                  <th>LECTURE</th>
+                  <th>CLASS</th>
+                  <th>SUBJECT</th>
+                  <th>CLASS TYPE</th>
+                  <th>METHODOLOGY</th>
+                  <th>TEACHING AID</th>
+                  <th>CONTENT</th>	  
+                  <th>CLASS ACTIVITY</th>	  
+                  <th>ATTENDANCE</th>	  
+                  <th>OTHER ACTIVITY</th>	  
+                  <th>STATUS</th>
+                  <?php if ($_GET['unchecked'] != 'true') { ?>
+                  <th>UNCHECK</th>	  
+                  <?php  } ?>  
+                </tr>
+              </thead>
+              <tbody>
+            <?php 
               while($row = $result->fetch_assoc()) {
                 $date = $row["date"];
                 $timestamp = strtotime($date);
