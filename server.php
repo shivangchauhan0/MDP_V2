@@ -346,14 +346,17 @@ if(isset($_POST['check'])){
   }
   $end_sql = " ORDER BY srno DESC LIMIT $limit";
   $sql = $start_sql.$mid_sql.$end_sql;
-  if ($_SESSION['designation'] == 'Hod') {
-    $comment_check_sql = "SELECT * FROM `notes` WHERE `hod_com` != '' AND `username`='$username'";
-  } else if ($_SESSION['designation'] == 'Dean') {
-    $comment_check_sql = "SELECT `dean_com` FROM `notes` WHERE `dean_com` != '' AND `username`='$username'";
-  } else if ($_SESSION['designation'] == 'Principal' || $_SESSION['designation'] == 'Vice-Principal') {
-    $comment_check_sql = "SELECT `principal_com` FROM `notes` WHERE `principal_com` != '' AND `username`='$username'";
-  }
-  $check_result = $db->query($comment_check_sql);
+  if ($comment != '')
+      {
+        if ($_SESSION['designation'] == 'Hod') {
+          $comment_reset_sql = "UPDATE `notes` SET `hod_com` = '' WHERE `username`='$username'";
+        } else if ($_SESSION['designation'] == 'Dean') {
+          $comment_reset_sql = "UPDATE `notes` SET `dean_com` = '' WHERE `username`='$username'";
+        } else if ($_SESSION['designation'] == 'Principal' || $_SESSION['designation'] == 'Vice-Principal') {
+          $comment_reset_sql = "UPDATE `notes` SET `principal_com` = '' WHERE `username`='$username'";
+        }
+      }
+  mysqli_query($comment_reset_sql);
   if ($check_result->num_rows == 0)
     {
       if ($comment != '')

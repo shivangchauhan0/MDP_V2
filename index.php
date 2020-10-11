@@ -102,22 +102,19 @@
           <?php 
               }
             $username = $_SESSION['username'];
-            $user=$_GET['username'];
-            $sql = "SELECT * FROM `notes` WHERE (`username`='$username' OR `username`='$user') ";
-            $result = $db->query($sql);
-            if ($result->num_rows > 0) {
-                $row = $result->fetch_assoc();
-                 if ($row["hod_com"] != "") {
-                  echo "<tr><td colspan='10'> <span style='color:#FBBD08'>HOD &#8594; ".$row["hod_com"]."</span></td></tr>";
-                 }
-                 if ($row["dean_com"] != "") {
-                  echo "<tr><td colspan='10'><span style='color:#2185D0'>DEAN &#8594; ".$row["dean_com"]."</span></td></tr>";
-                 }
-                 if ($row["principal_com"] != "") {
-                  echo "<tr><td colspan='10'><span style='color:#21BA45'>PRINCIPAL &#8594; ".$row["principal_com"]."</span></td></tr>";
-                 }
-              ?>
-          <?php
+           $comm_sql = "SELECT * FROM `notes` WHERE `username`='$username' AND (`hod_com` != '' OR `dean_com` != '' OR `principal_com` != '')";
+           $comm_res = $db->query($comm_sql);
+           if ($comm_res->num_rows > 0) {
+            $comm = $comm_res->fetch_assoc();
+                  if ($comm["hod_com"] != "") {
+                  echo "<tr><td colspan='14'> <span style='color:#FBBD08'>HOD &#8594; ".$comm["hod_com"]."</span></td></tr>";
+                  }
+                  if ($comm["dean_com"] != "") {
+                  echo "<tr><td colspan='14'><span style='color:#2185D0'>DEAN &#8594; ".$comm["dean_com"]."</span></td></tr>";
+                  }
+                  if ($comm["principal_com"] != "") {
+                  echo "<tr><td colspan='14'><span style='color:#21BA45'>PRINCIPAL &#8594; ".$comm["principal_com"]."</span></td></tr>";
+                  }
                 }
               }
               else {

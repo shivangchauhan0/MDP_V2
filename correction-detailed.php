@@ -173,7 +173,7 @@
           <?php
         } if ($_GET['unchecked'] != 'true') { 
            $username = $_GET['id'];
-           $comm_sql = "SELECT * FROM `notes` WHERE `hod_com` != '' OR `dean_com` != '' OR `principal_com` != '' AND `username` = '$username' ";
+           $comm_sql = "SELECT * FROM `notes` WHERE `username`='$username' AND (`hod_com` != '' OR `dean_com` != '' OR `principal_com` != '')";
            $comm_res = $db->query($comm_sql);
            if ($comm_res->num_rows > 0) {
             $comm = $comm_res->fetch_assoc();
