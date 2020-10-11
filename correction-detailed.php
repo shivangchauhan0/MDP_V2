@@ -172,23 +172,57 @@
             </tr>
           <?php
         } if ($_GET['unchecked'] != 'true') { 
-           $username = $_GET['id'];
-           $comm_sql = "SELECT * FROM `notes` WHERE `username`='$username' AND (`hod_com` != '' OR `dean_com` != '' OR `principal_com` != '')";
-           $comm_res = $db->query($comm_sql);
-           if ($comm_res->num_rows > 0) {
-            $comm = $comm_res->fetch_assoc();
-                  if ($comm["hod_com"] != "") {
-                  echo "<tr><td colspan='14'> <span style='color:#FBBD08'>HOD &#8594; ".$comm["hod_com"]."</span></td></tr>";
-                  }
-                  if ($comm["dean_com"] != "") {
-                  echo "<tr><td colspan='14'><span style='color:#2185D0'>DEAN &#8594; ".$comm["dean_com"]."</span></td></tr>";
-                  }
-                  if ($comm["principal_com"] != "") {
-                  echo "<tr><td colspan='14'><span style='color:#21BA45'>PRINCIPAL &#8594; ".$comm["principal_com"]."</span></td></tr>";
-                  }
-                }
+          $username = $_GET['id'];
+          $comm_sql = "SELECT * FROM `notes` WHERE `username`='$username' AND (`hod_com` != '' OR `dean_com` != '' OR `principal_com` != '')";
+          $comm_res = $db->query($comm_sql);
+          if ($comm_res->num_rows > 0) {
+           while ($comm = $comm_res->fetch_assoc()) {
+              if ($comm["hod_com"] != "") { ?>
+                <tr>
+                  <td colspan='13'> <span style='color:#FBBD08'>HOD &#8594; <?php echo $comm["hod_com"] ?></span></td>
+                  <td>
+                      <?php if ($_SESSION["designation"] == "Hod") { ?>
+                        <form method="post" action="index.php" class="ui form delete">
+                          <button onclick="return checkDelete()" type="submit" name="del_com" value='<?php echo $comm["srno"] ?>' id="delete" class="ui mini icon button delete">
+                            <i class="trash icon"></i>
+                          </button>
+                        </form>
+                      <?php } ?>
+                  </td>
+                </tr>
+            <?php }
+              if ($comm["dean_com"] != "") { ?>
+              <tr>
+                <td colspan='13'><span style='color:#2185D0'>DEAN &#8594; <?php echo $comm["dean_com"] ?></span></td>
+                <td>
+                    <?php if ($_SESSION["designation"] == "Dean") { ?>
+                      <form method="post" action="index.php" class="ui form delete">
+                            <button onclick="return checkDelete()" type="submit" name="del_com" value='<?php echo $comm["srno"] ?>' id="delete" class="ui mini icon button delete">
+                              <i class="trash icon"></i>
+                            </button>
+                      </form>
+                    <?php } ?>
+                </td>
+              </tr>
+              <?php }
+              if ($comm["principal_com"] != "") { ?>
+              <tr>
+                <td colspan='13'><span style='color:#21BA45'>PRINCIPAL &#8594; <?php echo $comm["principal_com"] ?> </span></td>
+                <td>
+                  <?php if ($_SESSION['designation'] == 'Principal' || $_SESSION['designation'] == 'Vice-Principal') { ?>
+                        <form method="post" action="index.php" class="ui form delete">
+                              <button onclick="return checkDelete()" type="submit" name="del_com" value='<?php echo $comm["srno"] ?>' id="delete" class="ui mini icon button delete">
+                                <i class="trash icon"></i>
+                              </button>
+                        </form>
+                  <?php } ?>
+                </td>
+              </tr>
+            <?php  }
               }
             }
+          }
+        }
               else {
                 if ($_GET['unchecked'] == 'true') {
                   echo "<div class='alert alert-danger my-4' role='alert'>

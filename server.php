@@ -376,5 +376,19 @@ if(isset($_POST['uncheck']))
       mysqli_query($db, $query);
       header('Location: ' . $_SERVER['HTTP_REFERER']);
   }
+// DELETE COMMENTS
+if(isset($_POST['del_com'])) 
+  {
+    $srno = mysqli_real_escape_string($db, $_POST['del_com']);
+    if ($_SESSION['designation'] == 'Hod') {
+      $query = "UPDATE `notes` SET `hod_com`= '' WHERE `srno`='$srno'";
+    } else if ($_SESSION['designation'] == 'Dean') {
+      $query = "UPDATE `notes` SET `dean_com`= '' WHERE `srno`='$srno'";
+    } else if ($_SESSION['designation'] == 'Principal' || $_SESSION['designation'] == 'Vice-Principal') {
+      $query = "UPDATE `notes` SET `principal_com`= '' WHERE `srno`='$srno'";
+    } 
+      mysqli_query($db, $query);
+      header('Location: ' . $_SERVER['HTTP_REFERER']);
+  }
 ?>
 
