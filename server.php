@@ -346,7 +346,18 @@ if(isset($_POST['check'])){
   }
   $end_sql = " ORDER BY srno DESC LIMIT $limit";
   $sql = $start_sql.$mid_sql.$end_sql;
-  mysqli_query($db, $comment_sql);
+  if ($_SESSION['designation'] == 'Hod') {
+    $comment_check_sql = "SELECT `hod_com` FROM `notes` WHERE `hod_com` != '' AND `username`='$username'";
+  } else if ($_SESSION['designation'] == 'Dean') {
+    $comment_check_sql = "SELECT `dean_com` FROM `notes` WHERE `dean_com`= '' AND `username`='$username'";
+  } else if ($_SESSION['designation'] == 'Principal' || $_SESSION['designation'] == 'Vice-Principal') {
+    $comment_check_sql = "SELECT `principal_com` FROM `notes` WHERE `principal_com`= '' AND `username`='$username'";
+  }
+  $check_result = $db->query($comment_check_sql);
+  if ($check_result->num_rows == 0)
+     {
+       mysqli_query($db, $comment_sql);
+     }
   mysqli_query($db, $sql);
   header('Location: ' . $_SERVER['HTTP_REFERER']);
 }
