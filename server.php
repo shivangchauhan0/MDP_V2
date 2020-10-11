@@ -355,15 +355,9 @@ if(isset($_POST['check'])){
         } else if ($_SESSION['designation'] == 'Principal' || $_SESSION['designation'] == 'Vice-Principal') {
           $comment_reset_sql = "UPDATE `notes` SET `principal_com` = '' WHERE `username`='$username'";
         }
-      }
-  mysqli_query($comment_reset_sql);
-  if ($check_result->num_rows == 0)
-    {
-      if ($comment != '')
-      {
         mysqli_query($db, $comment_sql);
       }
-    }
+  mysqli_query($comment_reset_sql);
   mysqli_query($db, $sql);
   header('Location: ' . $_SERVER['HTTP_REFERER']);
 }
