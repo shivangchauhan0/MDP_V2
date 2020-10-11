@@ -70,24 +70,6 @@
           </form>
         </div>
         <?php  } ?>
-        <table class="ui celled table">
-        <thead>
-          <tr id="table-head">
-            <th>LECTURE</th>
-            <th>CLASS</th>
-            <th>SUBJECT</th>
-            <th>DATE</th>
-            <th>DAY</th>
-            <th><i class='circle yellow icon'></i>HOD</th>
-            <th><i class="circle blue icon"></i> DEAN</th>
-            <th><i class="circle green icon"></i>PRINCIPAL</th>
-            <th>STATUS</th>	  
-            <?php if ($_GET['unchecked'] != 'true') { ?>
-            <th>UNCHECK</th>	  
-            <?php  } ?>
-          </tr>
-        </thead>
-        <tbody>
           <?php 
             $username = $_GET['id'];
             $hod_true ="<i class=\"circle yellow icon\"></i>";
@@ -135,8 +117,26 @@
             // echo $sql;
             // -----------------------------------------------
             $result = $db->query($sql);
-            if ($result->num_rows > 0) {
-              while($row = $result->fetch_assoc()) {
+            if ($result->num_rows > 0) { ?>
+              <table class="ui celled table">
+              <thead>
+                <tr id="table-head">
+                  <th>LECTURE</th>
+                  <th>CLASS</th>
+                  <th>SUBJECT</th>
+                  <th>DATE</th>
+                  <th>DAY</th>
+                  <th><i class='circle yellow icon'></i>HOD</th>
+                  <th><i class="circle blue icon"></i> DEAN</th>
+                  <th><i class="circle green icon"></i>PRINCIPAL</th>
+                  <th>STATUS</th>	  
+                  <?php if ($_GET['unchecked'] != 'true') { ?>
+                  <th>UNCHECK</th>	  
+                  <?php  } ?>
+                </tr>
+              </thead>
+              <tbody>
+            <?php  while($row = $result->fetch_assoc()) {
                 $date = $row["date"];
                 $timestamp = strtotime($date);
                 $formatted_date = date("d-m-Y", $timestamp);
@@ -163,24 +163,8 @@
             </tr>
           <?php 
               }
-            $username = $_SESSION['username'];
-            $user=$_GET['username'];
-            $sql = "SELECT * FROM `notes` WHERE (`username`='$username' OR `username`='$user') ";
-            $result = $db->query($sql);
-            if ($result->num_rows > 0) {
-                $row = $result->fetch_assoc();
-                 if ($row["hod_com"] != "") {
-                  echo "<tr><td colspan='10'> <span style='color:#FBBD08'>HOD &#8594; ".$row["hod_com"]."</span></td></tr>";
-                 }
-                 if ($row["dean_com"] != "") {
-                  echo "<tr><td colspan='10'><span style='color:#2185D0'>DEAN &#8594; ".$row["dean_com"]."</span></td></tr>";
-                 }
-                 if ($row["principal_com"] != "") {
-                  echo "<tr><td colspan='10'><span style='color:#21BA45'>PRINCIPAL &#8594; ".$row["principal_com"]."</span></td></tr>";
-                 }
               ?>
           <?php
-                }
               }
               else {
                 if ($_GET['unchecked'] == 'true') {
