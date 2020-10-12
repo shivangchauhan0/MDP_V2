@@ -30,3 +30,11 @@ function checkDelete() {
 function checkUndo() {
   return confirm("Are you sure you want to undo?");
 }
+// PRINT REPORT
+// function printData() {
+//   var divToPrint = document.getElementById("show-records-table");
+//   newWin = window.open("");
+//   newWin.document.write(divToPrint.outerHTML);
+//   newWin.print();
+//   // newWin.close();
+// }

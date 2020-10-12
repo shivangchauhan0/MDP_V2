@@ -1,6 +1,5 @@
 <?php include("header.php") ?>
 <?php include("sidenav-head.php") ?>
-
  <!-- Page Content -->
  <div id="page-content-wrapper">
         <nav
@@ -15,10 +14,11 @@
         </div>
  </nav>
     <div class="container-fluid my-3">
-      <div class="head-bar">
+      <div class="head-bar-sec">
         <h2>LIST OF RECORDS</h2>
+        <a onclick="window.print()" class="float-right" href="#"><button type="submit" class="ui button bg-red mx-1 my-2" id="insert-id">Print Report</button></a>
       </div>
-      <table class="ui celled table"id="show-records-table">
+      <table class="ui celled table" id="show-records-table">
         <thead>
           <tr id="table-head">
             <th>DATE</th>
@@ -34,7 +34,7 @@
             <th>ATTENDANCE</th>	  
             <th>OTHER ACTIVITY</th>	  
             <th>REMARK</th>	  
-            <th>E || D</th>	  
+            <th class="display-none-print">E || D</th>	  
           </tr>
         </thead>
         <tbody>
@@ -83,8 +83,7 @@
                 <td><?php echo  $row["attendance"] ?></td>
                 <td><?php echo  $row["other_activity"] ?></td>
                 <td><?php echo  $row["remark"] ?></td>
-                <!-- <td><?php //echo ($row["hod"] == 1 ?  $hod_true : ($row["hod"] == 2 ? $incomp : $hod_false))." ".($row["dean"] == 1 ? $dean_true : ($row["dean"] == 2 ? $incomp : $dean_false))." ".($row["principal"] == 1 ? $principal_true : ($row["principal"] == 2 ? $incomp : $principal_false))?></td> -->
-                <td>
+                <td class="display-none-print">
                   <?php if($row["principal"]== 1) { ?>
                     <a class="ui icon button disabled" id="edit" href="edit-record.php?id=<?php echo $row["srno"] ?>"><i class="edit icon"></i></a>
                     <form method="post" action="show-records.php" class="ui form delete">
@@ -129,7 +128,7 @@
           ?>
         </tbody>
       </table>
-      <div class="filter-grid my-2">
+      <div class="filter-grid my-2 display-none-print">
         <div>
           <form method="get" action="show-records.php" class="ui form my-3 mx-2">
             <div class="fields">
@@ -200,7 +199,7 @@
           </form>
         </div>
       </div>
-        <form method="get" action="show-records.php" class="ui form row-form">
+        <form method="get" action="show-records.php" class="ui form row-form display-none-print">
           <div class="inline fields">
             <label> Records per page</label>
             <div class="seven wide field">

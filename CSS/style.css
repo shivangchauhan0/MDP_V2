@@ -286,3 +286,9 @@ form.delete {
     margin-bottom: 3vh !important;
   }
 }
+@media print {
+  /* All your print styles go here */
+  .display-none-print {
+    display: none !important;
+  }
+}
