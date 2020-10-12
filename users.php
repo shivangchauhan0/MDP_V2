@@ -24,6 +24,13 @@
         </ul>
     </div>
  </nav>
+ <div class="nav-btns mt-1 ml-1">
+      <a href="admin-dashboard.php"><button type="submit" class="ui button bg-red mx-1 my-2 tiny" id="insert-id">Add ID</button></a> 
+        <?php if ($_GET['filter_ID'] != "" || $_GET['filter_username'] != "" || $_GET['filter_name'] != "" || $_GET['filter_designation'] != "") {?>
+            <a href="users.php"><button type="submit" class="ui button bg-red mx-1 my-2 tiny" id="insert-id">Users</button></a> 
+        <?php } ?>
+        <a href="index.php?logout='1'"><button type="submit" class="ui button bg-red mx-1 my-2 tiny" id="insert-id">Logout</button></a>
+ </div>
 <div class="container">
 <div class="filter-grid-users my-2">
         <div>
@@ -131,13 +138,11 @@
                    <td><?php echo $row["department"]  ?></td>
                    <td><?php echo $row["designation"] == "Professor"?"ASSISTANT PROFESSOR" : strtoupper($row["designation"])  ?></td>
                 <td id='del'>
-                <center>
                 <form method='post' action='users.php' class='ui form delete'>
-							 <button onclick='return checkDelete()' type='submit' name='delete_user' value='<?php echo $row['id'] ?>' id='delete' class='ui mini icon button delete'>
-								<i class='trash icon'></i>
-							 </button>
-                         </form>
-                </center>
+                    <button onclick='return checkDelete()' type='submit' name='delete_user' value='<?php echo $row['id'] ?>' id='delete' class='ui mini icon button delete'>
+                      <i class='trash icon'></i>
+                    </button>
+                </form>
                          
                 </td>
                 </tr>

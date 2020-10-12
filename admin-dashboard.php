@@ -17,10 +17,14 @@
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <p id="username" class="mt-0 mr-3 mt-3"><i class='user icon'></i><strong><?php echo $_SESSION['name'] ?></strong></p>
             <a href="users.php"><button type="submit" class="ui button bg-red mx-1 my-2" id="insert-id">Users</button></a> 
-           <a href="index.php?logout='1'"><button type="submit" class="ui button bg-red mx-1 my-2" id="insert-id">Logout</button></a> 
+            <a href="index.php?logout='1'"><button type="submit" class="ui button bg-red mx-1 my-2" id="insert-id">Logout</button></a> 
           </ul>
         </div>
  </nav>
+ <div class="nav-btns mt-1 ml-1">
+    <a href="users.php"><button type="submit" class="ui button bg-red mx-1 my-2 tiny" id="insert-id">Users</button></a> 
+    <a href="index.php?logout='1'"><button type="submit" class="ui button bg-red mx-1 my-2 tiny" id="insert-id">Logout</button></a>
+ </div>
         <div class="head-bar">
             <h2 style="text-align:center" class="my-3 mx-4">ADD NEW ID</h2>
         </div>
@@ -68,10 +72,10 @@
                 <td><?php echo $row["designation"] ?></td>
                 <td>
                 <form method='post' action='admin-dashboard.php' class='ui form delete'>
-							 <button onclick='return checkDelete()' type='submit' name='delete_tid' value='<?php echo $row['id'] ?>' id='delete' class='ui mini icon button delete'>
-								<i class='trash icon'></i>
-							 </button>
-                         </form>   
+                  <button onclick='return checkDelete()' type='submit' name='delete_tid' value='<?php echo $row['id'] ?>' id='delete' class='ui mini icon button delete'>
+                    <i class='trash icon'></i>
+                  </button>
+                </form>   
                 </td>
                 </tr>
 		<?php	}

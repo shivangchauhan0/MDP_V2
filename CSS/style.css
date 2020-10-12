@@ -150,6 +150,9 @@ form.delete {
   margin: 0 auto !important;
 }
 /* ADMIN DASHBOARD */
+.nav-btns {
+  display: none;
+}
 .admin-form {
   margin: 0 auto !important;
   margin-top: 5vh !important;
@@ -288,6 +291,9 @@ form.delete {
     color: #fff !important;
   }
   /* ADMIN DASHBOARD */
+  .nav-btns {
+    display: unset;
+  }
   .admin-form {
     margin: 0 auto !important;
     margin-top: 5vh !important;
