@@ -285,6 +285,16 @@ form.delete {
     margin-top: 10vh !important;
     margin-bottom: 3vh !important;
   }
+  .float-right {
+    float: left !important;
+  }
+  .row-form-correction {
+    margin-left: 3vw !important;
+  }
+  .vp-check {
+    margin-top: 1vh !important;
+    margin-bottom: 2vh !important;
+  }
 }
 @media print {
   /* All your print styles go here */

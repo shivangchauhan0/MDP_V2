@@ -312,10 +312,10 @@
           </form>
         </div>
       </div>
-        <form method="get" action="correction-detailed.php" class="ui form row-form">
+        <form method="get" action="correction-detailed.php" class="ui form row-form row-form-correction">
           <div class="inline fields">
-            <label> Records per page</label>
-            <div class="seven wide field">
+            <label class="mb-1"> Records per page</label>
+            <div id="id-input" class="seven wide field">
               <input type="number" name="limit" value="<?php echo $limit ?>">
               <input type="text" name="id" class="d-none" value="<?php echo $_GET['id']?>">
             </div>

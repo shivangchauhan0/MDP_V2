@@ -24,7 +24,7 @@
                 $auth = $row['tid'] != "enable"?"Enable":"Disable";
                 if ($_SESSION['designation'] == "Principal") { ?>
                     <form method="post" action="index.php" class="ui form d-inline">
-                        <button type="submit" name="vp_check"  id="" class="ui button bg-red float-right">
+                        <button type="submit" name="vp_check"  id="" class="ui button vp-check bg-red float-right">
                             <?php echo $auth ?> Vice Principal checking
                         </button>
                     </form>
@@ -68,7 +68,6 @@
         <table class="ui celled table my-4">
             <thead>
                 <tr id="table-head">
-                    <th>ID</th>
                     <th>Name</th>
                     <th>Designation</th>
                     <th>Correct</th>
@@ -83,7 +82,6 @@
                     while ($row = $result-> fetch_assoc())
                     { $srno++; ?>
                         <tr class="<?php echo $row['designation'] == "Vice-Principal" ? "active" : "" ?>">
-                            <td style="width:11vw"><span class="mx-1"><?php echo $row["tid"] ?></span></td>
                             <td><a href="correction.php?id=<?php echo $row['username']?>&unchecked=true" style="color:#000" class="mx-1"><?php echo $row["name"] ?></a></td>
                             <td><a href="correction.php?id=<?php echo $row['username']?>&unchecked=true" style="color:#000" class="mx-1"><?php echo $row["designation"] == "Professor"?"ASSISTANT PROFESSOR" : strtoupper($row["designation"]) ?></a></td>
                             <td style="width:11vw">

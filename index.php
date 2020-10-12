@@ -199,8 +199,8 @@
       </div>
         <form method="get" action="index.php" class="ui form row-form">
           <div class="inline fields">
-            <label> Records per page</label>
-            <div class="seven wide field">
+            <label class="mb-1"> Records per page</label>
+            <div class="seven wide field" id="id-input">
               <input type="number" name="limit" value="<?php echo $limit ?>">
             </div>
               <button id="btn" class="ui button bg-red my-2" type="submit">Submit</button>

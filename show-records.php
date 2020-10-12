@@ -16,7 +16,7 @@
     <div class="container-fluid my-3">
       <div class="head-bar-sec">
         <h2>LIST OF RECORDS</h2>
-        <a onclick="window.print()" class="float-right" href="#"><button type="submit" class="ui button bg-red mx-1 my-2" id="insert-id">Print Report</button></a>
+        <a onclick="window.print()" class="float-right display-none-print" href="#"><button type="submit" class="ui button bg-red mx-1 my-2" id="insert-id">Print Report</button></a>
       </div>
       <table class="ui celled table" id="show-records-table">
         <thead>
@@ -109,13 +109,13 @@
         if ($comm_res->num_rows > 0) {
          while ($comm = $comm_res->fetch_assoc()) {
                  if ($comm["hod_com"] != "") {
-                 echo "<tr><td colspan='14'> <span style='color:#FBBD08'>HOD &#8594; ".$comm["hod_com"]."</span></td></tr>";
+                 echo "<tr class='display-none-print'><td colspan='14'> <span style='color:#FBBD08'>HOD &#8594; ".$comm["hod_com"]."</span></td></tr>";
                  }
                  if ($comm["dean_com"] != "") {
-                 echo "<tr><td colspan='14'><span style='color:#2185D0'>DEAN &#8594; ".$comm["dean_com"]."</span></td></tr>";
+                 echo "<tr class='display-none-print'><td colspan='14'><span style='color:#2185D0'>DEAN &#8594; ".$comm["dean_com"]."</span></td></tr>";
                  }
                  if ($comm["principal_com"] != "") {
-                 echo "<tr><td colspan='14'><span style='color:#21BA45'>PRINCIPAL &#8594; ".$comm["principal_com"]."</span></td></tr>";
+                 echo "<tr class='display-none-print'><td colspan='14'><span style='color:#21BA45'>PRINCIPAL &#8594; ".$comm["principal_com"]."</span></td></tr>";
                  }
                }
              }
@@ -201,8 +201,8 @@
       </div>
         <form method="get" action="show-records.php" class="ui form row-form display-none-print">
           <div class="inline fields">
-            <label> Records per page</label>
-            <div class="seven wide field">
+            <label class="mb-1"> Records per page</label>
+            <div class="seven wide field" id="id-input">
               <input type="number" name="limit" value="<?php echo $limit ?>">
             </div>
               <button id="btn" class="ui button bg-red my-2" type="submit">Submit</button>
