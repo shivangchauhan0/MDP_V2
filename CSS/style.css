@@ -264,6 +264,13 @@ form.delete {
     display: block;
   }
   /* INSERT RECORD */
+  .hidden-sm {
+    display: none !important;
+  }
+  .d-none-large {
+    margin-top: 3vh !important;
+    margin-bottom: 3vh !important;
+  }
   #date-today {
     display: none;
   }

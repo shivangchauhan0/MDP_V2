@@ -39,7 +39,7 @@
   
        <h2 style="color:#A4243B;font-family: 'Montserrat', sans-serif;">ENTER RECORDS OF <?php echo $formatted_date?> [<?php echo $dayOfWeek ?>]</h2>
         <div class="ui segment">
-        <form class="ui form rec-form">
+        <form class="ui form rec-form hidden-sm">
           <div class="fields mb-0 less-height">
             <div class="field field-rec">
               <label class="mb-3 display-none">LECTURE</label>
@@ -147,6 +147,9 @@
               $result = $db-> query($sql);
               if($result-> num_rows == 0){
             ?>
+            <div class="ui horizontal divider d-none-large">
+              <?php echo $i+1 ?>
+            </div>
             <form method="post" action="insert-record.php" class="ui form rec-form">
               <div class="fields">
                 <div class="field field-rec">
