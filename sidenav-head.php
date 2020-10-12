@@ -31,11 +31,16 @@
               >Education <i class="fa fa-bookmark fa-fw" aria-hidden="true"></i></a
             >
           <?php } ?>
-          <?php if ($_SESSION['designation'] == "Vice-Principal" AND $auth == "enable") { ?>
+          <?php if ($_SESSION['designation'] == "Vice-Principal") {
+              $check_vp_sql = "SELECT * FROM `users` WHERE `designation`='Vice-Principal'";
+              $result = $db->query($check_vp_sql);
+              $row = $result->fetch_assoc();
+              if ($row['tid'] == "enable") { ?>
             <a href="departments.php" class="list-group-item list-group-item-action bg-light"
               >Records Correction <i class="fa fa-pen fa-fw" aria-hidden="true"></i></a
             >
-          <?php } ?>
+          <?php }
+            } ?>
           <?php if ($_SESSION['designation'] != "Principal") { ?>
           <a href="index.php" class="list-group-item list-group-item-action bg-light"
             >Dashboard <i class="fa fa-desktop fa-fw" aria-hidden="true"></i></a

@@ -15,8 +15,21 @@
         </div>
  </nav>
  <div class="container-fluid my-3">
-        <div class="head-bar">
+        <div class="head-bar-sec">
             <h2>LIST OF DEPARTMENTS</h2>
+            <?php 
+                $check_vp_sql = "SELECT * FROM `users` WHERE `designation`='Vice-Principal'";
+                $result = $db->query($check_vp_sql);
+                $row = $result->fetch_assoc();
+                $auth = $row['tid'] != "enable"?"Enable":"Disable";
+                if ($_SESSION['designation'] == "Principal") { ?>
+                    <form method="post" action="index.php" class="ui form d-inline">
+                        <button type="submit" name="vp_check"  id="" class="ui button bg-red float-right">
+                            <?php echo $auth ?> Vice Principal checking
+                        </button>
+                    </form>
+            <?php   }
+            ?>
         </div>
         <table class="ui celled table my-4">
             <thead>
@@ -28,8 +41,6 @@
             </thead>
             <tbody>
             <?php
-                // $sup_dep = $_SESSION['sup_depart'];
-                // $sup_dep = $_GET['sup_depart'] == ""? $_SESSION['sup_depart'] : $_GET['sup_depart'];
                 $sql = "SELECT * FROM `sup_depart` WHERE  1" ;
                 $result = $db-> query($sql);
                 $srno = 0;

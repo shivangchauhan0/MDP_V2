@@ -390,5 +390,20 @@ if(isset($_POST['del_com']))
       mysqli_query($db, $query);
       header('Location: ' . $_SERVER['HTTP_REFERER']);
   }
+// VICE PRINCIPAL CHECKING 
+if(isset($_POST['vp_check'])) 
+{
+  $check_vp_sql = "SELECT * FROM `users` WHERE `designation`='Vice-Principal'";
+  $result = $db->query($check_vp_sql);
+  $row = $result->fetch_assoc();
+  if($row['tid'] == "disable" || $row['tid'] != "enable"){
+    $query = "UPDATE `users` SET `tid`= 'enable' WHERE `designation`='Vice-Principal'";
+  } 
+  if($row['tid'] == "enable"){
+    $query = "UPDATE `users` SET `tid`= 'disable' WHERE `designation`='Vice-Principal'";
+  } 
+    mysqli_query($db, $query);
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
+}
 ?>
 
