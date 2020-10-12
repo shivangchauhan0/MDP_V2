@@ -196,6 +196,32 @@ form.delete {
 .correction-form-label {
   font-family: "Montserrat", sans-serif !important;
 }
+/* HOME PAGE */
+.body-container {
+  width: 100vw;
+  height: 100vh;
+  background: no-repeat;
+  background-size: cover;
+  background-image: url("/MDP_V2/img/diary.jpg");
+}
+.content {
+  padding-top: 35vh;
+  margin-left: 60vw;
+}
+#home-head {
+  color: #a4243b;
+  margin-bottom: 1vh;
+  font-size: 50px;
+  font-family: "Montserrat", sans-serif !important;
+}
+.content > p {
+  margin-left: 1vw;
+  font-size: 16px;
+  color: #bdbeb7;
+}
+.content > .btn-grid {
+  margin-left: 1vw;
+}
 @media only screen and (max-width: 600px) {
   .filter-grid {
     grid-template-columns: 1fr;
@@ -294,6 +320,20 @@ form.delete {
   .vp-check {
     margin-top: 1vh !important;
     margin-bottom: 2vh !important;
+  }
+  .content {
+    width: 90vw;
+    margin: 0 auto !important;
+    padding-top: 30vh;
+  }
+  #home-head {
+    font-size: 35px;
+  }
+  .content > p {
+    color: #fff;
+  }
+  .content > .btn-grid {
+    margin-left: 1vw;
   }
 }
 @media print {
