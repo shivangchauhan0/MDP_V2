@@ -31,6 +31,11 @@
               >Education <i class="fa fa-bookmark fa-fw" aria-hidden="true"></i></a
             >
           <?php } ?>
+          <?php if ($_SESSION['designation'] == "Vice-Principal" AND $auth == "enable") { ?>
+            <a href="departments.php" class="list-group-item list-group-item-action bg-light"
+              >Records Correction <i class="fa fa-pen fa-fw" aria-hidden="true"></i></a
+            >
+          <?php } ?>
           <?php if ($_SESSION['designation'] != "Principal") { ?>
           <a href="index.php" class="list-group-item list-group-item-action bg-light"
             >Dashboard <i class="fa fa-desktop fa-fw" aria-hidden="true"></i></a
