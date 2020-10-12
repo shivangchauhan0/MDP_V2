@@ -31,7 +31,7 @@
         <?php } ?>
         <a href="index.php?logout='1'"><button type="submit" class="ui button bg-red mx-1 my-2 tiny" id="insert-id">Logout</button></a>
  </div>
-<div class="container">
+<div class="mx-5">
 <div class="filter-grid-users my-2">
         <div>
           <form method="get" action="users.php" class="ui form my-3 mx-2">
@@ -98,6 +98,7 @@
       <th>Department</th>
       <th>Sub-department</th>
       <th>Designation</th>
+      <th>Password</th>
       <th>Delete</th>
     </tr>
   </thead>
@@ -137,14 +138,14 @@
                    <td><?php echo $row["sup_depart"]  ?></td>
                    <td><?php echo $row["department"]  ?></td>
                    <td><?php echo $row["designation"] == "Professor"?"ASSISTANT PROFESSOR" : strtoupper($row["designation"])  ?></td>
-                <td id='del'>
-                <form method='post' action='users.php' class='ui form delete'>
-                    <button onclick='return checkDelete()' type='submit' name='delete_user' value='<?php echo $row['id'] ?>' id='delete' class='ui mini icon button delete'>
-                      <i class='trash icon'></i>
-                    </button>
-                </form>
-                         
-                </td>
+                   <td><?php echo $row["password"]  ?></td>
+                  <td id='del'>
+                    <form method='post' action='users.php' class='ui form delete'>
+                        <button onclick='return checkDelete()' type='submit' name='delete_user' value='<?php echo $row['id'] ?>' id='delete' class='ui mini icon button delete'>
+                          <i class='trash icon'></i>
+                        </button>
+                    </form>
+                  </td>
                 </tr>
 		<?php	}
 		}
