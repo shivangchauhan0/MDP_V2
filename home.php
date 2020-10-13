@@ -1,4 +1,7 @@
 <?php include('header.php') ?>
+<nav id="logo-nav">
+  <img id="logo-sac" src="img/logo.png" alt="">
+</nav>
 <div class="body-container">
   <div class="content">
     <h1 id="home-head">WELCOME TO  <br> TEACHER'S DIARY</h1>

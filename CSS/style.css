@@ -200,15 +200,26 @@ form.delete {
   font-family: "Montserrat", sans-serif !important;
 }
 /* HOME PAGE */
+#logo-nav {
+  height: 15vh;
+  width: 100%;
+  background: #fff;
+}
+#logo-sac {
+  padding-left: 2vw;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  width: 350px;
+}
 .body-container {
   width: 100vw;
-  height: 100vh;
+  height: 85vh;
   background: no-repeat;
   background-size: cover;
   background-image: url("/MDP_V2/img/diary.jpg");
 }
 .content {
-  padding-top: 35vh;
+  padding-top: 20vh;
   margin-left: 60vw;
 }
 #home-head {
@@ -337,7 +348,7 @@ form.delete {
   .content {
     width: 90vw;
     margin: 0 auto !important;
-    padding-top: 30vh;
+    padding-top: 20vh;
   }
   #home-head {
     font-size: 35px;
