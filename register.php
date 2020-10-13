@@ -60,7 +60,7 @@
   	  <button type="submit" class="ui button bg-red" id="reg-btn" name="reg_user">Register</button>
 	  </div>
   	<p>
-  		Already a member? <a href="login.php">Sign in</a> or <a href="home.php">Home</a>
+  		Already a member? <a href="login.php">Log in</a> or <a href="home.php">Home</a>
   	</p>
   </form>
   <?php

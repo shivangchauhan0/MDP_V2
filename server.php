@@ -62,8 +62,8 @@ if (isset($_POST['reg_user'])) {
           mysqli_query($db, $query_timetable);
         }
         $_SESSION['username'] = $username;
-        $_SESSION['success'] = "You are now logged in";
-        header('location: login.php');
+        $_SESSION['success'] = "You can now log in";
+        header('location: login.php?success=1');
   }
    } else {
     if (empty($flag)) { array_push($errors, "Not authorized for registration"); }

@@ -6,7 +6,12 @@
   </div>
 	 
   <form class="ui form my-form" method="post" action="login.php">
-  	<?php include('errors.php'); ?>
+	<?php include('errors.php'); ?>
+	<?php if ($_GET["success"] == "1") { ?>
+		 <div class="alert alert-success" role="alert">
+		 <p><?php echo "You are now registered and can log in now" ?></p>
+		 </div>
+	<?php } ?>
   	<div class="field">
   		<label class="labels">Username</label>
   		<input type="text" name="username" required>
