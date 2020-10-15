@@ -140,7 +140,7 @@
           $table = $result_two-> fetch_assoc();
           $lectures = array("First", "Second", "Third","Fourth","Fifth","Sixth","Seventh");
           $classes = array($table["c1"], $table["c2"], $table["c3"],$table["c4"],$table["c5"],$table["c6"],$table["c7"]);
-          $subjects = array($table["s1"], $table["s2"], $table["s3"],$table["s3"],$table["s5"],$table["s6"],$table["s7"]);
+          $subjects = array($table["s1"], $table["s2"], $table["s3"],$table["s4"],$table["s5"],$table["s6"],$table["s7"]);
       
           for ($i=0; $i < 7; $i++) { 
               $sql = "SELECT * FROM `notes` WHERE `username`= '$current_user' AND `date`='$search_date' AND `lecture`='$lectures[$i]'";
