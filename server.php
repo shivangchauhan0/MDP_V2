@@ -124,7 +124,6 @@ if (isset($_POST['login_user'])) {
 if(isset($_POST['delete'])) 
   {    
     $srno = mysqli_real_escape_string($db, $_POST['delete']);
-    $srno=number_format($srno);
     $query = "DELETE FROM `notes` WHERE srno = $srno";
     mysqli_query($db, $query);
     header('Location: ' . $_SERVER['HTTP_REFERER']);
@@ -302,7 +301,6 @@ if (isset($_POST['edit_record'])){
     if(isset($_POST['delete_tid'])) 
     {    
       $id = mysqli_real_escape_string($db, $_POST['delete_tid']);
-      $id=number_format($id);
       $query = "DELETE FROM `verifyid` WHERE `id` = $id";
       mysqli_query($db, $query);
       header('Location: ' . $_SERVER['HTTP_REFERER']);
@@ -312,7 +310,6 @@ if (isset($_POST['edit_record'])){
 if(isset($_POST['delete_user'])) 
 {    
   $id = mysqli_real_escape_string($db, $_POST['delete_user']);
-  $id=number_format($id);
   $query = "DELETE FROM `users` WHERE `id` = $id";
   mysqli_query($db, $query);
   header('Location: ' . $_SERVER['HTTP_REFERER']);
