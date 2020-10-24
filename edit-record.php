@@ -34,7 +34,7 @@
                 </div>
                 <div class="field">
                     <label class="labels">SUBJECT</label>
-                    <input  readonly type="text" name="subject" value="<?php echo $row['subject'] ?>">
+                    <input type="text" name="subject" value="<?php echo $row['subject'] ?>">
                 </div>
                 <div class="field">
                     <label class="labels">METHODOLODGY</label>
@@ -97,7 +97,7 @@
             </div>
             <div class="fields">
                 <div class="field">
-                    <button id="btn" name="edit_record" value="<?php echo $row["srno"];?>" class="ui button outline-red" value="<?php echo $search_date ?>" type="submit">Update</button>
+                    <button id="btn" name="edit_record" value="<?php echo $row["srno"];?>" class="ui button bg-red" value="<?php echo $search_date ?>" type="submit">Update</button>
                 </div>
             </div>
         </form>

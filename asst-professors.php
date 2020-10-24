@@ -24,13 +24,20 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Designation</th>
+                <?php if ($_SESSION['department'] == 'Applied Economics') { ?>
+                <th>Department</th>
+               <?php }?>
                 <th>Correct</th>
                 </tr>
             </thead>
             <tbody>
             <?php
                 $dep = $_GET['department'] == ""? $_SESSION['department'] : $_GET['department'];
-                $sql = "SELECT * FROM `users` WHERE `department`='$dep'";
+                if ($_SESSION['department'] != 'Applied Economics') {
+                    $sql = "SELECT * FROM `users` WHERE `department`='$dep'";
+                } else {
+                    $sql = "SELECT * FROM `users` WHERE `department`='Applied Economics' OR `department`='B.Com. Honors' OR `department`='Taxation and Computer Application'";
+                }
                 $result = $db-> query($sql);
                 if($result-> num_rows > 0){	
                     while ($row = $result-> fetch_assoc())
@@ -43,6 +50,9 @@
                             <td style="width:11vw"><span class="mx-1"><?php echo $row["tid"] ?></span></td>
                             <td><a href="correction.php?id=<?php echo $row['username']?>&unchecked=true" style="color:#000" class="mx-1"><?php echo $row["name"] ?></a></td>
                             <td><a href="correction.php?id=<?php echo $row['username']?>&unchecked=true" style="color:#000" class="mx-1"><?php echo $row["designation"] == "Professor"?"ASSISTANT PROFESSOR" : strtoupper($row["designation"]) ?></a></td>
+                            <?php if ($_SESSION['department'] == 'Applied Economics') { ?>
+                            <td><a href="correction.php?id=<?php echo $row['username']?>&unchecked=true" style="color:#000" class="mx-1"><?php echo $row["department"] ?></a></td>
+                            <?php }?>
                             <td style="width:11vw">
                                 <a href="correction.php?id=<?php echo $row['username']?>&unchecked=true"><button type="submit" class="ui button tiny bg-red mx-1" id="insert-id">Correct <i class="fa fa-pen fa-fw ml-1" aria-hidden="true"></i></button></a> 
                             </td>

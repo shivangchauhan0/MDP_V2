@@ -53,15 +53,15 @@
             // ------------------------------------------------
             // ----------------FILTER QUERIES-----------------
             if ($filter_date != "empty") {
-              $sql = "SELECT * FROM `notes` WHERE (`username`='$username' OR `username`='$user') AND `date`='$filter_date'  ORDER BY srno DESC LIMIT $limit ";
+              $sql = "SELECT * FROM `notes` WHERE `username`='$username' AND `date`='$filter_date'  ORDER BY srno DESC LIMIT $limit ";
             } else if ($filter_day != "") {
-              $sql = "SELECT * FROM `notes` WHERE (`username`='$username' OR `username`='$user') AND `day`='$filter_day'  ORDER BY srno DESC LIMIT $limit ";
+              $sql = "SELECT * FROM `notes` WHERE `username`='$username' AND `day`='$filter_day'  ORDER BY srno DESC LIMIT $limit ";
             } else if ($from_date != "") {
-              $sql = "SELECT * FROM `notes` WHERE (`username`='$username' OR `username`='$user') AND `date` BETWEEN '$from_date' AND '$till_date' ORDER BY srno DESC LIMIT $limit ";
+              $sql = "SELECT * FROM `notes` WHERE `username`='$username' AND `date` BETWEEN '$from_date' AND '$till_date' ORDER BY srno DESC LIMIT $limit ";
             } else if ($filter_lecture != "") {
-              $sql = "SELECT * FROM `notes` WHERE (`username`='$username' OR `username`='$user') AND `lecture`='$filter_lecture'  ORDER BY srno DESC LIMIT $limit ";
+              $sql = "SELECT * FROM `notes` WHERE `username`='$username' AND `lecture`='$filter_lecture'  ORDER BY srno DESC LIMIT $limit ";
             } else {
-              $sql = "SELECT * FROM `notes` WHERE (`username`='$username' OR `username`='$user') ORDER BY srno DESC LIMIT $limit ";
+              $sql = "SELECT * FROM `notes` WHERE `username`='$username' ORDER BY srno DESC LIMIT $limit ";
             }
             // -----------------------------------------------
             $result = $db->query($sql);

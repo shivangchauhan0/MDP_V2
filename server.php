@@ -262,6 +262,7 @@ if (isset($_POST['add_record'])) {
 // EDIT RECORD
 if (isset($_POST['edit_record'])){
   $id =  mysqli_real_escape_string($db, $_POST['edit_record']);
+  $subject = mysqli_real_escape_string($db, $_POST['subject']);
   $classtype = mysqli_real_escape_string($db, $_POST['classtype']);
   $methodology= mysqli_real_escape_string($db, $_POST['methodology']);
   $teaching_aid = mysqli_real_escape_string($db, $_POST['teachingaid']);
@@ -270,7 +271,7 @@ if (isset($_POST['edit_record'])){
   $attendance = mysqli_real_escape_string($db, $_POST['attendance']);
   $other_activity = mysqli_real_escape_string($db, $_POST['otheractivity']);
   $remark = mysqli_real_escape_string($db, $_POST['remark']);
-  $query = "UPDATE `notes` SET `theory/prac`='$classtype',`methodology`= '$methodology',`teaching_aid`='$teaching_aid',`content`='$content',`class_activity`='$class_activity',`attendance`='$attendance',`other_activity`='$other_activity',`remark`='$remark' WHERE `srno`='$id'";
+  $query = "UPDATE `notes` SET `subject` = '$subject',`theory/prac`='$classtype',`methodology`= '$methodology',`teaching_aid`='$teaching_aid',`content`='$content',`class_activity`='$class_activity',`attendance`='$attendance',`other_activity`='$other_activity',`remark`='$remark' WHERE `srno`='$id'";
   mysqli_query($db, $query);
   header('Location: ' . $_SERVER['HTTP_REFERER']);
 }
