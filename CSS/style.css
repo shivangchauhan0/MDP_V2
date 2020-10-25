@@ -309,6 +309,9 @@ form.delete {
   .nav-btns {
     display: unset;
   }
+  .admin-grid {
+    grid-template-columns: 1fr;
+  }
   .admin-form {
     margin: 0 auto !important;
     margin-top: 5vh !important;

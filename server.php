@@ -276,6 +276,7 @@ if (isset($_POST['edit_record'])){
 }
 
 // ADMIN
+  // ID
     if (isset($_POST['insert_tid'])) {
       $tid = mysqli_real_escape_string($db, $_POST['tid']);
       $designation = mysqli_real_escape_string($db, $_POST['designation']);
@@ -305,7 +306,37 @@ if (isset($_POST['edit_record'])){
       mysqli_query($db, $query);
       header('Location: ' . $_SERVER['HTTP_REFERER']);
   
-    }  
+    } 
+  // METHODOLOGY
+  if (isset($_POST['insert_methodology'])) {
+     $name = $_POST['methodology'];
+     $query = "INSERT INTO `methodology` (`name`) 
+                    VALUES('$name')";
+          mysqli_query($db, $query);
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
+  }
+  if(isset($_POST['delete_methodology'])) 
+    {    
+      $id = mysqli_real_escape_string($db, $_POST['delete_methodology']);
+      $query = "DELETE FROM `methodology` WHERE `id` = $id";
+      mysqli_query($db, $query);
+      header('Location: ' . $_SERVER['HTTP_REFERER']);
+    } 
+  // TEACHING AID
+  if (isset($_POST['insert_teachingaid'])) {
+     $name = $_POST['teachingaid'];
+     $query = "INSERT INTO `teachingaid` (`name`) 
+                    VALUES('$name')";
+          mysqli_query($db, $query);
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
+  }
+  if(isset($_POST['delete_teachingaid'])) 
+    {    
+      $id = mysqli_real_escape_string($db, $_POST['delete_teachingaid']);
+      $query = "DELETE FROM `teachingaid` WHERE `id` = $id";
+      mysqli_query($db, $query);
+      header('Location: ' . $_SERVER['HTTP_REFERER']);
+    } 
 // USERS
 if(isset($_POST['delete_user'])) 
 {    

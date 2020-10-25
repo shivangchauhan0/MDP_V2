@@ -26,7 +26,7 @@
     <a href="index.php?logout='1'"><button type="submit" class="ui button bg-red mx-1 my-2 tiny" id="insert-id">Logout</button></a>
  </div>
  <div class="admin-grid">
-    <div class="ad-con mx-3 border-right">
+    <div class="ad-con mx-2 pr-1 border-right">
         <div class="head-bar">
             <h2 style="text-align:center" class="my-3 mx-4">ADD NEW ID</h2>
         </div>
@@ -86,91 +86,20 @@
         </table>
       </div>
    </div>
-   <div class="ad-con">
-    <div class="head-bar">
-            <h2 style="text-align:center" class="my-3 mx-4">ADD NEW ID</h2>
-        </div>
-        <form method="post" action="admin-dashboard.php" class="ui form admin-form ">
-          <?php include('errors.php'); ?>
-          <div class="fields">
-            <div id="id-input" class="seven wide field">
-              <label>ID</label>
-              <input placeholder="ID" name="tid" type="text" required>
-            </div>
-            <div id="deg-input" class="seven wide field">
-              <label>Designation</label>
-              <select class="ui fluid dropdown" name="designation" required>
-                      <option value="">Designation</option>
-                      <option value="Principal">Principal</option>
-                      <option value="Vice-Principal">Vice Principal</option>
-                      <option value="Dean">Dean</option>
-                      <option value="Hod">HOD</option>
-                      <option value="Professor">Assistant Professor</option>
-                  </select>
-            </div>
-            <div class="field">
-                  <label style="visibility:hidden">Designation</label>
-                  <button type="submit" class="ui button bg-red" id="insert-id" name="insert_tid">Insert</button>
-          </div>
-          </div>
-      </form>
-      <div class="container-four">
-        <table class="ui celled table admin-table">
-              <thead>
-                <tr id="table-head">
-                  <th>ID</th>
-                  <th>Designation</th>
-                  <th>Delete</th>
-                </tr>
-              </thead>
-              <tbody>
-            <?php
-              $sql = "SELECT * FROM `verifyid` WHERE 1";
-              $result = $db-> query($sql);
-              if($result-> num_rows > 0){	
-                while ($row = $result-> fetch_assoc()) { ?>
-                          <tr><td><?php echo $row["tid"] ?></td>
-                          <td><?php echo $row["designation"] ?></td>
-                          <td>
-                          <form method='post' action='admin-dashboard.php' class='ui form delete'>
-                            <button onclick='return checkDelete()' type='submit' name='delete_tid' value='<?php echo $row['id'] ?>' id='delete' class='ui mini icon button delete'>
-                              <i class='trash icon'></i>
-                            </button>
-                          </form>   
-                          </td>
-                          </tr>
-                <?php	}
-                }
-              ?>
-            </tbody>
-        </table>
-      </div>
-  </div>
-   <div class="ad-con">
+   <div class="ad-con mx-2 pl-1 pr-1 border-right">
    <div class="head-bar">
-            <h2 style="text-align:center" class="my-3 mx-4">ADD NEW ID</h2>
+            <h2 style="text-align:center" class="my-3 mx-4">ADD NEW TEACHING AID</h2>
         </div>
-        <form method="post" action="admin-dashboard.php" class="ui form admin-form ">
+        <form method="post" action="server.php" class="ui form admin-form ">
           <?php include('errors.php'); ?>
           <div class="fields">
-            <div id="id-input" class="seven wide field">
-              <label>ID</label>
-              <input placeholder="ID" name="tid" type="text" required>
-            </div>
-            <div id="deg-input" class="seven wide field">
-              <label>Designation</label>
-              <select class="ui fluid dropdown" name="designation" required>
-                      <option value="">Designation</option>
-                      <option value="Principal">Principal</option>
-                      <option value="Vice-Principal">Vice Principal</option>
-                      <option value="Dean">Dean</option>
-                      <option value="Hod">HOD</option>
-                      <option value="Professor">Assistant Professor</option>
-                  </select>
+            <div id="id-input" class="fifteen wide field">
+              <label>Teaching Aid</label>
+              <input placeholder="Teaching aid" name="teachingaid" type="text" required>
             </div>
             <div class="field">
                   <label style="visibility:hidden">Designation</label>
-                  <button type="submit" class="ui button bg-red" id="insert-id" name="insert_tid">Insert</button>
+                  <button type="submit" class="ui button bg-red" id="insert-id" name="insert_teachingaid">Insert</button>
           </div>
           </div>
       </form>
@@ -178,22 +107,20 @@
         <table class="ui celled table admin-table">
               <thead>
                 <tr id="table-head">
-                  <th>ID</th>
-                  <th>Designation</th>
+                  <th>Name</th>
                   <th>Delete</th>
                 </tr>
               </thead>
               <tbody>
             <?php
-              $sql = "SELECT * FROM `verifyid` WHERE 1";
+              $sql = "SELECT * FROM `teachingaid` WHERE 1";
               $result = $db-> query($sql);
               if($result-> num_rows > 0){	
                 while ($row = $result-> fetch_assoc()) { ?>
-                          <tr><td><?php echo $row["tid"] ?></td>
-                          <td><?php echo $row["designation"] ?></td>
+                          <td><?php echo $row["name"] ?></td>
                           <td>
                           <form method='post' action='admin-dashboard.php' class='ui form delete'>
-                            <button onclick='return checkDelete()' type='submit' name='delete_tid' value='<?php echo $row['id'] ?>' id='delete' class='ui mini icon button delete'>
+                            <button onclick='return checkDelete()' type='submit' name='delete_teachingaid' value='<?php echo $row['id'] ?>' id='delete' class='ui mini icon button delete'>
                               <i class='trash icon'></i>
                             </button>
                           </form>   
@@ -206,5 +133,52 @@
         </table>
       </div>
    </div>
+   <div class="ad-con mx-3">
+    <div class="head-bar">
+            <h2 style="text-align:center" class="my-3 mx-4">ADD NEW METHODOLOGY</h2>
+        </div>
+        <form method="post" action="server.php" class="ui form admin-form ">
+          <?php include('errors.php'); ?>
+          <div class="fields">
+            <div id="id-input" class="fifteen wide field">
+              <label>Methodology</label>
+              <input placeholder="Methodology" name="methodology" type="text" required>
+            </div>
+            <div class="field">
+                  <label style="visibility:hidden">Designation</label>
+                  <button type="submit" class="ui button bg-red" id="insert-id" name="insert_methodology">Insert</button>
+          </div>
+          </div>
+      </form>
+      <div class="container-four">
+        <table class="ui celled table admin-table">
+              <thead>
+                <tr id="table-head">
+                  <th>Methodology</th>
+                  <th>Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+            <?php
+              $sql = "SELECT * FROM `methodology` WHERE 1";
+              $result = $db-> query($sql);
+              if($result-> num_rows > 0){	
+                while ($row = $result-> fetch_assoc()) { ?>
+                          <td><?php echo $row["name"] ?></td>
+                          <td>
+                          <form method='post' action='admin-dashboard.php' class='ui form delete'>
+                            <button onclick='return checkDelete()' type='submit' name='delete_methodology' value='<?php echo $row['id'] ?>' id='delete' class='ui mini icon button delete'>
+                              <i class='trash icon'></i>
+                            </button>
+                          </form>   
+                          </td>
+                          </tr>
+                <?php	}
+                }
+              ?>
+            </tbody>
+        </table>
+      </div>
+  </div>
  </div>
   <?php include("footer.php") ?>
