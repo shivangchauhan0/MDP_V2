@@ -140,12 +140,7 @@
                    <td><?php echo $row["designation"] == "Professor"?"ASSISTANT PROFESSOR" : strtoupper($row["designation"])  ?></td>
                    <td><?php echo $row["password"]  ?></td>
                   <td id='del'>
-                    <!-- <form method='post' action='users.php' class='ui form delete'>
-                        <button onclick='return checkDelete()' type='submit' name='delete_user' value='<?php echo $row['id'] ?>' id='delete' class='ui mini icon button delete'>
-                          <i class='trash icon'></i>
-                        </button>
-                    </form> -->
-                    <a href="user-delete.php?username=<?php echo $row['username'] ?>"><button type="submit" class="ui button bg-red mx-1 my-2 tiny" id="insert-id">Action</button></a>
+                    <a href="user-delete.php?id=<?php echo $row['id']?>&username=<?php echo $row['username'] ?>"><button type="submit" class="ui button bg-red mx-1 my-2 tiny" id="insert-id">Action</button></a>
                   </td>
                 </tr>
 		<?php	}

@@ -27,6 +27,12 @@ $(document).ready(function () {
 function checkDelete() {
   return confirm("Are you sure you want to Delete?");
 }
+function checkRecordDelete() {
+  return confirm("Are you sure you want to Delete user and the records?");
+}
+function checkTimetableDelete() {
+  return confirm("Are you sure you want to Delete user with records and timetable?");
+}
 function checkUndo() {
   return confirm("Are you sure you want to undo?");
 }

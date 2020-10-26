@@ -31,19 +31,23 @@
  </div>
  <div class="user-delete-con pt-5">
    <center>
-      <h1><?php echo $_GET['username']?></h1>
+   <?php 
+        $id = $_GET['id'];
+        $username = $_GET['username'];
+   ?>
+      <h1><?php echo $id?></h1>
       <form method='post' action='users.php' class='ui form delete'>
-          <button onclick='return checkDelete()' type='submit' name='delete_user' value='<?php echo $row['id'] ?>' id='' class='ui bg-red button delete'>
+          <button onclick='return checkDelete()' type='submit' name='delete_user' value='<?php echo $id ?>' id='' class='ui bg-red button delete'>
             <i class='trash icon'></i> Delete user
           </button>
       </form>
       <form method='post' action='users.php' class='ui form delete'>
-          <button onclick='return checkDelete()' type='submit' name='delete_user' value='<?php echo $row['id'] ?>' id='' class='ui bg-red button delete'>
+          <button onclick='return checkRecordDelete()' type='submit' name='delete_user' value='<?php echo $username ?>' id='' class='ui bg-red button delete'>
             <i class='trash icon'></i> Delete user with records
           </button>
       </form>
       <form method='post' action='users.php' class='ui form delete'>
-          <button onclick='return checkDelete()' type='submit' name='delete_user' value='<?php echo $row['id'] ?>' id='' class='ui bg-red button delete'>
+          <button onclick='return checkTimetableDelete()' type='submit' name='delete_user' value='<?php echo $username ?>' id='' class='ui bg-red button delete'>
             <i class='trash icon'></i> Delete user with records and timetable
           </button>
       </form>
