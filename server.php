@@ -350,7 +350,18 @@ if(isset($_POST['delete_user_records']))
   $username = mysqli_real_escape_string($db, $_POST['delete_user_records']);
   $query_two = "DELETE FROM `notes` WHERE `username` = '$username'";
   mysqli_query($db, $query_two);
-  header('Location: users.php?'.$query_two);
+  header('Location: users.php');
+}  
+if(isset($_POST['delete_user_timetable'])) 
+{    
+  $username = mysqli_real_escape_string($db, $_POST['delete_user_timetable']);
+  $query_two = "SELECT * FROM `timetable_new` WHERE `username` = '$username'";
+  $result = $db-> query($query_two);
+  $row = $result-> fetch_assoc();
+  $id = $row['id'];
+  $delete_query = "DELETE FROM `timetable_new` WHERE `timetable_new`.`id` = $id";
+  mysqli_query($db, $delete_query);
+  header('Location: users.php');
 }  
 // CHECK NOTES
 if(isset($_POST['check'])){

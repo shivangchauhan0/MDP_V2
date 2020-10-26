@@ -47,7 +47,7 @@
           </button>
       </form>
       <form method='post' action='users.php' class='ui form delete'>
-          <button onclick='return checkTimetableDelete()' type='submit' name='delete_user' value='<?php echo $username ?>' id='' class='ui bg-red button delete'>
+          <button onclick='return checkTimetableDelete()' type='submit' name='delete_user_timetable' value='<?php echo $username ?>' id='' class='ui bg-red button delete'>
             <i class='trash icon'></i> Delete user's timetable
           </button>
       </form>
