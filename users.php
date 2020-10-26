@@ -31,7 +31,7 @@
         <?php } ?>
         <a href="index.php?logout='1'"><button type="submit" class="ui button bg-red mx-1 my-2 tiny" id="insert-id">Logout</button></a>
  </div>
-<div class="mx-5">
+<div class="mx-3">
 <div class="filter-grid-users my-2">
         <div>
           <form method="get" action="users.php" class="ui form my-3 mx-2">
@@ -140,11 +140,12 @@
                    <td><?php echo $row["designation"] == "Professor"?"ASSISTANT PROFESSOR" : strtoupper($row["designation"])  ?></td>
                    <td><?php echo $row["password"]  ?></td>
                   <td id='del'>
-                    <form method='post' action='users.php' class='ui form delete'>
+                    <!-- <form method='post' action='users.php' class='ui form delete'>
                         <button onclick='return checkDelete()' type='submit' name='delete_user' value='<?php echo $row['id'] ?>' id='delete' class='ui mini icon button delete'>
                           <i class='trash icon'></i>
                         </button>
-                    </form>
+                    </form> -->
+                    <a href="user-delete.php?username=<?php echo $row['username'] ?>"><button type="submit" class="ui button bg-red mx-1 my-2 tiny" id="insert-id">Action</button></a>
                   </td>
                 </tr>
 		<?php	}
