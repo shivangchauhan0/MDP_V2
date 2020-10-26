@@ -28,10 +28,10 @@ function checkDelete() {
   return confirm("Are you sure you want to Delete?");
 }
 function checkRecordDelete() {
-  return confirm("Are you sure you want to Delete user and the records?");
+  return confirm("Are you sure you want to Delete the records of this user?");
 }
 function checkTimetableDelete() {
-  return confirm("Are you sure you want to Delete user with records and timetable?");
+  return confirm("Are you sure you want to Delete the time table of this user?");
 }
 function checkUndo() {
   return confirm("Are you sure you want to undo?");

@@ -343,7 +343,14 @@ if(isset($_POST['delete_user']))
   $id = mysqli_real_escape_string($db, $_POST['delete_user']);
   $query = "DELETE FROM `users` WHERE `id` = $id";
   mysqli_query($db, $query);
-  header('Location: ' . $_SERVER['HTTP_REFERER']);
+  header('Location: users.php');
+}  
+if(isset($_POST['delete_user_records'])) 
+{    
+  $username = mysqli_real_escape_string($db, $_POST['delete_user_records']);
+  $query_two = "DELETE FROM `notes` WHERE `username` = '$username'";
+  mysqli_query($db, $query_two);
+  header('Location: users.php?'.$query_two);
 }  
 // CHECK NOTES
 if(isset($_POST['check'])){
