@@ -25,9 +25,9 @@
 	  </div>
 	
 	<div class="field">
-  	  <label class="labels">Department*</label>
+  	  <label class="labels">Discipline*</label>
   	   <select class="ui fluid dropdown" id='sup-depart' style="width:100%" name="sup_depart" onchange="fetch_select(this.value);"  required>
-            <option value="">Department</option>
+            <option value="">Discipline</option>
 			<?php
                     $sql_query = "SELECT * FROM sup_depart";
                     $sup_depart = mysqli_query($db,$sql_query);
@@ -39,9 +39,9 @@
        </select>
   	</div>
 	  <div class="field">
-  	  <label class="labels">Sub Department</label>
+  	  <label class="labels">Department</label>
 		<select class="ui fluid dropdown" id='department'style="width:100%" name="department">
-			<option value="">Sub-Department</option>
+			<option value="">Department</option>
               
 		</select>
   	
