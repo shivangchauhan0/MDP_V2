@@ -379,6 +379,7 @@ if(isset($_POST['check'])){
   if ($_SESSION['designation'] == 'Hod') {
     $start_sql = "UPDATE `notes` SET `hod`= '$done' WHERE `username`='$username' AND `hod` = '0'";
     $comment_sql = "UPDATE `notes` SET `hod_com`= '$comment' WHERE `username`='$username' AND `hod` = '0' ORDER BY srno DESC LIMIT 1";
+    $check_date_sql = "UPDATE `notes` SET `checkdate`= '$comment' WHERE `username`='$username' AND `hod` = '0' ORDER BY srno DESC LIMIT 1";
   } else if ($_SESSION['designation'] == 'Dean') {
     $start_sql = "UPDATE `notes` SET `dean`= '$done' WHERE `username`='$username' AND `dean` = '0'";
     $comment_sql = "UPDATE `notes` SET `dean_com`= '$comment' WHERE `username`='$username' AND `dean` = '0' ORDER BY srno DESC LIMIT 1";
