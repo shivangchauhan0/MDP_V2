@@ -20,9 +20,11 @@
    $sql = "SELECT * FROM `users` WHERE `username` = '$user'";
    $result = $db->query($sql);
    $row = $result->fetch_assoc();
-   
+   $checkdate_sql = "SELECT * FROM `notes` WHERE `username`='$user' AND `checkdate` != ''";
+   $result_checkdate = $db->query($checkdate_sql);
+   $row_checkdate = $result_checkdate->fetch_assoc();
   ?>
-    <div id="s" class='alert alert-warning mx-3 my-2' role='alert'><?php echo $checkdate?></div>
+    <div id="s" class='alert alert-warning mx-3 my-2' role='alert'>Last checked on <?php echo $row_checkdate['checkdate'] ?></div>
     <div class="container-fluid my-3">
         <div class="head-bar-sec">
             <h2>LIST OF ALL <?php echo $_GET['unchecked'] == "true"?"UNCHECKED":"" ?> RECORDS &#8594 <?php echo strtoupper($row['name'])?></h2>

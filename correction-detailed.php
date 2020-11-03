@@ -14,14 +14,18 @@
           </ul>
         </div>
  </nav>
+ <?php 
+    $user = $_GET['id'];
+    $sql = "SELECT * FROM `users` WHERE `username` = '$user'";
+    $result = $db->query($sql);
+    $row = $result->fetch_assoc();
+    $checkdate_sql = "SELECT * FROM `notes` WHERE `username`='$user' AND `checkdate` != ''";
+    $result_checkdate = $db->query($checkdate_sql);
+    $row_checkdate = $result_checkdate->fetch_assoc();
+  ?>
+    <div id="s" class='alert alert-warning mx-3 my-2' role='alert'>Last checked on <?php echo $row_checkdate['checkdate'] ?></div>
     <div class="container-fluid my-3">
       <div class="head-bar-sec">
-          <?php 
-              $user = $_GET['id'];
-              $sql = "SELECT * FROM `users` WHERE `username` = '$user'";
-              $result = $db->query($sql);
-              $row = $result->fetch_assoc();
-            ?>
             <h2>LIST OF ALL <?php echo $_GET['unchecked'] == "true"?"UNCHECKED":"" ?> RECORDS &#8594 <?php echo strtoupper($row['name'])?></h2>
             <?php if ($_GET['unchecked'] == 'true') { ?>
                 <a class="float-right" href="correction-detailed.php?id=<?php echo $_GET['id'] ?>&filter_date=<?php echo $_GET['filter_date'] ?>&filter_day=<?php echo $_GET['filter_day'] ?>&from_date=<?php echo $_GET['from_date'] ?>&till_date=<?php echo $_GET['till_date'] ?>&filter_lecture=<?php echo $_GET['filter_lecture'] ?>&limit=<?php echo $_GET['limit'] ?>"><button type="submit" class="ui button bg-red mx-1 my-2 tiny " id="insert-id">All Records</button></a>
