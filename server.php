@@ -365,6 +365,7 @@ if(isset($_POST['delete_user_timetable']))
 }  
 // CHECK NOTES
 if(isset($_POST['check'])){
+  $checkdate = date('Y-m-d', time());
   $done = mysqli_real_escape_string($db, $_POST['done']);
   $comment = mysqli_real_escape_string($db, $_POST['comment']);
   $username = mysqli_real_escape_string($db, $_POST['username']);
@@ -379,7 +380,10 @@ if(isset($_POST['check'])){
   if ($_SESSION['designation'] == 'Hod') {
     $start_sql = "UPDATE `notes` SET `hod`= '$done' WHERE `username`='$username' AND `hod` = '0'";
     $comment_sql = "UPDATE `notes` SET `hod_com`= '$comment' WHERE `username`='$username' AND `hod` = '0' ORDER BY srno DESC LIMIT 1";
-    $check_date_sql = "UPDATE `notes` SET `checkdate`= '$comment' WHERE `username`='$username' AND `hod` = '0' ORDER BY srno DESC LIMIT 1";
+    $check_date_reset_sql = "UPDATE `notes` SET `checkdate`= '' WHERE `username`='$username'";
+    mysqli_query($db, $check_date_reset_sql);
+    $check_date_sql = "UPDATE `notes` SET `checkdate`= '$checkdate' WHERE `username`='$username' AND `hod` = '0' ORDER BY srno DESC LIMIT 1";
+    mysqli_query($db, $check_date_sql);
   } else if ($_SESSION['designation'] == 'Dean') {
     $start_sql = "UPDATE `notes` SET `dean`= '$done' WHERE `username`='$username' AND `dean` = '0'";
     $comment_sql = "UPDATE `notes` SET `dean_com`= '$comment' WHERE `username`='$username' AND `dean` = '0' ORDER BY srno DESC LIMIT 1";
