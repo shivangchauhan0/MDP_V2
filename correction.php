@@ -20,8 +20,9 @@
    $sql = "SELECT * FROM `users` WHERE `username` = '$user'";
    $result = $db->query($sql);
    $row = $result->fetch_assoc();
+   
   ?>
-    <div id="s" class='alert alert-warning mx-3 my-2' role='alert'></div>
+    <div id="s" class='alert alert-warning mx-3 my-2' role='alert'><?php echo $row['username']?></div>
     <div class="container-fluid my-3">
         <div class="head-bar-sec">
             <h2>LIST OF ALL <?php echo $_GET['unchecked'] == "true"?"UNCHECKED":"" ?> RECORDS &#8594 <?php echo strtoupper($row['name'])?></h2>
