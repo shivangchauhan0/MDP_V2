@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 29, 2020 at 05:30 PM
+-- Generation Time: Nov 03, 2020 at 09:53 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.34
 
@@ -20,6 +20,90 @@ SET time_zone = "+00:00";
 --
 -- Database: `test`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `class`
+--
+
+CREATE TABLE `class` (
+  `id` int(10) NOT NULL,
+  `class` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `class`
+--
+
+INSERT INTO `class` (`id`, `class`) VALUES
+(1, 'BCA-I'),
+(2, 'BCA-II'),
+(3, 'BCA-III'),
+(4, 'BSC-I'),
+(5, 'BSC-II'),
+(6, 'BSC-III'),
+(7, 'MSC-I'),
+(8, 'MSC-II'),
+(9, 'Free'),
+(10, 'MSC-III'),
+(11, 'MSC-IV');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `department`
+--
+
+CREATE TABLE `department` (
+  `id` int(20) NOT NULL,
+  `sup_depart` varchar(100) NOT NULL,
+  `department` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `department`
+--
+
+INSERT INTO `department` (`id`, `sup_depart`, `department`) VALUES
+(1, 'Arts and Social Sciences', 'Economics'),
+(2, 'Arts and Social Sciences', 'Political Science'),
+(3, 'Arts and Social Sciences', 'English'),
+(4, 'Arts and Social Sciences', 'Hindi'),
+(5, 'Arts and Social Sciences', 'History'),
+(6, 'Physical Science', 'Mathematics'),
+(7, 'Physical Science', 'Physics'),
+(8, 'Physical Science', 'Computer Science and Application'),
+(10, 'Life Science', 'Chemistry'),
+(11, 'Life Science', 'Biotechnology'),
+(12, 'Life Science', 'Zoology'),
+(13, 'Life Science', 'Botany and Microbiology'),
+(14, 'Commerce and Management', 'Applied Economics'),
+(15, 'Commerce and Management', 'B.Com. Honors'),
+(16, 'Commerce and Management', 'Taxation and Computer Application'),
+(17, 'Commerce and Management', 'Management'),
+(18, 'Education', 'Education');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `methodology`
+--
+
+CREATE TABLE `methodology` (
+  `id` int(100) NOT NULL,
+  `name` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `methodology`
+--
+
+INSERT INTO `methodology` (`id`, `name`) VALUES
+(1, 'Explanation'),
+(2, 'Discussion'),
+(3, 'Mind Mapping'),
+(4, 'Demonstration');
 
 -- --------------------------------------------------------
 
@@ -2089,9 +2173,528 @@ INSERT INTO `notes` (`srno`, `username`, `lecture`, `class`, `subject`, `date`, 
 (2351, 'YASMIN BANU', 'Fourth', 'MSC III SEM', 'BT PAPER -ELECT', '2020-10-23', 'Friday', 'Theory', 'Explanation', 'Pictures', 'Types of fermentor', 'Discussion', 4, '', '', 0, 0, 0, '', '', '', '2020-10-27'),
 (2353, 'kkdasphy2020', 'First', '', '', '2020-10-24', 'Saturday', '', '', '', '', '', 0, '', '', 1, 1, 0, '', '', '', '2020-10-27');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `subjects`
+--
+
+CREATE TABLE `subjects` (
+  `id` int(11) NOT NULL,
+  `subject` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `subjects`
+--
+
+INSERT INTO `subjects` (`id`, `subject`) VALUES
+(8, 'Free'),
+(9, 'CA'),
+(10, 'Internet'),
+(11, 'FOC'),
+(12, 'Maths'),
+(13, 'C-Language'),
+(14, 'Automata-Theory'),
+(15, 'OS'),
+(16, 'FC');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sup_depart`
+--
+
+CREATE TABLE `sup_depart` (
+  `id` int(20) NOT NULL,
+  `sup_depart` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `sup_depart`
+--
+
+INSERT INTO `sup_depart` (`id`, `sup_depart`) VALUES
+(1, 'Arts and Social Sciences'),
+(2, 'Physical Science'),
+(3, 'Life Science'),
+(4, 'Commerce and Management'),
+(5, 'Education');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `teachersid`
+--
+
+CREATE TABLE `teachersid` (
+  `id` int(20) NOT NULL,
+  `tid` varchar(20) NOT NULL,
+  `designation` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `teachingaid`
+--
+
+CREATE TABLE `teachingaid` (
+  `id` int(100) NOT NULL,
+  `name` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `teachingaid`
+--
+
+INSERT INTO `teachingaid` (`id`, `name`) VALUES
+(1, 'Actual objects'),
+(2, 'Models'),
+(3, 'Pictures'),
+(4, 'Charts'),
+(5, 'Maps'),
+(6, 'Flash Cards'),
+(7, 'Flannel Board'),
+(8, 'Bulletin Board'),
+(9, 'Chalk Board'),
+(10, 'Overhead Projector'),
+(11, 'Slides');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `timetable_new`
+--
+
+CREATE TABLE `timetable_new` (
+  `id` int(100) NOT NULL,
+  `d1` varchar(100) NOT NULL,
+  `c1` varchar(100) NOT NULL,
+  `s1` varchar(100) NOT NULL,
+  `c2` varchar(100) NOT NULL,
+  `s2` varchar(100) NOT NULL,
+  `c3` varchar(100) NOT NULL,
+  `s3` varchar(100) NOT NULL,
+  `c4` varchar(100) NOT NULL,
+  `s4` varchar(100) NOT NULL,
+  `c5` varchar(100) NOT NULL,
+  `s5` varchar(100) NOT NULL,
+  `c6` varchar(100) NOT NULL,
+  `s6` varchar(100) NOT NULL,
+  `c7` varchar(100) NOT NULL,
+  `s7` varchar(100) NOT NULL,
+  `d2` varchar(100) NOT NULL,
+  `c8` varchar(100) NOT NULL,
+  `s8` varchar(100) NOT NULL,
+  `c9` varchar(100) NOT NULL,
+  `s9` varchar(100) NOT NULL,
+  `c10` varchar(100) NOT NULL,
+  `s10` varchar(100) NOT NULL,
+  `c11` varchar(100) NOT NULL,
+  `s11` varchar(100) NOT NULL,
+  `c12` varchar(100) NOT NULL,
+  `s12` varchar(100) NOT NULL,
+  `c13` varchar(100) NOT NULL,
+  `s13` varchar(100) NOT NULL,
+  `c14` varchar(100) NOT NULL,
+  `s14` varchar(100) NOT NULL,
+  `d3` varchar(100) NOT NULL,
+  `c15` varchar(100) NOT NULL,
+  `s15` varchar(100) NOT NULL,
+  `c16` varchar(100) NOT NULL,
+  `s16` varchar(100) NOT NULL,
+  `c17` varchar(100) NOT NULL,
+  `s17` varchar(100) NOT NULL,
+  `c18` varchar(100) NOT NULL,
+  `s18` varchar(100) NOT NULL,
+  `c19` varchar(100) NOT NULL,
+  `s19` varchar(100) NOT NULL,
+  `c20` varchar(100) NOT NULL,
+  `s20` varchar(100) NOT NULL,
+  `c21` varchar(100) NOT NULL,
+  `s21` varchar(100) NOT NULL,
+  `d4` varchar(100) NOT NULL,
+  `c22` varchar(100) NOT NULL,
+  `s22` varchar(100) NOT NULL,
+  `c23` varchar(100) NOT NULL,
+  `s23` varchar(100) NOT NULL,
+  `c24` varchar(100) NOT NULL,
+  `s24` varchar(100) NOT NULL,
+  `c25` varchar(100) NOT NULL,
+  `s25` varchar(100) NOT NULL,
+  `c26` varchar(100) NOT NULL,
+  `s26` varchar(100) NOT NULL,
+  `c27` varchar(100) NOT NULL,
+  `s27` varchar(100) NOT NULL,
+  `c28` varchar(100) NOT NULL,
+  `s28` varchar(100) NOT NULL,
+  `d5` varchar(100) NOT NULL,
+  `c29` varchar(100) NOT NULL,
+  `s29` varchar(100) NOT NULL,
+  `c30` varchar(100) NOT NULL,
+  `s30` varchar(100) NOT NULL,
+  `c31` varchar(100) NOT NULL,
+  `s31` varchar(100) NOT NULL,
+  `c32` varchar(100) NOT NULL,
+  `s32` varchar(100) NOT NULL,
+  `c33` varchar(100) NOT NULL,
+  `s33` varchar(100) NOT NULL,
+  `c34` varchar(100) NOT NULL,
+  `s34` varchar(100) NOT NULL,
+  `c35` varchar(100) NOT NULL,
+  `s35` varchar(100) NOT NULL,
+  `d6` varchar(100) NOT NULL,
+  `c36` varchar(100) NOT NULL,
+  `s36` varchar(100) NOT NULL,
+  `c37` varchar(100) NOT NULL,
+  `s37` varchar(100) NOT NULL,
+  `c38` varchar(100) NOT NULL,
+  `s38` varchar(100) NOT NULL,
+  `c39` varchar(100) NOT NULL,
+  `s39` varchar(100) NOT NULL,
+  `c40` varchar(100) NOT NULL,
+  `s40` varchar(100) NOT NULL,
+  `c41` varchar(100) NOT NULL,
+  `s41` varchar(100) NOT NULL,
+  `c42` varchar(100) NOT NULL,
+  `s42` varchar(100) NOT NULL,
+  `username` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `timetable_new`
+--
+
+INSERT INTO `timetable_new` (`id`, `d1`, `c1`, `s1`, `c2`, `s2`, `c3`, `s3`, `c4`, `s4`, `c5`, `s5`, `c6`, `s6`, `c7`, `s7`, `d2`, `c8`, `s8`, `c9`, `s9`, `c10`, `s10`, `c11`, `s11`, `c12`, `s12`, `c13`, `s13`, `c14`, `s14`, `d3`, `c15`, `s15`, `c16`, `s16`, `c17`, `s17`, `c18`, `s18`, `c19`, `s19`, `c20`, `s20`, `c21`, `s21`, `d4`, `c22`, `s22`, `c23`, `s23`, `c24`, `s24`, `c25`, `s25`, `c26`, `s26`, `c27`, `s27`, `c28`, `s28`, `d5`, `c29`, `s29`, `c30`, `s30`, `c31`, `s31`, `c32`, `s32`, `c33`, `s33`, `c34`, `s34`, `c35`, `s35`, `d6`, `c36`, `s36`, `c37`, `s37`, `c38`, `s38`, `c39`, `s39`, `c40`, `s40`, `c41`, `s41`, `c42`, `s42`, `username`) VALUES
+(10, 'MONDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'TUESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'WEDNESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'THURSDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'FRIDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'SATURDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'EMP1102'),
+(11, 'MONDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'TUESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'WEDNESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'THURSDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'FRIDAY', 'BCA III YR', '', 'MSC III SEM COM', '', 'BCA III YR', '', '', '', '', '', '', '', '', '', 'SATURDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'EMP0070'),
+(12, 'MONDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'TUESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'WEDNESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'THURSDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'FRIDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'SATURDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'abhilashasankar'),
+(13, 'MONDAY', 'MA III SEM', 'International L', 'MA I SEM', 'Indian Politica', 'MA I Year', '', 'MA III SEM', '', '', '', '', '', '', '', 'TUESDAY', 'BA I YEAR', 'Indian Govt & P', 'MA III SEM', 'International L', 'BA I YEAR', 'Indian Govt & P', 'MA III SEM', 'Citizen & Civic', '', '', '', '', '', '', 'WEDNESDAY', 'MA III SEM', 'International L', 'BA II YEAR', 'Constitutions o', 'MA I SEM', 'Indian Politica', 'MA III SEM', 'Citizen & Civic', '', '', '', '', '', '', 'THURSDAY', 'MA III SEM', 'International L', 'MA I SEM', 'Indian Politica', 'MA III SEM', 'Citizen & Civic', '', '', '', '', '', '', '', '', 'FRIDAY', 'MA III SEM', 'International L', 'MA I SEM', 'Indian Politica', '', '', '', '', '', '', '', '', '', '', 'SATURDAY', 'MA III SEM ', 'International L', 'MA I SEM ', 'Indian Politica', 'MA III SEM', 'Citizen and Civ', '', '', '', '', '', '', '', '', 'Tuhina Johri'),
+(14, 'MONDAY', 'BCA II YEAR', '', 'BCA III YEAR', '', 'BCA III YEAR', '', '', '', '', '', '', '', 'BCOM III YEAR', '', 'TUESDAY', 'BCA II YEAR', '', '', '', '', '', '', '', 'BBA III YEAR', '', 'BBA III YEAR', '', 'BCOM III YEAR', '', 'WEDNESDAY', 'BCA II YEAR', '', '', '', '', '', '', '', '', '', '', '', 'BCOM III YEAR', '', 'THURSDAY', 'BCA II YEAR', '', '', '', 'BCA III YEAR', '', 'BCA III YEAR', '', '', '', '', '', '', '', 'FRIDAY', '', '', '', '', '', '', '', '', 'BCA III YEAR-FC', '', '', '', '', '', 'SATURDAY', 'BA(CA) II YEAR', '', '', '', 'BA(CA) II YEAR', '', '', '', '', '', 'BBA III YEAR', '', '', '', 'ca2016.sac'),
+(15, 'MONDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'TUESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'WEDNESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'THURSDAY', 'M.Sc. I Sem CS', 'Java with GUI', '', '', '', '', '', '', '', '', '', '', '', '', 'FRIDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'SATURDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Khushbu'),
+(16, 'MONDAY', '    BSC III YEA', 'CYBER SECURITY', '', '', '', '', '', '', '', '', '', '', '', '', 'TUESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'WEDNESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'THURSDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'FRIDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'SATURDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'ARIFAANJUM'),
+(18, 'MONDAY', '', '', '', '', '', '', 'à¤¬à¥€.à¤•à¤¾ï¿', 'à¤¹à¤¿à¤‚à¤¦à¥€', '', '', '', '', '', '', 'TUESDAY', '', '', '', '', '', '', 'à¤¬à¥€.à¤•à¥‰ï¿', 'à¤¹à¤¿à¤‚à¤¦à¥€', 'à¤¬à¥€.à¤/à¤¬ï', 'à¤¹à¤¿à¤‚à¤¦à¥€', '', '', '', '', 'WEDNESDAY', 'à¤¬à¥€.à¤.à¤ªï', 'à¤ªà¥à¤°à¤¯à¥‹', 'à¤¬à¥€.à¤.à¤ªï', 'à¤ªà¥à¤°à¤¯à¥‹', '', '', '', '', '', '', '', '', '', '', 'THURSDAY', 'à¤¬à¥€.à¤.à¤¦ï', 'à¤¹à¤¿à¤‚à¤¦à¥€', 'à¤¬à¥€.à¤.à¤¦ï', 'à¤¹à¤¿à¤‚à¤¦à¥€', '', '', '', '', '', '', '', '', '', '', 'FRIDAY', 'à¤¬à¥€.à¤.à¤¤ï', 'à¤ªà¥à¤°à¤¯à¥‹', 'à¤¬à¥€.à¤.à¤¤ï', 'à¤ªà¥à¤°à¤¯à¥‹', '', '', '', '', '', '', '', '', '', '', 'SATURDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'EMP0038'),
+(19, 'MONDAY', 'BA II YEAR', 'HISTORY PAPER-I', 'BA II YEAR', 'HISTORY PAPER-I', '', '', 'BA II YEAR', 'HISTORY PAPER-I', 'BA II YEAR', 'HISTORY PAPER-I', '', '', '', '', 'TUESDAY', 'BA III YR', 'HISTORY PAPER-I', 'BA III YEAR', 'HISTORY PAPER-I', '', '', 'BA III YEAR', 'HISTORY PAPER-I', 'BA III YEAR', 'HISTORY PAPER-I', '', '', '', '', 'WEDNESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'THURSDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'FRIDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'SATURDAY', 'BA I YEAR', 'HISTORY PAPER-I', 'BA I YEAR', 'HISTORY PAPER-I', 'BA I YEAR', 'HISTORY PAPER-I', 'BA I YEAR', 'HISTORY PAPER-I', '', '', '', '', '', '', 'EMP0042'),
+(20, 'MONDAY', 'B.Com. II F', 'ICA', 'B.Com. II Tax', 'Principles of M', 'B.Com. I F', 'Business Law', '', '', '', '', '', '', '', '', 'TUESDAY', 'B.Com. II F', 'ICA', 'B.Com. II Tax', 'Principles of M', 'B.Com. I F', 'Business Law', '', '', '', '', '', '', '', '', 'WEDNESDAY', 'B.com II Year F', 'ICA ', 'B.Com. II Tax', 'Principles of M', 'B.Com. I F', 'Business Law', '', '', '', '', '', '', '', '', 'THURSDAY', 'B.Com. II F', 'Principles of M', 'M.Com I Sem. ', 'Adv. & Sales', '', '', 'B.Com. III F', 'Auditing', '', '', '', '', '', '', 'FRIDAY', 'B.Com. II F', 'Principles of M', 'M.Com I Sem. ', 'Adv. & Sales', '', '', 'B.Com. III F', 'Auditing', '', '', '', '', '', '', 'SATURDAY', 'B.Com. II F', 'Principles of M', 'M.Com I Sem. ', 'Adv. & Sales', '', '', 'B.Com. III F', 'Auditing', '', '', '', '', '', '', 'EMP0057'),
+(24, 'MONDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'TUESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'WEDNESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'THURSDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'FRIDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'SATURDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '1200'),
+(25, 'MONDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'TUESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'WEDNESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'THURSDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'FRIDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'SATURDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'EMP0048'),
+(26, 'MONDAY', 'Marketing resea', '', '', '', 'Business Statis', '', '', '', '', '', '', 'Consumer Behavi', '', '', 'TUESDAY', '', 'Marketing Resea', '', '', '', '', '', '', '', '', '', 'Consumer Behavi', '', '', 'WEDNESDAY', 'Business Statis', '', '', 'Marketing Resea', '', '', '', '', '', '', '', '', '', '', 'THURSDAY', '', 'Marketing Manag', '', '', '', 'Marketing Manag', '', '', '', '', '', '', '', '', 'FRIDAY', '', '', '', '', 'Business Statis', '', '', '', '', '', '', '', '', '', 'SATURDAY', '', '', '', '', 'Marketing manag', '', '', '', '', '', 'Advertising Man', '', '', '', 'Chitranshi'),
+(27, 'MONDAY', ' B.COM  II YR H', 'PUBLIC FINANCE', 'M.COM III YR', 'ENTREPRENEURSHI', 'B.COM II YR HON', 'PUBLIC FINANCE', 'M.COM III YR', 'ENTREPRENEURSHI', '', '', '', '', '', '', 'TUESDAY', 'BCOM II YR HONS', 'PUBLIC FINANCE', 'M.COM III YR', 'ENTREPRENEURSHI', 'B.COM II YR HON', 'PUBLIC FINANCE', 'M.COM III YR ', 'ENTREPRENEURSHI', '', '', '', '', '', '', 'WEDNESDAY', '', '', 'B.COM II YR ', 'PRINCIPLES OF M', '', '', 'b.COM II YR ', 'PRINCIPLES OF M', '', '', '', '', '', '', 'THURSDAY', '', '', 'B.COM II YR ', 'S OF MANAGEMENT', '', '', 'b.COM II YR ', 'PRINCIPLES OF M', '', '', '', '', '', '', 'FRIDAY', '', '', '', '', 'B.COM III YR', 'PUBLIC FINANCE', '', '', '', '', '', '', '', '', 'SATURDAY', '', '', '', '', 'B.COM III YR', 'PUBLIC FINANCE', '', '', '', '', '', '', '', '', 'EMP0118'),
+(28, 'MONDAY', '', '', 'B. Com. Hons. I', 'Macro Economics', '', '', 'M. Com. I Semes', 'Marketing Manag', '', '', 'B. Com. Hons. I', 'Banking Law & P', '', '', 'TUESDAY', '', '', 'B. Com. Hons. I', 'Macro Economics', '', '', 'M. Com. I Semes', 'Marketing Manag', '', '', 'B. Com. Hons. I', 'Banking Law & P', '', '', 'WEDNESDAY', '', '', 'B. Com. Hons. I', 'Macro Economics', '', '', 'M. Com. I Semes', 'Marketing Manag', '', '', 'B. Com. Hons. I', 'Banking Law & P', '', '', 'THURSDAY', 'B. Com. Hons. I', 'Marketing Manag', '', '', 'B. Com. I Year', 'Macro Economics', '', '', '', '', '', '', 'B. Com. III Yea', 'Principle of Ma', 'FRIDAY', 'B. Com. Hons. I', 'Marketing Manag', '', '', 'B. Com. I Year', 'Macro Economics', '', '', '', '', '', '', 'B. Com. III Yea', 'Principle of Ma', 'SATURDAY', 'B. Com. Hons. I', 'Marketing Manag', '', '', 'B. Com. I Year', 'Macro Economics', '', '', '', '', '', '', 'B. Com. III Yea', 'Principle of Ma', 'EMP0126'),
+(32, 'MONDAY', '', '', '', '', '', '', '', '', '', '', 'M.Sc. III Semes', 'Spectroscopy', 'M.Sc. III Semes', 'Organic Practic', 'TUESDAY', '', '', '', '', 'M.Sc. I Semeste', 'Organic Chemist', '', '', '', '', '', '', '', '', 'WEDNESDAY', '', '', '', '', 'B.Sc. II Year', 'Paper III Organ', '', '', '', '', '', '', '', '', 'THURSDAY', '', '', '', '', 'M.Sc. I Semeste', 'Organic Chemist', '', '', '', '', '', '', 'M.Sc. III Semes', 'Spectroscopy', 'FRIDAY', 'M.Sc. I Semeste', 'Organic Chemist', '', '', '', '', '', '', '', '', '', '', 'M.Sc. III Semes', 'Spectroscopy', 'SATURDAY', 'B.Sc. II Year', 'Paper III Organ', '', '', '', '', 'B.Sc. II Year', 'Paper III Organ', 'M.Sc. III Semes', 'Organic Practic', 'M.Sc. III Semes', 'Organic Practic', '', '', 'EMP1043_M'),
+(33, 'MONDAY', 'M.Sc III sem', 'Medical Microbi', '', '', '', '', '', '', '', '', '', '', 'B.Ed III sem', 'Pedagogy of sch', 'TUESDAY', 'B.Sc III YEAR', 'IMB PAPER-I', 'B.Sc II YEAR', 'BOTANY PAPER-II', 'B.Sc III YEAR', 'IMB PAPER-I', 'B.Sc II YEAR', 'BOTANY PAPER-II', '', '', '', '', '', '', 'WEDNESDAY', 'M.Sc III SEM', 'Medical Microbi', '', '', '', '', '', '', 'B.A. II YEAR', 'ENVIRONMENTAL S', '', '', 'B.Ed III SEM ', 'Pedagogy of sch', 'THURSDAY', '', '', '', '', '', '', 'M.Sc III SEM ', 'Medical Microbi', '', '', '', '', '', '', 'FRIDAY', 'B.Sc III YEAR ', 'IMB PAPER-I', 'B.Sc II YEAR ', 'BOTANY PAPER-II', 'B.Sc III YEAR ', 'IMB PAPER-I', 'B.Sc II YEAR ', 'BOTANY PAPER-II', '', '', '', '', '', '', 'SATURDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'zareen'),
+(34, 'MONDAY', 'M.Sc III Sem', 'Medical Microbi', '', '', '', '', '', '', '', '', 'B.Ed III Sem', 'Pedagofy of sch', '', '', 'TUESDAY', 'B.Sc III year', 'IMB PAPER-I', 'B.Sc II year', 'BOTANY PAPER-II', 'B.Sc III year', 'IMB PAPER-I', 'B.Sc II year', 'BOTANY PAPER-II', '', '', '', '', '', '', 'WEDNESDAY', 'M.Sc III sem', 'Medical Microbi', '', '', '', '', '', '', 'B.A. II year ', 'EVS', 'B.Ed III Sem ', 'Pedagogy of Sch', '', '', 'THURSDAY', '', '', '', '', '', '', 'M.Sc III Sem ', 'Medical Microbi', '', '', '', '', '', '', 'FRIDAY', 'B.Sc III year', 'IMB PAPER-I', 'B.Sc IIYear', 'BOTANY PAPER-II', 'B.Sc III year', 'IMB PAPER-I', 'B.Sc II year', 'BOTANY PAPER-II', '', '', '', '', '', '', 'SATURDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'zara'),
+(35, 'MONDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'TUESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'WEDNESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'THURSDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'FRIDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'SATURDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'EMP0075'),
+(36, 'MONDAY', '', '', 'MA I', 'Economics of Gr', 'MA III', 'Public Economic', '', '', 'BA/BSc/BCA I', 'Entrepreneurshi', '', '', '', '', 'TUESDAY', 'MA I', 'Economics of Gr', 'BA/BSc II', 'Public Finance ', 'MA III', 'Public Economic', 'BA/BSc II', 'Public Finance ', '', '', '', '', '', '', 'WEDNESDAY', 'BA/BSC III', 'Developmental a', 'MA III', 'Public Economic', 'BA/BSC III', 'Developmental a', 'MA I', 'Economics of Gr', '', '', '', '', '', '', 'THURSDAY', '', '', '', '', 'MA III', 'Public Economic', 'MA I', 'Economics of Gr', '', '', '', '', '', '', 'FRIDAY', '', '', '', '', 'MA III SEM', 'Public Economic', 'MA I', 'Economics of Gr', '', '', '', '', '', '', 'SATURDAY', '', '', '', '', 'MA III SEM', 'Public Economic', 'MA I', 'Economics of Gr', '', '', '', '', '', '', 'EMP0049'),
+(37, 'MONDAY', 'M.A I ', 'Quantitative Te', '', '', '', '', 'M.A III', 'Industrial  Eco', '', '', '', '', '', '', 'TUESDAY', 'M.A III', 'Industrial  Eco', 'M.A I ', 'Quantitative Te', '', '', '', '', '', '', '', '', '', '', 'WEDNESDAY', 'M.A I ', 'Quantitative Te', '', '', 'M.A III', 'Industrial  Eco', '', '', '', '', '', '', '', '', 'THURSDAY', 'M.A I ', 'Quantitative Te', 'M.A III', 'Industrial  Eco', 'B.COM I', 'Macro Economics', '', '', '', '', '', '', '', '', 'FRIDAY', 'M.A I ', 'Quantitative Te', 'M.A III', 'Industrial  Eco', 'B.COM I', 'Macro Economics', '', '', '', '', '', '', '', '', 'SATURDAY', 'M.A I ', 'Quantitative Te', 'M.A III', 'Industrial  Eco', 'B.COM I', 'Macro Economics', '', '', '', '', '', '', '', '', 'EMP0046'),
+(38, 'MONDAY', '', '', '', '', '', '', '', '', '', '', 'BSC BIO IIIrd', 'Hindi Lang.', '', '', 'TUESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'WEDNESDAY', '', '', '', '', '', '', '', '', 'BSC+ BCAIII rd', 'Hindi Lang.', '', '', '', '', 'THURSDAY', 'Hindi Lit II  y', 'Paper I st ', 'HIndi Lit . I Y', 'Paper 2nd ', 'Hindi Lit II YE', 'Paper Ist ', 'Hindi Lit. 1yea', 'Paper 1st ', '', '', '', '', '', '', 'FRIDAY', '', '', 'BA.IIyear Fun. ', 'Paper IInd ', '', '', 'BA.IIYear  Fun.', 'Paper II nd ', '', '', '', '', '', '', 'SATURDAY', '', '', 'Nss.', '', '', '', 'Nss', '', '', '', '', '', '', '', 'EMP1110 '),
+(39, 'MONDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'TUESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'WEDNESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'THURSDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'FRIDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'SATURDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'EMP0085@SACJ201'),
+(40, 'MONDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'TUESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'WEDNESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'THURSDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'FRIDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'SATURDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'sarojjunghare'),
+(41, 'MONDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'TUESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'WEDNESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'THURSDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'FRIDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'SATURDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'khushbu'),
+(42, 'MONDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'TUESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'WEDNESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'THURSDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'FRIDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'SATURDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'emp1035'),
+(43, 'MONDAY', '', '', 'BSC 3', 'OPERATING SYS A', 'BCA 2', 'Python Programm', 'BSC 3', 'OPERATING SYS A', '', '', '', '', '', '', 'TUESDAY', '', '', 'BCA 3', 'Web Programming', 'BCA 2', 'Python', '', '', '', '', '', '', '', '', 'WEDNESDAY', 'BCA 3', 'Web programming', '', '', 'BCA 2', 'Python', '', '', '', '', '', '', '', '', 'THURSDAY', '', '', 'BSC 3', 'OPERATING SYS A', '', '', 'BSC 3', 'OPERATING SYS A', '', '', '', '', '', '', 'FRIDAY', '', '', 'BCA 3', 'Web programming', 'BCA 1', 'Cyber Security', 'BCA 1', 'Cyber Security', '', '', '', '', '', '', 'SATURDAY', 'BCA 2', '', 'BCA 1', 'Cyber Security', 'BCA 1', 'Cyber', 'BCA  3', 'Web programming', '', '', '', '', '', '', 'emp0135'),
+(44, 'MONDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'TUESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'WEDNESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'THURSDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'FRIDAY', 'B.Ed III SEM', 'PSYCHOLOGY PRAC', 'B.Ed III SEM ', 'PSYCHOLOGY PRAC', '', '', '', '', '', '', '', '', '', '', 'SATURDAY', 'B.Ed III SEM ', 'PSYCHOLOGY PRAC', 'B.Ed III SEM ', 'PSYCHOLOGY PRAC', '', '', '', '', '', '', '', '', '', '', 'Archana'),
+(45, 'MONDAY', 'MA I SEM', 'Indian Govt & P', 'BA III YEAR', 'Public  Adminis', 'MA III SEM', 'Local Govt.', 'BA III YEAR', 'Public Administ', '', '', '', '', '', '', 'TUESDAY', 'BA I YEAR', 'Basic Principle', 'MA III SEM', 'Local Govt.', 'BA I YEAR', 'Basic Principle', 'MA I SEM', 'Indian Govt & P', '', '', '', '', '', '', 'WEDNESDAY', 'MA I SEM', 'Indian Govt & P', 'MA III SEM', 'Local Govt', 'MA  I SEM', 'Indian Govt & P', 'MA III SEM', 'Local Govt.', '', '', '', '', '', '', 'THURSDAY', 'MA I SEM', 'Indian  Govt & ', '', '', 'MA I SEM ', 'Indian Govt & P', 'MA III SEM', 'Local Govt', '', '', '', '', '', '', 'FRIDAY', 'MA I SEM', 'Indian Govt & P', '', '', 'MA I SEM ', 'Indian Govt & P', 'MA III SEM', 'Local Govt', '', '', '', '', '', '', 'SATURDAY', 'MA I SEM', 'Indian Govt & P', '', '', 'MA III SEM', 'Local Govt', '', '', '', '', '', '', '', '', 'EMP0041'),
+(46, 'MONDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'TUESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'WEDNESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'THURSDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'FRIDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'SATURDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'SUSHMA'),
+(47, 'MONDAY', 'M.A. III', 'PAPER I CRITICA', '', '', '', '', '', '', '', '', '', '', 'M.A. I', 'PAPER I POETRY', 'TUESDAY', '', '', '', '', 'M.A. III', 'PAPER I CRITICA', 'B.COM. I YEAR (', 'F.C. II ENGLISH', '', '', '', '', 'M.A. I', 'PAPER I POETRY', 'WEDNESDAY', '', '', 'B.A. I', 'FUNCTIONAL ENGL', '', '', 'B.A. I', 'FUNCTIONAL ENGL', 'B.A./B.C.A./B.S', 'F.C. II ENGLISH', '', '', 'M.A.I', 'PAPER I POETRY', 'THURSDAY', 'B.A.I', 'ENGLISH LITERAT', '', '', 'B.A. I', 'ENGLISH LITERAT', '', '', 'M.A. III', 'PAPER I CRITICA', '', '', '', '', 'FRIDAY', 'M.A. III', 'PROJECT', '', '', 'M.A. III', 'PAPER I CRITICA', 'M.A. I', 'PROJECT', 'M.A. I', 'PAPER I POETRY', '', '', '', '', 'SATURDAY', '', '', 'M.A. III', 'PAPER I CRITICA', '', '', '', '', 'M.A. I', 'PAPER I CRITICA', '', '', 'B.COM. III YEAR', 'F.C. II ENGLISH', 'APARNA'),
+(48, 'MONDAY', 'BSC 1stYr', 'BOTANY', 'BSc1stYr', 'BOTANY', '', '', '', '', '', '', '', '', '', '', 'TUESDAY', 'MSc Ist Sem', ' BACT  PRACTICA', 'BSc 2ndyr', 'BOTANY', 'BSc 2ndYr', 'BOTANY', 'M Sc ISem', 'BACT PRACTICAL', '', '', '', '', '', '', 'WEDNESDAY', '', '', '', '', 'BSc3rd Yr', 'Botany', 'BSc 3rd Year', 'BOTANY', '', '', '', '', '', '', 'THURSDAY', '', '', '', '', 'BSc 1stYr', 'BOTANY', 'BSc 1stYr', 'BOTANY', '', '', '', '', '', '', 'FRIDAY', 'BSc 2ndYr', 'BOTANY', 'BSc 2nd Yr', 'BOTANY', '', '', 'MSc 1stSem', 'BACTERIOLOGY', '', '', '', '', '', '', 'SATURDAY', 'BSc3rdYr', 'BOTANY', 'BSc3rd Yr', 'BOTANY', '', '', '', '', '', '', '', '', '', '', 'Shi01'),
+(49, 'MONDAY', 'MSC I SEM', 'REAL ANYALYSIS', 'BSC II YEAR', 'MATHEMATICS', '', '', ' MSC I SEM', 'CHEMISTRY', '', '', '', '', '', '', 'TUESDAY', 'BBA I YEAR', 'MATHEMATICS', '', '', 'BSC III YEAR', 'MATHEMATICS', '', '', 'MSC I SEM', 'REAL ANALYSIS', '', '', '', '', 'WEDNESDAY', '', '', 'BSC I YEAR', 'MATHEMATICS', '', '', 'MSC I SEM', 'REAL ANALYSIS ', '', '', '', '', '', '', 'THURSDAY', 'BBA I YEAR', 'MATHEMATICS', 'MSC I SEM', 'REAL ANALYSIS', 'BSC II YEAR', 'MATHEMATICS', 'BSC II YEAR', 'MATHEMATICS', '', '', '', '', '', '', 'FRIDAY', '', '', '', '', 'BSC III YEAR', 'MATHEMATICS', 'BSC III YEAR', 'MATHEMATICS', 'MSC I SEM', 'REAL ANALYSIS', '', '', '', '', 'SATURDAY', 'MSC I SEM', 'REAL ANALYSIS', '', '', '', '', 'BSC I YEAR', 'MATHEMATICS', 'BSC I YEAR', 'MATHEMATICS', '', '', '', '', 'EMP0093'),
+(50, 'MONDAY', '', '', '', '', '', '', '', '', 'à¤¬à¥€ à¤à¤¸ï¿', 'à¤¹à¤¿à¤‚à¤¦à¥€', '', '', '', '', 'TUESDAY', '', '', '', '', '', '', '', '', 'à¤¬à¥€.à¤. à¤¦', 'à¤¹à¤¿à¤‚à¤¦à¥€', '', '', '', '', 'WEDNESDAY', '', '', 'à¤¬à¥€.à¤.à¤ªï', 'à¤ªà¥à¤°à¤¯à¥‹', '', '', 'à¤¬à¥€.à¤.à¤ªï', 'à¤ªà¥à¤°à¤¯à¥‹', '', '', '', '', '', '', 'THURSDAY', '', '', '', '', '', '', 'à¤¬à¥€à¤•à¤¾à¤®', 'à¤¹à¤¿à¤‚à¤¦à¥€', '', '', '', '', '', '', 'FRIDAY', '', '', 'à¤¬à¥€.à¤. à¤¤', 'à¤ªà¥à¤°à¤¯à¥‹', '', '', '  .à¤¬à¥€.à¤ à', 'à¤ªà¥à¤°à¤¯à¥‹', '', '', '', '', '', '', 'SATURDAY', '', '', 'à¤¬à¥€.à¤. à¤¤', 'à¤¹à¤¿à¤‚à¤¦à¥€', '', '', 'à¤¬à¥€.à¤. à¤¤', 'à¤¹à¤¿à¤‚à¤¦à¥€', '', '', '', '', '', '', 'EMP0039'),
+(51, 'MONDAY', '', '', 'MA III SEM ', 'PAPER II- ENGLI', '', '', 'MA I SEM', 'PROJECT', 'MA I SEM', 'PAPER IV-PROSE', '', '', '', '', 'TUESDAY', '', '', 'MA III SEM ', 'PAPER II- ENGLI', '', '', 'BCA/ BSC II YEA', 'FC II', 'MA III ', 'PROJECT', '', '', '', '', 'WEDNESDAY', 'BA I FUNCT. ENG', ' PAPER I- PHONE', '', '', 'BA I FUNCT. ENG', 'PAPER I- PHONET', 'MA III SEM ', 'PAPER II-ENGLIS', '', '', '', '', 'MA I SEM', 'PAPER IV-PROSE', 'THURSDAY', '', '', 'BA II FUNCT. EN', 'PAPER II-WRITIN', '', '', 'BA II FUNCT. EN', 'PAPER II-WRITIN', 'MA I SEM', 'PAPER IV-PROSE', '', '', '', '', 'FRIDAY', 'BA II ENG.LIT.', 'PAPER I-DRAMA', '', '', 'BA II ENG.LIT.', 'PAPER I-DRAMA', 'MA III SEM', 'PAPER II- ENGLI', '', '', 'MA I SEM', 'PAPER IV-PROSE', '', '', 'SATURDAY', '', '', '', '', '', '', 'MA III SEM', 'PAPER II- ENGLI', '', '', '', '', 'MA I SEM', 'PAPER IV-PROSE', 'niharika@220120'),
+(52, 'MONDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'TUESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'WEDNESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'THURSDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'FRIDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'SATURDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'JUHI1086'),
+(53, 'MONDAY', '', '', 'BCOM CA III YEA', 'Auditing', '', '', 'BCOM CA III YEA', 'Auditing', '', '', '', '', '', '', 'TUESDAY', '', '', 'BCOMBCOM CA III', 'Auditing', '', '', 'BCOM CA III YEA', 'Auditing', '', '', '', '', '', '', 'WEDNESDAY', 'BCOM TAX II YEA', 'Corporate Accou', '', '', 'BCOM TAX II YEA', 'Corporate Accou', '', '', '', '', '', '', '', '', 'THURSDAY', 'BCOM TAX II YEA', 'Corporate Accou', '', '', 'BCOM TAX II YEA', 'Corporate Accou', '', '', '', '', '', '', '', '', 'FRIDAY', '', '', 'BCOM COMP  App ', 'Corporate Accou', '', '', 'BCOM COMP App  ', 'Corporate Accou', '', '', '', '', '', '', 'SATURDAY', '', '', 'BCOM COMP App  ', 'Corporate Accou', '', '', 'BCOM COMP App  ', 'Corporate Accou', '', '', '', '', '', '', 'sonalrai01'),
+(54, 'MONDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'TUESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'WEDNESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'THURSDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'FRIDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'SATURDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Sukhvinder Kaur'),
+(55, 'MONDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'TUESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'WEDNESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'THURSDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'FRIDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'SATURDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'kiran'),
+(56, 'MONDAY', '', '', '', '', '', '', '', '', 'B.A.III YEAR', 'FC- I, HINDI LA', '', '', '', '', 'TUESDAY', '', '', '', '', '', '', '', '', '', '', '', '', 'B.COM III  YEAR', 'FC I- HINDI LAN', 'WEDNESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'THURSDAY', 'B.A. I YEAR', 'HINDI LIT. , PA', '', '', 'B.A. I YEAR', 'HINDI LIT. , PA', '', '', '', '', '', '', '', '', 'FRIDAY', 'B.A. II YEAR', 'FUNC. HINDI , P', '', '', 'B.A. II YEAR', 'FUNC. HINDI , P', '', '', '', '', '', '', '', '', 'SATURDAY', 'B.A. III YEAR', 'HINDI LIT. , PA', '', '', 'B.A. III YEAR', 'HINDI LIT. , PA', '', '', '', '', '', '', '', '', 'EMP0040'),
+(57, 'MONDAY', 'BA I', 'Micro Economics', 'MA III ', 'Rural Developme', 'BA I', 'Micro Economics', 'MA I', 'Micro Economic ', '', '', '', '', '', '', 'TUESDAY', '', '', '', '', 'MA I', 'Micro Economic ', 'MA III ', 'Rural Developme', '', '', '', '', '', '', 'WEDNESDAY', 'MA III ', 'Rural Developme', '', '', 'MA I', 'Micro Economic ', '', '', '', '', '', '', '', '', 'THURSDAY', 'MA III ', 'Rural Developme', '', '', 'MA I', 'Micro Economic ', '', '', '', '', '', '', '', '', 'FRIDAY', 'MA III ', 'Rural Developme', '', '', 'MA I', 'Micro Economic ', '', '', '', '', '', '', '', '', 'SATURDAY', 'MA III ', 'Rural Developme', '', '', 'MA I', 'Micro Economic ', '', '', '', '', '', '', '', '', 'EMP0043'),
+(58, 'MONDAY', 'M.A III ', 'ENVIRONMENTAL E', 'B.A. I', 'INDIAN ECONOMY', 'M.A, I', 'MACRO ECONOMICS', 'B.A. I', 'MACRO ECONOMICS', '', '', '', '', '', '', 'TUESDAY', 'B.A. II', 'MACRO ECONOMICS', 'M.A III ', 'ENVIRONMENTAL E', 'B.A. II', 'MACRO ECONOMICS', 'M.A, I', 'MACRO ECONOMICS', '', '', '', '', '', '', 'WEDNESDAY', '', '', 'M.A, I', 'MACRO ECONOMICS', '', '', 'M.A III ', 'ENVIRONMENTAL E', '', '', '', '', '', '', 'THURSDAY', '', '', 'M.A, I', 'MACRO ECONOMICS', '', '', 'M.A III ', 'ENVIRONMENTAL E', '', '', '', '', '', '', 'FRIDAY', '', '', 'M.A, I', 'MACRO ECONOMICS', '', '', 'M.A III ', 'ENVIRONMENTAL E', '', '', '', '', '', '', 'SATURDAY', '', '', 'M.A, I', 'MACRO ECONOMICS', '', '', 'M.A III ', 'ENVIRONMENTAL E', '', '', '', '', '', '', 'EMP0044'),
+(59, 'MONDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'TUESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'WEDNESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'THURSDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'FRIDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'SATURDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Pearly '),
+(60, 'MONDAY', 'newww', '', '', '', '', '', '', '', '', '', '', '', '', '', 'TUESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'WEDNESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'THURSDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'FRIDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'SATURDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'deannew'),
+(61, 'MONDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'TUESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'WEDNESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'THURSDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'FRIDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'SATURDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'ab'),
+(62, 'MONDAY', 'M.Sc III Sem.', 'Special Functio', 'B.COM I (TAX)YE', 'Business Mathem', 'B.COM I (APP.)Y', 'Business Mathem', '', '', '', '', '', '', '', '', 'TUESDAY', '', '', 'B.COM I (TAX)YE', 'Business Mathem', 'B.COM I (APP.)Y', 'Business Mathem', '', '', '', '', 'M.Sc III Sem.', 'Special Functio', '', '', 'WEDNESDAY', '', '', 'B.COM I (TAX)YE', 'Business Mathem', 'B.COM I (APP.)Y', 'Business Mathem', '', '', '', '', 'M.Sc III Sem.', 'Special Functio', '', '', 'THURSDAY', 'B.COM(CA) I Yea', 'Business Mathem', 'B.COM I (HINDI ', 'Business Mathem', 'B.COM I (Honour', 'Business Mathem', '', '', '', '', 'M.Sc III Sem.', 'Special Functio', '', '', 'FRIDAY', 'B.COM(CA) I Yea', 'Business Mathem', 'B.COM I (HINDI ', 'Business Mathem', 'B.COM I (Honour', 'Business Mathem', '', '', '', '', 'M.Sc III Sem.', 'Special Functio', '', '', 'SATURDAY', 'B.COM(CA) I Yea', 'Business Mathem', 'B.COM I (HINDI ', 'Business Mathem', 'B.COM I (Honour', 'Business Mathem', '', '', '', '', 'M.Sc III Sem.', 'Special Functio', '', '', 'EMP0125'),
+(63, 'MONDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'TUESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'WEDNESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'THURSDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'FRIDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'SATURDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Pratibha Richha'),
+(64, 'MONDAY', '', '', 'M. Sc. III Sem ', 'Paper I', 'M. Sc. III Sem ', 'Paper I', 'BCA I', 'Paper VI', '', '', '', '', '', '', 'TUESDAY', 'M. Sc. III Sem ', 'Paper I', '', '', 'BCA I', 'Paper VI', 'M. Sc. III Sem ', 'Paper I', '', '', '', '', '', '', 'WEDNESDAY', 'B.Sc. I', 'Paper I', 'M. Sc. III Sem ', 'Paper I', 'M. Sc. III Sem ', 'Paper I', '', '', '', '', '', '', '', '', 'THURSDAY', '', '', 'M. Sc. III Sem ', 'Paper V', 'M. Sc. III Sem ', 'Paper V', '', '', '', '', '', '', '', '', 'FRIDAY', '', '', 'M. Sc. III Sem ', 'Paper V', 'M. Sc. III Sem ', 'Paper V', '', '', '', '', '', '', '', '', 'SATURDAY', 'M. Sc. III Sem ', 'Paper V', 'B.Sc. I', 'Paper I', 'B.Sc. I', 'Paper I', 'M. Sc. III Sem ', 'Paper V', '', '', '', '', '', '', 'EMP0122'),
+(65, 'MONDAY', '', '', 'MSC CS III', 'ADA', '', '', 'MSC CS III', 'ADA', '', '', '', '', '', '', 'TUESDAY', 'BSC CS I', 'PROGRAMMING  C', 'BSC CA I', 'FOC AND C PROGR', 'BSC CS I', 'PROGRAMMING  C', 'BSC CA I', 'FOC AND C PROGR', '', '', '', '', '', '', 'WEDNESDAY', 'BSC CA II', 'OOPS C++ AND OS', '', '', 'BSC CA II', 'OOPS C++ AND OS', '', '', 'MSC CS III', 'ADA', '', '', '', '', 'THURSDAY', '', '', '', '', 'MSC CS III', 'ADA', 'MSC CS III', 'ADA', '', '', '', '', '', '', 'FRIDAY', 'BSC CS I', 'PROGRAMMING  C', 'BSC CA I', 'FOC AND C PROGR', 'BSC CS I', 'PROGRAMMING  C', 'BSC CA I', 'FOC AND C PROGR', '', '', '', '', '', '', 'SATURDAY', 'BSC CA II', 'OOPS C++ AND OS', '', '', 'BSC CA II', 'OOPS C++ AND OS', '', '', 'MSC CS III', 'ADA', '', '', '', '', 'ankitkdubey'),
+(66, 'MONDAY', '', '', '', '', 'BSC1 YEAR', 'Biotechnology', 'BSC1 YEAR', 'Biotechnology', '', '', 'MSC1 Year', 'Biotechnology', 'MSC2 Year', 'Biotechnology', 'TUESDAY', '', '', 'MSC1 Year', 'Biotechnology', 'BSC2 YEAR', 'Bbiotechnology', 'BSC2 YEAR', 'Biotechnology', 'MSC2 Year', 'Biotechnology', '', '', '', '', 'WEDNESDAY', '', '', '', '', '', '', 'MSC1 Year', 'Biotechnology', '', '', 'MSC2 Year', 'Biotechnology', '', '', 'THURSDAY', 'MSC1', 'Biotechnology', '', '', 'BSC1 YEAR', 'Biotechnology', 'BSC1 YEAR', 'Biotechnology', 'MSC2 Year', 'BT PC', 'MSC2 Year', 'BT PC', '', '', 'FRIDAY', 'MSC1 Year', 'BT PC', 'MSC1 Year', 'BT PC', 'BSC2 YEAR', 'Biotechnology', 'BSC2 YEAR', 'Biotechnology', '', '', 'MSC2 Year', 'Biotechnology', '', '', 'SATURDAY', 'MSC2 Year', 'Biotechnology', '', '', '', '', '', '', 'MSC1 Year', 'BT PC', 'MSC1 Year', 'BT PC', '', '', 'Enosh'),
+(67, 'MONDAY', 'BCA I YEAR', 'FUNDAMENTALS OF COMPUTER', 'BCA II YEAR', 'OPERATING SYSTEM', '', '', 'BCA III YEAR', 'COMPUTER NETWORK', '', '', '', '', '', '', 'TUESDAY', 'BCA I YEAR', 'FUNDAMENTALS OF COMPUTER', 'BCA II YEAR', 'OPERATING SYSTEM', '', '', '', '', 'BSC III YEAR MA', 'FC III ', '', '', '', '', 'WEDNESDAY', 'BCA I YEAR', 'FUNDAMENTALS OF COMPUTER', 'BCA II YEAR', 'OPERATING SYSTE', 'BCA III YEAR', 'COMPUTER NETWORK', '', '', '', '', 'BSC III YEAR LI', 'FC III', '', '', 'THURSDAY', 'BCA I YEAR', 'FUNDAMENTALS OF COMPUTER', 'BCA III YAER', 'COMPUTER NETWORK', 'BCA II YEAR', 'OPERATING SYSTEM', '', '', '', '', '', '', '', '', 'FRIDAY', '', '', 'BCA II YEAR', 'DBMS', '', '', 'BCA II YEAR', 'DBMS', '', '', '', '', '', '', 'SATURDAY', '', '', 'BCA II YEAR', 'DBMS', '', '', 'BCA II YEAR', 'DBMS', '', '', '', '', '', '', 'EMP0064'),
+(68, 'MONDAY', '', '', '', '', 'M.Sc. I Semeste', 'Paper III- Topo', 'M.Sc. I Semeste', 'Paper V- Functi', '', '', '', '', '', '', 'TUESDAY', 'M.Sc. I Semeste', 'Paper III- Topo', 'M.Sc. I Semeste', 'Paper V- Functi', '', '', '', '', '', '', '', '', '', '', 'WEDNESDAY', 'M.Sc. I Semeste', 'Paper III- Topo', 'M.Sc. I Semeste', 'Paper V- Functi', 'B.Sc. I Year', 'Paper II- Calcu', 'B.Sc. I Year', 'Paper II- Calcu', '', '', '', '', '', '', 'THURSDAY', '', '', '', '', '', '', 'M.Sc. I Semeste', 'Paper III- Topo', 'M.Sc. I Semeste', 'Paper V- Functi', '', '', '', '', 'FRIDAY', '', '', 'M.Sc. I Semeste', 'Paper III- Topo', 'M.Sc. I Semeste', 'Paper V- Functi', '', '', '', '', '', '', '', '', 'SATURDAY', 'B.Sc. I Year', 'Paper II- Calcu', '', '', 'M.Sc. I Semeste', 'Paper III- Topo', 'M.Sc. I Semeste', 'Paper V- Functi', '', '', '', '', '', '', '0121'),
+(69, 'MONDAY', 'BA III YEAR', 'INDIAN FOREIGN ', 'MA III SEM', 'INTERNATIONAL L', 'BA IIIYEAR', 'INDIAN FOREIGN ', 'MA III SEM', 'INDIAN FOREIGN ', '', '', '', '', '', '', 'TUESDAY', 'MA III Sem ', 'INTERNATIONAL L', 'BA I YEAR', 'INDIAN GOVT & P', 'MA III Sem ', 'INDIAN FOREIGN ', '', '', '', '', '', '', '', '', 'WEDNESDAY', 'MA III Sem ', 'INTERNATIONAL L', 'BA II Year ', 'CONSTITUTIONS O', 'MA III Sem ', 'INDIAN FOREIGN ', 'BA II Year ', 'CONSTITUTIONS O', '', '', '', '', '', '', 'THURSDAY', 'MA III SEM', 'INDIAN FOREIGN ', '', '', 'MA III Sem ', 'INTERNATIONAL L', '', '', '', '', '', '', '', '', 'FRIDAY', 'MA III SEM', 'INDIAN FOREIGN ', '', '', 'MA III SEM ', 'INTERNATIONAL L', '', '', '', '', '', '', '', '', 'SATURDAY', 'MA III Sem ', 'INDIAN FOREIGN ', '', '', 'MA III SEM', 'INDIAN FOREIGN ', '', '', '', '', '', '', '', '', 'EMP0114'),
+(70, 'MONDAY', '', '', 'BSc II Year', 'Paper II', '', '', 'BSc II Year', 'Paper II', '', '', '', '', '', '', 'TUESDAY', '', '', 'MSc III sem', '', '', '', 'MSc III Sem', '', '', '', '', '', '', '', 'WEDNESDAY', '', '', 'MSc III sem', '', '', '', 'MSc III sem', '', '', '', '', '', '', '', 'THURSDAY', '', '', 'BSc II Year', 'Paper II', '', '', 'BSc II Year', 'Paper II', '', '', '', '', '', '', 'FRIDAY', 'BSc III Year', 'Paper- I', '', '', 'BSc III Year', 'Paper- I', '', '', '', '', '', '', '', '', 'SATURDAY', 'MSc III sem', '', '', '', 'MSc III sem', '', '', '', 'BCOm Hns II Yea', 'FC III (Environ', '', '', '', '', 'dayashankar'),
+(71, 'MONDAY', 'BSC II YEAR', 'ZOOLOGY PAPER I', '', '', 'BSC II YEAR', 'ZOOLOGY PAPER 1', '', '', '', '', '', '', '', '', 'TUESDAY', '', '', 'MSC. I SEMESTER', '', 'MSC ISEMEST', 'PAPER II', '', '', '', '', 'MSC  III  SEMES', '', 'MSC. III SEMEST', '', 'WEDNESDAY', '', '', '', '', 'MSC I SEMESTR', '', '', '', 'BA II EVS ', '', 'MSC III SEMESTE', '', 'MSC III SEMESTE', '', 'THURSDAY', 'BSC II YEAR', 'ZOOLOGY PAPER I', '', '', 'BSC II YEAR', 'PAPER I', '', '', '', '', '', '', '', '', 'FRIDAY', '', '', 'BSC. III YEAR', 'PAPER I', '', '', 'BSC III YEAR', 'PAPER I', '', '', '', '', '', '', 'SATURDAY', '', '', '', '', 'MSC. I SEMESTAR', '', 'MSC I SEMESTER', '', 'MSC III SEMESTE', '', '', '', '', '', 'DR. MANJU DIXIT'),
+(72, 'MONDAY', 'B.com I (comp)', 'Financial Accou', 'M.com I', 'Cost Accounting', 'B.com II', 'Corporate Accou', '', '', '', '', '', '', '', '', 'TUESDAY', 'B.com I (comp)', 'Financial Accou', 'M.com I', 'Cost Accounting', 'Cost Accounting', 'Corporate Accou', '', '', '', '', '', '', '', '', 'WEDNESDAY', 'B.com I (comp)', 'Financial Accou', 'M.com I', 'Cost Accounting', 'Cost Accounting', 'Corporate Accou', '', '', '', '', '', '', '', '', 'THURSDAY', 'B.com I (App.)', 'Financial Accou', 'B.com II (Hons)', 'Accounting Adva', 'M.com I', 'Cost Accounting', '', '', '', '', '', '', '', '', 'FRIDAY', 'B.com I (App.)', 'Financial Accou', 'B.com II (Hons)', 'Accounting Adva', 'M.com I', 'Cost Accounting', '', '', '', '', '', '', '', '', 'SATURDAY', 'B.com I (App.)', 'Financial Accou', ' B.com II (Hons', 'Accounting Adva', 'M.com I', 'Cost Accounting', '', '', '', '', '', '', '', '', 'EMP0133'),
+(73, 'MONDAY', 'M.Sc. First Yea', 'Biotechnology', '', '', 'M.Sc. Final Yea', 'Biotechnology', '', '', 'B.Sc. Third Yea', 'Biotechnology', '', '', '', '', 'TUESDAY', '', '', '', '', 'M.Sc. First Yea', 'Biotechnology', '', '', 'B.Sc. Third Yea', 'Biotechnology', '', '', 'M.Sc. Final Yea', 'Biotechnology', 'WEDNESDAY', '', '', 'M.Sc. First Yea', 'Biotechnology', '', '', '', '', 'B.Sc. Third Yea', 'Biotechnology', '', '', 'M.Sc. Final Yea', 'Biotechnology', 'THURSDAY', 'M.Sc. Final Yea', 'Biotechnology P', 'M.Sc. Final Yea', 'Biotechnology P', 'M.Sc. First Yea', 'Biotechnology', '', '', 'B.Sc. Third Yea', 'Biotechnology', '', '', '', '', 'FRIDAY', 'M.Sc. Final Yea', 'Biotechnology', '', '', '', '', '', '', 'M.Sc. First Yea', 'Biotechnology P', 'M.Sc. First Yea', 'Biotechnology P', '', '', 'SATURDAY', '', '', 'M.Sc. Final Yea', 'Biotechnology', '', '', '', '', 'M.Sc. First Yea', 'Biotechnology P', 'M.Sc. First Yea', 'Biotechnology P', '', '', 'emp0103'),
+(74, 'MONDAY', '', '', 'M.Sc. I semes', 'Chemistry', '', '', '', '', 'M.Sc. III semes', 'Chemistry', '', '', '', '', 'TUESDAY', '', '', 'B.Sc. I year', 'Inorganic Chemi', '', '', 'B.Sc. I year', 'Inorganic chemi', '', '', '', '', '', '', 'WEDNESDAY', 'B.Sc. II year', 'Physical chemis', '', '', '', '', 'M.Sc. I semeste', 'Inorganic Pract', '', '', 'M.Sc. III semes', 'Chemistry', '', '', 'THURSDAY', '', '', 'M.Sc. I semes', 'Chemistry', '', '', '', '', '', '', 'M.Sc. III semes', 'Chemistry', '', '', 'FRIDAY', '', '', '', '', 'B.Sc. I year', 'Inorganic Chemi', '', '', '', '', '', '', '', '', 'SATURDAY', '', '', '', '', '', '', '', '', 'B.Sc. II year', 'Physical chemis', '', '', '', '', 'EMP0085'),
+(75, 'MONDAY', 'B COM  H 2', 'RPORATE A/C', '', '', 'B COM TAX 1', 'DTS', 'M C FIRST', 'FINICIAL MNG.', 'BCOM APPL.3', 'INCOME TAX', '', '', '', '', 'TUESDAY', 'B COM  H 2', 'RPORATE A/C', '', '', 'B COM TAX 1', 'DTS', 'M C FIRST', 'INICIAL MNG.', 'BCOM APPL.3', 'INCOME TAX', '', '', '', '', 'WEDNESDAY', 'B COM  H 2', 'CPORATE A/C', '', '', 'B COM TAX 1', 'DTS', 'M C FIRST', 'INICIAL MNG.', 'BCOM APPL.3', 'INCOME TAX', '', '', '', '', 'THURSDAY', 'B COM CA 2', 'COST A/C', '', '', '', '', '', '', '', '', '', '', 'B COM  H 3', 'INCOME TAX', 'FRIDAY', 'B COM CA 2', 'OST A/C', '', '', '', '', '', '', '', '', '', '', 'B COM  H 3', 'INCOME TAX', 'SATURDAY', 'B COM CA 2', 'OST A/C', '', '', '', '', '', '', '', '', '', '', 'B COM  H 3', 'INCOME TAX', 'EMP0095'),
+(76, 'MONDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'TUESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'WEDNESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'THURSDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'FRIDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'SATURDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Dr Neelanjana P'),
+(77, 'MONDAY', '', '', 'MSc I Sem ', 'Zoology ', 'MSc I Sem ', 'Zoology ', '', '', '', '', 'MSc III Sem ', 'Zoology ', 'MSc III Sem ', 'Zoology ', 'TUESDAY', '', '', 'BSc III Year ', 'Zoology  II', '', '', 'BSc III year', 'Zoology II', '', '', '', '', '', '', 'WEDNESDAY', '', '', 'BSc I Year ', 'Zoology  II', '', '', 'BSc I Year ', 'Zoology  II', '', '', '', '', '', '', 'THURSDAY', 'MSc I Sem ', 'Zoology ', 'MSc I Sem ', 'Zoology ', '', '', '', '', 'MSc III Sem ', 'Zoology ', '', '', '', '', 'FRIDAY', '', '', '', '', 'MSc I Sem ', 'Zoology ', '', '', '', '', 'MSc III Sem ', 'Zoology ', 'MSc IIISem ', 'Zoology ', 'SATURDAY', '', '', 'BSc I Year ', 'Zoology  II', '', '', 'BSc I Year ', 'Zoology  II', '', '', '', '', '', '', 'EMP0110'),
+(78, 'MONDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'TUESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'WEDNESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'THURSDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'FRIDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'SATURDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Archana Pasari'),
+(79, 'MONDAY', 'B.Com I year (H', 'Financial A/C', '', '', '', '', 'BCA II Year', 'Accounting & Fi', '', '', 'B.Com III Year', 'Management Acco', 'B.Com III Year', 'Public Finance ', 'TUESDAY', 'B.Com I year (H', 'Financial A/C', '', '', '', '', 'BCA II Year', 'Accounting & Fi', '', '', 'B.Com III Year', 'Management Acco', 'B.Com III Year', 'Public Finance ', 'WEDNESDAY', 'B.Com I year (H', 'Financial A/C', '', '', '', '', 'BCA II Year', 'Accounting & Fi', '', '', 'B.Com III Year', 'Management Acco', 'B.Com III Year', 'Public Finance ', 'THURSDAY', 'B.Com II (Hindi', 'Principles of S', 'B.Com I year (T', 'Financial A/C', '', '', 'BCA II Year', 'Accounting & Fi', '', '', '', '', '', '', 'FRIDAY', 'B.Com II (Hindi', 'Principles of S', 'B.Com I year (T', 'Financial A/C', '', '', '', '', '', '', '', '', '', '', 'SATURDAY', 'B.Com II (Hindi', 'Principles of S', 'B.Com I year (T', 'Financial A/C', '', '', '', '', '', '', '', '', '', '', 'EMP0053'),
+(80, 'MONDAY', '', '', 'B COM 1 APPLIED', 'MICRO ECONOMICS', 'B COM 1 APPLIED', 'MICRO ECONOMICS', 'B COM 1 TAX', 'ENT', '', '', '', '', '', '', 'TUESDAY', 'EXTRA CLASS', '', 'B COM 1 APPLIED', 'MICRO ECONOMICS', 'B COM 1 APPLIED', 'B COM 1 APPLIED', '', '', '', '', '', '', '', '', 'WEDNESDAY', 'EXTRA CLASS', '', 'B COM 1 APPLIED', 'MICRO ECONOMICS', 'B COM 1 APPLIED', 'B COM 1 APPLIED', 'B COM 1 APPLIED', 'ENT', '', '', '', '', '', '', 'THURSDAY', '', '', 'B COM II  APPLI', 'BANKING', 'B COM II  APPLI', 'BANKING', '', '', '', '', 'B COM III  APPL', 'AUDITING', '', '', 'FRIDAY', '', '', 'B COM 1 APPLIED', 'BANKING', 'B COM II  APPLI', 'BANKING', 'B COM 1 COMPUTE', 'ENT', '', '', 'B COM III  APPL', 'AUDITING', '', '', 'SATURDAY', 'EXTRA CLASS', '', 'B COM 1 APPLIED', 'BANKING', 'B COM II  APPLI', 'BANKING', 'EXTRA CLASS', '', '', '', 'B COM III  APPL', 'AUDITING', '', '', 'EMP1101'),
+(81, 'MONDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'TUESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'WEDNESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'THURSDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'FRIDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'SATURDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'EMP0107'),
+(82, 'MONDAY', '', '', 'MSC I SEM', 'BT PAPER I', '', '', '', '', 'MSC III SEM', 'BT  PAPER -I', '', '', '', '', 'TUESDAY', 'BSC II YEAR ', 'BIOTECHNOLOGY', 'BSC II YEAR', 'BIOTECHNOLOGY', '', '', 'MSC I SEM', 'BT PAPER I', '', '', 'MSC III ', 'BT PAPER I', '', '', 'WEDNESDAY', 'MSC I SEM', 'BT PAPER IV', '', '', '', '', '', '', 'MSC III SEM', 'BT PAPER -ELECT', '', '', '', '', 'THURSDAY', '', '', 'MSC I SEM', 'BT PAPER IV', 'MSC III SEM', 'PRACTICAL', 'MSC III SEM', 'PRACTICAL', '', '', '', '', '', '', 'FRIDAY', 'BSC II YEAR ', 'BIOTECHNOLOGY', 'BSC II YEAR', 'BIOTECHNOLOGY', '', '', 'MSC III SEM', 'BT PAPER -ELECT', '', '', 'MSC I SEM', 'PRACTICAL', 'MSC I SEM', 'PRACTICAL', 'SATURDAY', '', '', '', '', 'MSC I SEM', 'PRACTICA', 'MSC I SEM', 'PRACTICA', 'BCOM II YEAR (T', 'EVS', 'MSC III SEM', 'BT PAPER -I', '', '', 'YASMIN BANU'),
+(83, 'MONDAY', '', '', '', '', 'M.Sc I Sem', 'Electronic Devi', 'M.Sc I Sem', 'Electronic Devi', '', '', '', '', 'M.Sc III Sem', 'Quantum Mechani', 'TUESDAY', 'B.Sc II Year', 'Optics', '', '', 'B.Sc II Year', 'Optics', '', '', '', '', '', '', '', '', 'WEDNESDAY', '', '', '', '', 'M.Sc I Sem', 'Electronic Devi', 'M.Sc I Sem', 'Electronic Devi', '', '', 'M.Sc III Sem', 'Quantum Mechani', 'M.Sc III Sem', 'Quantum Mechani', 'THURSDAY', '', '', '', '', '', '', '', '', 'M.Sc III Sem', 'Quantum Mechani', '', '', 'M.Sc III Sem', 'Quantum Mechani', 'FRIDAY', 'B.Sc II Year', 'Optics', '', '', 'B.Sc II Year', 'Optics', '', '', '', '', '', '', '', '', 'SATURDAY', '', '', '', '', 'M.Sc I Sem', 'Electronic Devi', 'M.Sc I Sem', 'Electronic Devi', '', '', '', '', 'M.Sc III Sem', 'Quantum Mechani', 'EMP0079'),
+(84, 'MONDAY', '', '', '', '', 'BSc III year', 'Organic Chemist', '', '', '', '', '', '', '', '', 'TUESDAY', '', '', '', '', 'MSc III Semeste', 'Medicinal chemi', '', '', '', '', '', '', '', '', 'WEDNESDAY', '', '', '', '', 'MSc III Semeste', 'Medicinal chemi', 'BSC II year', 'Inorganic', '', '', '', '', '', '', 'THURSDAY', 'BSc III year', 'Organic Chemist', '', '', '', '', 'BSc III year', 'Organic Chemist', '', '', '', '', '', '', 'FRIDAY', '', '', 'MSc III year', 'Medicinal chemi', '', '', '', '', '', '', '', '', '', '', 'SATURDAY', 'MSc III Semeste', 'Medicinal chemi', '', '', '', '', '', '', 'BCOM ', 'EVS', '', '', '', '', 'EMP0115'),
+(85, 'MONDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'TUESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'WEDNESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'THURSDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'FRIDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'SATURDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'EMP0080'),
+(86, 'MONDAY', '', '', 'BSC-III YEAR', 'INORGANIC CHEMI', '', '', 'BSC-III YEAR', 'INORGANIC CHEMI', '', '', '', '', '', '', 'TUESDAY', 'MSC-III SEM', 'PHYSICAL CHEMIS', '', '', '', '', '', '', '', '', '', '', '', '', 'WEDNESDAY', '', '', '', '', 'MSC-III SEM', 'PHYSICAL CHEMIS', '', '', '', '', '', '', '', '', 'THURSDAY', 'MSC-III SEM', 'PHYSICAL CHEMIS', '', '', 'BSC-III YEAR', 'INORGANIC CHEMI', '', '', '', '', '', '', '', '', 'FRIDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'SATURDAY', '', '', 'BSC-II YEAR', 'PHYSICAL CHEMIS', 'MSC-III YEAR', 'PHYSICAL CHEMIS', '', '', '', '', '', '', '', '', 'EMP0090'),
+(87, 'MONDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'TUESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'WEDNESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'THURSDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'FRIDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'SATURDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'EMP1019'),
+(88, 'MONDAY', '', '', '', '', 'B.Com II F', 'Cost Accountin', '', '', 'B.Com III F', 'G.S.T.', 'B.Com III C.A.', 'G.S.T.', 'B.Com III Hono', 'G.S.T.', 'TUESDAY', '', '', '', '', 'B.Com II F', 'Cost Accountin', '', '', 'B.Com III F', 'G.S.T.', 'B.Com III C.A.', 'G.S.T.', 'B.Com III Hono', 'G.S.T.', 'WEDNESDAY', '', '', '', '', 'B.Com II F', 'Cost Accountin', '', '', 'B.Com III F', 'G.S.T.', 'B.Com III C.A.', 'G.S.T.', 'B.Com III Hono', 'G.S.T.', 'THURSDAY', 'B.Com II App.Ec', 'Cost Accountin', '', '', '', 'g', '', '', 'B.Com III App.E', 'G.S.T.', '', '', '', '', 'FRIDAY', 'B.Com II App.Ec', 'Cost Accountin', '', '', '', '', '', '', 'B.Com III App.E', 'G.S.T.', '', '', '', '', 'SATURDAY', 'B.Com II App.Ec', 'Cost Accountin', '', '', '', '', '', '', 'B.Com III App.E', 'G.S.T.', '', '', '', '', 'EMP0059'),
+(89, 'MONDAY', '', '', '', '', 'B. Com-I (TAX -', 'Direct Tax Syst', '', '', 'M. Com-III', 'Advance Income ', '', '', 'B. Com-III (TAX', 'Income Tax Plan', 'TUESDAY', '', '', '', '', 'B. Com-I (TAX -', 'Direct Tax Syst', '', '', 'M. Com-III', 'Advance Income ', '', '', 'B. Com-III (TAX', 'Income Tax Plan', 'WEDNESDAY', '', '', '', '', 'B. Com-I (TAX -', 'Direct Tax Syst', '', '', 'M. Com-III', 'Advance Income ', '', '', 'B. Com-III (TAX', 'Income Tax Plan', 'THURSDAY', '', '', '', '', 'B. Com-II (TAX-', 'Income Tax Proc', '', '', 'B. Com-III (Hin', 'Income Tax Law ', 'B. Com-III (CA)', 'Income Tax Law ', 'M. Com-III', 'Advance Income ', 'FRIDAY', '', '', '', '', 'B. Com-II (TAX-', 'Income Tax Proc', '', '', 'B. Com-III (Hin', 'Income Tax Law ', 'B. Com-III (CA)', 'Income Tax Law ', 'M. Com-III', 'Advance Income ', 'SATURDAY', '', '', '', '', 'B. Com-II (TAX-', 'Income Tax Proc', '', '', 'B. Com-III (Hin', 'Income Tax Law ', 'B. Com-III (CA)', 'Income Tax Law ', 'M. Com-III', 'Advance Income ', 'EMP0052'),
+(90, 'MONDAY', '', '', 'B.Com II Tax', 'Cost Accounting', '', '', '', '', 'B.Com III  CA', 'Management Acco', 'B.Com III  Tax', 'Management Acco', '', '', 'TUESDAY', '', '', 'B.Com II Tax ', 'Cost Accounting', '', '', '', '', 'B.Com III  CA', 'Management Acco', 'B.Com III  Tax', 'Management t Ac', '', '', 'WEDNESDAY', '', '', 'B.Com II Tax ', 'Cost Accounting', '', '', '', '', 'B.Com III  CA', 'Management Acco', 'B.Com III  Tax', 'Management Acco', '', '', 'THURSDAY', '', '', '', '', 'B.Com  I Tax Hi', 'GST', '', '', 'M.Com III Finan', 'Portfolio', '', '', 'B.Com  III Tax ', 'Local Tax', 'FRIDAY', '', '', '', '', 'B.Com  I Tax Hi', 'GST', '', '', 'M.Com III Finan', 'Portfolio', '', '', 'B.Com  III Tax ', 'Local Tax', 'SATURDAY', '', '', '', '', 'B.Com  I Tax Hi', 'GST', '', '', 'M.Com III Finan', 'Portfolio', '', '', 'B.Com  III Tax ', 'Local Tax', 'EMP0055');
+INSERT INTO `timetable_new` (`id`, `d1`, `c1`, `s1`, `c2`, `s2`, `c3`, `s3`, `c4`, `s4`, `c5`, `s5`, `c6`, `s6`, `c7`, `s7`, `d2`, `c8`, `s8`, `c9`, `s9`, `c10`, `s10`, `c11`, `s11`, `c12`, `s12`, `c13`, `s13`, `c14`, `s14`, `d3`, `c15`, `s15`, `c16`, `s16`, `c17`, `s17`, `c18`, `s18`, `c19`, `s19`, `c20`, `s20`, `c21`, `s21`, `d4`, `c22`, `s22`, `c23`, `s23`, `c24`, `s24`, `c25`, `s25`, `c26`, `s26`, `c27`, `s27`, `c28`, `s28`, `d5`, `c29`, `s29`, `c30`, `s30`, `c31`, `s31`, `c32`, `s32`, `c33`, `s33`, `c34`, `s34`, `c35`, `s35`, `d6`, `c36`, `s36`, `c37`, `s37`, `c38`, `s38`, `c39`, `s39`, `c40`, `s40`, `c41`, `s41`, `c42`, `s42`, `username`) VALUES
+(91, 'MONDAY', 'MSC', 'COMPUTER ORIENT', '', '', '', '', '', '', '', '', '', '', '', '', 'TUESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'WEDNESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'THURSDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'FRIDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'SATURDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'EMP1095'),
+(92, 'MONDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'TUESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'WEDNESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'THURSDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'FRIDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'SATURDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'rashmipatras'),
+(93, 'MONDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'TUESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'WEDNESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'THURSDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'FRIDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'SATURDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'EMP0123'),
+(94, 'MONDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'TUESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'WEDNESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'THURSDAY', 'BA II', 'FUNC.ENGNGLISH ', '', '', 'BA II', 'FUNC ENG', '', '', '', '', '', '', '', '', 'FRIDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'SATURDAY', 'BA III', 'ENG LITER', '', '', 'BA III', 'ENG LITER', '', '', '', '', '', '', '', '', 'MARY'),
+(95, 'MONDAY', 'M.Com I ', 'MANAG ', '', '', '', '', 'M.Com III Sem ', 'B.Env ', 'B.Com Hons III ', 'Research Method', '', '', '', '', 'TUESDAY', 'M.Com I ', 'MANAG ', '', '', '', '', 'M.Com III Sem ', 'B.Env ', 'B.Com Hons III ', 'Research Method', '', '', '', '', 'WEDNESDAY', 'M.Com I ', 'MANAG ', '', '', '', '', 'M.Com III Sem ', 'B.Env ', 'B.Com Hons III ', 'Research Method', '', '', '', '', 'THURSDAY', 'M.Com I ', 'MANAG ', '', '', 'BCOM HONS I', 'MANAG . ECO', '', '', 'M.Com III Sem ', 'B.Env ', '', '', '', '', 'FRIDAY', 'M.Com I ', 'MANAG ', '', '', 'BCOM HONS I', 'MANAG . ECO', '', '', 'M.Com III Sem ', 'B.Env ', '', '', '', '', 'SATURDAY', 'M.Com I ', 'MANAG ', '', '', 'BCOM HONS I', 'MANAG . ECO', '', '', 'M.Com III Sem ', 'B.Env ', '', '', '', '', 'EMP0136'),
+(96, 'MONDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'TUESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'WEDNESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'THURSDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'FRIDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'SATURDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Sonali Nigam'),
+(97, 'MONDAY', '', '', 'B.Com. II F', 'Principles of M', 'B.Com. II TAX', 'Principles of M', '', '', '', '', '', '', '', '', 'TUESDAY', '', '', 'B.Com. II F', 'Principles of M', 'B.Com. II TAX', 'Principles of  ', '', '', '', '', '', '', '', '', 'WEDNESDAY', '', '', 'B.Com. II F', 'Principles of M', 'B.Com. II TAX', 'Principles of M', '', '', '', '', '', '', '', '', 'THURSDAY', '', '', 'B.com II F', 'Corporate A/C', '', '', '', '', 'B.com III TAX', 'Income Tax', 'M.Com. III SEM.', 'Service Marketi', 'B.Com. III F.', 'International m', 'FRIDAY', '', '', 'B.com II F', 'Corporate A/C', '', '', '', '', 'B.com III TAX', 'Income Tax', 'M.Com. III SEM.', 'Service Marketi', 'B.Com. III F.', 'International m', 'SATURDAY', '', '', 'B.com II F', 'Corporate A/C', '', '', '', '', 'B.com III TAX', 'Income Tax', 'M.Com. III SEM.', 'Service Marketi', 'B.Com. III F.', 'International m', 'EMP1103'),
+(98, 'MONDAY', 'B.Com I app. ec', 'Business Law', 'B.Com I CA', 'Business Law', 'M.Com I Sem', 'Organisational ', '', '', '', '', '', '', '', '', 'TUESDAY', 'B.Com I app. ec', 'Business Law', 'B.Com I CA', 'Business Law', 'M.Com I Sem', 'Organisational ', '', '', '', '', '', '', '', '', 'WEDNESDAY', 'B.Com I app. ec', 'Business Law', 'B.Com I CA', 'Business Law', 'M.Com I Sem', 'Organisational ', '', '', '', '', '', '', '', '', 'THURSDAY', 'M.Com I Sem', 'Organisational ', 'B.Com Hons I ', 'Business Organi', 'B.Com I Tax', 'Business Law', '', '', '', '', '', '', '', '', 'FRIDAY', 'M.Com I Sem', 'Organisational ', 'B.Com Hons I ', 'Business Organi', 'B.Com I Tax', 'Business Law', '', '', '', '', '', '', '', '', 'SATURDAY', 'M.Com I Sem', 'Organisational ', 'B.Com Hons I ', 'Business Organi', 'B.Com I Tax', 'Business Law', '', '', '', '', '', '', '', '', 'Dr. Pooja'),
+(99, 'MONDAY', 'B.Com III Year', 'Management Acco', '', '', 'B.Com III Year ', 'Management Acco', '', '', '', '', '', '', '', '', 'TUESDAY', 'B.Com III Year', 'Management Acco', '', '', 'B.Com III Year ', 'Management Acco', '', '', '', '', '', '', '', '', 'WEDNESDAY', 'B.Com Hons III ', 'Management Acco', 'B.Com Hons II ', 'Financial Manag', 'B.Com Hons III ', 'Management Acco', 'B.Com Hons II Y', 'Financial Manag', '', '', '', '', '', '', 'THURSDAY', 'B.Com Hons III ', 'Management Acco', 'B.Com Hons II ', 'Financial Manag', 'B.Com Hons III ', 'Management Acco', 'B.Com Hons II Y', 'Financial Manag', '', '', '', '', '', '', 'FRIDAY', '', '', '', '', '', '', 'B.Com III Year ', 'Financial Manag', '', '', '', '', '', '', 'SATURDAY', '', '', '', '', '', '', 'B.Com III Year ', 'Financial Manag', '', '', '', '', '', '', 'EMP0099'),
+(100, 'MONDAY', '', '', 'B. Sc.II year', 'IMB-II', '', '', 'B. Sc.II year', 'IMB-II', '', '', 'M.Sc. I Semeste', 'Virology', 'M.Sc. I Semeste', 'Seminar', 'TUESDAY', '', '', '', '', 'M.Sc. III Semes', 'Medical Microbi', '', '', 'M.Sc. I Semeste', 'Virology Practi', 'M.Sc. I Semeste', 'Virology Practi', 'M.Sc. I Semeste', 'Virology Practi', 'WEDNESDAY', '', '', 'M.Sc. III Semes', 'Medical Microbi', 'B. Sc.I year', 'IMB-II', '', '', 'B. Sc.II year', 'Environmental S', '', '', 'M.Sc. I Semeste', 'Virology ', 'THURSDAY', '', '', 'B. Sc.II year', 'IMB-II', '', '', 'B. Sc.II year', 'IMB-II', '', '', 'M.Sc. III Semes', 'Medical Microbi', '', '', 'FRIDAY', '', '', 'M.Sc. III Semes', 'Medical Microbi', 'M.Sc. I Semeste', 'Virology', '', '', 'M.Sc. III Semes', 'Medical Microbi', 'M.Sc. I Semeste', 'Virology', '', '', 'SATURDAY', '', '', 'B. Sc.I year', 'IMB-II', '', '', 'M.Sc. I Semeste', 'Virology', 'M.Sc. III Semes', 'Medical Microbi', 'M.Sc. III Semes', 'Medical Microbi', 'M.Sc. III Semes', 'Medical Microbi', 'EMP0098'),
+(101, 'MONDAY', 'B.Sc 1st year', 'Biotechnology', 'B.Sc 1st year', 'Biotechnology', '', '', 'M.Sc 2nd yaer', 'Biotechnology', '', '', '', '', 'M.Sc 1st year', 'Biotechnology', 'TUESDAY', 'M.Sc 1st year', 'Biotechnology', '', '', '', '', '', '', '', '', '', '', 'M.Sc 2nd year ', 'Biotechnology', 'WEDNESDAY', '', '', '', '', 'M.Sc 1st year', 'Biotechnology', '', '', 'BCA 2nd year', 'EVS', '', '', 'M.Sc 2nd year', 'Biotechnology', 'THURSDAY', 'M.Sc 1st year', 'Biotechnology', '', '', 'B.Sc 1st year', 'Biotechnology', 'B.Sc 1st year', 'Biotechnology', '', '', 'M.Sc 2nd year', 'Biotechnology', 'M.Sc 2nd year', 'Biotechnology', 'FRIDAY', '', '', 'M.Sc 2nd year', 'Biotechnology', 'M.Sc 1st year', 'Biotechnology', 'M.Sc 1st year', 'Biotechnology', 'B.Sc 3rd year', 'Biotechnology', '', '', '', '', 'SATURDAY', 'M.Sc 1st year', 'Biotechnology', 'M.Sc 1st year', 'Biotechnology', '', '', '', '', 'B.Sc 3rd year', 'Biotechnology', '', '', 'M.Sc 2nd year', 'Biotechnology', 'lkpandey16'),
+(102, 'MONDAY', '', '', '', '', '', '', 'MA III ', 'COMMUNICATION', 'MAIII', 'Project', '', '', '', '', 'TUESDAY', '', '', '', '', '', '', '', '', 'MA I', 'Poetry', '', '', '', '', 'WEDNESDAY', '', '', 'MA III ', 'Communication', '', '', 'MA I', 'Project ', 'MA I', 'Poetry', '', '', '', '', 'THURSDAY', '', '', 'BA I ', 'ENG. LIT Poetry', '', '', 'BA I', 'ENGLIT POETRY', '', '', 'MA III', 'Communication', 'MA I', 'Poetry', 'FRIDAY', '', '', 'BA III', 'LITERATURE PAPE', '', '', 'BA III ', 'LITERATURE  PAP', 'MA III', 'COMMUNICATION', '', '', 'MA I', 'Prose', 'SATURDAY', '', '', 'BA III', 'FUNCTIONAL ENGL', '', '', 'BA III', 'FUNCTIONAL ENGL', 'MA III ', 'COMMUNICATION', '', '', '', '', 'EMP0034'),
+(103, 'MONDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'TUESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'WEDNESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'THURSDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'FRIDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'SATURDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'khushi17jul'),
+(104, 'MONDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'TUESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'WEDNESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'THURSDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'FRIDAY', '', '', '', '', 'BCA I', 'Programming in  C', '', '', '', '', '', '', '', '', 'SATURDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'EMP0069'),
+(105, 'MONDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'TUESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'WEDNESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'THURSDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'FRIDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'SATURDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'kkdasphy2020'),
+(107, 'MONDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'TUESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'WEDNESDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'THURSDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'FRIDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'SATURDAY', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'newemp');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `tid` varchar(20) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `sup_depart` varchar(100) NOT NULL,
+  `department` varchar(100) NOT NULL,
+  `designation` varchar(50) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `ischeck` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `tid`, `username`, `name`, `sup_depart`, `department`, `designation`, `password`, `ischeck`) VALUES
+(23, '12345', 'admin', 'Admin', '', '', '', 'c93ccd78b2076528346216b3b2f701e6', ''),
+(41, 'EMP1102', 'EMP1102', 'JITENDRA JAIN', 'Physical Science', 'Computer Science and Application', 'Professor', '21d2bbd0ab9421f04600fa892828f433', ''),
+(42, 'EMP0070', 'EMP0070', 'PRAKASH KUMAR LANGE', 'Physical Science', 'Computer Science and Application', 'Professor', 'f91e15dbec69fc40f81f0876e7009648', ''),
+(43, 'EMP0062', 'abhilashasankari', 'Abhilasha Sankari', 'Physical Science', 'Computer Science and Application', 'Professor', 'eef32d99511caf5c2774b27ead66d245', ''),
+(45, 'EMP0063', 'ca2016.sac', 'Prabhjyot kaur Harya', 'Physical Science', 'Computer Science and Application', 'Professor', '6e7ad5124dbf556bd7afdb0bb11eeab5', ''),
+(47, 'EMP0023', 'ARIFAANJUM', 'Ms. Arifa Anjum', 'Physical Science', 'Computer Science and Application', 'Professor', 'e10adc3949ba59abbe56e057f20f883e', ''),
+(50, 'EMP0042', 'EMP0042', 'Dr. Manju Maria Solo', 'Arts and Social Scie', 'History', 'Hod', 'bbdd0e294fd183663ccadb3d3f94dca1', ''),
+(57, 'EMP1115', 'Chitranshi', 'Dr. Chitranshi Verma', 'Commerce and Management', 'Management', 'Professor', '627e1ccc37e8d0386be720026e90afe5', ''),
+(58, 'EMP0118', 'EMP0118', 'Dr. Meenakshi Swamy', 'Commerce and Management', 'Applied Economics', 'Professor', '827ccb0eea8a706c4c34a16891f84e7b', ''),
+(59, 'EMP0126', 'EMP0126', 'DR. KOMAL RAWAT', 'Commerce and Management', 'B.Com. Honors', 'Professor', '03c677c8ff3ac4b08a6bea633abd0559', ''),
+(63, 'EMP1043', 'EMP1043_M', 'Dr Manju Gupta', 'Life Science', 'Chemistry', 'Professor', 'c41a9abb5469c66d680506a4543420eb', ''),
+(66, 'EMP0075', 'EMP0075', 'MRS. ROSHNI CHOUBEY', 'Life Science', 'Botany and Microbiology', 'Professor', 'a8952077a079424cce1441198716129f', ''),
+(67, 'EMP0049', 'EMP0049', 'Dr. Anthonima Kennet', 'Arts and Social Scie', 'Economics', 'Professor', 'f8df12d2dfdd58db1e58083c41fa9f49', ''),
+(71, 'EMP0061', 'sarojjunghare', 'Saroj Junghare', 'Physical Science', 'Computer Science and Application', 'Professor', 'd984e42568451b7c24131759dc7fddb2', ''),
+(75, 'EMP0092', 'Archana', 'Dr. Archana Singhal', 'Education', 'Education', 'Professor', '46ff90e8e3c3c1cb6cae3a539082ffc9', ''),
+(77, 'EMP1036', 'SUSHMA', 'Dr. Sushma Pillal', 'Education', 'Education', 'Professor', '44bb3c49a82504b6229464e81c3d05cd', ''),
+(78, 'EMP1098', 'APARNA', 'DR APARNA MUKHERJEE ', 'Arts and Social Scie', 'English', 'Professor', '8a62b13ed9f8fdd988b7540b82d3bc0e', ''),
+(79, 'EMP0074', 'Shi01', 'shikha bansal', 'Life Science', 'Botany and Microbiology', 'Hod', '31b67a67061f0f9c03b9a3c9c8082c6b', ''),
+(83, 'EMP1086', 'JUHI1086', 'JUHI SHARMA', 'Life Science', 'Botany and Microbiology', 'Professor', '43feb545eee802986ea7f69b68c7d3e0', ''),
+(85, 'EMP0060', 'Sukhvinder Kaur Walia', 'Mrs. Sukhvinder Kaur', 'Physical Science', 'Computer Science and Application', 'Professor', '48d9d2bbfdb0d128464d3d7ecfa626b4', ''),
+(86, 'EMP0132', 'kiran', 'Dr. Kiran Mishra ', 'Education', 'Education', 'Hod', '470667c751bf59cd21b02509271611f5', ''),
+(90, 'EMP0047', 'Pearly ', 'Dr. Pearly Jacob', 'Commerce and Management', 'Management', 'Hod', '8094bdf95e810c31a9d714d131976efe', ''),
+(93, 'EMP0125', 'EMP0125', 'Satyendra Kumar Jain', 'Physical Science', 'Mathematics', 'Professor', '9144775026', ''),
+(95, 'EMP0122', 'EMP0122', 'Dr. Mandira Kar', 'Physical Science', 'Mathematics', 'Hod', '1234', ''),
+(96, 'EMP0111', 'ankitkdubey', 'Ankit K Dubey', 'Physical Science', 'Computer Science and Application', 'Professor', '@8989', ''),
+(97, 'EMP0101', 'Enosh', 'Enosh Phillips', 'Life Science', 'Biotechnology', 'Professor', '9039893362', ''),
+(98, 'EMP0064', 'EMP0064', 'Ms. MALA DAS', 'Physical Science', 'Computer Science and Application', 'Professor', 'EMP0064', ''),
+(99, 'EMP0121', '0121', 'Dr. Mita Darbari', 'Physical Science', 'Mathematics', 'Dean', 'emp0121', ''),
+(100, 'EMP0114', 'EMP0114', 'Dr. Tuhina Johri', 'Arts and Social Sciences', 'Political Science', 'Hod', '9424086040', ''),
+(101, 'EMP0038', 'EMP0038', 'Dr. Ramendra Prasad ', 'Arts and Social Sciences', 'Hindi', 'Hod', 'ram1964', ''),
+(102, 'EMP0109', 'dayashankar', 'Dr. Daya Shankar Gau', 'Life Science', 'Zoology', 'Professor', 'dayashankar', ''),
+(103, 'EMP1021', 'DR. MANJU DIXIT', 'Dr. Manju Dixit', 'Life Science', 'Zoology', 'Professor', 'MANJU', ''),
+(104, 'EMP0133', 'EMP0133', 'Dr. Sanjay Kumar Raj', 'Commerce and Management', 'Applied Economics', 'Professor', 'EMP0133', ''),
+(105, 'EMP0103', 'emp0103', 'Nitin Swamy', 'Life Science', 'Biotechnology', 'Professor', 'biotech2020', ''),
+(106, 'EMP0085', 'EMP0085', 'Dr. Sutapa Roy', 'Life Science', 'Chemistry', 'Professor', 'sudeepa1976', ''),
+(107, 'EMP0093', 'EMP0093', 'Dr. Akhilesh Pathak', 'Physical Science', 'Mathematics', 'Professor', 'akhi251187', ''),
+(108, 'EMP0095', 'EMP0095', 'MR. HARBAKSH MOOLCHA', 'Commerce and Management', 'B.Com. Honors', 'Professor', 'EMP0095', ''),
+(110, 'EMP0110', 'EMP0110', 'Dr. Priyanka Sinha ', 'Life Science', 'Zoology', 'Hod', '$omsairam$', ''),
+(111, 'EMP1110', 'EMP1110 ', 'dr Abhilasha shukla ', 'Arts and Social Sciences', 'Hindi', 'Professor', 'abhilasha', ''),
+(112, 'EMP0124', 'Archana Pasari', 'Archana Pasari', 'Physical Science', 'Mathematics', 'Professor', 'ARCHANA', ''),
+(113, 'EMP0053', 'EMP0053', 'Dr. Yogesh Ashar', 'Commerce and Management', 'Taxation and Computer Application', 'Professor', 'emp0053', ''),
+(114, 'EMP1101', 'EMP1101', 'Dr. Sarita Goel', 'Commerce and Management', 'Applied Economics', 'Professor', 'Sarita', ''),
+(115, 'EMP0107', 'EMP0107', 'Mrs. Runa Paul ', 'Life Science', 'Zoology', 'Professor', 'DITI10', ''),
+(116, 'EMP0134', 'YASMIN BANU', 'YASMIN BANU', 'Life Science', 'Biotechnology', 'Professor', 'banu123', ''),
+(117, 'EMP0079', 'EMP0079', 'Dr Nisha Pandey', 'Physical Science', 'Physics', 'Professor', 'physics123', ''),
+(118, 'EMP0115', 'EMP0115', 'DR. AMITA CHHATRI', 'Life Science', 'Chemistry', 'Professor', 'RENU', ''),
+(119, 'EMP0080', 'EMP0080', 'Dr. Pramod Chaitanya', 'Physical Science', 'Physics', 'Professor', 'pramod', ''),
+(120, 'EMP0090', 'EMP0090', 'Dr. Sweta Likhitkar ', 'Life Science', 'Chemistry', 'Professor', '2406', ''),
+(121, 'EMP1019', 'EMP1019', 'Dr. Deepti S  Deshpa', 'Physical Science', 'Physics', 'Professor', 'EMP1019', ''),
+(122, 'EMP0059', 'EMP0059', 'Dr. Sunil Kumar Tiwa', 'Commerce and Management', 'Applied Economics', 'Professor', 'emp0059', ''),
+(123, 'EMP0052', 'EMP0052', 'Dr. Dileep Kumar Kos', 'Commerce and Management', 'Taxation and Computer Application', 'Professor', 'sildj131', ''),
+(124, 'EMP0046', 'EMP0046', 'Dr.Renu Markande', 'Arts and Social Sciences', 'Economics', 'Professor', 'EMP0046', ''),
+(125, 'EMP0055', 'EMP0055', 'Dr. Kudshiya Raza', 'Commerce and Management', 'Taxation and Computer Application', 'Professor', '123', ''),
+(126, 'EMP0131', 'sonalrai01', 'Dr Sonal Rai', 'Commerce and Management', 'Taxation and Computer Application', 'Dean', 'jaigurudev', ''),
+(127, 'EMP0048', 'EMP0048', 'Dr Hephzibah B John', 'Commerce and Management', 'Taxation and Computer Application', 'Professor', 'hepsij21', ''),
+(128, 'EMP1034', 'zareen', 'DR.ZAREEN BAKSH', 'Education', 'Education', 'Professor', 'zareen123', ''),
+(129, 'EMP1095', 'EMP1095', 'Anjali Jagwani', 'Physical Science', 'Computer Science and Application', 'Professor', 'EMP10(%', ''),
+(130, 'EMP0043', 'EMP0043', 'Dr. Elena Philip', 'Arts and Social Sciences', 'Economics', 'Dean', 'EMP0043', ''),
+(131, 'EMP0050', 'rashmipatras', 'Mrs. Rashmi A Patras', 'Commerce and Management', 'Management', 'Professor', 'EMP0050', ''),
+(132, 'EMP0123', 'EMP0123', 'Pratibha Richhariya', 'Physical Science', 'Mathematics', 'Professor', 'emp0123', ''),
+(133, 'EMP0036', 'MARY', 'Mary Raymer', 'Arts and Social Sciences', 'English', 'Professor', '1818', ''),
+(134, 'EMP0136', 'EMP0136', 'DR RUPALI AHLUWALIA', 'Commerce and Management', 'Applied Economics', 'Hod', 'RUPALI', ''),
+(135, 'EMP0073', 'Sonali Nigam', 'Sonali Nigam', 'Life Science', 'Botany and Microbiology', 'Professor', 'amogh123', ''),
+(136, 'EMP1103', 'EMP1103', 'Dr. Sonali Bhandari ', 'Commerce and Management', 'Taxation and Computer Application', 'Professor', '1234', ''),
+(137, 'EMP0054', 'Dr. Pooja', 'Dr. Pooja Gupta', 'Commerce and Management', 'Taxation and Computer Application', 'Professor', 'emp0054', ''),
+(138, 'T10', 'T10', 'Rev. Dr. G. Vazhan A', 'Arts and Social Sciences', 'Economics', 'Principal', 't10', ''),
+(139, 'EMP0099', 'EMP0099', 'DR. TARVINDAR KAUR', 'Commerce and Management', 'Applied Economics', 'Professor', 'TARVINDAR', ''),
+(140, 'EMP0135', 'emp0135', 'swapnil justin', 'Physical Science', 'Computer Science and Application', 'Professor', 'swajus', ''),
+(141, 'EMP0098', 'EMP0098', 'Dr. Femina Sobin', 'Life Science', 'Botany and Microbiology', 'Professor', 'EMP0098', ''),
+(142, 'EMP0021', 'lkpandey16', 'laxmi kant pandey', 'Life Science', 'Biotechnology', 'Hod', '7089898501', ''),
+(143, 'EMP0034', 'EMP0034', 'Dr. Neelanjana Patha', 'Arts and Social Sciences', 'English', 'Hod', 'Guruji7', ''),
+(144, 'EMP0044', 'EMP0044', 'Dr. Reeta Chouhan', 'Arts and Social Sciences', 'Economics', 'Hod', 'EMP))$$', ''),
+(145, 'EMP0112', 'niharika@220120', 'Dr. Niharika Singh', 'Arts and Social Sciences', 'English', 'Professor', 'ahnna220120', ''),
+(146, 'EMP0039', 'EMP0039', 'DR CAROLIN SAINI', 'Arts and Social Sciences', 'Hindi', 'Professor', 'EMP0039', ''),
+(148, 'EMP0067', 'khushi17jul', 'MRS KHUSHBU GUPTA', 'Physical Science', 'Computer Science and Application', 'Professor', 'khushi@123', ''),
+(149, 'EMP0069', 'EMP0069', 'Dr. Siby Samuel', 'Physical Science', 'Computer Science and Application', 'Hod', 'jesus1969', ''),
+(150, 'EMP0057', 'EMP0057', 'Dr. Ashu Jain', 'Commerce and Management', 'Taxation and Computer Application', 'Professor', 'ashuanaya', ''),
+(151, 'disable', 'kkdasphy2020', 'Kallol Das', 'Physical Science', 'Physics', 'Vice-Principal', 'snbose2020', ''),
+(155, 'EMPNEW', 'newemp', 'newnew', 'Commerce and Management', 'B.Com. Honors', 'Professor', '123456', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `verifyid`
+--
+
+CREATE TABLE `verifyid` (
+  `id` int(50) NOT NULL,
+  `tid` varchar(50) NOT NULL,
+  `designation` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `verifyid`
+--
+
+INSERT INTO `verifyid` (`id`, `tid`, `designation`) VALUES
+(14, 'EMP0021', 'Hod'),
+(15, 'EMP0034', 'Hod'),
+(16, 'EMP0038', 'Hod'),
+(17, 'EMP0042', 'Hod'),
+(18, 'EMP0044', 'Hod'),
+(19, 'EMP0047', 'Hod'),
+(20, 'EMP0069', 'Hod'),
+(21, 'EMP0089', 'Hod'),
+(22, 'EMP0110', 'Hod'),
+(23, 'EMP0114', 'Hod'),
+(24, 'EMP0122', 'Hod'),
+(25, 'EMP0132', 'Hod'),
+(26, 'EMP0043', 'Dean'),
+(27, 'EMP0084', 'Dean'),
+(28, 'EMP0131', 'Dean'),
+(29, 'EMP0121', 'Dean'),
+(30, 'EMP0083', 'Vice-Principal'),
+(31, 'EMP0022', 'Professor'),
+(32, 'EMP0023', 'Professor'),
+(33, 'EMP0032', 'Professor'),
+(34, 'EMP0036', 'Professor'),
+(35, 'EMP0039', 'Professor'),
+(36, 'EMP0040', 'Professor'),
+(37, 'EMP0041', 'Professor'),
+(38, 'EMP0046', 'Professor'),
+(39, 'EMP0048', 'Professor'),
+(40, 'EMP0049', 'Professor'),
+(41, 'EMP0050', 'Professor'),
+(42, 'EMP0052', 'Professor'),
+(43, 'EMP0053', 'Professor'),
+(44, 'EMP0054', 'Professor'),
+(45, 'EMP0055', 'Professor'),
+(46, 'EMP0056', 'Professor'),
+(47, 'EMP0057', 'Professor'),
+(48, 'EMP0058', 'Professor'),
+(49, 'EMP0059', 'Professor'),
+(50, 'EMP0060', 'Professor'),
+(51, 'EMP0061', 'Professor'),
+(52, 'EMP0062', 'Professor'),
+(53, 'EMP0063', 'Professor'),
+(55, 'EMP0066', 'Professor'),
+(58, 'EMP0070', 'Professor'),
+(59, 'EMP0073', 'Professor'),
+(60, 'EMP0074', 'Hod'),
+(61, 'EMP0075', 'Professor'),
+(63, 'EMP0079', 'Professor'),
+(64, 'EMP0080', 'Professor'),
+(65, 'EMP0082', 'Professor'),
+(66, 'EMP0085', 'Professor'),
+(67, 'EMP0090', 'Professor'),
+(68, 'EMP0092', 'Professor'),
+(69, 'EMP0093', 'Professor'),
+(70, 'EMP0095', 'Professor'),
+(71, 'EMP0098', 'Professor'),
+(72, 'EMP0099', 'Professor'),
+(73, 'EMP0101', 'Professor'),
+(74, 'EMP0103', 'Professor'),
+(75, 'EMP0107', 'Professor'),
+(76, 'EMP0109', 'Professor'),
+(77, 'EMP0111', 'Professor'),
+(79, 'EMP0115', 'Professor'),
+(80, 'EMP0118', 'Professor'),
+(81, 'EMP0119', 'Professor'),
+(82, 'EMP0123', 'Professor'),
+(83, 'EMP0124', 'Professor'),
+(84, 'EMP0125', 'Professor'),
+(85, 'EMP0126', 'Professor'),
+(86, 'EMP0130', 'Professor'),
+(87, 'EMP0133', 'Professor'),
+(88, 'EMP0134', 'Professor'),
+(89, 'EMP0135', 'Professor'),
+(90, 'EMP1019', 'Professor'),
+(91, 'EMP1021', 'Professor'),
+(92, 'EMP1023', 'Professor'),
+(93, 'EMP1034', 'Professor'),
+(94, 'EMP1035', 'Professor'),
+(95, 'EMP1036', 'Professor'),
+(96, 'EMP1037', 'Professor'),
+(97, 'EMP1043', 'Professor'),
+(98, 'EMP1086', 'Professor'),
+(99, 'EMP1100', 'Professor'),
+(100, 'EMP1102', 'Professor'),
+(101, 'EMP1103', 'Professor'),
+(102, 'EMP1110', 'Professor'),
+(103, 'EMP1115', 'Professor'),
+(109, 'EMP1098', 'Professor'),
+(110, 'T10', 'Principal'),
+(111, 'EMP1101', 'Professor'),
+(115, 'EMP0064', 'Professor'),
+(116, 'EMP1095', 'Professor'),
+(117, 'EMP0136', 'Hod'),
+(118, 'EMP0112', 'Professor'),
+(119, 'EMP0067', 'Professor'),
+(120, 'EMPNEW', 'Professor');
+
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `class`
+--
+ALTER TABLE `class`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `department`
+--
+ALTER TABLE `department`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `methodology`
+--
+ALTER TABLE `methodology`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `notes`
@@ -2100,14 +2703,116 @@ ALTER TABLE `notes`
   ADD PRIMARY KEY (`srno`);
 
 --
+-- Indexes for table `subjects`
+--
+ALTER TABLE `subjects`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sup_depart`
+--
+ALTER TABLE `sup_depart`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `teachersid`
+--
+ALTER TABLE `teachersid`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `teachingaid`
+--
+ALTER TABLE `teachingaid`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `timetable_new`
+--
+ALTER TABLE `timetable_new`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `verifyid`
+--
+ALTER TABLE `verifyid`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `class`
+--
+ALTER TABLE `class`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `department`
+--
+ALTER TABLE `department`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT for table `methodology`
+--
+ALTER TABLE `methodology`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `notes`
 --
 ALTER TABLE `notes`
   MODIFY `srno` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2359;
+
+--
+-- AUTO_INCREMENT for table `subjects`
+--
+ALTER TABLE `subjects`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `sup_depart`
+--
+ALTER TABLE `sup_depart`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `teachersid`
+--
+ALTER TABLE `teachersid`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `teachingaid`
+--
+ALTER TABLE `teachingaid`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+
+--
+-- AUTO_INCREMENT for table `timetable_new`
+--
+ALTER TABLE `timetable_new`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=156;
+
+--
+-- AUTO_INCREMENT for table `verifyid`
+--
+ALTER TABLE `verifyid`
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

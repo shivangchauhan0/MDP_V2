@@ -1,15 +1,15 @@
 <?php include("server.php") ?>
 <?php include("header.php") ?>
 <?php 
-  if (!isset($_SESSION['username'])) {
-    $_SESSION['msg'] = "You must log in first";
-    header('location: login.php');
-  }
-  if (isset($_GET['logout'])) {
-    session_destroy();
-    unset($_SESSION['username']);
-    header("location: login.php");
-  }
+  // if (!isset($_SESSION['username'])) {
+  //   $_SESSION['msg'] = "You must log in first";
+  //   header('location: login.php');
+  // }
+  // if (isset($_GET['logout'])) {
+  //   session_destroy();
+  //   unset($_SESSION['username']);
+  //   header("location: login.php");
+  // }
   ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
         <h2 class="ml-2 my-0 nav-head"><i class="fa fa-desktop fa-fw" aria-hidden="true"></i> DASHBOARD</h2>
