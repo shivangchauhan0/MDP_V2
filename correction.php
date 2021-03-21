@@ -16,17 +16,23 @@
  </nav>
  <!-- LATEST UPDATE -->
   <?php 
-   $user = $_GET['id'];
-   $sql = "SELECT * FROM `users` WHERE `username` = '$user'";
-   $result = $db->query($sql);
-   $row = $result->fetch_assoc();
-   $checkdate_sql = "SELECT * FROM `notes` WHERE `username`='$user' AND `checkdate` != ''";
-   $result_checkdate = $db->query($checkdate_sql);
-   $row_checkdate = $result_checkdate->fetch_assoc();
-   $checkdate = $row_checkdate['checkdate'];
+    $user = $_GET['id'];
+    $sql = "SELECT * FROM `users` WHERE `username` = '$user'";
+    $result = $db->query($sql);
+    $row = $result->fetch_assoc();
+    $checkdate_sql = "SELECT * FROM `notes` WHERE `username`='$user' AND `hod_checkdate` != ''";
+    $result_checkdate = $db->query($checkdate_sql);
+    $row_checkdate = $result_checkdate->fetch_assoc();
+    $hod_checkdate = $row_checkdate['hod_checkdate'];
+    $timestamp_hod = strtotime($hod_checkdate);
+    $formatted_date_hod = date("D, M j, Y", $timestamp_hod); 
   ?>
-  <?php if ($checkdate != '') { ?>
-    <div id="s" class='alert alert-warning mx-3 my-2' role='alert'>Last checked <?php echo $_SESSION['designation'] != "Hod"?"by HOD":"" ?> on <?php echo $checkdate ?></div>
+  <?php if ($hod_checkdate != '') { ?>
+    <div class="check-dates">
+      <div id="s" class='alert alert-warning mx-3 my-2' role='alert'>Last checked by <strong>HOD</strong> on <?php echo $formatted_date_hod ?></div>
+      <div class='alert alert-primary mx-3 my-2' role='alert'>Last checked by <strong>Dean</strong> on <?php echo $formatted_date_hod ?></div>
+      <div class='alert alert-success mx-3 my-2' role='alert'>Last checked by <strong>Principal</strong> on <?php echo $formatted_date_hod ?></div>
+    </div>
   <?php  } ?>
     <div class="container-fluid my-3">
         <div class="head-bar-sec">

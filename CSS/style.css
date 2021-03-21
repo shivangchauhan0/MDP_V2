@@ -172,6 +172,10 @@ form.delete {
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 /* CORRECTION PAGE */
+.check-dates {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
 .float-right {
   float: right !important;
 }
