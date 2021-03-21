@@ -2,18 +2,6 @@
 body {
   background: white;
 }
-/* MENU ICON */
-#menu-toggle{
-  background: transparent;
-  color: #a4243b;
-  font-size: 23px;
-  padding: 5px !important;
-  transition: 0.2s;
-}
-#menu-toggle:hover{
-  background: #a4243b;
-  color: #fff;
-}
 /* NOTES TABLE */
 #edit {
   background: #fff !important;
@@ -219,7 +207,7 @@ form.delete {
 #logo-nav {
   height: 15vh;
   width: 100%;
-  background: #ffffff;
+  background: #e7e7e7;
 }
 #logo-sac {
   padding-left: 2vw;

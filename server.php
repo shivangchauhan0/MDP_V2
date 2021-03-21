@@ -97,6 +97,8 @@ if (isset($_POST['login_user'])) {
           $department = $row['department'];
           $sup_depart = $row['sup_depart'];
           $name = $row['name'];
+          $tid = $row['tid'];
+          $_SESSION['tid'] = $tid;
           $_SESSION['username'] = $username;
           $_SESSION['designation'] = $designation;
           $_SESSION['department'] = $department;
