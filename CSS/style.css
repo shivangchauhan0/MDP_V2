@@ -2,6 +2,18 @@
 body {
   background: white;
 }
+/* MENU ICON */
+#menu-toggle{
+  background: transparent;
+  color: #a4243b;
+  font-size: 23px;
+  padding: 5px !important;
+  transition: 0.2s;
+}
+#menu-toggle:hover{
+  background: #a4243b;
+  color: #fff;
+}
 /* NOTES TABLE */
 #edit {
   background: #fff !important;
@@ -207,7 +219,7 @@ form.delete {
 #logo-nav {
   height: 15vh;
   width: 100%;
-  background: #fff;
+  background: #ffffff;
 }
 #logo-sac {
   padding-left: 2vw;
@@ -220,7 +232,7 @@ form.delete {
   height: 85vh;
   background: no-repeat;
   background-size: cover;
-  background-image: url("/MDP_V2/img/diary.jpg");
+  background-image: url("../img/diary.jpg");
 }
 .content {
   padding-top: 20vh;
@@ -240,6 +252,8 @@ form.delete {
 .content > .btn-grid {
   margin-left: 1vw;
 }
+
+/* Responsive */
 @media only screen and (max-width: 600px) {
   .filter-grid {
     grid-template-columns: 1fr;

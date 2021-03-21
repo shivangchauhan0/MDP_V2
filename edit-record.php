@@ -39,30 +39,29 @@
                 <div class="field">
                     <label class="labels">METHODOLODGY</label>
                     <select class="drop-down" class="ui fluid dropdown" name="methodology">
-                            <option value="<?php echo $row['methodology'] ?>"><?php echo $row['methodology'] ?></option>
-                            <option value="Explanation">Explanation</option>
-                            <option value="Discussion">Discussion</option>
-                            <option value="Mind Mapping">Mind Mapping</option>
-                            <option value="Demonstration">Demonstration</option>
-                            <option value="Other">Other</option>
+                            <option value="">Methodology</option>
+                              <?php
+                                $sql_query = "SELECT * FROM methodology";
+                                $methodology = mysqli_query($db,$sql_query);
+                                while($row = mysqli_fetch_assoc($methodology) ){
+                                  ?>
+                                      <option value="<?php echo $row["name"];?>"><?php echo $row["name"];?></option>
+                                <?php }
+                              ?>
                     </select>
                 </div>
                 <div class="field">
                     <label class="labels">TEACHING AID</label>
                     <select class="drop-down" class="ui fluid dropdown" name="teachingaid">
-                        <option value="<?php echo $row['teaching_aid'] ?>"><?php echo $row['teaching_aid'] ?></option>
-                        <option value="Actual objects">Actual objects</option>
-                        <option value="Models">Models</option>
-                        <option value="Pictures">Pictures</option>
-                        <option value="Charts">Charts</option>
-                        <option value="Maps">Maps</option>
-                        <option value="Flash Cards">Flash Cards</option>
-                        <option value="Flannel Board">Flannel Board</option>
-                        <option value="Bulletin Board">Bulletin Board</option>
-                        <option value="Chalk Board">Chalk Board</option>
-                        <option value="Overhead Projector">Overhead Projector</option>
-                        <option value="Slides">Slides</option>
-                        <option value="Other">Other</option>
+                        <option value="">Teaching Aid</option>
+                        <?php
+                                $sql_query = "SELECT * FROM teachingaid";
+                                $teachingaid = mysqli_query($db,$sql_query);
+                                while($row = mysqli_fetch_assoc($teachingaid) ){
+                                  ?>
+                                      <option value="<?php echo $row["name"];?>"><?php echo $row["name"];?></option>
+                                <?php }
+                          ?>
                     </select>
                 </div>
                 <div class="field">
