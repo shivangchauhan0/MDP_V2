@@ -54,6 +54,9 @@
           <a href="timetable.php" class="list-group-item list-group-item-action bg-light">
             Timetable <i class='table icon'></i>
           </a>
+          <a href="timetable-new.php" class="list-group-item list-group-item-action bg-light">
+             Beta Timetable <i class='table icon'></i>
+          </a>
           <?php }?>
           <a href="index.php?logout='1'" id="logout-btn" class="list-group-item list-group-item-action bg-light border-bottom">
             Logout <i class='sign in alternate icon'></i>
