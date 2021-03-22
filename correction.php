@@ -127,7 +127,7 @@
               $start_sql = "SELECT * FROM `notes` WHERE `username`='$username'";
             }
             if ($unchecked == "true") {
-                if ($_SESSION['designation'] == 'Hod') {
+                if ($_SESSION['designation'] == 'Hod' OR $_SESSION['ischeck'] == 'true' ) {
                   $mid_sql = " AND `hod` = '0' AND `principal`='0' ";
                 } else if ($_SESSION['designation'] == 'Dean') {
                   $mid_sql = " AND `dean` = '0' AND `principal`='0' ";

@@ -381,7 +381,7 @@ if(isset($_POST['check'])){
   $till_date =  mysqli_real_escape_string($db, $_POST['till_date']);
   $filter_lecture =  mysqli_real_escape_string($db, $_POST['lecture']); 
   // ------------------------------------------------
-  if ($_SESSION['designation'] == 'Hod') {
+  if ($_SESSION['designation'] == 'Hod' OR $_SESSION['ischeck'] == 'true') {
     $start_sql = "UPDATE `notes` SET `hod`= '$done' WHERE `username`='$username' AND `hod` = '0'";
     $comment_sql = "UPDATE `notes` SET `hod_com`= '$comment' WHERE `username`='$username' AND `hod` = '0' ORDER BY srno DESC LIMIT 1";
     $check_date_reset_sql = "UPDATE `notes` SET `hod_checkdate`= '' WHERE `username`='$username'";
@@ -436,7 +436,7 @@ if(isset($_POST['check'])){
 if(isset($_POST['uncheck'])) 
   {
     $srno = mysqli_real_escape_string($db, $_POST['uncheck']);
-    if ($_SESSION['designation'] == 'Hod') {
+    if ($_SESSION['designation'] == 'Hod' OR $_SESSION['ischeck'] == 'true') {
       $query = "UPDATE `notes` SET `hod`= 0 WHERE `srno`='$srno'";
     } else if ($_SESSION['designation'] == 'Dean') {
       $query = "UPDATE `notes` SET `Dean`= 0 WHERE `srno`='$srno'";
