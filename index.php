@@ -10,7 +10,7 @@
         <h2 class="ml-2 my-0 nav-head">DASHBOARD</h2>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-            <p id="username" class="mt-0 mr-3"><i class='user icon'></i><strong><?php echo $_SESSION['name'] ?></strong></p>
+            <p id="username" class="mt-0 mr-3"><i class='user icon'></i><strong><?php echo $_SESSION['name']  ?></strong></p>
           </ul>
         </div>
  </nav>

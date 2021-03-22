@@ -24,10 +24,13 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Designation</th>
-                <?php if ($_SESSION['department'] == 'Applied Economics') { ?>
+            <?php if ($_SESSION['department'] == 'Applied Economics') { ?>
                 <th>Department</th>
-               <?php }?>
+            <?php }?>
                 <th>Correct</th>
+            <?php if ($_SESSION['designation'] == 'hod') { ?>
+                <th>Make Cordinator</th>
+            <?php }?>
                 </tr>
             </thead>
             <tbody>
@@ -46,7 +49,7 @@
                             continue;
                         }
                         else { ?>
-                        <tr class="<?php echo $row['designation'] == "Hod" ? "active" : "" ?>">
+                        <tr class="<?php echo $row['designation'] == "Hod" ? "active" : "" ?> <?php echo $row['ischeck'] == "true" ? "active" : "" ?>">
                             <td style="width:11vw"><span class="mx-1"><?php echo $row["tid"] ?></span></td>
                             <td><a href="correction.php?id=<?php echo $row['username']?>&unchecked=true" style="color:#000" class="mx-1"><?php echo $row["name"] ?></a></td>
                             <td><a href="correction.php?id=<?php echo $row['username']?>&unchecked=true" style="color:#000" class="mx-1"><?php echo $row["designation"] == "Professor"?"ASSISTANT PROFESSOR" : strtoupper($row["designation"]) ?></a></td>
@@ -56,6 +59,13 @@
                             <td style="width:11vw">
                                 <a href="correction.php?id=<?php echo $row['username']?>&unchecked=true"><button type="submit" class="ui button tiny bg-red mx-1" id="insert-id">Correct <i class="fa fa-pen fa-fw ml-1" aria-hidden="true"></i></button></a> 
                             </td>
+                        <?php if ($_SESSION['designation'] == 'hod') { ?>
+                            <td style="width:11vw">
+                                <form action="server.php" method="post">
+                                     <button type="submit" class="ui button tiny bg-red mx-1" name="cordinator_toggle" value="<?php echo $row['username']?>" id="insert-id"><?php echo $row['ischeck'] != "true"?"Enable <i class='fa fa-check fa-fw ml-1' aria-hidden='true'></i>":"Disable <i class='fa fa-times fa-fw ml-1' aria-hidden='true'></i>" ?></button> 
+                                </form>
+                            </td>
+                        <?php }?>
                         </tr>
                 <?php	}
                      }

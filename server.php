@@ -54,8 +54,8 @@ if (isset($_POST['reg_user'])) {
       // Finally, register user if there are no errors in the form
       if (count($errors) == 0) {
         $password = $password_1;//encrypt the password before saving in the database
-        $query = "INSERT INTO users (`name`, `tid`, `username`,`sup_depart`,`department`,`designation`,`password`) 
-              VALUES('$name', '$tid', '$username', '$sup_depart', '$department', '$designation', '$password')";
+        $query = "INSERT INTO users (`name`, `tid`, `username`,`sup_depart`,`department`,`designation`,`password`, `ischeck`) 
+              VALUES('$name', '$tid', '$username', '$sup_depart', '$department', '$designation', '$password', 'false')";
         mysqli_query($db, $query);
         if($designation != "Principal") {
           $check_tt_query = "SELECT * FROM `timetable_new` WHERE `username`='$username'";
@@ -98,11 +98,13 @@ if (isset($_POST['login_user'])) {
           $sup_depart = $row['sup_depart'];
           $name = $row['name'];
           $tid = $row['tid'];
+          $ischeck = $row['ischeck'];
           $_SESSION['tid'] = $tid;
           $_SESSION['username'] = $username;
           $_SESSION['designation'] = $designation;
           $_SESSION['department'] = $department;
           $_SESSION['sup_depart'] = $sup_depart;
+          $_SESSION['ischeck'] = $ischeck;
           $_SESSION['name'] = strtoupper($name);
 
           if($designation =='Hod'){
@@ -469,6 +471,22 @@ if(isset($_POST['vp_check']))
   } 
   if($row['tid'] == "enable"){
     $query = "UPDATE `users` SET `tid`= 'disable' WHERE `designation`='Vice-Principal'";
+  } 
+    mysqli_query($db, $query);
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
+}
+// cordinator check
+if(isset($_POST['cordinator_toggle'])) 
+{
+  $username = mysqli_real_escape_string($db, $_POST['cordinator_toggle']);
+  $check_cordinator_sql = "SELECT * FROM `users` WHERE `username`='$username'";
+  $result = $db->query($check_cordinator_sql);
+  $row = $result->fetch_assoc();
+  if($row['ischeck'] == "false" OR $row['ischeck'] == ""){
+    $query = "UPDATE `users` SET `ischeck`= 'true' WHERE `username`='$username'";
+  } 
+  if($row['ischeck'] == "true"){
+    $query = "UPDATE `users` SET `ischeck`= 'false' WHERE `username`='$username'";
   } 
     mysqli_query($db, $query);
     header('Location: ' . $_SERVER['HTTP_REFERER']);
