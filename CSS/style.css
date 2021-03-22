@@ -372,6 +372,11 @@ form.delete {
   .content > .btn-grid {
     margin-left: 1vw;
   }
+  /* CORRECTION */
+  .check-dates {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
 }
 @media print {
   /* All your print styles go here */

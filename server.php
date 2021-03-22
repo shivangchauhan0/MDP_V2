@@ -382,16 +382,24 @@ if(isset($_POST['check'])){
   if ($_SESSION['designation'] == 'Hod') {
     $start_sql = "UPDATE `notes` SET `hod`= '$done' WHERE `username`='$username' AND `hod` = '0'";
     $comment_sql = "UPDATE `notes` SET `hod_com`= '$comment' WHERE `username`='$username' AND `hod` = '0' ORDER BY srno DESC LIMIT 1";
-    $check_date_reset_sql = "UPDATE `notes` SET `checkdate`= '' WHERE `username`='$username'";
+    $check_date_reset_sql = "UPDATE `notes` SET `hod_checkdate`= '' WHERE `username`='$username'";
     mysqli_query($db, $check_date_reset_sql);
-    $check_date_sql = "UPDATE `notes` SET `checkdate`= '$checkdate' WHERE `username`='$username' AND `hod` = '0' ORDER BY srno DESC LIMIT 1";
+    $check_date_sql = "UPDATE `notes` SET `hod_checkdate`= '$checkdate' WHERE `username`='$username' AND `hod` = '0' ORDER BY srno DESC LIMIT 1";
     mysqli_query($db, $check_date_sql);
   } else if ($_SESSION['designation'] == 'Dean') {
     $start_sql = "UPDATE `notes` SET `dean`= '$done' WHERE `username`='$username' AND `dean` = '0'";
     $comment_sql = "UPDATE `notes` SET `dean_com`= '$comment' WHERE `username`='$username' AND `dean` = '0' ORDER BY srno DESC LIMIT 1";
+    $check_date_reset_sql = "UPDATE `notes` SET `dean_checkdate`= '' WHERE `username`='$username'";
+    mysqli_query($db, $check_date_reset_sql);
+    $check_date_sql = "UPDATE `notes` SET `dean_checkdate`= '$checkdate' WHERE `username`='$username' AND `hod` = '0' ORDER BY srno DESC LIMIT 1";
+    mysqli_query($db, $check_date_sql);
   } else if ($_SESSION['designation'] == 'Principal' || $_SESSION['designation'] == 'Vice-Principal') {
     $start_sql = "UPDATE `notes` SET `principal`= '$done' WHERE `username`='$username' AND `principal` = '0'";
     $comment_sql = "UPDATE `notes` SET `principal_com`= '$comment' WHERE `username`='$username' AND `principal` = '0' ORDER BY srno DESC LIMIT 1";
+    $check_date_reset_sql = "UPDATE `notes` SET `principal_checkdate`= '' WHERE `username`='$username'";
+    mysqli_query($db, $check_date_reset_sql);
+    $check_date_sql = "UPDATE `notes` SET `principal_checkdate`= '$checkdate' WHERE `username`='$username' AND `hod` = '0' ORDER BY srno DESC LIMIT 1";
+    mysqli_query($db, $check_date_sql);
   }
   if ($filter_date != "empty") {
     $mid_sql = " AND `date`='$filter_date'";

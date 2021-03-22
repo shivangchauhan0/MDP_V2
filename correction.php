@@ -17,21 +17,33 @@
  <!-- LATEST UPDATE -->
   <?php 
     $user = $_GET['id'];
-    $sql = "SELECT * FROM `users` WHERE `username` = '$user'";
-    $result = $db->query($sql);
-    $row = $result->fetch_assoc();
-    $checkdate_sql = "SELECT * FROM `notes` WHERE `username`='$user' AND `hod_checkdate` != ''";
-    $result_checkdate = $db->query($checkdate_sql);
-    $row_checkdate = $result_checkdate->fetch_assoc();
-    $hod_checkdate = $row_checkdate['hod_checkdate'];
-    $timestamp_hod = strtotime($hod_checkdate);
-    $formatted_date_hod = date("D, M j, Y", $timestamp_hod); 
+    // HOD check date
+    $hod_cd_sql = "SELECT * FROM `notes` WHERE `username`='$user' AND `hod_checkdate` != '' ORDER BY srno DESC LIMIT 1 ";
+    $hod_cd = $db->query($hod_cd_sql);
+    $hod_cd = $hod_cd->fetch_assoc();
+    $hod_cd = $hod_cd['hod_checkdate'];
+    $timestamp_hod = strtotime($hod_cd);
+    $formatted_date_hod = date("M j, Y", $timestamp_hod); 
+    // DEAN check date
+    $dean_cd_sql = "SELECT * FROM `notes` WHERE `username`='$user' AND `dean_checkdate` != '' ORDER BY srno DESC LIMIT 1 ";
+    $dean_cd = $db->query($dean_cd_sql);
+    $dean_cd = $dean_cd->fetch_assoc();
+    $dean_cd = $dean_cd['dean_checkdate'];
+    $timestamp_dean = strtotime($dean_cd);
+    $formatted_date_dean = date("M j, Y", $timestamp_dean);
+    // PRINCIPAL check date
+    $principal_cd_sql = "SELECT * FROM `notes` WHERE `username`='$user' AND `principal_checkdate` != '' ORDER BY srno DESC LIMIT 1 ";
+    $principal_cd = $db->query($principal_cd_sql);
+    $principal_cd = $principal_cd->fetch_assoc();
+    $principal_cd = $principal_cd['principal_checkdate'];
+    $timestamp_principal = strtotime($principal_cd);
+    $formatted_date_principal = date("M j, Y", $timestamp_principal);
   ?>
-  <?php if ($hod_checkdate != '') { ?>
+  <?php if ($hod_cd != '' OR $dean_cd != '' OR $principal_cd != '') { ?>
     <div class="check-dates">
-      <div id="s" class='alert alert-warning mx-3 my-2' role='alert'>Last checked by <strong>HOD</strong> on <?php echo $formatted_date_hod ?></div>
-      <div class='alert alert-primary mx-3 my-2' role='alert'>Last checked by <strong>Dean</strong> on <?php echo $formatted_date_hod ?></div>
-      <div class='alert alert-success mx-3 my-2' role='alert'>Last checked by <strong>Principal</strong> on <?php echo $formatted_date_hod ?></div>
+      <div id="s" class='alert alert-warning mx-3 my-2' role='alert'>Last checked by <strong>HOD</strong> on <strong><?php echo $formatted_date_hod ?></strong></div>
+      <div class='alert alert-primary mx-3 my-2' role='alert'>Last checked by <strong>Dean</strong> on <strong><?php echo $formatted_date_dean ?></strong></div>
+      <div class='alert alert-success mx-3 my-2' role='alert'>Last checked by <strong>Principal</strong> on <strong><?php echo $formatted_date_principal ?></strong></div>
     </div>
   <?php  } ?>
     <div class="container-fluid my-3">
