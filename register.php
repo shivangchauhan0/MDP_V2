@@ -38,9 +38,9 @@
                   ?>
        </select>
   	</div>
-	  <div class="field">
+	<div class="field">
   	  <label class="labels">Department</label>
-		<select class="ui fluid dropdown" id='department'style="width:100%" name="department">
+		<select class="ui fluid dropdown" id='department' style="width:100%" name="department">
 			<option value="">Department</option>
               
 		</select>
