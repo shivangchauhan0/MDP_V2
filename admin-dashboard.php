@@ -33,11 +33,11 @@
         <form method="post" action="admin-dashboard.php" class="ui form admin-form ">
           <?php include('errors.php'); ?>
           <div class="fields">
-            <div id="id-input" class="seven wide field">
+            <div id="id-input" class="seven wide field mt-2">
               <label>ID</label>
               <input placeholder="ID" name="tid" type="text" required>
             </div>
-            <div id="deg-input" class="seven wide field">
+            <div id="deg-input" class="seven wide field mt-2">
               <label>Designation</label>
               <select class="ui fluid dropdown" name="designation" required>
                       <option value="">Designation</option>
@@ -48,7 +48,7 @@
                       <option value="Professor">Assistant Professor</option>
                   </select>
             </div>
-            <div class="field">
+            <div class="field mt-2">
                   <label style="visibility:hidden">Designation</label>
                   <button type="submit" class="ui button bg-red" id="insert-id" name="insert_tid">Insert</button>
             </div>
@@ -56,7 +56,7 @@
       </form>
       <form method="get" action="admin-dashboard.php" class="ui form admin-form mb-2">
           <div class="fields">
-            <div id="id-input" class="fourteen wide field">
+            <div id="id-input" class="fourteen wide field mb-2">
               <input placeholder="Search ID" name="search_tid" type="text" required>
             </div>
             <div class="field">
@@ -70,7 +70,7 @@
           <button style="width:95%;" class="ui button bg-red mb-4" id="insert-id">Clear</button>
         </a>
       <?php  }?>
-      <div class="container-four">
+      <div style="max-height: 100vh; overflow-y: auto; margin-bottom: 10vh;" class="container-four">
         <table class="ui celled table admin-table">
               <thead>
                 <tr id="table-head">
