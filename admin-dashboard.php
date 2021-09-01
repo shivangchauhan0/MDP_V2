@@ -51,9 +51,25 @@
             <div class="field">
                   <label style="visibility:hidden">Designation</label>
                   <button type="submit" class="ui button bg-red" id="insert-id" name="insert_tid">Insert</button>
-          </div>
+            </div>
           </div>
       </form>
+      <form method="get" action="admin-dashboard.php" class="ui form admin-form mb-2">
+          <div class="fields">
+            <div id="id-input" class="fourteen wide field">
+              <input placeholder="Search ID" name="search_tid" type="text" required>
+            </div>
+            <div class="field">
+                  <button type="submit" class="ui button bg-red" id="insert-id">Search</button>
+            </div>
+          </div>
+      </form>
+      <?php 
+        if (isset($_GET['search_tid'])) { ?>
+        <a href="admin-dashboard.php">
+          <button style="width:95%;" class="ui button bg-red mb-4" id="insert-id">Clear</button>
+        </a>
+      <?php  }?>
       <div class="container-four">
         <table class="ui celled table admin-table">
               <thead>
@@ -65,7 +81,13 @@
               </thead>
               <tbody>
             <?php
-              $sql = "SELECT * FROM `verifyid` WHERE 1";
+              if (isset($_GET['search_tid'])) {
+                $id = $_GET['search_tid'];
+                $sql = "SELECT * FROM `verifyid` WHERE `tid` = '$id'";
+              } else {
+                $sql = "SELECT * FROM `verifyid` WHERE 1";
+              }
+              
               $result = $db-> query($sql);
               if($result-> num_rows > 0){	
                 while ($row = $result-> fetch_assoc()) { ?>
