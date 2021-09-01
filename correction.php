@@ -15,29 +15,42 @@
         </div>
  </nav>
  <!-- LATEST UPDATE -->
-  <?php 
-    $user = $_GET['id'];
+ <?php 
+    $user = $_SESSION['username'];
     // HOD check date
     $hod_cd_sql = "SELECT * FROM `notes` WHERE `username`='$user' AND `hod_checkdate` != '' ORDER BY srno DESC LIMIT 1 ";
     $hod_cd = $db->query($hod_cd_sql);
     $hod_cd = $hod_cd->fetch_assoc();
-    $hod_cd = $hod_cd['hod_checkdate'];
-    $timestamp_hod = strtotime($hod_cd);
-    $formatted_date_hod = date("M j, Y", $timestamp_hod); 
+    $hod_cd = isset($hod_cd['hod_checkdate']) ? $hod_cd['hod_checkdate'] : "False";
+    if ($hod_cd == "False") {
+      $formatted_date_dean = "(Not checked yet)";
+    } else {
+      $timestamp_hod = strtotime($hod_cd);
+      $formatted_date_hod = date("M j, Y", $timestamp_hod);
+    }
     // DEAN check date
     $dean_cd_sql = "SELECT * FROM `notes` WHERE `username`='$user' AND `dean_checkdate` != '' ORDER BY srno DESC LIMIT 1 ";
     $dean_cd = $db->query($dean_cd_sql);
     $dean_cd = $dean_cd->fetch_assoc();
-    $dean_cd = $dean_cd['dean_checkdate'];
-    $timestamp_dean = strtotime($dean_cd);
-    $formatted_date_dean = date("M j, Y", $timestamp_dean);
+    $dean_cd = isset($dean_cd['dean_checkdate']) ? $dean_cd['dean_checkdate'] : "False";
+    if ($dean_cd == "False") {
+      $formatted_date_dean = "(Not checked yet)";
+    } else {
+      $timestamp_dean = strtotime($dean_cd);
+      $formatted_date_dean = date("M j, Y", $timestamp_dean);
+    }
+    
     // PRINCIPAL check date
     $principal_cd_sql = "SELECT * FROM `notes` WHERE `username`='$user' AND `principal_checkdate` != '' ORDER BY srno DESC LIMIT 1 ";
     $principal_cd = $db->query($principal_cd_sql);
     $principal_cd = $principal_cd->fetch_assoc();
-    $principal_cd = $principal_cd['principal_checkdate'];
-    $timestamp_principal = strtotime($principal_cd);
-    $formatted_date_principal = date("M j, Y", $timestamp_principal);
+    $principal_cd = isset($principal_cd['principal_checkdate']) ? $principal_cd['principal_checkdate'] : "False";
+    if ($principal_cd == "False") {
+      $formatted_date_principal = "(Not checked yet)";
+    } else {
+      $timestamp_principal = strtotime($principal_cd);
+      $formatted_date_principal = date("M j, Y", $timestamp_principal);
+    }
   ?>
   <?php if ($hod_cd != '' OR $dean_cd != '' OR $principal_cd != '') { ?>
     <div class="check-dates">
@@ -48,7 +61,7 @@
   <?php  } ?>
     <div class="container-fluid my-3">
         <div class="head-bar-sec">
-            <h2>LIST OF ALL <?php echo $_GET['unchecked'] == "true"?"UNCHECKED":"" ?> RECORDS &#8594 <?php echo strtoupper($row['name'])?></h2>
+            <h2>LIST OF ALL <?php echo (isset($_GET['unchecked']) && $_GET['unchecked']) == "true"? "UNCHECKED":"" ?> RECORDS &#8594 <?php echo strtoupper($row['name'])?></h2>
             <?php if ($_GET['unchecked'] == 'true') { ?>
                 <a class="float-right" href="correction.php?id=<?php echo $_GET['id'] ?>&filter_date=<?php echo $_GET['filter_date'] ?>&filter_day=<?php echo $_GET['filter_day'] ?>&from_date=<?php echo $_GET['from_date'] ?>&till_date=<?php echo $_GET['till_date'] ?>&filter_lecture=<?php echo $_GET['filter_lecture'] ?>&limit=<?php echo $_GET['limit'] ?>"><button type="submit" class="ui button bg-red mx-1 my-2 tiny " id="insert-id">All Records</button></a>
             <?php  } else { ?>

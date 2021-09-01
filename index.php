@@ -21,9 +21,13 @@
     $hod_cd_sql = "SELECT * FROM `notes` WHERE `username`='$user' AND `hod_checkdate` != '' ORDER BY srno DESC LIMIT 1 ";
     $hod_cd = $db->query($hod_cd_sql);
     $hod_cd = $hod_cd->fetch_assoc();
-    $hod_cd = $hod_cd['hod_checkdate'];
-    $timestamp_hod = strtotime($hod_cd);
-    $formatted_date_hod = date("M j, Y", $timestamp_hod); 
+    $hod_cd = isset($hod_cd['hod_checkdate']) ? $hod_cd['hod_checkdate'] : "False";
+    if ($hod_cd == "False") {
+      $formatted_date_dean = "(Not checked yet)";
+    } else {
+      $timestamp_hod = strtotime($hod_cd);
+      $formatted_date_hod = date("M j, Y", $timestamp_hod);
+    }
     // DEAN check date
     $dean_cd_sql = "SELECT * FROM `notes` WHERE `username`='$user' AND `dean_checkdate` != '' ORDER BY srno DESC LIMIT 1 ";
     $dean_cd = $db->query($dean_cd_sql);

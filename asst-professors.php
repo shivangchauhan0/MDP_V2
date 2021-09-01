@@ -35,7 +35,7 @@
             </thead>
             <tbody>
             <?php
-                $dep = $_GET['department'] == ""? $_SESSION['department'] : $_GET['department'];
+                $dep = isset($_GET['department']) ? $_GET['department'] : $_SESSION['department'];
                 if ($_SESSION['department'] != 'Applied Economics') {
                     $sql = "SELECT * FROM `users` WHERE `department`='$dep'";
                 } else {
