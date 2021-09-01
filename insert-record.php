@@ -31,7 +31,7 @@
       <?php 
           date_default_timezone_set('Asia/Kolkata');
           $today = date('Y-m-d');
-          $search_date = $_GET['date'] != "" ? $_GET['date'] : $today;
+          $search_date = isset($_GET['date']) ? $_GET['date'] : $today;
           $dayOfWeek = date("l", strtotime($search_date));
 					$timestamp = strtotime($search_date);
 					$formatted_date = date("d-m-Y", $timestamp);
@@ -118,7 +118,7 @@
           $current_user = $_SESSION['username'];
           date_default_timezone_set('Asia/Kolkata');
           $today = date('Y-m-d');
-          $search_date = $_GET['date'] != "" ? $_GET['date'] : $today;
+          $search_date = isset($_GET['date']) ? $_GET['date'] : $today;
           $dayOfWeek = date("l", strtotime($search_date));
 					$timestamp = strtotime($search_date);
 					$formatted_date = date("d-m-Y", $timestamp);
@@ -242,7 +242,7 @@
             $username = $_SESSION['username'];
             date_default_timezone_set('Asia/Kolkata');
             $today = date('Y-m-d');
-            $search_date = $_GET['date'] != "" ? $_GET['date'] : $today;
+            $search_date = isset($_GET['date']) ? $_GET['date'] : $today;
             $sql = "SELECT * FROM `notes` WHERE `username`= '$current_user' AND `date`='$search_date'";
             // -----------------------------------------------
             $result = $db->query($sql);
