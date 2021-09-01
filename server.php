@@ -1,6 +1,6 @@
 <?php 
 session_start();
-// error_reporting(0);
+error_reporting(0);
 
 // initializing variables
 $username = "";
@@ -417,7 +417,7 @@ if(isset($_POST['check'])){
   $sql = $start_sql.$mid_sql.$end_sql;
   if ($comment != '')
       {
-        if ($_SESSION['designation'] == 'Hod') {
+        if ($_SESSION['designation'] == 'Hod' || $_SESSION['ischeck'] == 'true') {
           $comment_reset_sql = "UPDATE `notes` SET `hod_com` = '' WHERE `username`='$username'";
         } else if ($_SESSION['designation'] == 'Dean') {
           $comment_reset_sql = "UPDATE `notes` SET `dean_com` = '' WHERE `username`='$username'";

@@ -120,7 +120,7 @@
             $principal_false="<i class=\"circle outline green icon\"></i>";	
             // ----------------FILTER VARIABLES-----------------
                 $unchecked = isset($_GET['unchecked']) ? $_GET['unchecked'] : "false";
-                $limit = isset($_GET['limit']) ? $_GET['limit'] : 25;
+                $limit = $_GET['limit'] == "" ? "25" : $_GET['limit'];
                 $filter_date = isset($_GET['filter_date']) ? $_GET['filter_date'] : ""; 
                 $filter_day = isset($_GET['filter_day']) ? $_GET['filter_day'] : ""; 
                 $from_date = isset($_GET['from_date']) ? $_GET['from_date'] : ""; 
@@ -152,11 +152,11 @@
             }
             $end_sql = " ORDER BY srno DESC LIMIT $limit";
             $sql = $start_sql.$mid_sql.$end_sql;
-            // echo $unchecked;
+            echo $unchecked;
             // echo $sql;
             // -----------------------------------------------
             $result = $db->query($sql);
-            if ($result->num_rows > 0) { ?>
+            if ($result-> num_rows > 0) { ?>
               <table class="ui celled table">
               <thead>
                 <tr id="table-head">
@@ -200,7 +200,7 @@
                 </td> 
               <?php  } ?>
               <?php
-        } if (isset($_GET['unchecked']) && $_GET['unchecked'] != 'true') { 
+            } if ($_GET['unchecked'] != 'true') { 
               $username = $_GET['id'];
               $comm_sql = "SELECT * FROM `notes` WHERE `username`='$username' AND (`hod_com` != '' OR `dean_com` != '' OR `principal_com` != '')";
               $comm_res = $db->query($comm_sql);
