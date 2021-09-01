@@ -28,16 +28,25 @@
     $dean_cd_sql = "SELECT * FROM `notes` WHERE `username`='$user' AND `dean_checkdate` != '' ORDER BY srno DESC LIMIT 1 ";
     $dean_cd = $db->query($dean_cd_sql);
     $dean_cd = $dean_cd->fetch_assoc();
-    $dean_cd = $dean_cd['dean_checkdate'];
-    $timestamp_dean = strtotime($dean_cd);
-    $formatted_date_dean = date("M j, Y", $timestamp_dean);
+    $dean_cd = isset($dean_cd['dean_checkdate']) ? $dean_cd['dean_checkdate'] : "False";
+    if ($dean_cd == "False") {
+      $formatted_date_dean = "(Not checked yet)";
+    } else {
+      $timestamp_dean = strtotime($dean_cd);
+      $formatted_date_dean = date("M j, Y", $timestamp_dean);
+    }
+    
     // PRINCIPAL check date
     $principal_cd_sql = "SELECT * FROM `notes` WHERE `username`='$user' AND `principal_checkdate` != '' ORDER BY srno DESC LIMIT 1 ";
     $principal_cd = $db->query($principal_cd_sql);
     $principal_cd = $principal_cd->fetch_assoc();
-    $principal_cd = $principal_cd['principal_checkdate'];
-    $timestamp_principal = strtotime($principal_cd);
-    $formatted_date_principal = date("M j, Y", $timestamp_principal);
+    $principal_cd = isset($principal_cd['principal_checkdate']) ? $principal_cd['principal_checkdate'] : "False";
+    if ($principal_cd == "False") {
+      $formatted_date_principal = "(Not checked yet)";
+    } else {
+      $timestamp_principal = strtotime($principal_cd);
+      $formatted_date_principal = date("M j, Y", $timestamp_principal);
+    }
   ?>
   <?php if ($hod_cd != '' OR $dean_cd != '' OR $principal_cd != '') { ?>
     <div class="check-dates">
@@ -76,12 +85,12 @@
             $principal_true="<i class=\"circle green icon\"></i>";	
             $principal_false="<i class=\"circle outline green icon\"></i>";	
             // ----------------FILtER VARIABLES-----------------
-              $limit = $_GET['limit'] != "" ? $_GET['limit'] : 25;
-              $filter_date = $_GET['filter_date'] != "" ? $_GET['filter_date'] : "empty"; 
-              $filter_day = $_GET['filter_day'] != "" ? $_GET['filter_day'] : ""; 
-              $from_date = $_GET['from_date'] != "" ? $_GET['from_date'] : ""; 
-              $till_date = $_GET['till_date'] != "" ? $_GET['till_date'] : ""; 
-              $filter_lecture = $_GET['filter_lecture'] != "" ? $_GET['filter_lecture'] : ""; 
+              $limit = isset($_GET['limit'])? $_GET['limit'] : 25;
+              $filter_date = isset($_GET['filter_date'])? $_GET['filter_date'] : "empty"; 
+              $filter_day = isset($_GET['filter_day'])? $_GET['filter_day'] : ""; 
+              $from_date = isset($_GET['from_date'])? $_GET['from_date'] : ""; 
+              $till_date = isset($_GET['till_date'])? $_GET['till_date'] : ""; 
+              $filter_lecture = isset($_GET['filter_lecture'])? $_GET['filter_lecture'] : ""; 
             // ------------------------------------------------
             // ----------------FILTER QUERIES-----------------
             if ($filter_date != "empty") {
