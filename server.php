@@ -1,6 +1,6 @@
 <?php 
 session_start();
-error_reporting(0);
+// error_reporting(0);
 
 // initializing variables
 $username = "";
@@ -10,8 +10,7 @@ $sup_depart = "";
 $errors = array(); 
 
 // connect to the user database
-$db = mysqli_connect('127.0.0.1', 'root', '','test_2');
-$db -> select_db('notes');
+$db = mysqli_connect('127.0.0.1', 'root', '','teachers_diary');
 
 // REGISTER USER
 if (isset($_POST['reg_user'])) {
