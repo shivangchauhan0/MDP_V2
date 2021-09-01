@@ -26,15 +26,15 @@
             <div class="fields">
                 <div class="field">
                     <label class="labels">LECTURE</label>
-                    <input class=" input-highlight" name="lecture" readonly type="text" value="<?php echo $row['lecture']; ?>">
+                    <input class=" input-highlight" name="lecture" readonly type="text" value="<?php echo isset($row['lecture']) ? $row['lecture'] : ""; ?>">
                 </div>
                 <div class="field">
                     <label class="labels">CLASS</label>
-                    <input class="" readonly name="class" type="text" value="<?php echo $row['class'] ?>">
+                    <input class="" readonly name="class" type="text" value="<?php echo isset($row['class']) ? $row['class'] : ""; ?>">
                 </div>
                 <div class="field">
                     <label class="labels">SUBJECT</label>
-                    <input type="text" name="subject" value="<?php echo $row['subject'] ?>">
+                    <input type="text" name="subject" value="<?php echo isset($row['subject']) ? $row['subject'] : ""; ?>">
                 </div>
                 <div class="field">
                     <label class="labels">METHODOLODGY</label>
@@ -45,7 +45,7 @@
                                 $methodology = mysqli_query($db,$sql_query);
                                 while($row = mysqli_fetch_assoc($methodology) ){
                                   ?>
-                                      <option value="<?php echo $row["name"];?>"><?php echo $row["name"];?></option>
+                                      <option value="<?php echo isset($row['name']) ? $row['name'] : ""; ?>"><?php echo isset($row['name']) ? $row['name'] : ""; ?></option>
                                 <?php }
                               ?>
                     </select>
@@ -59,11 +59,19 @@
                                 $teachingaid = mysqli_query($db,$sql_query);
                                 while($row = mysqli_fetch_assoc($teachingaid) ){
                                   ?>
-                                      <option value="<?php echo $row["name"];?>"><?php echo $row["name"];?></option>
+                                      <option value="<?php echo isset($row['name']) ? $row['name'] : ""; ?>"><?php echo isset($row['name']) ? $row['name'] : ""; ?></option>
                                 <?php }
                           ?>
                     </select>
                 </div>
+            </div>
+            <?php 
+             $id = $_GET['id'];
+             $sql = "SELECT * FROM `notes` WHERE srno = '$id'" ;
+             $result = $db-> query($sql);
+            $row = $result->fetch_assoc();
+            ?>
+            <div class="fields">
                 <div class="field">
                     <label class="">CLASS TYPE</label>
                     <div class="">
@@ -71,32 +79,26 @@
                         <input class="my-2 mx-1" id="radio-input" name="classtype" value="Practicals" type="radio"><label>P</label></td>
                     </div>
                 </div>
-            </div>
-            <div class="fields">
                 <div class="field">
                     <label class="labels">CONTENT</label>
-                    <input type="text" name="content" value="<?php echo $row['content'] ?>" placeholder="Content">
+                    <input type="text" name="content" value="<?php echo isset($row['content']) ? $row['content'] : ""; ?>" placeholder="Content">
                 </div>
                 <div class="field">
                     <label class="labels">CLASS ACTIVITY</label>
-                    <input type="text" name="classactivity" value="<?php echo $row['class_activity'] ?>" placeholder="Class activity">
+                    <input type="text" name="classactivity" value="<?php echo isset($row['class_activity']) ? $row['class_activity'] : ""; ?>" placeholder="Class activity">
                 </div>
                 <div class="field">
                     <label class="labels">ATTENDANCE</label>
-                    <input type="number" name="attendance" value="<?php echo $row['attendance'] ?>" placeholder="Attendance">
+                    <input type="number" name="attendance" value="<?php echo isset($row['attendance']) ? $row['attendance'] : ""; ?>" placeholder="Attendance">
                 </div>
                 <div class="field">
                     <label class="labels">OTHER ACTIVITY</label>
-                    <input type="text" name="otheractivity" value="<?php echo $row['other_activity'] ?>" placeholder="Other activity">
-                </div>
-                <div class="field">
-                    <label class="labels">REMARK</label>
-                    <input type="text" name="remark" value="<?php echo $row['remark'] ?>" placeholder="Remark">
+                    <input type="text" name="otheractivity" value="<?php echo isset($row['other_activity']) ? $row['other_activity'] : ""; ?>" placeholder="Other activity">
                 </div>
             </div>
             <div class="fields">
                 <div class="field">
-                    <button id="btn" name="edit_record" value="<?php echo $row["srno"];?>" class="ui button bg-red" value="<?php echo $search_date ?>" type="submit">Update</button>
+                    <button id="btn" name="edit_record" value="<?php echo $row['srno'];?>" class="ui button bg-red" type="submit">Update</button>
                 </div>
             </div>
         </form>
