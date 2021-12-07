@@ -181,24 +181,24 @@
                 </tr>
               </thead>
               <tbody>
-            <?php
-              $sql = "SELECT * FROM `methodology` WHERE 1";
-              $result = $db-> query($sql);
-              if($result-> num_rows > 0){	
-                while ($row = $result-> fetch_assoc()) { ?>
-                          <td><?php echo $row["name"] ?></td>
-                          <td>
-                          <form method='post' action='admin-dashboard.php' class='ui form delete'>
-                            <button onclick='return checkDelete()' type='submit' name='delete_methodology' value='<?php echo $row['id'] ?>' id='delete' class='ui mini icon button delete'>
-                              <i class='trash icon'></i>
-                            </button>
-                          </form>   
-                          </td>
-                          </tr>
-                <?php	}
-                }
-              ?>
-            </tbody>
+              <?php
+                $sql = "SELECT * FROM `methodology` WHERE 1";
+                $result = $db-> query($sql);
+                if($result-> num_rows > 0){	
+                  while ($row = $result-> fetch_assoc()) { ?>
+                            <td><?php echo $row["name"] ?></td>
+                            <td>
+                            <form method='post' action='admin-dashboard.php' class='ui form delete'>
+                              <button onclick='return checkDelete()' type='submit' name='delete_methodology' value='<?php echo $row['id'] ?>' id='delete' class='ui mini icon button delete'>
+                                <i class='trash icon'></i>
+                              </button>
+                            </form>   
+                            </td>
+                            </tr>
+                  <?php	}
+                  }
+                ?>
+              </tbody>
         </table>
       </div>
   </div>

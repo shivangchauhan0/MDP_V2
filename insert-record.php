@@ -62,12 +62,14 @@
             <div class="field field-rec">
               <label class="mb-3 display-none">METHODOLOGY</label>
               <select class="hide drop-down ten_vw" class="ui fluid dropdown" name="methodology">
-                          <option value="">Methodology</option>
-                          <option value="Explanation">Explanation</option>
-                          <option value="Discussion">Discussion</option>
-                          <option value="Mind Mapping">Mind Mapping</option>
-                          <option value="Demonstration">Demonstration</option>
-                          <option value="Other">Other</option>
+                <option value="">Methodology</option>
+                <?php
+                  $sql = "SELECT * FROM `methodology` WHERE 1";
+                  $result = $db-> query($sql);
+                  if($result-> num_rows > 0){	
+                    while ($row = $result-> fetch_assoc()) { ?>
+                        <option value="<?php echo $row["name"] ?>"><?php echo $row["name"] ?></option>
+                <?php } } ?>
                 </select>
             </div>
             <div class="field field-rec">
