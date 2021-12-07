@@ -59,7 +59,7 @@
     
     <?php 
             $username = $_SESSION['username'];
-            $sql = "SELECT * FROM `timetable_new` WHERE `username`='$username'";
+            $sql = "SELECT * FROM `beta_timetable` WHERE `username`='$username'";
             $result = $db->query($sql);
             if ($result->num_rows > 0) {
                 $row = $result->fetch_assoc();
@@ -145,29 +145,6 @@
            <div class="tt-row__item py-1 border px-2">
             <div class="ui form">
               <div class="tweleve wide field">
-                  <input class="py-1 mt-1 tt-input" form="tt-form" name="c7" value="<?php echo $row["c7"] ?>" type="text">
-                  <input class="py-1 mt-1 tt-input" form="tt-form" name="s7" value="<?php echo $row["s7"] ?>" type="text">
-              </div>
-            </div>
-           </div>
-           <div class="tt-row__item py-1 border px-2">
-            <div class="ui form">
-              <div class="tweleve wide field">
-                  <input class="py-1 mt-1 tt-input" form="tt-form" name="c7" value="<?php echo $row["c7"] ?>" type="text">
-                  <input class="py-1 mt-1 tt-input" form="tt-form" name="s7" value="<?php echo $row["s7"] ?>" type="text">
-              </div>
-            </div>
-           </div>
-        </div>
-<!-- ===================================================================SECOND ROW ============================================================================================================================-->
-<!-- ===================================================================SECOND ROW ============================================================================================================================-->
-        <div class="tt-row">
-           <div class="tt-row__item py-4 border px-3 red-bg">
-             <?php echo $row["d2"] ?>
-           </div>
-           <div class="tt-row__item py-1 border px-2">
-            <div class="ui form">
-              <div class="tweleve wide field">
                   <input class="py-1 mt-1 tt-input" form="tt-form" name="c8" value="<?php echo $row["c8"] ?>" type="text">
                   <input class="py-1 mt-1 tt-input" form="tt-form" name="s8" value="<?php echo $row["s8"] ?>" type="text">
               </div>
@@ -180,6 +157,13 @@
                   <input class="py-1 mt-1 tt-input" form="tt-form" name="s9" value="<?php echo $row["s9"] ?>" type="text">
               </div>
             </div>
+           </div>
+        </div>
+<!-- ===================================================================SECOND ROW ============================================================================================================================-->
+<!-- ===================================================================SECOND ROW ============================================================================================================================-->
+        <div class="tt-row">
+           <div class="tt-row__item py-4 border px-3 red-bg">
+             <?php echo $row["d2"] ?>
            </div>
            <div class="tt-row__item py-1 border px-2">
             <div class="ui form">
@@ -224,29 +208,6 @@
            <div class="tt-row__item py-1 border px-2">
             <div class="ui form">
               <div class="tweleve wide field">
-                  <input class="py-1 mt-1 tt-input" form="tt-form" name="c13" value="<?php echo $row["c13"] ?>" type="text">
-                  <input class="py-1 mt-1 tt-input" form="tt-form" name="s13" value="<?php echo $row["s13"] ?>" type="text">
-              </div>
-            </div>
-           </div>
-           <div class="tt-row__item py-1 border px-2">
-            <div class="ui form">
-              <div class="tweleve wide field">
-                  <input class="py-1 mt-1 tt-input" form="tt-form" name="c14" value="<?php echo $row["c14"] ?>" type="text">
-                  <input class="py-1 mt-1 tt-input" form="tt-form" name="s14" value="<?php echo $row["s14"] ?>" type="text">
-              </div>
-            </div>
-           </div>
-        </div>
-<!-- ===================================================================THIRD ROW ============================================================================================================================-->
-<!-- ===================================================================THIRD ROW ============================================================================================================================-->
-        <div class="tt-row">
-           <div class="tt-row__item py-4 border px-3 red-bg">
-             <?php echo $row["d3"] ?>
-           </div>
-           <div class="tt-row__item py-1 border px-2">
-            <div class="ui form">
-              <div class="tweleve wide field">
                   <input class="py-1 mt-1 tt-input" form="tt-form" name="c15" value="<?php echo $row["c15"] ?>" type="text">
                   <input class="py-1 mt-1 tt-input" form="tt-form" name="s15" value="<?php echo $row["s15"] ?>" type="text">
               </div>
@@ -276,6 +237,13 @@
               </div>
             </div>
            </div>
+        </div>
+<!-- ===================================================================THIRD ROW ============================================================================================================================-->
+<!-- ===================================================================THIRD ROW ============================================================================================================================-->
+        <div class="tt-row">
+           <div class="tt-row__item py-4 border px-3 red-bg">
+             <?php echo $row["d3"] ?>
+           </div>
            <div class="tt-row__item py-1 border px-2">
             <div class="ui form">
               <div class="tweleve wide field">
@@ -299,29 +267,6 @@
                   <input class="py-1 mt-1 tt-input" form="tt-form" name="s21" value="<?php echo $row["s21"] ?>" type="text">
               </div>
             </div>
-           </div>
-           <div class="tt-row__item py-1 border px-2">
-            <div class="ui form">
-              <div class="tweleve wide field">
-                  <input class="py-1 mt-1 tt-input" form="tt-form" name="c20" value="<?php echo $row["c20"] ?>" type="text">
-                  <input class="py-1 mt-1 tt-input" form="tt-form" name="s20" value="<?php echo $row["s20"] ?>" type="text">
-              </div>
-            </div>
-           </div>
-           <div class="tt-row__item py-1 border px-2">
-            <div class="ui form">
-              <div class="tweleve wide field">
-                  <input class="py-1 mt-1 tt-input" form="tt-form" name="c21" value="<?php echo $row["c21"] ?>" type="text">
-                  <input class="py-1 mt-1 tt-input" form="tt-form" name="s21" value="<?php echo $row["s21"] ?>" type="text">
-              </div>
-            </div>
-           </div>
-        </div>
-<!-- ===================================================================FOURTH ROW ============================================================================================================================-->
-<!-- ===================================================================FOURTH ROW ============================================================================================================================-->
-        <div class="tt-row">
-           <div class="tt-row__item py-4 border px-3 red-bg">
-             <?php echo $row["d4"] ?>
            </div>
            <div class="tt-row__item py-1 border px-2">
             <div class="ui form">
@@ -371,36 +316,20 @@
               </div>
             </div>
            </div>
-           <div class="tt-row__item py-1 border px-2">
-            <div class="ui form">
-              <div class="tweleve wide field">
-                  <input class="py-1 mt-1 tt-input" form="tt-form" name="c28" value="<?php echo $row["c28"] ?>" type="text">
-                  <input class="py-1 mt-1 tt-input" form="tt-form" name="s28" value="<?php echo $row["s28"] ?>" type="text">
-              </div>
-            </div>
-           </div>
-           <div class="tt-row__item py-1 border px-2">
-            <div class="ui form">
-              <div class="tweleve wide field">
-                  <input class="py-1 mt-1 tt-input" form="tt-form" name="c27" value="<?php echo $row["c27"] ?>" type="text">
-                  <input class="py-1 mt-1 tt-input" form="tt-form" name="s27" value="<?php echo $row["s27"] ?>" type="text">
-              </div>
-            </div>
-           </div>
-           <div class="tt-row__item py-1 border px-2">
-            <div class="ui form">
-              <div class="tweleve wide field">
-                  <input class="py-1 mt-1 tt-input" form="tt-form" name="c28" value="<?php echo $row["c28"] ?>" type="text">
-                  <input class="py-1 mt-1 tt-input" form="tt-form" name="s28" value="<?php echo $row["s28"] ?>" type="text">
-              </div>
-            </div>
-           </div>
         </div>
-<!-- ===================================================================FIFTH ROW ============================================================================================================================-->
-<!-- ===================================================================FIFTH ROW ============================================================================================================================-->
+<!-- ===================================================================FOURTH ROW ============================================================================================================================-->
+<!-- ===================================================================FOURTH ROW ============================================================================================================================-->
         <div class="tt-row">
            <div class="tt-row__item py-4 border px-3 red-bg">
-             <?php echo $row["d5"] ?>
+             <?php echo $row["d4"] ?>
+           </div>
+           <div class="tt-row__item py-1 border px-2">
+            <div class="ui form">
+              <div class="tweleve wide field">
+                  <input class="py-1 mt-1 tt-input" form="tt-form" name="c28" value="<?php echo $row["c28"] ?>" type="text">
+                  <input class="py-1 mt-1 tt-input" form="tt-form" name="s28" value="<?php echo $row["s28"] ?>" type="text">
+              </div>
+            </div>
            </div>
            <div class="tt-row__item py-1 border px-2">
             <div class="ui form">
@@ -461,33 +390,17 @@
            <div class="tt-row__item py-1 border px-2">
             <div class="ui form">
               <div class="tweleve wide field">
-                  <input class="py-1 mt-1 tt-input" form="tt-form" name="c34" value="<?php echo $row["c34"] ?>" type="text">
-                  <input class="py-1 mt-1 tt-input" form="tt-form" name="s34" value="<?php echo $row["s34"] ?>" type="text">
-              </div>
-            </div>
-           </div>
-           <div class="tt-row__item py-1 border px-2">
-            <div class="ui form">
-              <div class="tweleve wide field">
-                  <input class="py-1 mt-1 tt-input" form="tt-form" name="c35" value="<?php echo $row["c35"] ?>" type="text">
-                  <input class="py-1 mt-1 tt-input" form="tt-form" name="s35" value="<?php echo $row["s35"] ?>" type="text">
-              </div>
-            </div>
-           </div>
-        </div>
-<!-- ===================================================================SIXTH ROW ============================================================================================================================-->
-<!-- ===================================================================SIXTH ROW ============================================================================================================================-->
-        <div class="tt-row">
-           <div class="tt-row__item py-4 border px-3 red-bg">
-             <?php echo $row["d6"] ?>
-           </div>
-           <div class="tt-row__item py-1 border px-2">
-            <div class="ui form">
-              <div class="tweleve wide field">
                   <input class="py-1 mt-1 tt-input" form="tt-form" name="c36" value="<?php echo $row["c36"] ?>" type="text">
                   <input class="py-1 mt-1 tt-input" form="tt-form" name="s36" value="<?php echo $row["s36"] ?>" type="text">
               </div>
             </div>
+           </div>
+        </div>
+<!-- ===================================================================FIFTH ROW ============================================================================================================================-->
+<!-- ===================================================================FIFTH ROW ============================================================================================================================-->
+        <div class="tt-row">
+           <div class="tt-row__item py-4 border px-3 red-bg">
+             <?php echo $row["d5"] ?>
            </div>
            <div class="tt-row__item py-1 border px-2">
             <div class="ui form">
@@ -501,7 +414,7 @@
             <div class="ui form">
               <div class="tweleve wide field">
                   <input class="py-1 mt-1 tt-input" form="tt-form" name="c38" value="<?php echo $row["c38"] ?>" type="text">
-                  <input class="py-1 mt-1 tt-input" form="tt-form" name="s38" value="<?php echo $row["s38"] ?>" type="text">
+                  <input class="py-1 mt-1 tt-input" form="tt-form" name="c38" value="<?php echo $row["c38"] ?>" type="text">
               </div>
             </div>
            </div>
@@ -540,16 +453,103 @@
            <div class="tt-row__item py-1 border px-2">
             <div class="ui form">
               <div class="tweleve wide field">
-                  <input class="py-1 mt-1 tt-input" form="tt-form" name="c41" value="<?php echo $row["c41"] ?>" type="text">
-                  <input class="py-1 mt-1 tt-input" form="tt-form" name="s41" value="<?php echo $row["s41"] ?>" type="text">
+                  <input class="py-1 mt-1 tt-input" form="tt-form" name="c43" value="<?php echo $row["c43"] ?>" type="text">
+                  <input class="py-1 mt-1 tt-input" form="tt-form" name="s43" value="<?php echo $row["s43"] ?>" type="text">
               </div>
             </div>
            </div>
            <div class="tt-row__item py-1 border px-2">
             <div class="ui form">
               <div class="tweleve wide field">
-                  <input class="py-1 mt-1 tt-input" form="tt-form" name="c42" value="<?php echo $row["c42"] ?>" type="text">
-                  <input class="py-1 mt-1 tt-input" form="tt-form" name="s42" value="<?php echo $row["s42"] ?>" type="text">
+                  <input class="py-1 mt-1 tt-input" form="tt-form" name="c44" value="<?php echo $row["c44"] ?>" type="text">
+                  <input class="py-1 mt-1 tt-input" form="tt-form" name="s44" value="<?php echo $row["s44"] ?>" type="text">
+              </div>
+            </div>
+           </div>
+           <div class="tt-row__item py-1 border px-2">
+            <div class="ui form">
+              <div class="tweleve wide field">
+                  <input class="py-1 mt-1 tt-input" form="tt-form" name="c45" value="<?php echo $row["c45"] ?>" type="text">
+                  <input class="py-1 mt-1 tt-input" form="tt-form" name="s45" value="<?php echo $row["s45"] ?>" type="text">
+              </div>
+            </div>
+           </div>
+        </div>
+<!-- ===================================================================SIXTH ROW ============================================================================================================================-->
+<!-- ===================================================================SIXTH ROW ============================================================================================================================-->
+        <div class="tt-row">
+           <div class="tt-row__item py-4 border px-3 red-bg">
+             <?php echo $row["d6"] ?>
+           </div>
+           <div class="tt-row__item py-1 border px-2">
+            <div class="ui form">
+              <div class="tweleve wide field">
+                  <input class="py-1 mt-1 tt-input" form="tt-form" name="c46" value="<?php echo $row["c46"] ?>" type="text">
+                  <input class="py-1 mt-1 tt-input" form="tt-form" name="s46" value="<?php echo $row["s46"] ?>" type="text">
+              </div>
+            </div>
+           </div>
+           <div class="tt-row__item py-1 border px-2">
+            <div class="ui form">
+              <div class="tweleve wide field">
+                  <input class="py-1 mt-1 tt-input" form="tt-form" name="c47" value="<?php echo $row["c47"] ?>" type="text">
+                  <input class="py-1 mt-1 tt-input" form="tt-form" name="s47" value="<?php echo $row["s47"] ?>" type="text">
+              </div>
+            </div>
+           </div>
+           <div class="tt-row__item py-1 border px-2">
+            <div class="ui form">
+              <div class="tweleve wide field">
+                  <input class="py-1 mt-1 tt-input" form="tt-form" name="c48" value="<?php echo $row["c48"] ?>" type="text">
+                  <input class="py-1 mt-1 tt-input" form="tt-form" name="s48" value="<?php echo $row["s48"] ?>" type="text">
+              </div>
+            </div>
+           </div>
+           <div class="tt-row__item py-1 border px-2">
+            <div class="ui form">
+              <div class="tweleve wide field">
+                  <input class="py-1 mt-1 tt-input" form="tt-form" name="c49" value="<?php echo $row["c49"] ?>" type="text">
+                  <input class="py-1 mt-1 tt-input" form="tt-form" name="s49" value="<?php echo $row["s49"] ?>" type="text">
+              </div>
+            </div>
+           </div>
+           <div class="tt-row__item py-1 border px-2">
+            <div class="ui form">
+              <div class="tweleve wide field">
+                  <input class="py-1 mt-1 tt-input" form="tt-form" name="c50" value="<?php echo $row["c50"] ?>" type="text">
+                  <input class="py-1 mt-1 tt-input" form="tt-form" name="s50" value="<?php echo $row["s50"] ?>" type="text">
+              </div>
+            </div>
+           </div>
+           <div class="tt-row__item py-1 border px-2">
+            <div class="ui form">
+              <div class="tweleve wide field">
+                  <input class="py-1 mt-1 tt-input" form="tt-form" name="c51" value="<?php echo $row["c51"] ?>" type="text">
+                  <input class="py-1 mt-1 tt-input" form="tt-form" name="s51" value="<?php echo $row["s51"] ?>" type="text">
+              </div>
+            </div>
+           </div>
+           <div class="tt-row__item py-1 border px-2">
+            <div class="ui form">
+              <div class="tweleve wide field">
+                  <input class="py-1 mt-1 tt-input" form="tt-form" name="c52" value="<?php echo $row["c52"] ?>" type="text">
+                  <input class="py-1 mt-1 tt-input" form="tt-form" name="s52" value="<?php echo $row["s52"] ?>" type="text">
+              </div>
+            </div>
+           </div>
+           <div class="tt-row__item py-1 border px-2">
+            <div class="ui form">
+              <div class="tweleve wide field">
+                  <input class="py-1 mt-1 tt-input" form="tt-form" name="c53" value="<?php echo $row["c53"] ?>" type="text">
+                  <input class="py-1 mt-1 tt-input" form="tt-form" name="s53" value="<?php echo $row["s53"] ?>" type="text">
+              </div>
+            </div>
+           </div>
+           <div class="tt-row__item py-1 border px-2">
+            <div class="ui form">
+              <div class="tweleve wide field">
+                  <input class="py-1 mt-1 tt-input" form="tt-form" name="c54" value="<?php echo $row["c54"] ?>" type="text">
+                  <input class="py-1 mt-1 tt-input" form="tt-form" name="s54" value="<?php echo $row["s54"] ?>" type="text">
               </div>
             </div>
            </div>
