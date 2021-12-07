@@ -54,7 +54,7 @@
           <a href="timetable.php" class="list-group-item list-group-item-action bg-light">
             Timetable <i class='table icon'></i>
           </a>
-          <a href="timetable-new.php" class="list-group-item list-group-item-action bg-light">
+          <a href="beta-timetable.php" class="list-group-item list-group-item-action bg-light">
              Beta Timetable <i class='table icon'></i>
           </a>
           <?php }?>
