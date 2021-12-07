@@ -36,7 +36,6 @@
 					$timestamp = strtotime($search_date);
 					$formatted_date = date("d-m-Y", $timestamp);
         ?>
-  
        <h2 style="color:#A4243B;font-family: 'Montserrat', sans-serif;">ENTER RECORDS OF <?php echo $formatted_date?> [<?php echo $dayOfWeek ?>]</h2>
         <div class="ui segment">
         <form class="ui form rec-form hidden-sm">
@@ -120,26 +119,26 @@
 					$timestamp = strtotime($search_date);
 					$formatted_date = date("d-m-Y", $timestamp);
           if ($dayOfWeek == "Monday") {
-            $sql_two = "SELECT c1,s1,c2,s2,c3,s3,c4,s4,c5,s5,c6,s6,c7,s7 FROM `timetable_new` WHERE `username`= '$current_user'";
+            $sql_two = "SELECT c1,s1,c2,s2,c3,s3,c4,s4,c5,s5,c6,s6,c7,s7,c8,s8,c9,s9 FROM `beta_timetable` WHERE `username`= '$current_user'";
           } else if ($dayOfWeek == "Tuesday") {
-            $sql_two = "SELECT c8 AS c1,s8 AS s1,c9 AS c2,s9 AS s2,c10 AS c3,s10 AS s3,c11 AS c4,s11 AS s4,c12 AS c5,s12 AS s5,c13 AS c6,s13 AS s6,c14 AS c7,s14 AS s7 FROM `timetable_new` WHERE `username`= '$current_user'";
+            $sql_two = "SELECT c10 AS c1,s10 AS s1,c11 AS c2,s11 AS s2,c12 AS c3,s12 AS s3,c13 AS c4,s13 AS s4,c14 AS c5,s14 AS s5,c15 AS c6,s15 AS s6,c16 AS c7,s16 AS s7,c17 AS c8,s17 AS s8,c18 AS c9,s18 AS s9 FROM `beta_timetable` WHERE `username`= '$current_user'";
           } else if ($dayOfWeek == "Wednesday") {
-            $sql_two = "SELECT c15 AS c1,s15 AS s1,c16 AS c2,s16 AS s2,c17 AS c3,s17 AS s3,c18 AS c4,s18 AS s4,c19 AS c5,s19 AS s5,c20 AS c6,s20 AS s6,c21 AS c7,s21 AS s7 FROM `timetable_new` WHERE `username`= '$current_user'";
+            $sql_two = "SELECT c19 AS c1,s19 AS s1,c20 AS c2,s20 AS s2,c21 AS c3,s21 AS s3,c22 AS c4,s22 AS s4,c23 AS c5,s23 AS s5,c24 AS c6,s24 AS s6,c25 AS c7,s25 AS s7,c26 AS c8,s26 AS s8,c27 AS c9,s27 AS s9 FROM `beta_timetable` WHERE `username`= '$current_user'";
           } else if ($dayOfWeek == "Thursday") {
-            $sql_two = "SELECT c22 AS c1,s22 AS s1,c23 AS c2,s23 AS s2,c24 AS c3,s24 AS s3,c25 AS c4,s25 AS s4,c26 AS c5,s26 AS s5,c27 AS c6,s27 AS s6,c28 AS c7,s28 AS s7 FROM `timetable_new` WHERE `username`= '$current_user'";
+            $sql_two = "SELECT c28 AS c1,s28 AS s1,c29 AS c2,s29 AS s2,c30 AS c3,s30 AS s3,c31 AS c4,s31 AS s4,c32 AS c5,s32 AS s5,c33 AS c6,s33 AS s6,c34 AS c7,s34 AS s7,c35 AS c8,s35 AS s8,c36 AS c9,s36 AS s9 FROM `beta_timetable` WHERE `username`= '$current_user'";
           } else if ($dayOfWeek == "Friday") {
-            $sql_two = "SELECT c29 AS c1,s29 AS s1,c30 AS c2,s30 AS s2,c31 AS c3,s31 AS s3,c32 AS c4,s32 AS s4,c33 AS c5,s33 AS s5,c34 AS c6,s34 AS s6,c35 AS c7,s35 AS s7 FROM `timetable_new` WHERE `username`= '$current_user'";
+            $sql_two = "SELECT c37 AS c1,s37 AS s1,c38 AS c2,s38 AS s2,c39 AS c3,s39 AS s3,c40 AS c4,s40 AS s4,c41 AS c5,s41 AS s5,c42 AS c6,s42 AS s6,c43 AS c7,s43 AS s7,c44 AS c8,s44 AS s8,c45 AS c9,s45 AS s9 FROM `beta_timetable` WHERE `username`= '$current_user'";
           } else if ($dayOfWeek == "Saturday") {
-            $sql_two = "SELECT c36 AS c1,s36 AS s1,c37 AS c2,s37 AS s2,c38 AS c3,s38 AS s3,c39 AS c4,s39 AS s4,c40 AS c5,s40 AS s5,c41 AS c6,s41 AS s6,c42 AS c7,s42 AS s7 FROM `timetable_new` WHERE `username`= '$current_user'";
+            $sql_two = "SELECT c46 AS c1,s46 AS s1,c47 AS c2,s47 AS s2,c48 AS c3,s48 AS s3,c49 AS c4,s49 AS s4,c50 AS c5,s50 AS s5,c51 AS c6,s51 AS s6,c52 AS c7,s52 AS s7,c53 AS c8,s53 AS s8,c54 AS c9,s54 AS s9 FROM `beta_timetable` WHERE `username`= '$current_user'";
           }
           
           $result_two = $db-> query($sql_two);
           $table = $result_two-> fetch_assoc();
-          $lectures = array("First", "Second", "Third","Fourth","Fifth","Sixth","Seventh");
-          $classes = array($table["c1"], $table["c2"], $table["c3"],$table["c4"],$table["c5"],$table["c6"],$table["c7"]);
-          $subjects = array($table["s1"], $table["s2"], $table["s3"],$table["s4"],$table["s5"],$table["s6"],$table["s7"]);
+          $lectures = array("First", "Second", "Third","Fourth","Fifth","Sixth","Seventh","Eighth","Ninth");
+          $classes = array($table["c1"], $table["c2"], $table["c3"],$table["c4"],$table["c5"],$table["c6"],$table["c7"],$table["c8"],$table["c9"]);
+          $subjects = array($table["s1"], $table["s2"], $table["s3"],$table["s4"],$table["s5"],$table["s6"],$table["s7"],$table["s8"],$table["s9"]);
       
-          for ($i=0; $i < 7; $i++) { 
+          for ($i=0; $i < 9; $i++) { 
               $sql = "SELECT * FROM `notes` WHERE `username`= '$current_user' AND `date`='$search_date' AND `lecture`='$lectures[$i]'";
               $result = $db-> query($sql);
               if($result-> num_rows == 0){
