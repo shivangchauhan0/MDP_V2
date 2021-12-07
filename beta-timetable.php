@@ -414,7 +414,7 @@
             <div class="ui form">
               <div class="tweleve wide field">
                   <input class="py-1 mt-1 tt-input" form="tt-form" name="c38" value="<?php echo $row["c38"] ?>" type="text">
-                  <input class="py-1 mt-1 tt-input" form="tt-form" name="c38" value="<?php echo $row["c38"] ?>" type="text">
+                  <input class="py-1 mt-1 tt-input" form="tt-form" name="s38" value="<?php echo $row["s38"] ?>" type="text">
               </div>
             </div>
            </div>
