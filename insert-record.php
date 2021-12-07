@@ -76,18 +76,13 @@
               <label class="mb-3 display-none">TEACHING AID</label>
               <select class="hide drop-down ten_vw" class="ui fluid dropdown" name="teachingaid">
                     <option value="">Teaching Aid</option>
-                    <option value="Actual objects">Actual objects</option>
-                    <option value="Models">Models</option>
-                    <option value="Pictures">Pictures</option>
-                    <option value="Charts">Charts</option>
-                    <option value="Maps">Maps</option>
-                    <option value="Flash Cards">Flash Cards</option>
-                    <option value="Flannel Board">Flannel Board</option>
-                    <option value="Bulletin Board">Bulletin Board</option>
-                    <option value="Chalk Board">Chalk Board</option>
-                    <option value="Overhead Projector">Overhead Projector</option>
-                    <option value="Slides">Slides</option>
-                    <option value="Other">Other</option>
+                    <?php
+                    $sql = "SELECT * FROM `teaching_aid` WHERE 1";
+                    $result = $db-> query($sql);
+                    if($result-> num_rows > 0){	
+                      while ($row = $result-> fetch_assoc()) { ?>
+                          <option value="<?php echo $row["name"] ?>"><?php echo $row["name"] ?></option>
+                  <?php } } ?>
                 </select>
             </div>
             <div class="field field-rec">
