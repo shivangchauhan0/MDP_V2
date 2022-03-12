@@ -104,7 +104,7 @@
             } else if ($filter_lecture != "") {
               $sql = "SELECT * FROM `notes` WHERE `username`='$username' AND `lecture`='$filter_lecture'  ORDER BY srno DESC LIMIT $limit ";
             } else {
-              $sql = "SELECT * FROM `notes` WHERE `username`='$username' ORDER BY srno DESC LIMIT $limit ";
+              $sql = "SELECT * FROM `notes` WHERE `username`='$username' ORDER BY `date` DESC LIMIT $limit ";
             }
             // -----------------------------------------------
             $result = $db->query($sql);

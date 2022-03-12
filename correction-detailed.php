@@ -144,7 +144,7 @@
             // -----------------------------------------------
             $result = $db->query($sql);
             if ($result->num_rows > 0) { ?>
-             <table class="ui celled table"id="show-records-table">
+             <table class="ui celled table" id="show-records-table">
               <thead>
                 <tr id="table-head">
                   <th>DATE</th>
