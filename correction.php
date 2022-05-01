@@ -92,8 +92,8 @@
               <label class="correction-form-label">Comment</label>
                 <input id="comment" name="comment" type="text" placeholder="">
                 <input type="text" name="username" class="d-none" value="<?php echo $_GET['id']?>">
-                <input type="text" name="limit" class="d-none" value="<?php echo isset($_GET['limit']) ? $_GET['limit'] : 25?>">
-                <input type="text" name="filter_date" class="d-none" value="<?php echo isset($_GET['filter_date']) ? $_GET['filter_date'] : "empty"?>">
+                <input type="number" name="limit" class="d-none" value="<?php echo isset($_GET['limit']) ? $_GET['limit'] : 25?>">
+                <input type="text" name="filter_date" class="d-none" value="<?php echo $_GET['filter_date'] != '' ? $_GET['filter_date'] : "empty"?>">
                 <input type="text" name="filter_day" class="d-none" value="<?php echo isset($_GET['filter_day']) ? $_GET['filter_day'] : "empty"?>">
                 <input type="text" name="from_date" class="d-none" value="<?php echo isset($_GET['from_date']) ? $_GET['from_date'] : "empty"?>">
                 <input type="text" name="till_date" class="d-none" value="<?php echo isset($_GET['till_date']) ? $_GET['till_date'] : "empty"?>">
@@ -152,8 +152,8 @@
             }
             $end_sql = " ORDER BY srno DESC LIMIT $limit";
             $sql = $start_sql.$mid_sql.$end_sql;
-            echo $unchecked;
-            // echo $sql;
+            // echo $_GET['limit'];
+            echo $_GET['filter_date'];
             // -----------------------------------------------
             $result = $db->query($sql);
             if ($result-> num_rows > 0) { ?>
@@ -169,7 +169,7 @@
                   <th><i class="circle blue icon"></i> DEAN</th>
                   <th><i class="circle green icon"></i>PRINCIPAL</th>
                   <th>STATUS</th>	  
-                  <?php if (isset($_GET['unchecked']) && $_GET['unchecked'] != 'true') { ?>
+                  <?php if (!isset($_GET['unchecked']) && $_GET['unchecked'] != 'true') { ?>
                   <th>UNCHECK</th>	  
                   <?php  } ?>
                 </tr>
@@ -190,7 +190,7 @@
                 <td><?php echo  ($row["dean"] == 1 ? "Complete" : ($row["dean"] == 2 ? "Incomplete" : "")) ?></td>
                 <td><?php echo  ($row["principal"] == 1 ? "Complete" : ($row["principal"] == 2 ? "Incomplete" : "")) ?></td>
                 <td><?php echo ($row["hod"] == 1 ?  $hod_true : ($row["hod"] == 2 ? $incomp : $hod_false))." ".($row["dean"] == 1 ? $dean_true : ($row["dean"] == 2 ? $incomp : $dean_false))." ".($row["principal"] == 1 ? $principal_true : ($row["principal"] == 2 ? $incomp : $principal_false))?></td>
-              <?php if (isset($_GET['unchecked']) && $_GET['unchecked'] != 'true') { ?>
+              <?php if (!isset($_GET['unchecked']) && $_GET['unchecked'] != 'true') { ?>
                 <td class="no-pad" >
                   <form method="post" action="correction.php" class="ui form delete">
                     <button onclick="return checkUndo()" type="submit" name="uncheck" value="<?php echo $row['srno']?>" id="undo" class="ui mini icon button">

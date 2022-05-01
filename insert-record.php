@@ -213,7 +213,7 @@
               }
           } ?>
       </div>
-      <h2 style="color:#A4243B;font-family: 'Montserrat', sans-serif;">ALREADY ADDED RECORS OF <?php echo $formatted_date?> (<?php echo $dayOfWeek ?>)</h2>
+      <h2 style="color:#A4243B;font-family: 'Montserrat', sans-serif;">ALREADY ADDED RECORDS OF <?php echo $formatted_date?> (<?php echo $dayOfWeek ?>)</h2>
       <table class="ui celled table"id="show-records-table">
         <thead>
           <tr id="table-head">
