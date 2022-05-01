@@ -38,6 +38,11 @@
 #tt-warning {
   display: none;
 }
+@media only screen and (max-width: 600px) {
+  #tt-warning {
+    display: block;
+  }
+}
 </style>
  <!-- Page Content -->
  <div id="page-content-wrapper">

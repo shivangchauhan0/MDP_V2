@@ -3,9 +3,7 @@
 
  <!-- Page Content -->
  <div id="page-content-wrapper">
-        <nav
-          class="navbar navbar-expand-lg navbar-light bg-light border-bottom"
-        >
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
         <button class="ui button bg-red small" id="menu-toggle"><i class="fa fa-bars mr-1" aria-hidden="true"></i> Menu</button>
         <h2 class="ml-2 my-0 nav-head">RECORD <span id="date-today" class="mx-2">[<?php date_default_timezone_set('Asia/Kolkata'); echo date('d-m-Y')?>]</span></h2>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -13,8 +11,21 @@
             <p id="username" class="mt-0 mr-3"><i class='user icon'></i><strong><?php echo $_SESSION['name'] ?></strong></p>
           </ul>
         </div>
- </nav>
+    </nav>
     <div class="container-fluid my-3">
+      <?php 
+            $current_user = $_SESSION['username'];
+            $sql_edit_check = "SELECT * FROM `beta_timetable` WHERE `username`= '$current_user'";
+            $result_edit_check = $db-> query($sql_edit_check);
+            $table_edit = $result_edit_check-> fetch_assoc();
+
+            if ($table_edit['edited'] != 'TRUE') {
+              echo "<div class='alert alert-warning mx-3 my-2' role='alert'>Please fill the time table before adding records.</div>";
+            } else {
+              
+            
+      ?>
+
         <form method="get" action="insert-record.php" class="ui form note-form">
             <div class="fields">
                 <div class="four wide field">
@@ -291,6 +302,7 @@
           ?>
         </tbody>
       </table>
+      <?php } ?>
     </div>
     </div>
 <?php include("sidenav-foot.php") ?>
