@@ -16,49 +16,49 @@
  </nav>
  <!-- LATEST UPDATE -->
  <?php 
-    $user = $_SESSION['username'];
-    // HOD check date
-    $hod_cd_sql = "SELECT * FROM `notes` WHERE `username`='$user' AND `hod_checkdate` != '' ORDER BY srno DESC LIMIT 1 ";
-    $hod_cd = $db->query($hod_cd_sql);
-    $hod_cd = $hod_cd->fetch_assoc();
-    $hod_cd = isset($hod_cd['hod_checkdate']) ? $hod_cd['hod_checkdate'] : "False";
-    if ($hod_cd == "False") {
-      $formatted_date_dean = "(Not checked yet)";
-    } else {
-      $timestamp_hod = strtotime($hod_cd);
-      $formatted_date_hod = date("M j, Y", $timestamp_hod);
-    }
-    // DEAN check date
-    $dean_cd_sql = "SELECT * FROM `notes` WHERE `username`='$user' AND `dean_checkdate` != '' ORDER BY srno DESC LIMIT 1 ";
-    $dean_cd = $db->query($dean_cd_sql);
-    $dean_cd = $dean_cd->fetch_assoc();
-    $dean_cd = isset($dean_cd['dean_checkdate']) ? $dean_cd['dean_checkdate'] : "False";
-    if ($dean_cd == "False") {
-      $formatted_date_dean = "(Not checked yet)";
-    } else {
-      $timestamp_dean = strtotime($dean_cd);
-      $formatted_date_dean = date("M j, Y", $timestamp_dean);
-    }
+    // $user = $_SESSION['username'];
+    // // HOD check date
+    // $hod_cd_sql = "SELECT * FROM `notes` WHERE `username`='$user' AND `hod_checkdate` != '' ORDER BY srno DESC LIMIT 1 ";
+    // $hod_cd = $db->query($hod_cd_sql);
+    // $hod_cd = $hod_cd->fetch_assoc();
+    // $hod_cd = isset($hod_cd['hod_checkdate']) ? $hod_cd['hod_checkdate'] : "False";
+    // if ($hod_cd == "False") {
+    //   $formatted_date_dean = "(Not checked yet)";
+    // } else {
+    //   $timestamp_hod = strtotime($hod_cd);
+    //   $formatted_date_hod = date("M j, Y", $timestamp_hod);
+    // }
+    // // DEAN check date
+    // $dean_cd_sql = "SELECT * FROM `notes` WHERE `username`='$user' AND `dean_checkdate` != '' ORDER BY srno DESC LIMIT 1 ";
+    // $dean_cd = $db->query($dean_cd_sql);
+    // $dean_cd = $dean_cd->fetch_assoc();
+    // $dean_cd = isset($dean_cd['dean_checkdate']) ? $dean_cd['dean_checkdate'] : "False";
+    // if ($dean_cd == "False") {
+    //   $formatted_date_dean = "(Not checked yet)";
+    // } else {
+    //   $timestamp_dean = strtotime($dean_cd);
+    //   $formatted_date_dean = date("M j, Y", $timestamp_dean);
+    // }
     
-    // PRINCIPAL check date
-    $principal_cd_sql = "SELECT * FROM `notes` WHERE `username`='$user' AND `principal_checkdate` != '' ORDER BY srno DESC LIMIT 1 ";
-    $principal_cd = $db->query($principal_cd_sql);
-    $principal_cd = $principal_cd->fetch_assoc();
-    $principal_cd = isset($principal_cd['principal_checkdate']) ? $principal_cd['principal_checkdate'] : "False";
-    if ($principal_cd == "False") {
-      $formatted_date_principal = "(Not checked yet)";
-    } else {
-      $timestamp_principal = strtotime($principal_cd);
-      $formatted_date_principal = date("M j, Y", $timestamp_principal);
-    }
+    // // PRINCIPAL check date
+    // $principal_cd_sql = "SELECT * FROM `notes` WHERE `username`='$user' AND `principal_checkdate` != '' ORDER BY srno DESC LIMIT 1 ";
+    // $principal_cd = $db->query($principal_cd_sql);
+    // $principal_cd = $principal_cd->fetch_assoc();
+    // $principal_cd = isset($principal_cd['principal_checkdate']) ? $principal_cd['principal_checkdate'] : "False";
+    // if ($principal_cd == "False") {
+    //   $formatted_date_principal = "(Not checked yet)";
+    // } else {
+    //   $timestamp_principal = strtotime($principal_cd);
+    //   $formatted_date_principal = date("M j, Y", $timestamp_principal);
+    // }
   ?>
-  <?php if ($hod_cd != '' OR $dean_cd != '' OR $principal_cd != '') { ?>
+  <!-- <?php if ($hod_cd != '' OR $dean_cd != '' OR $principal_cd != '') { ?>
     <div class="check-dates">
       <div id="s" class='alert alert-warning mx-3 my-2' role='alert'>Last checked by <strong>HOD</strong> on <strong><?php echo $formatted_date_hod ?></strong></div>
       <div class='alert alert-primary mx-3 my-2' role='alert'>Last checked by <strong>Dean</strong> on <strong><?php echo $formatted_date_dean ?></strong></div>
       <div class='alert alert-success mx-3 my-2' role='alert'>Last checked by <strong>Principal</strong> on <strong><?php echo $formatted_date_principal ?></strong></div>
     </div>
-  <?php  } ?>
+  <?php  } ?> -->
     <div class="container-fluid my-3">
         <div class="head-bar-sec">
             <h2>LIST OF ALL <?php echo (isset($_GET['unchecked']) && $_GET['unchecked']) == "true"? "UNCHECKED":"" ?> RECORDS &#8594 <?php echo $_GET['id']?></h2>
@@ -153,7 +153,7 @@
             $end_sql = " ORDER BY srno DESC LIMIT $limit";
             $sql = $start_sql.$mid_sql.$end_sql;
             // echo $_GET['limit'];
-            echo $_GET['filter_date'];
+            // echo $_GET['filter_date'];
             // -----------------------------------------------
             $result = $db->query($sql);
             if ($result-> num_rows > 0) { ?>
