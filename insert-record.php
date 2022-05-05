@@ -22,8 +22,6 @@
             if ($table_edit['edited'] != 'TRUE') {
               echo "<div class='alert alert-warning mx-3 my-2' role='alert'>Please fill the time table before adding records.</div>";
             } else {
-              
-            
       ?>
 
         <form method="get" action="insert-record.php" class="ui form note-form">
