@@ -14,62 +14,34 @@
           </ul>
         </div>
  </nav>
- <!-- LATEST UPDATE -->
- <?php 
-    // $user = $_SESSION['username'];
-    // // HOD check date
-    // $hod_cd_sql = "SELECT * FROM `notes` WHERE `username`='$user' AND `hod_checkdate` != '' ORDER BY srno DESC LIMIT 1 ";
-    // $hod_cd = $db->query($hod_cd_sql);
-    // $hod_cd = $hod_cd->fetch_assoc();
-    // $hod_cd = isset($hod_cd['hod_checkdate']) ? $hod_cd['hod_checkdate'] : "False";
-    // if ($hod_cd == "False") {
-    //   $formatted_date_dean = "(Not checked yet)";
-    // } else {
-    //   $timestamp_hod = strtotime($hod_cd);
-    //   $formatted_date_hod = date("M j, Y", $timestamp_hod);
-    // }
-    // // DEAN check date
-    // $dean_cd_sql = "SELECT * FROM `notes` WHERE `username`='$user' AND `dean_checkdate` != '' ORDER BY srno DESC LIMIT 1 ";
-    // $dean_cd = $db->query($dean_cd_sql);
-    // $dean_cd = $dean_cd->fetch_assoc();
-    // $dean_cd = isset($dean_cd['dean_checkdate']) ? $dean_cd['dean_checkdate'] : "False";
-    // if ($dean_cd == "False") {
-    //   $formatted_date_dean = "(Not checked yet)";
-    // } else {
-    //   $timestamp_dean = strtotime($dean_cd);
-    //   $formatted_date_dean = date("M j, Y", $timestamp_dean);
-    // }
-    
-    // // PRINCIPAL check date
-    // $principal_cd_sql = "SELECT * FROM `notes` WHERE `username`='$user' AND `principal_checkdate` != '' ORDER BY srno DESC LIMIT 1 ";
-    // $principal_cd = $db->query($principal_cd_sql);
-    // $principal_cd = $principal_cd->fetch_assoc();
-    // $principal_cd = isset($principal_cd['principal_checkdate']) ? $principal_cd['principal_checkdate'] : "False";
-    // if ($principal_cd == "False") {
-    //   $formatted_date_principal = "(Not checked yet)";
-    // } else {
-    //   $timestamp_principal = strtotime($principal_cd);
-    //   $formatted_date_principal = date("M j, Y", $timestamp_principal);
-    // }
-  ?>
-  <!-- <?php if ($hod_cd != '' OR $dean_cd != '' OR $principal_cd != '') { ?>
-    <div class="check-dates">
-      <div id="s" class='alert alert-warning mx-3 my-2' role='alert'>Last checked by <strong>HOD</strong> on <strong><?php echo $formatted_date_hod ?></strong></div>
-      <div class='alert alert-primary mx-3 my-2' role='alert'>Last checked by <strong>Dean</strong> on <strong><?php echo $formatted_date_dean ?></strong></div>
-      <div class='alert alert-success mx-3 my-2' role='alert'>Last checked by <strong>Principal</strong> on <strong><?php echo $formatted_date_principal ?></strong></div>
-    </div>
-  <?php  } ?> -->
+    <style>
+      .head-bar-grid{
+        display: grid;
+        grid-template-columns: auto auto;
+      }
+      .action-btns{
+        width:fit-content;
+        margin-left: auto;        
+      }
+      @media only screen and (max-width: 600px) {
+        .head-bar-grid{
+        grid-template-columns: 1fr;
+      }
+      }
+    </style>
     <div class="container-fluid my-3">
-        <div class="head-bar-sec">
+        <div class="head-bar-sec head-bar-grid">
             <h2>LIST OF ALL <?php echo (isset($_GET['unchecked']) && $_GET['unchecked']) == "true"? "UNCHECKED":"" ?> RECORDS &#8594 <?php echo $_GET['id']?></h2>
+            <div class="action-btns">
             <?php if ((isset($_GET['unchecked']) && $_GET['unchecked'] == 'true')) { ?>
-                <a class="float-right" href="correction.php?id=<?php echo isset($_GET['id']) ? $_GET['id'] : "" ; ?>&filter_date=<?php echo isset($_GET['filter_date']) ? $_GET['filter_date'] : "" ; ?>&filter_day=<?php echo isset($_GET['filter_day']) ? $_GET['filter_day'] : "" ; ?>&from_date=<?php echo isset($_GET['from_date']) ? $_GET['from_date'] : "" ; ?>&till_date=<?php echo isset($_GET['till_date']) ? $_GET['till_date'] : "";?>&filter_lecture=<?php echo isset($_GET['filter_lecture']) ? $_GET['filter_lecture'] : "";?>&limit=<?php echo isset($_GET['limit']) ? $_GET['limit'] : "";?>"><button type="submit" class="ui button bg-red mx-1 my-2 tiny " id="insert-id">All Records</button></a>
+                <a class="" href="correction.php?id=<?php echo isset($_GET['id']) ? $_GET['id'] : "" ; ?>&filter_date=<?php echo isset($_GET['filter_date']) ? $_GET['filter_date'] : "" ; ?>&filter_day=<?php echo isset($_GET['filter_day']) ? $_GET['filter_day'] : "" ; ?>&from_date=<?php echo isset($_GET['from_date']) ? $_GET['from_date'] : "" ; ?>&till_date=<?php echo isset($_GET['till_date']) ? $_GET['till_date'] : "";?>&filter_lecture=<?php echo isset($_GET['filter_lecture']) ? $_GET['filter_lecture'] : "";?>&limit=<?php echo isset($_GET['limit']) ? $_GET['limit'] : "";?>"><button type="submit" class="ui button bg-red mx-1 my-2 tiny " id="insert-id">All Records</button></a>
             <?php  } else { ?>
-                <a class="float-right" href="correction.php?id=<?php echo isset($_GET['id']) ? $_GET['id'] : "" ; ?>&filter_date=<?php echo $_GET['filter_date'] ?>&filter_day=<?php echo $_GET['filter_day'] ?>&from_date=<?php echo $_GET['from_date'] ?>&till_date=<?php echo $_GET['till_date'] ?>&filter_lecture=<?php echo $_GET['filter_lecture'] ?>&limit=<?php echo $_GET['limit'] ?>&unchecked=true"><button type="submit" class="ui button bg-red mx-1 my-2 tiny" id="insert-id">Unchecked</button></a>
+                <a class="" href="correction.php?id=<?php echo isset($_GET['id']) ? $_GET['id'] : "" ; ?>&filter_date=<?php echo $_GET['filter_date'] ?>&filter_day=<?php echo $_GET['filter_day'] ?>&from_date=<?php echo $_GET['from_date'] ?>&till_date=<?php echo $_GET['till_date'] ?>&filter_lecture=<?php echo $_GET['filter_lecture'] ?>&limit=<?php echo $_GET['limit'] ?>&unchecked=true"><button type="submit" class="ui button bg-red mx-1 my-2 tiny" id="insert-id">Unchecked</button></a>
             <?php  } ?>
-            <a class="float-right" href="correction-detailed.php?id=<?php echo isset($_GET['id']) ? $_GET['id'] : "" ; ?>&unchecked=<?php echo isset($_GET['unchecked']) ? $_GET['unchecked'] : "" ?>"><button type="submit" class="ui button bg-red mx-1 my-2 tiny" id="insert-id">Detailed</button></a> 
-            <a class="float-right" href="correction.php?id=<?php echo isset($_GET['id']) ? $_GET['id'] : "" ; ?>&limit=<?php echo isset($_GET['limit']) ? $_GET['limit'] : "25" ?> ?&unchecked=<?php echo isset($_GET['unchecked']) ? $_GET['unchecked'] : "true" ; ?>"><button type="submit" class="ui button bg-red mx-1 my-2 tiny " id="insert-id">Unset Filters</button></a>
-            <a class="float-right" href="correction-logs.php"><button type="submit" class="ui button bg-red mx-1 my-2 tiny" id="insert-id">Checking logs</button></a>
+              <a class="" href="correction-detailed.php?id=<?php echo isset($_GET['id']) ? $_GET['id'] : "" ; ?>&unchecked=<?php echo isset($_GET['unchecked']) ? $_GET['unchecked'] : "" ?>"><button type="submit" class="ui button bg-red mx-1 my-2 tiny" id="insert-id">Detailed</button></a> 
+              <a class="" href="correction.php?id=<?php echo isset($_GET['id']) ? $_GET['id'] : "" ; ?>&limit=<?php echo isset($_GET['limit']) ? $_GET['limit'] : "25" ?> ?&unchecked=<?php echo isset($_GET['unchecked']) ? $_GET['unchecked'] : "true" ; ?>"><button type="submit" class="ui button bg-red mx-1 my-2 tiny " id="insert-id">Unset Filters</button></a>
+              <a class="" href="correction-logs.php"><button type="submit" class="ui button bg-red mx-1 my-2 tiny" id="insert-id">Checking logs</button></a>
+            </div>
         </div>
         <?php if (isset($_GET['unchecked']) && $_GET['unchecked'] == 'true') { ?>
         <div style="" class="check-form-seg">
