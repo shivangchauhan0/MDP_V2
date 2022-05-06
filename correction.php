@@ -40,7 +40,7 @@
             <?php  } ?>
               <a class="" href="correction-detailed.php?id=<?php echo isset($_GET['id']) ? $_GET['id'] : "" ; ?>&unchecked=<?php echo isset($_GET['unchecked']) ? $_GET['unchecked'] : "" ?>"><button type="submit" class="ui button bg-red mx-1 my-2 tiny" id="insert-id">Detailed</button></a> 
               <a class="" href="correction.php?id=<?php echo isset($_GET['id']) ? $_GET['id'] : "" ; ?>&limit=<?php echo isset($_GET['limit']) ? $_GET['limit'] : "25" ?> ?&unchecked=<?php echo isset($_GET['unchecked']) ? $_GET['unchecked'] : "true" ; ?>"><button type="submit" class="ui button bg-red mx-1 my-2 tiny " id="insert-id">Unset Filters</button></a>
-              <a class="" href="correction-logs.php"><button type="submit" class="ui button bg-red mx-1 my-2 tiny" id="insert-id">Checking logs</button></a>
+              <a class="" href="correction-logs.php?id=<?php echo $_GET['id']?>"><button type="submit" class="ui button bg-red mx-1 my-2 tiny" id="insert-id">Checking logs</button></a>
             </div>
         </div>
         <?php if (isset($_GET['unchecked']) && $_GET['unchecked'] == 'true') { ?>

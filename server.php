@@ -393,50 +393,27 @@ if(isset($_POST['delete_user_timetable']))
 }  
 // CHECK NOTES
 if(isset($_POST['check'])){
+  date_default_timezone_set('Asia/Kolkata');
   $checkdate = date('Y-m-d', time());
+  $checktime = date('h:i:sa', time());
   $done = mysqli_real_escape_string($db, $_POST['done']);
-  $comment = mysqli_real_escape_string($db, $_POST['comment']);
+  $log = mysqli_real_escape_string($db, $_POST['comment']);
   $username = mysqli_real_escape_string($db, $_POST['username']);
-  // ----------------FILTER VARIABLES-----------------
+
+  $checker_role = $_SESSION['designation'];
+  $checker_id = $_SESSION['tid'];
+
   $limit = $_POST['limit'];
-  $filter_date = mysqli_real_escape_string($db, $_POST['filter_date']); 
-  $filter_day =  mysqli_real_escape_string($db, $_POST['filter_day']); 
-  $from_date =  mysqli_real_escape_string($db, $_POST['from_date']); 
-  $till_date =  mysqli_real_escape_string($db, $_POST['till_date']);
-  $filter_lecture =  mysqli_real_escape_string($db, $_POST['lecture']); 
-  // ------------------------------------------------
+
+  $log_sql = "INSERT INTO `check_logs`(`log`, `number`, `date`, `time`, `checker_role`, `checker_id`, `record_owner_id`) VALUES ('$log', '$limit', '$checkdate','$checktime','$checker_role','$checker_id','$username')";
+  mysqli_query($db, $log_sql);
+
   if ($_SESSION['designation'] == 'Hod' OR $_SESSION['ischeck'] == 'true') {
     $start_sql = "UPDATE `notes` SET `hod`= '$done' WHERE `username`='$username' AND `hod` = '0'";
-    $comment_sql = "UPDATE `notes` SET `hod_com`= '$comment' WHERE `username`='$username' AND `hod` = '0' ORDER BY srno DESC LIMIT 1";
-    $check_date_reset_sql = "UPDATE `notes` SET `hod_checkdate`= '' WHERE `username`='$username'";
-    mysqli_query($db, $check_date_reset_sql);
-    $check_date_sql = "UPDATE `notes` SET `hod_checkdate`= '$checkdate' WHERE `username`='$username' AND `hod` = '0' ORDER BY srno DESC LIMIT 1";
-    mysqli_query($db, $check_date_sql);
   } else if ($_SESSION['designation'] == 'Dean') {
     $start_sql = "UPDATE `notes` SET `dean`= '$done' WHERE `username`='$username' AND `dean` = '0'";
-    $comment_sql = "UPDATE `notes` SET `dean_com`= '$comment' WHERE `username`='$username' AND `dean` = '0' ORDER BY srno DESC LIMIT 1";
-    $check_date_reset_sql = "UPDATE `notes` SET `dean_checkdate`= '' WHERE `username`='$username'";
-    mysqli_query($db, $check_date_reset_sql);
-    $check_date_sql = "UPDATE `notes` SET `dean_checkdate`= '$checkdate' WHERE `username`='$username' AND `hod` = '0' ORDER BY srno DESC LIMIT 1";
-    mysqli_query($db, $check_date_sql);
   } else if ($_SESSION['designation'] == 'Principal' || $_SESSION['designation'] == 'Vice-Principal') {
     $start_sql = "UPDATE `notes` SET `principal`= '$done' WHERE `username`='$username' AND `principal` = '0'";
-    $comment_sql = "UPDATE `notes` SET `principal_com`= '$comment' WHERE `username`='$username' AND `principal` = '0' ORDER BY srno DESC LIMIT 1";
-    $check_date_reset_sql = "UPDATE `notes` SET `principal_checkdate`= '' WHERE `username`='$username'";
-    mysqli_query($db, $check_date_reset_sql);
-    $check_date_sql = "UPDATE `notes` SET `principal_checkdate`= '$checkdate' WHERE `username`='$username' AND `hod` = '0' ORDER BY srno DESC LIMIT 1";
-    mysqli_query($db, $check_date_sql);
-  }
-  if ($filter_date != "empty") {
-    $mid_sql = " AND `date`='$filter_date'";
-  } else if ($filter_day != "empty") {
-    $mid_sql = " AND `day`='$filter_day'";
-  } else if ($from_date != "empty") {
-    $mid_sql = " AND `date` BETWEEN '$from_date' AND '$till_date'";
-  } else if ($filter_lecture != "empty") {
-    $mid_sql = " AND `lecture`='$filter_lecture'";
-  } else {
-    $mid_sql = "";
   }
   $end_sql = " ORDER BY `srno` DESC LIMIT $limit";
   $sql = $start_sql.$end_sql;
