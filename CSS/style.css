@@ -133,8 +133,7 @@ form.delete {
   padding-top: 0 !important;
   padding-bottom: 0 !important;
 }
-/* .input-highlight {
-} */
+
 /* EDIT RECORD */
 .outline-red {
   background: #a4243b !important;
@@ -243,6 +242,11 @@ form.delete {
 }
 .content > .btn-grid {
   margin-left: 1vw;
+}
+
+/* Checking logs */
+.c-logs{
+  margin: 3vh 0;
 }
 
 /* Responsive */
