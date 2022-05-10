@@ -115,11 +115,11 @@
             }
             if ($unchecked == "true") {
                 if ($_SESSION['designation'] == 'Hod' OR $_SESSION['ischeck'] == 'true' ) {
-                  $mid_sql = " AND `hod` = '0' AND `principal`='0' ";
+                  $mid_sql = " AND (`hod` = '0' OR `hod` = '2') AND (`principal`='0' OR `principal`='2') ";
                 } else if ($_SESSION['designation'] == 'Dean') {
-                  $mid_sql = " AND `dean` = '0' AND `principal`='0' ";
+                  $mid_sql = " AND (`dean` = '0' OR `dean` = '2') AND (`principal`='0' OR `principal`='2') ";
                 } else if ($_SESSION['designation'] == 'Principal' || $_SESSION['designation'] == 'Vice-Principal') {
-                  $mid_sql = " AND `principal`='0' ";
+                  $mid_sql = " AND (`principal`='0' OR `principal`='2') ";
                 }
             } else {
                 $mid_sql="";
