@@ -13,13 +13,13 @@
       margin-left: auto;        
     }
     .HOD{
-      background: rgba(0, 0, 0, 0.05);
+      background: rgba(251, 189, 8, 0.1);
     }
     .DEAN{
-      background: rgba(0, 0, 0, 0.05);
+      background: rgba(33, 133, 208, 0.1);
     }
     .PRINCIPAL{
-      background: rgba(0, 0, 0, 0.05);
+      background: rgba(33, 186, 69, 0.1);
     }
     @media only screen and (max-width: 600px) {
         .head-bar-grid{
