@@ -35,27 +35,37 @@
       <table class="ui celled table">
           <thead>
             <tr>
-              <th>Name</th>
-            <th>Age</th>
-            <th>Job</th>
+            <th>Comment</th>
+            <th>#</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Role</th>
           </tr>
           </thead>
           <tbody>
+            <?php 
+              $sql = "SELECT * FROM `check_logs` WHERE 1";
+              $result = $db->query($sql);
+
+              while($row = $result->fetch_assoc()) {
+                $date = $row["date"];
+                $timestamp = strtotime($date);
+                $formatted_date = date("d-m-Y", $timestamp);
+                
+                $time = $row['time'];
+                $timestamp_sec = strtotime($time);
+                $formatted_time = date("h:i", $timestamp_sec);
+
+            
+            ?>
             <tr>
-              <td data-label="Name">James</td>
-              <td data-label="Age">24</td>
-              <td data-label="Job">Engineer</td>
+              <td><?php echo $row['log'] ?></td>
+              <td><?php echo $row['number'] ?></td>
+              <td><?php echo $formatted_date ?></td>
+              <td><?php echo $formatted_time ?></td>
+              <td><?php echo strtoupper($row['checker_role']) ?></td>
             </tr>
-            <tr>
-              <td data-label="Name">Jill</td>
-              <td data-label="Age">26</td>
-              <td data-label="Job">Engineer</td>
-            </tr>
-            <tr>
-              <td data-label="Name">Elyse</td>
-              <td data-label="Age">24</td>
-              <td data-label="Job">Designer</td>
-            </tr>
+            <?php } ?>
           </tbody>
         </table>
     </div>
