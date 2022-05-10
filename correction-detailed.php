@@ -14,38 +14,6 @@
           </ul>
         </div>
  </nav>
- <!-- LATEST UPDATE -->
- <?php 
-    $user = $_GET['id'];
-    // HOD check date
-    $hod_cd_sql = "SELECT * FROM `notes` WHERE `username`='$user' AND `hod_checkdate` != '' ORDER BY srno DESC LIMIT 1 ";
-    $hod_cd = $db->query($hod_cd_sql);
-    $hod_cd = $hod_cd->fetch_assoc();
-    $hod_cd = $hod_cd['hod_checkdate'];
-    $timestamp_hod = strtotime($hod_cd);
-    $formatted_date_hod = date("M j, Y", $timestamp_hod); 
-    // DEAN check date
-    $dean_cd_sql = "SELECT * FROM `notes` WHERE `username`='$user' AND `dean_checkdate` != '' ORDER BY srno DESC LIMIT 1 ";
-    $dean_cd = $db->query($dean_cd_sql);
-    $dean_cd = $dean_cd->fetch_assoc();
-    $dean_cd = $dean_cd['dean_checkdate'];
-    $timestamp_dean = strtotime($dean_cd);
-    $formatted_date_dean = date("M j, Y", $timestamp_dean);
-    // PRINCIPAL check date
-    $principal_cd_sql = "SELECT * FROM `notes` WHERE `username`='$user' AND `principal_checkdate` != '' ORDER BY srno DESC LIMIT 1 ";
-    $principal_cd = $db->query($principal_cd_sql);
-    $principal_cd = $principal_cd->fetch_assoc();
-    $principal_cd = $principal_cd['principal_checkdate'];
-    $timestamp_principal = strtotime($principal_cd);
-    $formatted_date_principal = date("M j, Y", $timestamp_principal);
-  ?>
-  <?php if ($hod_cd != '' OR $dean_cd != '' OR $principal_cd != '') { ?>
-    <div class="check-dates">
-      <div id="s" class='alert alert-warning mx-3 my-2' role='alert'>Last checked by <strong>HOD</strong> on <strong><?php echo $formatted_date_hod ?></strong></div>
-      <div class='alert alert-primary mx-3 my-2' role='alert'>Last checked by <strong>Dean</strong> on <strong><?php echo $formatted_date_dean ?></strong></div>
-      <div class='alert alert-success mx-3 my-2' role='alert'>Last checked by <strong>Principal</strong> on <strong><?php echo $formatted_date_principal ?></strong></div>
-    </div>
-  <?php  } ?>
     <div class="container-fluid my-3">
       <div class="head-bar-sec">
             <h2>LIST OF ALL <?php echo $_GET['unchecked'] == "true"?"UNCHECKED":"" ?> RECORDS &#8594 <?php echo strtoupper($row['name'])?></h2>
@@ -344,6 +312,7 @@
             <div id="id-input" class="seven wide field">
               <input type="number" name="limit" value="<?php echo $limit ?>">
               <input type="text" name="id" class="d-none" value="<?php echo $_GET['id']?>">
+              <input type="text" name="unchecked" class="d-none" value="<?php echo $_GET['unchecked']?>">
             </div>
               <button id="btn" class="ui button bg-red my-2" type="submit">Submit</button>
           </div>
