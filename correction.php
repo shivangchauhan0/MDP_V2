@@ -23,8 +23,11 @@
       }
       @media only screen and (max-width: 600px) {
         .head-bar-grid{
-        grid-template-columns: 1fr;
-      }
+          grid-template-columns: 1fr;
+        }
+        .action-btns{
+          margin-left: 0;        
+        }
       }
     </style>
     <div class="container-fluid my-3">
