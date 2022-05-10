@@ -3,9 +3,7 @@
 
  <!-- Page Content -->
  <div id="page-content-wrapper">
-        <nav
-          class="navbar navbar-expand-lg navbar-light bg-light border-bottom"
-        >
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
         <button class="ui button bg-red small" id="menu-toggle"><i class="fa fa-bars mr-1" aria-hidden="true"></i> Menu</button>
         <h2 class="ml-2 my-0 nav-head">CORRECTION</h2>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">

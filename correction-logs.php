@@ -27,9 +27,21 @@
   </nav>
 
   <div class="container-fluid my-3">
-    <div class="head-bar-sec head-bar-grid">
-        <h2>Checking logs &#8594 <?php echo $_GET['id']?></h2>
-    </div>
+      <div class="head-bar-sec head-bar-grid">
+            <h2>Checking logs &#8594 <?php echo $_GET['id']?></h2>
+            <div class="action-btns">
+              <?php 
+                $role = $_GET['role'];
+                if (isset($role)) {
+              ?>
+                <a class="" href="correction-logs.php?id=<?php echo $_GET['id'] ?>"><button type="submit" class="ui button bg-red mx-1 my-2 tiny" id="insert-id">Clear</button></a> 
+              <?php } ?>
+              <a class="" href="correction-logs.php?id=<?php echo $_GET['id'] ?>&role=hod"><button type="submit" class="ui button bg-red mx-1 my-2 tiny" id="insert-id">HOD</button></a> 
+              <a class="" href="correction-logs.php?id=<?php echo $_GET['id'] ?>&role=dean"><button type="submit" class="ui button bg-red mx-1 my-2 tiny" id="insert-id">DEAN</button></a> 
+              <a class="" href="correction-logs.php?id=<?php echo $_GET['id'] ?>&role=principal"><button type="submit" class="ui button bg-red mx-1 my-2 tiny" id="insert-id">PRINCIPAL</button></a> 
+              <a class="" href="correction.php?id=<?php echo $_GET['id']?>&unchecked=true"><button type="submit" class="ui button bg-red mx-1 my-2 tiny" id="insert-id">Back</button></a>
+            </div>
+        </div>
     
     <div class="c-logs">
       <table class="ui celled table">
