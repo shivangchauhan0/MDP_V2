@@ -326,6 +326,7 @@
             <div id="id-input" class="seven wide field">
               <input type="number" name="limit" value="<?php echo $limit ?>">
               <input type="text" name="id" class="d-none" value="<?php echo $_GET['id']?>">
+              <input type="text" name="unchecked" class="d-none" value="<?php echo $_GET['unchecked']?>">
             </div>
               <button id="btn" class="ui button bg-red my-2" type="submit">Submit</button>
           </div>
