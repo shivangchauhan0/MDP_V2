@@ -34,10 +34,12 @@
     <div class="c-logs">
       <table class="ui celled table">
           <thead>
-            <tr><th>Name</th>
+            <tr>
+              <th>Name</th>
             <th>Age</th>
             <th>Job</th>
-          </tr></thead>
+          </tr>
+          </thead>
           <tbody>
             <tr>
               <td data-label="Name">James</td>
