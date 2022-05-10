@@ -404,16 +404,20 @@ if(isset($_POST['check'])){
   $checker_id = $_SESSION['tid'];
 
   $limit = $_POST['limit'];
+  
+  if ($log == "") {
+    $log = "Checked records (no additional remark)";
+  }
 
   $log_sql = "INSERT INTO `check_logs`(`log`, `number`, `date`, `time`, `checker_role`, `checker_id`, `record_owner_id`) VALUES ('$log', '$limit', '$checkdate','$checktime','$checker_role','$checker_id','$username')";
   mysqli_query($db, $log_sql);
 
   if ($_SESSION['designation'] == 'Hod' OR $_SESSION['ischeck'] == 'true') {
-    $start_sql = "UPDATE `notes` SET `hod`= '$done' WHERE `username`='$username' AND `hod` = '0'";
+    $start_sql = "UPDATE `notes` SET `hod`= '$done' WHERE `username`='$username' AND (`hod` = '0' OR `hod` = '2')";
   } else if ($_SESSION['designation'] == 'Dean') {
-    $start_sql = "UPDATE `notes` SET `dean`= '$done' WHERE `username`='$username' AND `dean` = '0'";
+    $start_sql = "UPDATE `notes` SET `dean`= '$done' WHERE `username`='$username' AND (`dean` = '0' OR `dean` = '2')";
   } else if ($_SESSION['designation'] == 'Principal' || $_SESSION['designation'] == 'Vice-Principal') {
-    $start_sql = "UPDATE `notes` SET `principal`= '$done' WHERE `username`='$username' AND `principal` = '0'";
+    $start_sql = "UPDATE `notes` SET `principal`= '$done' WHERE `username`='$username' AND (`principal` = '0' OR `principal` = '2')";
   }
   $end_sql = " ORDER BY `srno` DESC LIMIT $limit";
   $sql = $start_sql.$end_sql;

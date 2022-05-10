@@ -94,13 +94,13 @@
             <th>Comment</th>
             <th># Records</th>
             <th>Check Date</th>
-            <th>Check Time</th>
+            <!-- <th>Check Time</th> -->
             <th>Role</th>
           </tr>
           </thead>
           <tbody>
              <?php while($row = $result->fetch_assoc()) {
-
+                date_default_timezone_set('Asia/Kolkata');
                 $role = strtoupper($row['checker_role']);
 
                 $date = $row["date"];
@@ -109,7 +109,7 @@
                 
                 $time = $row['time'];
                 $timestamp_sec = strtotime($time);
-                $formatted_time = date("h:i", $timestamp_sec);
+                $formatted_time = date("h:i a", $timestamp_sec);
 
             
             ?>
@@ -117,7 +117,7 @@
               <td><?php echo $row['log'] ?></td>
               <td><?php echo $row['number'] ?> Records</td>
               <td><?php echo $formatted_date ?></td>
-              <td><?php echo $formatted_time ?></td>
+              <!-- <td><?php echo $formatted_time ?></td> -->
               <td><?php echo $role ?></td>
             </tr>
             <?php } 
