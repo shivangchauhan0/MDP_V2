@@ -1,6 +1,6 @@
 <?php 
 session_start();
-// error_reporting(0);
+error_reporting(0);
 
 // initializing variables
 $username = "";
@@ -404,10 +404,6 @@ if(isset($_POST['check'])){
   $checker_id = $_SESSION['tid'];
 
   $limit = $_POST['limit'];
-  
-  if ($log == "") {
-    $log = "Checked records (no additional remark)";
-  }
 
   $log_sql = "INSERT INTO `check_logs`(`log`, `number`, `date`, `time`, `checker_role`, `checker_id`, `record_owner_id`) VALUES ('$log', '$limit', '$checkdate','$checktime','$checker_role','$checker_id','$username')";
   mysqli_query($db, $log_sql);
