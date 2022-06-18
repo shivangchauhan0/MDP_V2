@@ -55,7 +55,7 @@
              Timetable <i class='table icon'></i>
           </a>
           <a href="leave.php" class="list-group-item list-group-item-action bg-light">
-             Take Leave <i class="calendar alternate outline icon"></i>
+             Leave <i class="calendar alternate outline icon"></i>
           </a>
           <?php }?>
           <a href="index.php?logout='1'" id="logout-btn" class="list-group-item list-group-item-action bg-light border-bottom">

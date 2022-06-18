@@ -76,29 +76,20 @@
                   $result = $db-> query($sql);
                   if($result-> num_rows > 0){	
                     while ($row = $result-> fetch_assoc()) { ?>
-                        <option value="<?php echo $row["name"] ?>"><?php echo $row["name"] ?></option>
+                      <option value="<?php echo $row["name"] ?>"><?php  echo $row["name"] ?></option>
                 <?php } } ?>
                 </select>
             </div>
             <div class="field field-rec">
               <label class="mb-3 display-none">TEACHING AID</label>
               <select class="hide drop-down ten_vw" class="ui fluid dropdown" name="teachingaid">
-                    <option value="">Teaching Aid</option>
-                    <?php
-                    $sql = "SELECT * FROM `teaching_aid` WHERE 1";
-                    $result = $db-> query($sql);
-                    if($result-> num_rows > 0){	
-                      while ($row = $result-> fetch_assoc()) { ?>
-                          <option value="<?php echo $row["name"] ?>"><?php echo $row["name"] ?></option>
-                  <?php } } ?>
-                </select>
             </div>
             <div class="field field-rec">
-              <label class="mb-3 display-none">CONENT</label>
+              <label class="mb-3 display-none">CONTENT</label>
               <input class="hide" type="text" name="content" placeholder="Content">
             </div>
             <div class="field field-rec">
-              <label class="mb-3 display-none">CA</label>
+              <label class="mb-3 display-none">CLASS ACTIVITY</label>
               <input class="hide" type="text" name="classactivity" placeholder="Class activity">
             </div>
             <div class="field field-rec">
