@@ -9,6 +9,12 @@ $("#menu-toggle").click(function (e) {
   e.preventDefault();
   $("#wrapper").toggleClass("toggled");
 });
+
+let toggleSideNav = () => {
+  let sideNav = document.getElementById('wrapper');
+  sideNav.toggleClass("toggled");
+  console.log('toggled');
+}
 // Ajax
 $(document).ready(function () {
   $("#sup-depart").on("change", function () {

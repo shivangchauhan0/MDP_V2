@@ -478,5 +478,30 @@ if(isset($_POST['cordinator_toggle']))
     mysqli_query($db, $query);
     header('Location: ' . $_SERVER['HTTP_REFERER']);
 }
+
+
+// ADD LEAVE REQUEST
+if (isset($_POST['request_leave'])) { 
+  date_default_timezone_set('Asia/Kolkata');
+  $type = mysqli_real_escape_string($db, $_POST['leave_type']);
+  $start_date = mysqli_real_escape_string($db, $_POST['start_date']);
+  $end_date = mysqli_real_escape_string($db, $_POST['end_date']);
+  $c_one = mysqli_real_escape_string($db, $_POST['c_one']);
+  $c_two = mysqli_real_escape_string($db, $_POST['c_two']);
+  $c_three = mysqli_real_escape_string($db, $_POST['c_three']);
+  $c_four = mysqli_real_escape_string($db, $_POST['c_four']);
+  $c_five = mysqli_real_escape_string($db, $_POST['c_five']);
+  $t_one = mysqli_real_escape_string($db, $_POST['t_one']);
+  $t_two = mysqli_real_escape_string($db, $_POST['t_two']);
+  $t_three = mysqli_real_escape_string($db, $_POST['t_three']);
+  $t_four = mysqli_real_escape_string($db, $_POST['t_four']);
+  $t_five = mysqli_real_escape_string($db, $_POST['t_five']);
+  $requester_id = $_SESSION['tid'];
+  $request_datetime = date('d-m-y h:i:s');
+
+  $query = "INSERT INTO `leaves`(`type`, `start_date`, `end_date`, `c_one`, `c_two`, `c_three`, `c_four`, `c_five`, `t_one`, `t_two`, `t_three`, `t_four`, `t_five`, `status`, `requester_id`,`request_datetime`) VALUES ('$type','$start_date','$end_date','$c_one','$c_two','$c_three','$c_four','$c_five','$t_one','$t_two','$t_three','$t_four','$t_five','PENDING','$requester_id','$request_datetime')";
+  mysqli_query($db, $query);
+  header('Location: ' . $_SERVER['HTTP_REFERER'].'?rs=t');
+}
 ?>
 
