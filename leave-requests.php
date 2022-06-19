@@ -1,10 +1,14 @@
 <?php include("header.php") ?>
-<?php include("sidenav-head.php") ?>
+<?php include("sidenav-head.php");
+if ($_SESSION['designation'] != 'Principal' || $_SESSION['designation'] == 'Vice-Principal') {
+    echo "<script>history.back()</script>";
+ }
+?>
 
 <div id="page-content-wrapper">
     <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
     <button class="ui button bg-red small" id="menu-toggle"><i class="fa fa-bars mr-1" aria-hidden="true"></i> Menu</button>
-    <h2 class="ml-2 my-0 nav-head">LEAVE HISTORY</h2>
+    <h2 class="ml-2 my-0 nav-head">LEAVE REQUESTS</h2>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
         <p id="username" class="mt-0 mr-3"><i class='user icon'></i><strong><?php echo $_SESSION['name'] ?></strong></p>
@@ -14,13 +18,14 @@
 
     <div class="container-fluid my-3">
         <div class="head-bar-sec">
-            <h2>LEAVE HISTORY</h2>
+            <h2>LEAVE REQUESTS</h2>
             <a onclick="window.print()" class="float-right display-none-print" href="#"><button type="submit" class="ui button bg-red mx-1 my-2" id="insert-id">Print Report</button></a>
         </div>
 
         <table class="ui celled table" id="show-records-table">
             <thead>
             <tr id="table-head">
+                <th>Requester Name</th>
                 <th>Leave Type</th>
                 <th>Start Date</th>
                 <th>End Date</th>
@@ -32,7 +37,7 @@
             <tbody>
           <?php 
                 $requester_id = $_SESSION['tid'];
-                $sql = "SELECT * FROM `leaves` WHERE `requester_id`='$requester_id' AND `status` != 'CANCELLED' ORDER BY `request_datetime` DESC";
+                $sql = "SELECT * FROM `leaves` WHERE 1 ORDER BY `request_datetime` DESC";
                 $result = $db->query($sql);
 
                 if ($result->num_rows > 0) {
@@ -82,7 +87,15 @@
                             }
                          ?>
                         <tr>
-                            <td><?php echo $row['type']?></td>
+                            <?php 
+                                $requester_id = $row['requester_id'];
+                                $user_sql = "SELECT * FROM `users` WHERE `tid`='$requester_id'";
+                                $user_result = $db->query($user_sql);
+                                $user_row = $user_result->fetch_assoc();
+                                $requester_name = $user_row["name"];
+                            ?>
+                            <td><?php echo $requester_name?></td>
+                            <td style="width:150px"><?php echo $row['type']?></td>
                             <td><?php echo $start_date?></td>
                             <td><?php echo $end_date?></td>
                             <td><?php echo (round($datediff / (60 * 60 * 24)) != 0) ? round($datediff / (60 * 60 * 24)) : 1 ?> Day(s)</td>
@@ -102,10 +115,15 @@
                                     echo "basic";
                                     break;
                             }?> horizontal label"><?php echo $row['status']?></div></td>
-                            <td class="display-none-print" style="width:70px">
-                                <a class="ui icon button" id="edit" href="#" data-toggle="modal" data-target="#exampleModal<?php echo $row['id']?>"><i class="eye icon"></i></a>
-                                <form method="post" action="leave-history.php" class="ui form delete">
-                                    <button onclick="return checkCancel()" type="submit" name="cancel_request" value='<?php echo $row["id"] ?>' id="delete" class="ui mini icon button delete" <?php echo($row['status'] != "PENDING") ? "disabled" : "" ;?>>
+                            <td class="display-none-print" style="width:140px;">
+                                <a class="ui icon button mx-2" id="edit" href="#" data-toggle="modal" data-target="#exampleModal<?php echo $row['id']?>"><i class="eye icon"></i></a>
+                                <form method="post" action="leave-request.php" class="ui form delete mx-2">
+                                    <button onclick="return checkApprove()" type="submit" name="approve_request" value='<?php echo $row["id"] ?>' id="delete" class="ui mini icon button delete" <?php echo($row['status'] != "PENDING") ? "disabled" : "" ;?>>
+                                        <i style="color:#a3243b" class="check icon"></i>
+                                    </button>
+                                </form>
+                                <form method="post" action="leave-request.php" class="ui form delete mx-2">
+                                    <button onclick="return checkDecline()" type="submit" name="cancel_request" value='<?php echo $row["id"] ?>' id="delete" class="ui mini icon button delete" <?php echo($row['status'] != "PENDING") ? "disabled" : "" ;?>>
                                         <i style="color:#a3243b" class="close icon"></i>
                                     </button>
                                 </form>

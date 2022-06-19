@@ -1,5 +1,9 @@
 <?php include("header.php") ?>
-<?php include("sidenav-head.php") ?>
+<?php include("sidenav-head.php");
+  if ($_SESSION['designation'] == 'Professor' && $_SESSION['ischeck'] == 'false') {
+     echo "<script>history.back()</script>";
+  }
+?>
 
  <!-- Page Content -->
  <div id="page-content-wrapper">

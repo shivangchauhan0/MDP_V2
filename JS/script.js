@@ -45,6 +45,12 @@ function checkUndo() {
 function checkCancel() {
   return confirm("Are you sure you want to Cancel the leave?");
 }
+function checkApprove() {
+  return confirm("Are you sure you want to Approve the leave?");
+}
+function checkDecline() {
+  return confirm("Are you sure you want to Decline the leave?");
+}
 // PRINT REPORT
 // function printData() {
 //   var divToPrint = document.getElementById("show-records-table");

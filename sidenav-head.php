@@ -12,6 +12,9 @@
               >Records Correction <i class="fa fa-pen fa-fw" aria-hidden="true"></i></a
             >
           <?php } elseif ($_SESSION['designation'] == "Principal") { ?>
+            <a href="leave-requests.php" class="list-group-item list-group-item-action bg-light">
+             Leave Requests <i class="calendar alternate outline icon"></i>
+            </a>
             <a href="departments.php" class="list-group-item list-group-item-action bg-light"
               >All Departments <i class="fa fa-users fa-fw" aria-hidden="true"></i></a
             >
@@ -38,6 +41,9 @@
               if ($row['tid'] == "enable") { ?>
             <a href="departments.php" class="list-group-item list-group-item-action bg-light">
               Records Correction <i class="fa fa-pen fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="leave-requests.php" class="list-group-item list-group-item-action bg-light">
+             Leave Requests <i class="calendar alternate outline icon"></i>
             </a>
           <?php }
             } ?>
