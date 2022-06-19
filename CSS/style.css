@@ -397,3 +397,19 @@ form.delete {
   margin: 10px;
   border-radius: 4px;
 }
+
+.st-list-con{
+  padding: 10px;
+  border-radius: 4px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 10px;
+}
+.thead-cl{
+  text-transform: uppercase;
+  color: #a4243b;
+  font-weight: 700;
+}
+.td-cl{
+  text-transform: uppercase;
+}

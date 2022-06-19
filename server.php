@@ -503,5 +503,16 @@ if (isset($_POST['request_leave'])) {
   mysqli_query($db, $query);
   header('Location: ' . $_SERVER['HTTP_REFERER'].'?rs=t');
 }
+
+if(isset($_POST['cancel_request'])) 
+{
+  $leave_id = mysqli_real_escape_string($db, $_POST['cancel_request']);
+
+  $query = "UPDATE `leaves` SET `status`= 'CANCELLED' WHERE `id`='$leave_id'";
+  
+    mysqli_query($db, $query);
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
+}
+
 ?>
 

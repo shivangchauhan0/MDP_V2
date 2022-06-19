@@ -32,7 +32,7 @@
             <tbody>
           <?php 
                 $requester_id = $_SESSION['tid'];
-                $sql = "SELECT * FROM `leaves` WHERE `requester_id`='$requester_id' ORDER BY `request_datetime` DESC";
+                $sql = "SELECT * FROM `leaves` WHERE `requester_id`='$requester_id' AND `status` != 'CANCELLED' ORDER BY `request_datetime` DESC";
                 $result = $db->query($sql);
 
                 if ($result->num_rows > 0) {
@@ -86,16 +86,63 @@
                             <td><?php echo $start_date?></td>
                             <td><?php echo $end_date?></td>
                             <td><?php echo (round($datediff / (60 * 60 * 24)) != 0) ? round($datediff / (60 * 60 * 24)) : 1 ?> Day(s)</td>
-                            <td><?php echo $row['status']?></td>
+                            <td style="width:150px"><div class="ui <?php switch ($row['status']) {
+                                case 'PENDING':
+                                    echo "yellow";
+                                    break;
+                                case 'APPROVED':
+                                    echo "green";
+                                    break;
+                                
+                                case 'DECLINED':
+                                    echo "grey";
+                                    break;
+                                
+                                default:
+                                    echo "basic";
+                                    break;
+                            }?> horizontal label"><?php echo $row['status']?></div></td>
                             <td style="width:70px">
-                                <a class="ui icon button" id="edit" href="leave-history-detail.php?id=<?php echo $row["id"] ?>"><i class="eye icon"></i></a>
+                                <a class="ui icon button" id="edit" href="#" data-toggle="modal" data-target="#exampleModal<?php echo $row['id']?>"><i class="eye icon"></i></a>
                                 <form method="post" action="leave-history.php" class="ui form delete">
-                                    <button onclick="return checkCancel()" type="submit" name="delete" value='<?php echo $row["id"] ?>' id="delete" class="ui mini icon button delete">
+                                    <button onclick="return checkCancel()" type="submit" name="cancel_request" value='<?php echo $row["id"] ?>' id="delete" class="ui mini icon button delete" <?php echo($row['status'] != "PENDING") ? "disabled" : "" ;?>>
                                         <i style="color:#a3243b" class="close icon"></i>
                                     </button>
                                 </form>
                             </td>
                         </tr>
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal<?php echo $row['id']?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Substitute Teachers</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="st-list-con border">
+                                        <div class="classes-list border pt-3 ">
+                                            <p class="thead-cl px-2 pb-2 m-0">Classes</p>
+                                            <?php foreach ($classes as $class) { ?>
+                                               <p class="td-cl border-top p-2 m-0"><?php echo $class?></p>
+                                            <?php }?>
+                                        </div>
+                                        <div class="classes-list border pt-3 ">
+                                            <p class="thead-cl px-2 pb-2 m-0">Teachers</p>
+                                            <?php foreach ($teachers as $teacher) { ?>
+                                               <p class="td-cl border-top p-2 m-0"><?php echo $teacher?></p>
+                                            <?php }?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn bg-red" data-dismiss="modal">Close</button>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
                   <?php  } 
                 }?>
             </tbody>
