@@ -10,16 +10,17 @@
         <a href="leave-history.php">
             <button class="ui button bg-red small mr-3">Leave History</button>
         </a>
-        <p id="username" class="mt-0 mr-3"><i class='user icon'></i><strong><?php echo $_SESSION['name'] ?></strong></p>
+        <p id="username" class="mt-0 mr-3"><i class='user icon'></i><strong><?php echo $_SESSION['tid'] ?></strong></p>
         </ul>
     </div>
  </nav>
+ <div class="container-fluid my-3">
     <a  href="leave-history.php">
         <button style="width:96%"  class="ui button bg-red small mx-2 mt-3 mr-5 d-lg-none d-sm-block">Leave History</button>
     </a>
     
     <form class="ui form leave-form" action="leave.php" method="post">
-        <?php if($_GET['rs'] == 't') { ?>
+        <?php if(isset($_GET['rs']) && $_GET['rs'] == 't') { ?>
             <div class="alert alert-success" role="alert">
                 <p>Request sent. Please check <a href="leave-history.php">leave history</a> for updates</p>
             </div>
@@ -129,6 +130,7 @@
         </div>
         <button class="ui button bg-red" type="submit" name="request_leave">Send Leave Request</button>
     </form>
+    </div>
 </div>
 
 <?php include("sidenav-foot.php") ?>
