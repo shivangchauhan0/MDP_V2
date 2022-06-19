@@ -117,13 +117,13 @@ if ($_SESSION['designation'] != 'Principal' || $_SESSION['designation'] == 'Vice
                             }?> horizontal label"><?php echo $row['status']?></div></td>
                             <td class="display-none-print" style="width:140px;">
                                 <a class="ui icon button mx-2" id="edit" href="#" data-toggle="modal" data-target="#exampleModal<?php echo $row['id']?>"><i class="eye icon"></i></a>
-                                <form method="post" action="leave-request.php" class="ui form delete mx-2">
-                                    <button onclick="return checkApprove()" type="submit" name="approve_request" value='<?php echo $row["id"] ?>' id="delete" class="ui mini icon button delete" <?php echo($row['status'] != "PENDING") ? "disabled" : "" ;?>>
+                                <form method="post" action="leave-requests.php" class="ui form delete mx-2">
+                                    <button onclick="return checkApprove()" type="submit" name="approve_request" value='<?php echo $row["id"] ?>' id="delete" class="ui mini icon button delete" <?php echo($row['status'] == "CANCELLED") ? "disabled" : "" ;?>>
                                         <i style="color:#a3243b" class="check icon"></i>
                                     </button>
                                 </form>
-                                <form method="post" action="leave-request.php" class="ui form delete mx-2">
-                                    <button onclick="return checkDecline()" type="submit" name="cancel_request" value='<?php echo $row["id"] ?>' id="delete" class="ui mini icon button delete" <?php echo($row['status'] != "PENDING") ? "disabled" : "" ;?>>
+                                <form method="post" action="leave-requests.php" class="ui form delete mx-2">
+                                    <button onclick="return checkDecline()" type="submit" name="decline_request" value='<?php echo $row["id"] ?>' id="delete" class="ui mini icon button delete" <?php echo($row['status'] == "CANCELLED") ? "disabled" : "" ;?>>
                                         <i style="color:#a3243b" class="close icon"></i>
                                     </button>
                                 </form>
@@ -134,12 +134,16 @@ if ($_SESSION['designation'] != 'Principal' || $_SESSION['designation'] == 'Vice
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Substitute Teachers</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">About Leave</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body">
+                                    <div class="leave-desc border">
+                                        <p class="thead-cl mb-3 pb-2 border-bottom">LEAVE DESCRIPTION</p>
+                                        <p><?php echo $row['leave_desc']?></p>
+                                    </div>
                                     <div class="st-list-con border">
                                         <div class="classes-list border pt-3 ">
                                             <p class="thead-cl px-2 pb-2 m-0">Classes</p>

@@ -405,6 +405,11 @@ form.delete {
   grid-template-columns: 1fr 1fr;
   column-gap: 10px;
 }
+.leave-desc{
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
 .thead-cl{
   text-transform: uppercase;
   color: #a4243b;

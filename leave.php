@@ -75,6 +75,14 @@
         </div>
         <div class="border p-3 my-3">
             <strong>
+                <label>Leave Description*</label>
+            </strong>
+            <div class="field">
+                <textarea rows="2" name="leave_desc" required></textarea>
+            </div>
+        </div>
+        <div class="border p-3 my-3">
+            <strong>
                 <label>Substitute Teachers</label>
             </strong>
             <div class="inline fields">

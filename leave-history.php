@@ -116,12 +116,16 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Substitute Teachers</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">About Leave</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body">
+                                    <div class="leave-desc border">
+                                        <p class="thead-cl mb-3 pb-2 border-bottom">LEAVE DESCRIPTION</p>
+                                        <p><?php echo $row['leave_desc']?></p>
+                                    </div>
                                     <div class="st-list-con border">
                                         <div class="classes-list border pt-3 ">
                                             <p class="thead-cl px-2 pb-2 m-0">Classes</p>
