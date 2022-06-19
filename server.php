@@ -1,6 +1,6 @@
 <?php 
 session_start();
-// error_reporting(0);
+error_reporting(0);
 
 // initializing variables
 $username = "";
@@ -486,6 +486,7 @@ if (isset($_POST['request_leave'])) {
   $type = mysqli_real_escape_string($db, $_POST['leave_type']);
   $start_date = mysqli_real_escape_string($db, $_POST['start_date']);
   $end_date = mysqli_real_escape_string($db, $_POST['end_date']);
+  $leave_desc = mysqli_real_escape_string($db, $_POST['leave_desc']);
   $c_one = mysqli_real_escape_string($db, $_POST['c_one']);
   $c_two = mysqli_real_escape_string($db, $_POST['c_two']);
   $c_three = mysqli_real_escape_string($db, $_POST['c_three']);
@@ -499,7 +500,7 @@ if (isset($_POST['request_leave'])) {
   $requester_id = $_SESSION['tid'];
   $request_datetime = date('d-m-y h:i:s');
 
-  $query = "INSERT INTO `leaves`(`type`, `start_date`, `end_date`, `c_one`, `c_two`, `c_three`, `c_four`, `c_five`, `t_one`, `t_two`, `t_three`, `t_four`, `t_five`, `status`, `requester_id`,`request_datetime`) VALUES ('$type','$start_date','$end_date','$c_one','$c_two','$c_three','$c_four','$c_five','$t_one','$t_two','$t_three','$t_four','$t_five','PENDING','$requester_id','$request_datetime')";
+  $query = "INSERT INTO `leaves`(`type`, `start_date`, `end_date`, `leave_desc`, `c_one`, `c_two`, `c_three`, `c_four`, `c_five`, `t_one`, `t_two`, `t_three`, `t_four`, `t_five`, `status`, `requester_id`,`request_datetime`) VALUES ('$type','$start_date','$end_date','$leave_desc','$c_one','$c_two','$c_three','$c_four','$c_five','$t_one','$t_two','$t_three','$t_four','$t_five','PENDING','$requester_id','$request_datetime')";
   mysqli_query($db, $query);
   header('Location: ' . $_SERVER['HTTP_REFERER'].'?rs=t');
 }
@@ -513,6 +514,19 @@ if(isset($_POST['cancel_request']))
     mysqli_query($db, $query);
     header('Location: ' . $_SERVER['HTTP_REFERER']);
 }
+if(isset($_POST['approve_request'])) 
+{
+  $leave_id = mysqli_real_escape_string($db, $_POST['approve_request']);
+  $query = "UPDATE `leaves` SET `status`= 'APPROVED' WHERE `id`='$leave_id'";
+  mysqli_query($db, $query);
+  header('Location: ' . $_SERVER['HTTP_REFERER']);
+}
+if(isset($_POST['decline_request'])) 
+{
+  $leave_id = mysqli_real_escape_string($db, $_POST['decline_request']);
+  $query = "UPDATE `leaves` SET `status`= 'DECLINED' WHERE `id`='$leave_id'";
+  mysqli_query($db, $query);
+  header('Location: ' . $_SERVER['HTTP_REFERER']);
+}
 
 ?>
-
