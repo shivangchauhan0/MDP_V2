@@ -500,7 +500,14 @@ if (isset($_POST['request_leave'])) {
   $requester_id = $_SESSION['tid'];
   $request_datetime = date('d-m-y h:i:s');
 
-  $query = "INSERT INTO `leaves`(`type`, `start_date`, `end_date`, `leave_desc`, `c_one`, `c_two`, `c_three`, `c_four`, `c_five`, `t_one`, `t_two`, `t_three`, `t_four`, `t_five`, `status`, `requester_id`,`request_datetime`) VALUES ('$type','$start_date','$end_date','$leave_desc','$c_one','$c_two','$c_three','$c_four','$c_five','$t_one','$t_two','$t_three','$t_four','$t_five','PENDING','$requester_id','$request_datetime')";
+  $s_date_timestamp = strtotime($start_date);
+  $s_date = date("d-m-Y", $s_date_timestamp);
+  $e_date_timestamp = strtotime($end_date);
+  $e_date = date("d-m-Y", $e_date_timestamp);
+  $datediff = $e_date_timestamp - $s_date_timestamp;
+  $number_of_days = (round($datediff / (60 * 60 * 24)) != 0) ? round($datediff / (60 * 60 * 24)) : 1;
+
+  $query = "INSERT INTO `leaves`(`type`, `start_date`, `end_date`, `number_of_days`, `leave_desc`, `c_one`, `c_two`, `c_three`, `c_four`, `c_five`, `t_one`, `t_two`, `t_three`, `t_four`, `t_five`, `status`, `requester_id`,`request_datetime`) VALUES ('$type','$start_date','$end_date', '$number_of_days', '$leave_desc','$c_one','$c_two','$c_three','$c_four','$c_five','$t_one','$t_two','$t_three','$t_four','$t_five','PENDING','$requester_id','$request_datetime')";
   mysqli_query($db, $query);
   header('Location: ' . $_SERVER['HTTP_REFERER'].'?rs=t');
 }

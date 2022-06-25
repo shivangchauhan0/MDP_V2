@@ -1,14 +1,10 @@
 <?php include("header.php") ?>
-<?php include("sidenav-head.php");
-if ($_SESSION['designation'] != 'Principal' || $_SESSION['designation'] == 'Vice-Principal') {
-    echo "<script>history.back()</script>";
- }
-?>
+<?php include("sidenav-head.php") ?>
 
 <div id="page-content-wrapper">
     <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
     <button class="ui button bg-red small" id="menu-toggle"><i class="fa fa-bars mr-1" aria-hidden="true"></i> Menu</button>
-    <h2 class="ml-2 my-0 nav-head">LEAVE REQUESTS</h2>
+    <h2 class="ml-2 my-0 nav-head">LEAVE HISTORY</h2>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
         <p id="username" class="mt-0 mr-3"><i class='user icon'></i><strong><?php echo $_SESSION['name'] ?></strong></p>
@@ -18,14 +14,71 @@ if ($_SESSION['designation'] != 'Principal' || $_SESSION['designation'] == 'Vice
 
     <div class="container-fluid my-3">
         <div class="head-bar-sec">
-            <h2>LEAVE REQUESTS</h2>
+        <?php 
+            $requester_id = $_GET['id'];
+            $user_sql = "SELECT * FROM `users` WHERE `tid`='$requester_id'";
+            $user_result = $db->query($user_sql);
+            $user_row = $user_result->fetch_assoc();
+            $requester_name = $user_row["name"];
+        ?>
+            <h2>LEAVES COUNTS OF <?php echo strtoupper($requester_name)?></h2>
             <a onclick="window.print()" class="float-right display-none-print" href="#"><button type="submit" class="ui button bg-red mx-1 my-2" id="insert-id">Print Report</button></a>
         </div>
+        <section class="number-of-leaves">
+            <?php
+                $requester_id = $_GET['id'];
+                $sql = "SELECT * FROM `leaves` WHERE `requester_id`='$requester_id' AND `status` = 'APPROVED' ORDER BY `request_datetime` DESC";
+                $result = $db->query($sql);
+
+                if ($result->num_rows > 0) {
+                    $cl = 0;
+                    $dl = 0;
+                    $ml = 0;
+                    $other = 0;
+                    while($row = $result->fetch_assoc()) { 
+                        
+                        switch ($row['type']) {
+                            case 'CL':
+                                $cl = $cl + (int)$row['number_of_days'];
+                                break;
+                            case 'DL':
+                                $dl = $dl + (int)$row['number_of_days'];
+                                break;
+                            case 'ML':
+                                $ml = $ml + (int)$row['number_of_days'];
+                                break;
+                            
+                            default:
+                                $other = $other + (int)$row['number_of_days'];
+                                break;
+                        }
+
+                    }
+                }
+            
+            ?>
+            <div class="nol-item">
+                <h1><?php echo $cl ?>/13</h1>
+                <p class="nol-p">CL</p>
+                <p>Remaing: <?php echo 13 - $cl ?></p>
+            </div> 
+            <div class="nol-item">
+                <h1><?php echo $dl ?></h1>
+                <p class="nol-p">DL</p>
+            </div> 
+            <div class="nol-item">
+                <h1><?php echo $ml ?></h1>
+                <p class="nol-p">ML</p>
+            </div> 
+            <div class="nol-item">
+                <h1><?php echo $other ?></h1>
+                <p>Other</p>
+            </div> 
+        </section>
 
         <table class="ui celled table" id="show-records-table">
             <thead>
             <tr id="table-head">
-                <th>Requester Name</th>
                 <th>Leave Type</th>
                 <th>Start Date</th>
                 <th>End Date</th>
@@ -36,8 +89,8 @@ if ($_SESSION['designation'] != 'Principal' || $_SESSION['designation'] == 'Vice
             </thead>
             <tbody>
           <?php 
-                $requester_id = $_SESSION['tid'];
-                $sql = "SELECT * FROM `leaves` WHERE 1 ORDER BY `request_datetime` DESC";
+                $requester_id = $_GET['id'];
+                $sql = "SELECT * FROM `leaves` WHERE `requester_id` = '$requester_id' ORDER BY `request_datetime` DESC";
                 $result = $db->query($sql);
 
                 if ($result->num_rows > 0) {
@@ -93,10 +146,6 @@ if ($_SESSION['designation'] != 'Principal' || $_SESSION['designation'] == 'Vice
                                 $user_result = $db->query($user_sql);
                                 $user_row = $user_result->fetch_assoc();
                                 $requester_name = $user_row["name"];
-
-                               $today_date = date('d-m-Y');
-
-                               echo $today_date;
                             ?>
                             <td><a style="text-decoration: underline" class="ui icon button mx-2" id="edit" href="leave-count.php?id=<?php echo $row['requester_id']?>"><?php echo $requester_name?></a></td>
                             <td style="width:150px"><?php echo $row['type']?></td>
@@ -121,12 +170,12 @@ if ($_SESSION['designation'] != 'Principal' || $_SESSION['designation'] == 'Vice
                             <td class="display-none-print" style="width:140px;">
                                 <a class="ui icon button mx-2" id="edit" href="#" data-toggle="modal" data-target="#exampleModal<?php echo $row['id']?>"><i class="eye icon"></i></a>
                                 <form method="post" action="leave-requests.php" class="ui form delete mx-2">
-                                    <button onclick="return checkApprove()" type="submit" name="approve_request" value='<?php echo $row["id"] ?>' id="delete" class="ui mini icon button delete" <?php echo($row['status'] == "CANCELLED") ? "disabled" : "" ;?> <?php echo($today_date > $end_date) ? "disabled" : "" ;?>>
+                                    <button onclick="return checkApprove()" type="submit" name="approve_request" value='<?php echo $row["id"] ?>' id="delete" class="ui mini icon button delete" <?php echo($row['status'] == "CANCELLED") ? "disabled" : "" ;?>>
                                         <i style="color:#a3243b" class="check icon"></i>
                                     </button>
                                 </form>
                                 <form method="post" action="leave-requests.php" class="ui form delete mx-2">
-                                    <button onclick="return checkDecline()" type="submit" name="decline_request" value='<?php echo $row["id"] ?>' id="delete" class="ui mini icon button delete" <?php echo($row['status'] == "CANCELLED") ? "disabled" : "" ;?> <?php echo($today_date > $end_date) ? "disabled" : "" ;?>>
+                                    <button onclick="return checkDecline()" type="submit" name="decline_request" value='<?php echo $row["id"] ?>' id="delete" class="ui mini icon button delete" <?php echo($row['status'] == "CANCELLED") ? "disabled" : "" ;?>>
                                         <i style="color:#a3243b" class="close icon"></i>
                                     </button>
                                 </form>

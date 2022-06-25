@@ -17,6 +17,57 @@
             <h2>LEAVE HISTORY</h2>
             <a onclick="window.print()" class="float-right display-none-print" href="#"><button type="submit" class="ui button bg-red mx-1 my-2" id="insert-id">Print Report</button></a>
         </div>
+        <section class="number-of-leaves">
+            <?php
+                $requester_id = $_SESSION['tid'];
+                $sql = "SELECT * FROM `leaves` WHERE `requester_id`='$requester_id' AND `status` = 'APPROVED' ORDER BY `request_datetime` DESC";
+                $result = $db->query($sql);
+
+                if ($result->num_rows > 0) {
+                    $cl = 0;
+                    $dl = 0;
+                    $ml = 0;
+                    $other = 0;
+                    while($row = $result->fetch_assoc()) { 
+                        
+                        switch ($row['type']) {
+                            case 'CL':
+                                $cl = $cl + (int)$row['number_of_days'];
+                                break;
+                            case 'DL':
+                                $dl = $dl + (int)$row['number_of_days'];
+                                break;
+                            case 'ML':
+                                $ml = $ml + (int)$row['number_of_days'];
+                                break;
+                            
+                            default:
+                                $other = $other + (int)$row['number_of_days'];
+                                break;
+                        }
+
+                    }
+                }
+            
+            ?>
+            <div class="nol-item">
+                <h1><?php echo $cl ?>/13</h1>
+                <p class="nol-p">CL</p>
+                <p>Remaing: <?php echo 13 - $cl ?></p>
+            </div> 
+            <div class="nol-item">
+                <h1><?php echo $dl ?></h1>
+                <p class="nol-p">DL</p>
+            </div> 
+            <div class="nol-item">
+                <h1><?php echo $ml ?></h1>
+                <p class="nol-p">ML</p>
+            </div> 
+            <div class="nol-item">
+                <h1><?php echo $other ?></h1>
+                <p>Other</p>
+            </div> 
+        </section>
 
         <table class="ui celled table" id="show-records-table">
             <thead>
@@ -45,8 +96,6 @@
                         $e_date = $row["end_date"];
                         $e_date_timestamp = strtotime($e_date);
                         $end_date = date("d-m-Y", $e_date_timestamp);
-
-                        $datediff = $e_date_timestamp - $s_date_timestamp;
 
                         $classes = array();
                         $teachers = array();
@@ -85,7 +134,7 @@
                             <td><?php echo $row['type']?></td>
                             <td><?php echo $start_date?></td>
                             <td><?php echo $end_date?></td>
-                            <td><?php echo (round($datediff / (60 * 60 * 24)) != 0) ? round($datediff / (60 * 60 * 24)) : 1 ?> Day(s)</td>
+                            <td><?php echo ($row['number_of_days'] == 1 ) ? $row['number_of_days']." Day" : $row['number_of_days']." Days" ?> </td>
                             <td style="width:150px"><div class="ui <?php switch ($row['status']) {
                                 case 'PENDING':
                                     echo "yellow";

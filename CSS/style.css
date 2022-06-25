@@ -418,3 +418,31 @@ form.delete {
 .td-cl{
   text-transform: uppercase;
 }
+
+.number-of-leaves{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 30px;
+  grid-gap: 15px;
+}
+.nol-item{
+  /* background: cyan; */
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-block: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+.nol-item h1{
+  margin-bottom: 0;
+  margin-top: 10px;
+  color: #a4243b;
+}
+.nol-p{
+  margin-bottom: 5px;
+  font-weight: 600;
+  font-size: 18px;
+}
