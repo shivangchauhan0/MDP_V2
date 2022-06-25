@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 17, 2022 at 06:34 PM
--- Server version: 10.4.20-MariaDB
--- PHP Version: 8.0.9
+-- Generation Time: Jun 19, 2022 at 01:30 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -238,6 +238,46 @@ INSERT INTO `department` (`id`, `sup_depart`, `department`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `leaves`
+--
+
+CREATE TABLE `leaves` (
+  `id` int(200) NOT NULL,
+  `type` varchar(100) NOT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date NOT NULL,
+  `leave_desc` varchar(1000) NOT NULL,
+  `c_one` varchar(200) NOT NULL,
+  `c_two` varchar(200) NOT NULL,
+  `c_three` varchar(200) NOT NULL,
+  `c_four` varchar(200) NOT NULL,
+  `c_five` varchar(200) NOT NULL,
+  `t_one` varchar(200) NOT NULL,
+  `t_two` varchar(200) NOT NULL,
+  `t_three` varchar(200) NOT NULL,
+  `t_four` varchar(200) NOT NULL,
+  `t_five` varchar(200) NOT NULL,
+  `status` varchar(200) NOT NULL,
+  `requester_id` varchar(200) NOT NULL,
+  `checker_id` varchar(200) NOT NULL,
+  `check_datetime` datetime(6) NOT NULL,
+  `request_datetime` datetime(6) NOT NULL DEFAULT current_timestamp(6)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `leaves`
+--
+
+INSERT INTO `leaves` (`id`, `type`, `start_date`, `end_date`, `leave_desc`, `c_one`, `c_two`, `c_three`, `c_four`, `c_five`, `t_one`, `t_two`, `t_three`, `t_four`, `t_five`, `status`, `requester_id`, `checker_id`, `check_datetime`, `request_datetime`) VALUES
+(1, 'DL', '2022-06-17', '2022-06-18', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima mollitia esse molestiae nulla pariatur sequi architecto, labore consequatur possimus voluptatem?', 'cone', 'ctwo', 'cthree', 'cfour', 'cfive', 'tone', 'ttwo', 'tthree', 'tfour', 'tfive', 'DECLINED', 'EMP0064', '0', '0000-00-00 00:00:00.000000', '2018-06-22 09:19:47.000000'),
+(3, 'CL', '2022-06-23', '2022-06-30', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima mollitia esse molestiae nulla pariatur sequi architecto, labore consequatur possimus voluptatem?', 'ONE', 'THREE', '', '', '', 'TWO', 'FOUR', '', '', '', 'APPROVED', 'EMP0064', '', '0000-00-00 00:00:00.000000', '2018-06-22 11:17:16.000000'),
+(4, 'DL', '2022-06-17', '2022-06-18', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima mollitia esse molestiae nulla pariatur sequi architecto, labore consequatur possimus voluptatem?', 'cone', 'ctwo', 'cthree', 'cfour', 'cfive', 'tone', 'ttwo', 'tthree', 'tfour', 'tfive', 'DECLINED', 'EMP0064', '0', '0000-00-00 00:00:00.000000', '2018-06-22 09:19:47.000000'),
+(5, 'CL', '2022-06-23', '2022-06-30', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima mollitia esse molestiae nulla pariatur sequi architecto, labore consequatur possimus voluptatem?', 'ONE', 'THREE', '', '', '', 'TWO', 'FOUR', '', '', '', 'CANCELLED', 'EMP0064', '', '0000-00-00 00:00:00.000000', '2018-06-22 11:17:16.000000'),
+(6, 'DL', '2022-06-20', '2022-06-27', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima mollitia esse molestiae nulla pariatur sequi architecto, labore consequatur possimus voluptatem?\r\n', 'FIRST', '', '', '', '', 'SECOND', '', '', '', '', 'PENDING', 'EMP0064', '', '0000-00-00 00:00:00.000000', '2019-06-22 02:48:38.000000');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `methodology`
 --
 
@@ -282,6 +322,13 @@ CREATE TABLE `notes` (
   `dean` tinyint(1) NOT NULL,
   `principal` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `notes`
+--
+
+INSERT INTO `notes` (`srno`, `username`, `lecture`, `class`, `subject`, `date`, `day`, `theory/prac`, `methodology`, `teaching_aid`, `content`, `class_activity`, `attendance`, `other_activity`, `remark`, `hod`, `dean`, `principal`) VALUES
+(1, 'EMP0064', 'First', 'c46', 's46', '2022-06-18', 'Saturday', 'Practicals', 'Demonstration', 'Pictures', 'new ', 'new', 10, 'vew', 'vo', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -541,6 +588,12 @@ ALTER TABLE `department`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `leaves`
+--
+ALTER TABLE `leaves`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `methodology`
 --
 ALTER TABLE `methodology`
@@ -617,6 +670,12 @@ ALTER TABLE `department`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
+-- AUTO_INCREMENT for table `leaves`
+--
+ALTER TABLE `leaves`
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `methodology`
 --
 ALTER TABLE `methodology`
@@ -626,7 +685,7 @@ ALTER TABLE `methodology`
 -- AUTO_INCREMENT for table `notes`
 --
 ALTER TABLE `notes`
-  MODIFY `srno` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `srno` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `subjects`
