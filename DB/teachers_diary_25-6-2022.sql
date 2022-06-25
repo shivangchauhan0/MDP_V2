@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 19, 2022 at 01:30 PM
+-- Generation Time: Jun 25, 2022 at 06:33 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -246,6 +246,7 @@ CREATE TABLE `leaves` (
   `type` varchar(100) NOT NULL,
   `start_date` date NOT NULL,
   `end_date` date NOT NULL,
+  `number_of_days` int(200) NOT NULL,
   `leave_desc` varchar(1000) NOT NULL,
   `c_one` varchar(200) NOT NULL,
   `c_two` varchar(200) NOT NULL,
@@ -268,12 +269,15 @@ CREATE TABLE `leaves` (
 -- Dumping data for table `leaves`
 --
 
-INSERT INTO `leaves` (`id`, `type`, `start_date`, `end_date`, `leave_desc`, `c_one`, `c_two`, `c_three`, `c_four`, `c_five`, `t_one`, `t_two`, `t_three`, `t_four`, `t_five`, `status`, `requester_id`, `checker_id`, `check_datetime`, `request_datetime`) VALUES
-(1, 'DL', '2022-06-17', '2022-06-18', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima mollitia esse molestiae nulla pariatur sequi architecto, labore consequatur possimus voluptatem?', 'cone', 'ctwo', 'cthree', 'cfour', 'cfive', 'tone', 'ttwo', 'tthree', 'tfour', 'tfive', 'DECLINED', 'EMP0064', '0', '0000-00-00 00:00:00.000000', '2018-06-22 09:19:47.000000'),
-(3, 'CL', '2022-06-23', '2022-06-30', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima mollitia esse molestiae nulla pariatur sequi architecto, labore consequatur possimus voluptatem?', 'ONE', 'THREE', '', '', '', 'TWO', 'FOUR', '', '', '', 'APPROVED', 'EMP0064', '', '0000-00-00 00:00:00.000000', '2018-06-22 11:17:16.000000'),
-(4, 'DL', '2022-06-17', '2022-06-18', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima mollitia esse molestiae nulla pariatur sequi architecto, labore consequatur possimus voluptatem?', 'cone', 'ctwo', 'cthree', 'cfour', 'cfive', 'tone', 'ttwo', 'tthree', 'tfour', 'tfive', 'DECLINED', 'EMP0064', '0', '0000-00-00 00:00:00.000000', '2018-06-22 09:19:47.000000'),
-(5, 'CL', '2022-06-23', '2022-06-30', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima mollitia esse molestiae nulla pariatur sequi architecto, labore consequatur possimus voluptatem?', 'ONE', 'THREE', '', '', '', 'TWO', 'FOUR', '', '', '', 'CANCELLED', 'EMP0064', '', '0000-00-00 00:00:00.000000', '2018-06-22 11:17:16.000000'),
-(6, 'DL', '2022-06-20', '2022-06-27', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima mollitia esse molestiae nulla pariatur sequi architecto, labore consequatur possimus voluptatem?\r\n', 'FIRST', '', '', '', '', 'SECOND', '', '', '', '', 'PENDING', 'EMP0064', '', '0000-00-00 00:00:00.000000', '2019-06-22 02:48:38.000000');
+INSERT INTO `leaves` (`id`, `type`, `start_date`, `end_date`, `number_of_days`, `leave_desc`, `c_one`, `c_two`, `c_three`, `c_four`, `c_five`, `t_one`, `t_two`, `t_three`, `t_four`, `t_five`, `status`, `requester_id`, `checker_id`, `check_datetime`, `request_datetime`) VALUES
+(1, 'DL', '2022-06-17', '2022-06-18', 1, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima mollitia esse molestiae nulla pariatur sequi architecto, labore consequatur possimus voluptatem?', 'cone', 'ctwo', 'cthree', 'cfour', 'cfive', 'tone', 'ttwo', 'tthree', 'tfour', 'tfive', 'APPROVED', 'EMP0064', '0', '0000-00-00 00:00:00.000000', '2018-06-22 09:19:47.000000'),
+(3, 'CL', '2022-06-23', '2022-06-30', 7, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima mollitia esse molestiae nulla pariatur sequi architecto, labore consequatur possimus voluptatem?', 'ONE', 'THREE', '', '', '', 'TWO', 'FOUR', '', '', '', 'APPROVED', 'EMP0064', '', '0000-00-00 00:00:00.000000', '2018-06-22 11:17:16.000000'),
+(4, 'DL', '2022-06-17', '2022-06-18', 1, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima mollitia esse molestiae nulla pariatur sequi architecto, labore consequatur possimus voluptatem?', 'cone', 'ctwo', 'cthree', 'cfour', 'cfive', 'tone', 'ttwo', 'tthree', 'tfour', 'tfive', 'DECLINED', 'EMP0064', '0', '0000-00-00 00:00:00.000000', '2018-06-22 09:19:47.000000'),
+(5, 'other', '2022-06-23', '2022-06-30', 7, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima mollitia esse molestiae nulla pariatur sequi architecto, labore consequatur possimus voluptatem?', 'ONE', 'THREE', '', '', '', 'TWO', 'FOUR', '', '', '', 'APPROVED', 'EMP0064', '', '0000-00-00 00:00:00.000000', '2018-06-22 11:17:16.000000'),
+(6, 'CL', '2022-06-20', '2022-06-27', 7, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima mollitia esse molestiae nulla pariatur sequi architecto, labore consequatur possimus voluptatem?\r\n', 'FIRST', '', '', '', '', 'SECOND', '', '', '', '', 'APPROVED', 'EMP0064', '', '0000-00-00 00:00:00.000000', '2019-06-22 02:48:38.000000'),
+(7, 'ML', '2022-06-19', '2022-06-21', 3, 'lorem ipsum', 'ONE', '', '', '', '', 'TWO', '', '', '', '', 'DECLINED', 'EMP0064', '', '0000-00-00 00:00:00.000000', '2019-06-22 09:56:23.000000'),
+(8, 'CL', '2022-06-28', '2022-06-30', 2, 'new leave', 'new class', '', '', '', '', 'new teacher', '', '', '', '', 'CANCELLED', 'EMP0064', '', '0000-00-00 00:00:00.000000', '2025-06-22 02:00:07.000000'),
+(9, 'other', '2022-06-28', '2022-06-30', 2, 'bw', 'w', '', '', '', '', 'w', '', '', '', '', 'APPROVED', 'EMP0064', '', '0000-00-00 00:00:00.000000', '2025-06-22 02:03:55.000000');
 
 -- --------------------------------------------------------
 
@@ -673,7 +677,7 @@ ALTER TABLE `department`
 -- AUTO_INCREMENT for table `leaves`
 --
 ALTER TABLE `leaves`
-  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `methodology`
