@@ -95,8 +95,6 @@ if ($_SESSION['designation'] != 'Principal' || $_SESSION['designation'] == 'Vice
                                 $requester_name = $user_row["name"];
 
                                $today_date = date('d-m-Y');
-
-                               echo $today_date;
                             ?>
                             <td><a style="text-decoration: underline" class="ui icon button mx-2" id="edit" href="leave-count.php?id=<?php echo $row['requester_id']?>"><?php echo $requester_name?></a></td>
                             <td style="width:150px"><?php echo $row['type']?></td>
